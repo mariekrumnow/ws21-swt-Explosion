@@ -1,6 +1,7 @@
 # Visual Studio Editor Files (Tobias)
 /bomberman/.vs
 /bomberman/Release
+/bomberman/x64/Debug
 /bomberman/Debug
 /bomberman/bomberman.sln
 /bomberman/bomberman.vcxproj
