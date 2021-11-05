@@ -1,9 +1,5 @@
-# Visual Studio Editor Files (Tobias)
-/bomberman/.vs
-/bomberman/Release
-/bomberman/x64/Debug
-/bomberman/Debug
-/bomberman/bomberman.sln
-/bomberman/bomberman.vcxproj
-/bomberman/bomberman.vcxproj.filters
-/bomberman/bomberman.vcxproj.user
+# Atom Editor Files (Tobias)
+compile.bat
+*.exe
+*.obj
+*.gch
