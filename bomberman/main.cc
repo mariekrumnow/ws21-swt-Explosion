@@ -1,6 +1,7 @@
 //Author: Tobias
 #define SDL_MAIN_HANDLED
 #include <boost_test.h>
+
 //If you don't run the test, execute the main function
 #if RUN_BOOST_TESTS==0
 
@@ -15,8 +16,10 @@
 
 int main(int argc, char** argv)
 {
+  //initialize the app manager
   engine::AppManager app = engine::AppManager(true);
 
+  //blink ten times between a red A and a green G
   for (int i=0; i<10; i++) {
     app.graphics_.BeginFrame();
 
@@ -35,7 +38,7 @@ int main(int argc, char** argv)
 }
 
 #else
-
+//this workaround is necessary to make Boost and SDL2 work together
 //run the boost test cases
 #define BOOST_TEST_MODULE "Bomberman Test Cases"
 #define BOOST_TEST_DYN_LINK
