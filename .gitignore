@@ -1,5 +1,5 @@
 # Atom Editor Files (Tobias)
-compile.bat
+*.bat
 *.exe
 *.obj
 *.gch

@@ -1,11 +1,8 @@
 //Author: Tobias
-
 #define SDL_MAIN_HANDLED
-
-//define the name of the test module in this file
-#define BOOST_TEST_MODULE main test
-#include <boost/test/unit_test.hpp>
-//include the boost test library
+#include <boost_test.h>
+//If you don't run the test, execute the main function
+#if RUN_BOOST_TESTS==0
 
 #include "engine/AppManager.h"
 #include "graphics/Tile.h"
@@ -16,15 +13,7 @@
 #include <SDL.h>
 //include the sdl header file
 
-
-//Enable to run boost tests in project
-#define RUN_BOOST_TESTS 0
-
-
-//If you don't run the test, execute the main function
-#if !RUN_BOOST_TESTS
-
-int main()
+int main(int argc, char** argv)
 {
   engine::AppManager app = engine::AppManager(true);
 
@@ -47,13 +36,15 @@ int main()
 
 #else
 
-//otherwise, run the boost test main function
-#define BOOST_TEST_MAIN
+//run the boost test cases
+#define BOOST_TEST_MODULE "Bomberman Test Cases"
 #define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_NO_MAIN
+#include <boost/test/unit_test.hpp>
 
-#endif
-
-//test if tests work (very meta!)
-BOOST_AUTO_TEST_CASE(ExampleTest) {
-    BOOST_CHECK(true);
+// entry point:
+int main(int argc, char* argv[], char* envp[])
+{
+  return boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
 }
+#endif
