@@ -16,6 +16,7 @@ private:
 
 };
 
+//Text tile definitions
 const Tile kTileA = Tile(1,4);
 const Tile kTileB = Tile(2,4);
 const Tile kTileC = Tile(3,4);
@@ -42,6 +43,15 @@ const Tile kTileW = Tile(7,5);
 const Tile kTileX = Tile(8,5);
 const Tile kTileY = Tile(9,5);
 const Tile kTileZ = Tile(10,5);
+
+//Game tile definitions
+const Tile kTileEmpty = Tile(0,0);
+const Tile kTileDot = Tile(10,15);
+const Tile kTilePlayer = Tile(1,0);
+const Tile kTileSolidWall = Tile(11,13);
+const Tile kTileBrittleWall = Tile(2,11);
+const Tile kTileExplosion = Tile(15,0);
+const Tile kTileBomb = Tile(2,10);
 
 } //namespace graphics
 
