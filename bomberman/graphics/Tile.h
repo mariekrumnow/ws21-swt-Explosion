@@ -52,6 +52,7 @@ const Tile kTileSolidWall = Tile(11,13);
 const Tile kTileBrittleWall = Tile(2,11);
 const Tile kTileExplosion = Tile(15,0);
 const Tile kTileBomb = Tile(2,10);
+const Tile kTileMenuCursor = Tile(0,1);
 
 } //namespace graphics
 

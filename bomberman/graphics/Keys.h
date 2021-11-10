@@ -4,13 +4,14 @@
 
 #include <SDL.h>
 
-SDL_Scancode key_player_1_up = SDL_SCANCODE_W;
-SDL_Scancode key_player_1_down = SDL_SCANCODE_S;
-SDL_Scancode key_player_1_left = SDL_SCANCODE_A;
-SDL_Scancode key_player_1_right = SDL_SCANCODE_D;
-SDL_Scancode key_player_1_bomb = SDL_SCANCODE_LSHIFT;
+//declarations of re-assignable scancodes for each In-Game function
+extern SDL_Scancode key_player_1_up;
+extern SDL_Scancode key_player_1_down;
+extern SDL_Scancode key_player_1_left;
+extern SDL_Scancode key_player_1_right;
+extern SDL_Scancode key_player_1_bomb;
 
-SDL_Scancode key_return = SDL_SCANCODE_RETURN;
-SDL_Scancode key_escape = SDL_SCANCODE_ESCAPE;
+extern SDL_Scancode key_return;
+extern SDL_Scancode key_escape;
 
 #endif
