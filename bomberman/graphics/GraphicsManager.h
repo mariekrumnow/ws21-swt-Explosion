@@ -5,6 +5,7 @@
 #include "TileSet.h"
 
 #include <SDL.h>
+#include <cstdlib>
 
 namespace graphics {
 
@@ -23,11 +24,25 @@ public:
 	//call at the end of every frame
 	void EndFrame();
 
+	//only returns true on the first frame the key is pressed
+	bool IsKeyPressed(int scancode);
+	//returns true as long as the key is pressed
+	bool IsKeyHeld(int scancode);
+
+	void Quit();
+
 private:
 	TileSet* game_tileset_;
 	TileSet* text_tileset_;
 	SDL_Window * window_;
 	SDL_Renderer * renderer_;
+
+	//stores all keys that were already held on the last frame
+	bool key_not_pressed_[SDL_NUM_SCANCODES];
+	//stores all keys that are held on this frame
+	bool key_held_[SDL_NUM_SCANCODES];
+	//a key gets set to just held on the first frame,
+	//and then to "not pressed" and held on the second
 };
 
 } //namespace graphics
