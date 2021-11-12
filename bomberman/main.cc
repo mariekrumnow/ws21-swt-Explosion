@@ -1,85 +1,61 @@
 //Author: Tobias
-
 #define SDL_MAIN_HANDLED
+#include <boost_test.h>
 
-//define the name of the test module in this file
-#define BOOST_TEST_MODULE test
+//If you don't run the test, execute the main function
+#if RUN_BOOST_TESTS==0
 
-#include <boost/test/unit_test.hpp>
-//include the boost test library
-
+#include "engine/AppManager.h"
+#include "graphics/Tile.h"
+#include "graphics/Color.h"
+#include "graphics/Keys.h"
 
 #include <iostream>
 
 #include <SDL.h>
 //include the sdl header file
 
-
-
-//Enable to run boost tests in project
-#define RUN_BOOST_TESTS 0
-
-
-//If you don't run the test, execute the main function
-#if !RUN_BOOST_TESTS
-
-int main()
+int main(int argc, char** argv)
 {
-    //Initialize SDL video subsystem
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "SDL couldn't be initialized! SDL_Error: " << SDL_GetError();
-        return -1;
+  //initialize the app manager
+  engine::AppManager app = engine::AppManager(true);
+
+  //blink ten times between a red A and a green G
+  while(true) {
+    app.graphics_.BeginFrame();
+
+    app.graphics_.DrawTile(graphics::kTileG, graphics::Color(0,255,255,255),
+      100, 200);
+
+    //If A is pressed, print an A
+    if (app.graphics_.IsKeyPressed(key_player_1_left)) {
+      app.graphics_.DrawTile(graphics::kTileA, graphics::Color(255,0,0,255),
+        100, 100);
     }
 
-    int screen_width = 640;
-    int screen_height = 480;
-    
-    //Create the window
-    SDL_Window* window = SDL_CreateWindow("Test Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN);
-    
-    //Make sure it actually exists
-    if (window == NULL) {
-        std::cout << "Window couldn't be created! SDL_Error: " << SDL_GetError();
-        return -1;
+    //If W is pressed, print a W
+    if (app.graphics_.IsKeyHeld(key_player_1_up)) {
+      app.graphics_.DrawTile(graphics::kTileW, graphics::Color(0,255,0,255),
+        200, 100);
     }
 
-    //Get the renderer (The 2D GPU rendering component)
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    //Set the drawing color to red
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-
-    //Draw a rectangle filling the entire screen
-    SDL_RenderFillRect(renderer, NULL);
-
-    //Set the drawing color to cyan
-    SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
-
-    //Draw a rectangle filling the left half of the screen
-    const SDL_Rect kRectangle = { 0, 0, screen_width / 2, screen_height };
-    SDL_RenderFillRect(renderer, &kRectangle);
-
-    //execute all the queued rendering commands
-    SDL_RenderPresent(renderer);
-
-    //wait 2 seconds
-    SDL_Delay(2000);
-
-    //clean up
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 0;
+    app.graphics_.EndFrame();
+    SDL_Delay(50);
+  }
+  return 0;
 }
 
 #else
+//this workaround is necessary to make Boost and SDL2 work together
+//run the boost test cases
+#define BOOST_TEST_MODULE "Bomberman Test Cases"
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_NO_MAIN
+#include <boost/test/unit_test.hpp>
 
-//otherwise, run the boost test main function
-#define BOOST_TEST_MAIN
-
-#endif
-
-//test if tests work (very meta!)
-BOOST_AUTO_TEST_CASE(ExampleTest) {
-    BOOST_CHECK(true);
+// entry point:
+int main(int argc, char* argv[], char* envp[])
+{
+  return boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
 }
+#endif
