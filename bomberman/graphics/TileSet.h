@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 #include <string>
+#include <iostream>
 
 #include "Color.h"
 #include "Tile.h"

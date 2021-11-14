@@ -10,6 +10,11 @@ TileSet::TileSet(SDL_Renderer* renderer, std::string file,
 	tile_size_y_ = tile_size_y;
 
 	SDL_Surface* tile_atlas_surface = SDL_LoadBMP(file.c_str());
+
+	if (tile_atlas_surface == NULL) {
+		std::cout << "Error loading tile atlas " << file << std::endl;
+	}
+
 	tile_atlas_ = SDL_CreateTextureFromSurface(renderer, tile_atlas_surface);
 
 }
