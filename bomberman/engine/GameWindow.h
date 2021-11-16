@@ -1,8 +1,8 @@
 //Author: Tobias
-#ifndef ENGINE_GAMEWINDOW_H_
-#define ENGINE_GAMEWINDOW_H_
+#ifndef CORE_GAMEWINDOW_H_
+#define CORE_GAMEWINDOW_H_
 
-namespace engine {
+namespace core {
 
 //GameWindow: Abstract class to represent different program display modes,
 //like the main game, or menus.
@@ -12,6 +12,6 @@ public:
 	virtual void Draw() = 0;
 };
 
-} //namespace engine
+} //namespace core
 
 #endif
