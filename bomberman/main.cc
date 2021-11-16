@@ -38,6 +38,11 @@ int main(int argc, char** argv)
       app.graphics_.DrawTile(graphics::kTileW, graphics::Color(0,255,0,255),
         200, 100);
     }
+    
+    //If Esc is pressed, exit the window
+    if (app.graphics_.IsKeyPressed(key_escape)) {
+      app.graphics_.Quit();
+    }
 
     app.graphics_.EndFrame();
     SDL_Delay(50);
