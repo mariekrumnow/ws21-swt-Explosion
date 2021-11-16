@@ -18,7 +18,7 @@
 int main(int argc, char** argv)
 {
   //initialize the app manager
-  engine::AppManager app = engine::AppManager(true);
+  core::AppManager app = core::AppManager(true);
 
   //blink ten times between a red A and a green G
   while(true) {
