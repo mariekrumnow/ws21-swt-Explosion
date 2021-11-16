@@ -1,5 +1,6 @@
 //Author: Tobias
 #include "AppManager.h"
+#include <graphics/Keys.h>
 
 #include <boost/test/unit_test.hpp>
 
@@ -50,9 +51,9 @@ void AppManager::Run() {
 		RunFrame(delta_time);
 
 		//If Esc is pressed, exit the window
-    if (graphics_.IsKeyPressed(key_escape)) {
-      graphics_.Quit();
-    }
+   		if (graphics_.IsKeyPressed(key_escape)) {
+		      graphics_.Quit();
+  		}
 
 		auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
 
