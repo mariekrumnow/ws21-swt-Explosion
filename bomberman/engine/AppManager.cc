@@ -3,7 +3,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-namespace core {
+namespace engine {
 
 
 AppManager* AppManager::manager_;
@@ -56,4 +56,4 @@ void AppManager::Run() {
 }
 
 
-} //namespace core
+} //namespace engine
