@@ -8,6 +8,7 @@
 #include <chrono>
 
 #include <graphics/GraphicsManager.h>
+#include <graphics/Keys.h>
 
 namespace core {
 
