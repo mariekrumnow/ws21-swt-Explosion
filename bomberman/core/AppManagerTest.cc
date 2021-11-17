@@ -3,7 +3,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-namespace engine {
+namespace core {
 
 	BOOST_AUTO_TEST_SUITE(AppManagerTests)
 

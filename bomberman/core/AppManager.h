@@ -1,15 +1,16 @@
 //Author: Tobias
 
-#ifndef ENGINE_APPMANAGER_H_
-#define ENGINE_APPMANAGER_H_
+#ifndef CORE_APPMANAGER_H_
+#define CORE_APPMANAGER_H_
 
 #include "GameWindow.h"
 
 #include <chrono>
 
 #include <graphics/GraphicsManager.h>
+#include <graphics/Keys.h>
 
-namespace engine {
+namespace core {
 
 //AppManager: The main class of the program, containing a static reference to
 //itself and the main loop of the game
@@ -38,6 +39,6 @@ private:
 	static AppManager* manager_;
 };
 
-} //namespace engine
+} //namespace core
 
 #endif

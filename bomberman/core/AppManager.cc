@@ -1,9 +1,10 @@
 //Author: Tobias
 #include "AppManager.h"
+#include <graphics/Keys.h>
 
 #include <boost/test/unit_test.hpp>
 
-namespace engine {
+namespace core {
 
 
 AppManager* AppManager::manager_;
@@ -48,6 +49,12 @@ void AppManager::Run() {
 	while (true) {
 		auto start_time = std::chrono::high_resolution_clock::now();
 		RunFrame(delta_time);
+
+		//If Esc is pressed, exit the window
+   		if (graphics_.IsKeyPressed(key_escape)) {
+		      graphics_.Quit();
+  		}
+
 		auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
 
 		delta_time = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
@@ -56,4 +63,4 @@ void AppManager::Run() {
 }
 
 
-} //namespace engine
+} //namespace core
