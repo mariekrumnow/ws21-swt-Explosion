@@ -11,16 +11,24 @@
 namespace game {
 
 class GameManager {
+public:
+    GameManager();
+    ~GameManager();
 
-    private:
+    void Update(double delta_time);
+    static GameManagerWindow& GetCurrentGame();
+    void RemoveGameObject(GameObject game_object);
+    void AddGameObject(GameObject game_object);
+    void ChangeObjectPosition(GameObject game_object, int x, int y);
+    void Draw();
+    GameObject* GetObjectsAtPos(int x, int y);
+    GameObject* GetAllObjects();
 
-    public:
-        GameManager();
-        ~GameManager();
+    //WinCondition win_condidion_;
 
-        GameObject GetObjectAtPos();
-        void RemoveGameObjectAtPos();
-        void AddGameObjectAtPos();
+private:
+    std::vector<GameObject>** objects_by_pos_;
+    static GameManagerWindow* current_game_;
 
     };
 

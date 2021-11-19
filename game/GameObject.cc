@@ -24,6 +24,5 @@ Color GameObject::GetColor() {}
 
 Tile GameObject::GetTile() {}
 
-void GameObject::Destroy(){}
 
 } //namespace game

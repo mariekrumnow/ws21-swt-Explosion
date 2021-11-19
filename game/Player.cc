@@ -17,10 +17,14 @@ void Player::IncreaseMaxBombCount(int value){}
 
 void Player::IncreaseSpeed(int value) {}
 
-void Player::PlaceBomb(int x, int y) {}
+//void Player::PlaceBomb(int x, int y) {}
 
 void Player::Update(double delta_time) {}
 
-bool Player::OnBombDestroyed(Bomb bomb) {}
+//void Player::OnBombDestroyed(Bomb bomb) {}
+
+bool Player::OnCollision(int &source) {}
+
+bool Player::OnExplosion(int &source) {}
 
 } //namespace game

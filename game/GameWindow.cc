@@ -8,5 +8,6 @@ namespace game {
 GameWindow::GameWindow() {}
 GameWindow::~GameWindow() {}
 void GameWindow::Draw() {}
+void GameWindow::Update(double delta_time) {}
 
 }  //namespace game

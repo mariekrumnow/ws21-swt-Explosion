@@ -14,6 +14,7 @@ public:
     GameWindow();
     ~GameWindow();
     void Draw();
+    void Update(double delta_time);
 
 };
 

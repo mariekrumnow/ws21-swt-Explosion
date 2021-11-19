@@ -7,9 +7,28 @@
 
 namespace game {
 
-class Player {
+class Player : public GameObject {
+public:
+    Player();
+    ~Player();
 
-};
+    void SetPosition(int x, int y);
+    void IncreaseSpeed(int value);
+    void IncreaseExplosion(int value);
+    void IncreaseMaxBombCount(int value);
+    //void OnBombDestroyed(Bomb& bomb);
+    void Update(double delta_time);
+    bool OnExplosion(GameObject& source);
+    bool OnCollision(GameObject& source);
+
+private:
+    //void PlaceBomb(int x,int y);
+    void SetPosition(int x, int y);
+
+    int speed_;
+    int explosion_radius_;
+    int max_bomb_count_;
+    //std::vector<Bomb&> owned_bombs_;
 } //namespace game
 
 #endif //BOMBERMAN_PLAYER_H
