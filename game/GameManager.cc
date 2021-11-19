@@ -6,22 +6,26 @@
 
 namespace game {
 
-GameManager::GameManagerWindow(){}
+GameManager* GameManager::current_game_;
 
-GameManager::~GameManagerWindow(){}
+GameManager::GameManager(){}
+
+GameManager::~GameManager(){}
 
 void GameManager::Update(double delta_time) {}
 
-GameManager &GameManager::GetCurrentGame() {}
+GameManager& GameManager::GetCurrentGame() {
+	return * GameManager::current_game_;
+}
 
-void GameManager::RemoveGameObject(GameObject game_object) {}
+void GameManager::RemoveGameObject(GameObject& game_object) {}
 
-void GameManager::AddGameObject(GameObject game_object) {}
+void GameManager::AddGameObject(GameObject& game_object) {}
 
-void GameManager::ChangeObjectPosition(GameObject game_object, int x, int y) {}
+void GameManager::ChangeObjectPosition(GameObject& game_object, int x, int y) {}
 
-GameObject *GameManager::GetObjectsAtPos(int x, int y) {}
+GameObject *GameManager::GetObjectsAtPos(int x, int y) { return nullptr;}
 
-GameObject *GameManager::GetAllObjects() {}
+GameObject *GameManager::GetAllObjects() { return nullptr;}
 
 } //namespace game

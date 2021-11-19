@@ -8,24 +8,28 @@
 #include "../graphics/Color.h"
 
 namespace game {
+  class Player;
+}
+
+namespace game {
 
 class GameObject {
-    public:
-    GameObject();
-    ~GameObject();
+public:
+  GameObject();
+  ~GameObject();
 
-    virtual bool OnExplosion(GameObject& source);
-    virtual bool OnPlayerCollision(Player& player);
-    virtual bool OnCollision(GameObject& source);
-    virtual graphics::Tile GetTile()=0;
-    virtual graphics::Color GetColor()=0;
-    virtual void Update(double delta_time)=0;
+  virtual bool OnExplosion(GameObject& source);
+  virtual bool OnPlayerCollision(Player& player);
+  virtual bool OnCollision(GameObject& source);
+  virtual graphics::Tile GetTile()=0;
+  virtual graphics::Color GetColor()=0;
+  virtual void Update(double delta_time)=0;
 
-    private:
-    virtual void SetPosition(int x, int y);
+private:
+  virtual void SetPosition(int x, int y);
 
-    int x_;
-    int y_;
+  int x_;
+  int y_;
 };
 } //namespace game
 

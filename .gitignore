@@ -6,6 +6,7 @@
 
 # Jetbrains
 /idea/
+/.idea/
 
 # CMake
 CMakeLists.txt

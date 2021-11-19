@@ -12,17 +12,17 @@ GameObject::~GameObject(){}
 
 void GameObject::SetPosition(int x, int y) {}
 
-bool GameObject::OnExplosion(GameObject source) {}
+bool GameObject::OnExplosion(GameObject& source) {
+	return false;
+}
 
-bool GameObject::OnPlayerCollision(Player& player) {}
+bool GameObject::OnPlayerCollision(Player& player) {
+	return false;
+}
 
-bool GameObject::OnCollision(GameObject source) {}
-
-void GameObject::Update() {}
-
-Color GameObject::GetColor() {}
-
-Tile GameObject::GetTile() {}
+bool GameObject::OnCollision(GameObject& source) {
+	return false;
+}
 
 
 } //namespace game

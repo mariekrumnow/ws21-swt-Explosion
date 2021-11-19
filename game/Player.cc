@@ -23,8 +23,8 @@ void Player::Update(double delta_time) {}
 
 //void Player::OnBombDestroyed(Bomb bomb) {}
 
-bool Player::OnCollision(int &source) {}
+bool Player::OnCollision(GameObject &source) { return false;}
 
-bool Player::OnExplosion(int &source) {}
+bool Player::OnExplosion(GameObject &source) { return true;}
 
 } //namespace game
