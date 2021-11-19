@@ -17,21 +17,29 @@ public:
     ~Player();
 
     void IncreaseSpeed(int value);
-    void IncreaseExplosion(int value);
+    void IncreaseExplosionRadius(int value);
     void IncreaseMaxBombCount(int value);
-    //void OnBombDestroyed(Bomb& bomb);
+    //boolvect OnBombDestroyed(Bomb& bomb);
     void Update(double delta_time);
     bool OnExplosion(GameObject& source);
     bool OnCollision(GameObject& source);
+    int GetSpeed();
+    void SetSpeed(int s);
+    int GetExplosionRadius();
+    void SetExplosionRadius(int r);
+    int GetMaxBombCount();
+    void SetMaxBombCount(int m);
+    int GetOwnedBombs();
+    void SetOwnedBombs(int o);
 
 private:
     //void PlaceBomb(int x,int y);
-    void SetPosition(int x, int y);
+    void SetPosition(int x, int y);      //überprüft auch via OnPlayerCollision ob Position frei is
 
     int speed_;
     int explosion_radius_;
     int max_bomb_count_;
-    //std::vector<Bomb&> owned_bombs_;
+    int owned_bombs_;
   };
 } //namespace game
 

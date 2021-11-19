@@ -24,9 +24,12 @@ public:
   virtual graphics::Tile GetTile()=0;
   virtual graphics::Color GetColor()=0;
   virtual void Update(double delta_time)=0;
+  virtual int GetX();
+  virtual int GetY();
+  virtual void SetPosition(int x, int y);
+
 
 private:
-  virtual void SetPosition(int x, int y);
 
   int x_;
   int y_;
