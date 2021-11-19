@@ -3,7 +3,7 @@
 #ifndef ENGINE_APPMANAGER_H_
 #define ENGINE_APPMANAGER_H_
 
-#include "GameWindow.h"
+#include "Window.h"
 
 #include <chrono>
 
@@ -25,14 +25,14 @@ namespace core {
         ~AppManager();
 
         //sets the active game window. DOESN'T delete the current window.
-        void SetActiveGameWindow(GameWindow& window);
-        GameWindow& GetActiveWindow();
+        void SetActiveGameWindow(Window& window);
+        Window& GetActiveWindow();
         void RunFrame(double deltaTime);
         //Run game for ever
         [[noreturn]] void Run();
 
     private:
-        GameWindow* active_game_window_;
+        Window* active_window_;
 
         //The static reference to the current AppManager
         static AppManager* manager_;

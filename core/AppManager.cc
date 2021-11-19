@@ -18,25 +18,25 @@ namespace core {
         }
 
         AppManager::manager_ = this;
-        active_game_window_ = nullptr;
+        active_window_ = nullptr;
     }
 
     AppManager::~AppManager() {
         AppManager::manager_ = nullptr;
     }
 
-    void AppManager::SetActiveGameWindow(GameWindow &window) {
-        active_game_window_ = &window;
+    void AppManager::SetActiveGameWindow(Window &window) {
+        active_window_ = &window;
     }
 
-    GameWindow& AppManager::GetActiveWindow() {
-        return *active_game_window_;
+    Window& AppManager::GetActiveWindow() {
+        return *active_window_;
     }
 
     void AppManager::RunFrame(double delta_time) {
-        if (active_game_window_ != nullptr) {
-            active_game_window_->Update(delta_time);
-            active_game_window_->Draw();
+        if (active_window_ != nullptr) {
+            active_window_->Update(delta_time);
+            active_window_->Draw();
         }
     }
 

@@ -6,10 +6,11 @@
 #define BOMBERMAN_GAMEMANAGER_H
 
 #include "GameObject.h"
+#include "../core/AppManager.h"
 
 namespace game {
 
-    class GameManager {
+class GameManager {
 
     private:
 
