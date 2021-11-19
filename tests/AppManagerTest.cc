@@ -3,11 +3,11 @@
 //
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN
-#include "../CoreEngine/AppManager.h"
+#include "AppManager.h"
 
 #include <boost/test/unit_test.hpp>
 
-namespace engine {
+namespace core {
 
     BOOST_AUTO_TEST_SUITE(AppManagerTests)
 

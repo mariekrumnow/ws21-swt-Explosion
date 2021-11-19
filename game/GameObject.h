@@ -5,9 +5,21 @@
 #ifndef BOMBERMAN_GAMEOBJECT_H
 #define BOMBERMAN_GAMEOBJECT_H
 
+namespace game {
+    class GameObject {
+    private:
 
-class GameObject {
+    public:
+        GameObject();
+        ~GameObject();
 
+        void SetPosition(int x, int y);
+        void OnPlayerCollision();
+        void OnExplosion();
+
+        void GetTile();
+        void GetColor();
+    };
 };
 
 

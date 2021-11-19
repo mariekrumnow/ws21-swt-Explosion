@@ -3,7 +3,7 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(bomberman main.cpp)
+add_executable(bomberman main.cc)
 
 # SDL2
 find_package(SDL2 REQUIRED)
@@ -16,12 +16,12 @@ target_link_directories(bomberman PRIVATE core)
 target_link_libraries(bomberman core)
 
 add_subdirectory(game)
-target_link_directories(bomberman PRIVATE game)
+target_include_directories(bomberman PRIVATE game)
 target_link_directories(bomberman PRIVATE game)
 target_link_libraries(bomberman game)
 
 add_subdirectory(graphics)
-target_link_directories(bomberman PRIVATE graphics)
+target_include_directories(bomberman PRIVATE graphics)
 target_link_directories(bomberman PRIVATE graphics)
 target_link_libraries(bomberman graphics)
 

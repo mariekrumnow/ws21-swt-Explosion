@@ -5,8 +5,22 @@
 #ifndef BOMBERMAN_GAMEMANAGER_H
 #define BOMBERMAN_GAMEMANAGER_H
 
+#include "GameObject.h"
 
-class GameManager {
+namespace game {
+
+    class GameManager {
+
+    private:
+
+    public:
+        GameManager();
+        ~GameManager();
+
+        GameObject GetObjectAtPos();
+        void RemoveGameObjectAtPos();
+        void AddGameObjectAtPos();
+    };
 
 };
 
