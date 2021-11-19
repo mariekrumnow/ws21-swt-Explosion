@@ -8,3 +8,5 @@
 /idea/
 
 # Cmake
+CMakeLists.txt
+**/CMakeLists.txt
