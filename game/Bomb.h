@@ -11,7 +11,7 @@ namespace game {
 
     };
 
-};
+} //namespace game
 
 
 #endif //BOMBERMAN_BOMB_H

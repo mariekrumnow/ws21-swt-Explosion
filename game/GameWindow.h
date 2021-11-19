@@ -10,10 +10,14 @@
 namespace game {
 
 class GameWindow : public core::Window {
-
-    };
+public:
+    GameWindow();
+    ~GameWindow();
+    void Draw();
 
 };
+
+} //namespace game
 
 
 #endif //BOMBERMAN_GAMEWINDOW_H

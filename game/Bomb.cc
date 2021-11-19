@@ -3,3 +3,7 @@
 //
 
 #include "Bomb.h"
+ namespace game {
+
+
+} //namespace game

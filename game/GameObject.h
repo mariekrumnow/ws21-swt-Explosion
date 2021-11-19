@@ -17,10 +17,10 @@ namespace game {
         void OnPlayerCollision();
         void OnExplosion();
 
-        void GetTile();
-        void GetColor();
+        Tile GetTile();
+        Color GetColor();
     };
-};
+} //namespace game
 
 
 #endif //BOMBERMAN_GAMEOBJECT_H

@@ -21,9 +21,10 @@ class GameManager {
         GameObject GetObjectAtPos();
         void RemoveGameObjectAtPos();
         void AddGameObjectAtPos();
+
     };
 
-};
+} //namespace game
 
 
 #endif //BOMBERMAN_GAMEMANAGER_H
