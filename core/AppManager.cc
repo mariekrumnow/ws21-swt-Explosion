@@ -10,6 +10,10 @@ namespace core {
         return *AppManager::manager_;
     }
 
+    graphics::GraphicsManager& AppManager::GetGraphics() {
+      return graphics_;
+    }
+
     AppManager::AppManager(bool init_graphics) :
             graphics_(graphics::GraphicsManager(init_graphics)) {
         //ensure the reference to the AppManager stays active, and there is only one.
@@ -35,8 +39,12 @@ namespace core {
 
     void AppManager::RunFrame(double delta_time) {
         if (active_window_ != nullptr) {
+            graphics_.BeginFrame();
+
             active_window_->Update(delta_time);
             active_window_->Draw();
+
+            graphics_.EndFrame();
         }
     }
 

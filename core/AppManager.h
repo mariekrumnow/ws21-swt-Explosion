@@ -7,7 +7,7 @@
 
 #include <chrono>
 
-#include <GraphicsManager.h>
+#include "GraphicsManager.h"
 
 namespace core {
 
@@ -18,7 +18,7 @@ namespace core {
     public:
         static AppManager& GetAppManager();
 
-        graphics::GraphicsManager graphics_;
+        graphics::GraphicsManager& GetGraphics();
 
         //init_graphics can be set to false to disable graphical function for testing
         explicit AppManager(bool init_graphics);
@@ -33,6 +33,8 @@ namespace core {
 
     private:
         Window* active_window_;
+
+        graphics::GraphicsManager graphics_;
 
         //The static reference to the current AppManager
         static AppManager* manager_;
