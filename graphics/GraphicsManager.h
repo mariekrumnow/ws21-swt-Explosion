@@ -24,6 +24,8 @@ namespace graphics {
         //call at the end of every frame
         void EndFrame();
 
+        void SetFullscreen(bool fullscreen);
+
         //only returns true on the first frame the key is pressed
         bool IsKeyPressed(int scancode);
         //returns true as long as the key is pressed

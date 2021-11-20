@@ -86,6 +86,14 @@ namespace graphics {
         SDL_RenderPresent(renderer_);
     }
 
+    void GraphicsManager::SetFullscreen(bool fullscreen) {
+      if (fullscreen) {
+        SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
+      } else {
+        SDL_SetWindowFullscreen(window_, 0);
+      }
+    }
+
     bool GraphicsManager::IsKeyPressed(int scancode) {
         if (scancode < 0 || scancode >= SDL_NUM_SCANCODES) return false;
         return key_held_[scancode] && !key_not_pressed_[scancode];

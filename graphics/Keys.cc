@@ -12,5 +12,6 @@ SDL_Scancode key_player_1_bomb = SDL_SCANCODE_LSHIFT;
 
 SDL_Scancode key_return = SDL_SCANCODE_RETURN;
 SDL_Scancode key_escape = SDL_SCANCODE_ESCAPE;
+SDL_Scancode key_fullscreen = SDL_SCANCODE_F11;
 
 }

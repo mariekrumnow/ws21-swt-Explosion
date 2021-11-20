@@ -14,6 +14,7 @@ extern SDL_Scancode key_player_1_bomb;
 
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
+extern SDL_Scancode key_fullscreen;
 
 }
 

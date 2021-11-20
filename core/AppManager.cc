@@ -6,6 +6,7 @@
 
 #include "Window.h"
 #include "GraphicsManager.h"
+#include "Keys.h"
 
 namespace core {
 
@@ -56,11 +57,21 @@ namespace core {
 
     void AppManager::Run() {
         double delta_time = 0.05;
+        bool fullscreen = false;
 
         while (true) {
             auto start_time = std::chrono::high_resolution_clock::now();
             RunFrame(delta_time);
             auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
+
+            if (graphics_.IsKeyPressed(graphics::key_fullscreen)) {
+              fullscreen = !fullscreen;
+              graphics_.SetFullscreen(fullscreen);
+            }
+
+            if (graphics_.IsKeyPressed(graphics::key_escape)) {
+              graphics_.Quit();
+            }
 
             delta_time = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
                                  .count()/1000000.0;
