@@ -6,6 +6,9 @@
 #define BOMBERMAN_GAMEWINDOW_H
 
 #include "../core/Window.h"
+#include "GameManager.h"
+#include "Tile.h"
+#include "Color.h"
 
 namespace game {
 
@@ -15,7 +18,6 @@ public:
     ~GameWindow();
     void Draw();
     void Update(double delta_time);
-
 };
 
 } //namespace game

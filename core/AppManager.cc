@@ -1,5 +1,11 @@
 //Author: Tobias
+
 #include "AppManager.h"
+
+#include <chrono>
+
+#include "Window.h"
+#include "GraphicsManager.h"
 
 namespace core {
 

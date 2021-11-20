@@ -14,23 +14,31 @@ namespace game {
 
 class GameManager {
 public:
-    GameManager();
+    GameManager(const int width, const int height);
     ~GameManager();
 
     void Update(double delta_time);
     static GameManager& GetCurrentGame();
     void RemoveGameObject(GameObject& game_object);
     void AddGameObject(GameObject& game_object);
-    void ChangeObjectPosition(GameObject& game_object, int x, int y);
+    //returns false if position isn't valid
+    bool ChangeObjectPosition(GameObject& game_object, int x, int y);
     void Draw();
-    GameObject* GetObjectsAtPos(int x, int y);
-    GameObject* GetAllObjects();
+    std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
+    std::vector<GameObject*> GetAllObjects();
+
+    int GetWidth();
+    int GetHeight();
 
     //WinCondition win_condidion_;
 
 private:
-    std::vector<GameObject>** objects_by_pos_;
+    std::vector<GameObject*>** objects_by_pos_;
+    std::vector<GameObject*> empty_object_vector_; //as a default for oob positions
     static GameManager* current_game_;
+
+    int width_;
+    int height_;
 
     };
 

@@ -4,14 +4,18 @@
 
 #ifndef BOMBERMAN_GAMEOBJECT_H
 #define BOMBERMAN_GAMEOBJECT_H
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
 
 namespace game {
-  class Player;
+  class GameObject;
 }
 
+#include "../graphics/Tile.h"
+#include "../graphics/Color.h"
+#include "GameManager.h"
+
 namespace game {
+
+class Player;
 
 class GameObject {
 public:
@@ -26,7 +30,7 @@ public:
   virtual void Update(double delta_time)=0;
   virtual int GetX();
   virtual int GetY();
-  virtual void SetPosition(int x, int y);
+  virtual bool SetPosition(int x, int y);
 
 
 private:

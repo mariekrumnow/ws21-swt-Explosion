@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 
+namespace graphics {
 // declarations of re-assignable scancodes for each In-Game function
 extern SDL_Scancode key_player_1_up;
 extern SDL_Scancode key_player_1_down;
@@ -13,5 +14,7 @@ extern SDL_Scancode key_player_1_bomb;
 
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
+
+}
 
 #endif
