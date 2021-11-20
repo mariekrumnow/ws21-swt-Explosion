@@ -1,6 +1,4 @@
-//
-// Created by Dennis Neuhaus on 19.11.21.
-//
+//Autor Nina, Tobias
 
 #include "GameWindow.h"
 

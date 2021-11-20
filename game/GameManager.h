@@ -1,6 +1,4 @@
-//
-// Created by Dennis Neuhaus on 15.11.21.
-//
+//Autor: Peter, Nina, Tobias
 
 #ifndef BOMBERMAN_GAMEMANAGER_H
 #define BOMBERMAN_GAMEMANAGER_H

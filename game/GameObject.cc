@@ -1,6 +1,4 @@
-//
-// Created by Dennis Neuhaus on 15.11.21.
-//
+//Autor: Nina, Tobias
 
 #include "GameObject.h"
 

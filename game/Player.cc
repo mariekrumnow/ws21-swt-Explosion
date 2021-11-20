@@ -1,6 +1,4 @@
-//
-// Created by Dennis Neuhaus on 18.11.21.
-//
+//Autor: Peter, Nina, Tobias
 
 #include "Player.h"
 

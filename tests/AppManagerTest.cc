@@ -1,6 +1,4 @@
-//
-// Created by Dennis Neuhaus on 15.11.21.
-//
+//Autor: Dennis, Tobias
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN
 #include "AppManager.h"
