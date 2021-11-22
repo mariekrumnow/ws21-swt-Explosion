@@ -33,6 +33,8 @@ namespace graphics {
 
         void Quit();
 
+				void Sleep(int millis);
+
     private:
         TileSet* game_tileset_;
         TileSet* text_tileset_;

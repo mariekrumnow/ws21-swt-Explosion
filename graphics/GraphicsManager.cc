@@ -57,12 +57,12 @@ namespace graphics {
                     }
                     break;
 
-                    //quit event
+                //quit event
                 case SDL_QUIT:
                     Quit();
                     break;
 
-                    //events sent by the keyboard
+                //events sent by the keyboard
                 case SDL_KEYDOWN:
                     key_held_[event.key.keysym.scancode] = true;
                     break;
@@ -105,7 +105,11 @@ namespace graphics {
     }
 
     void GraphicsManager::Quit() {
-        exit(0);
+      	exit(0);
     }
+
+		void GraphicsManager::Sleep(int millis) {
+			SDL_Delay(millis);
+		}
 
 } //namespace graphics

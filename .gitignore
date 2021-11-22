@@ -3,6 +3,9 @@
 *.exe
 *.obj
 *.gch
+*.zip
+
+/build
 
 # Jetbrains
 /idea/

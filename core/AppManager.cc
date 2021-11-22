@@ -59,6 +59,8 @@ namespace core {
         double delta_time = 0.05;
         bool fullscreen = false;
 
+				const int min_delta_time = 1000000 / 60; //limit to ~60 fps
+
         while (true) {
             auto start_time = std::chrono::high_resolution_clock::now();
             RunFrame(delta_time);
@@ -73,8 +75,15 @@ namespace core {
               graphics_.Quit();
             }
 
-            delta_time = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
-                                 .count()/1000000.0;
+						int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
+                                 .count();
+
+            if (elapsed_microsecs < min_delta_time) {
+              graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
+              elapsed_microsecs = min_delta_time;
+            }
+
+            delta_time = elapsed_microsecs/1000000.0;
         }
     }
 
