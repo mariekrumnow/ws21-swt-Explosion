@@ -1,5 +1,3 @@
-//
-// Created by notyo on 25.11.2021.
-//
+//Autor Peter, Patrick
 
 #include "Upgrade.h"
