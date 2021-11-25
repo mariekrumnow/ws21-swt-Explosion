@@ -53,6 +53,9 @@ namespace graphics {
     const Tile kTileExplosion = Tile(15,0);
     const Tile kTileBomb = Tile(2,10);
     const Tile kTileMenuCursor = Tile(0,1);
+    const Tile kTileSpeedUpgrade = Tile(15,10);
+    const Tile kTileExplosionRadiusUpgrade = Tile(13,1);
+    const Tile kTileBombCountUpgrade = Tile(5,14);
 
 } //namespace graphics
 

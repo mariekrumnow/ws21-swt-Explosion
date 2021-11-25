@@ -5,8 +5,8 @@
 #include <chrono>
 
 #include "Window.h"
-#include "GraphicsManager.h"
-#include "Keys.h"
+#include "../graphics/GraphicsManager.h"
+#include "../graphics/Keys.h"
 
 namespace core {
 
