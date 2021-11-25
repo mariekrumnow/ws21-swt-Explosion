@@ -1,0 +1,14 @@
+//
+// Created by notyo on 25.11.2021.
+//
+
+#ifndef BOMBERMAN_EXPLOSIONRADIUSUPGRADE_H
+#define BOMBERMAN_EXPLOSIONRADIUSUPGRADE_H
+
+
+class ExplosionRadiusUpgrade {
+
+};
+
+
+#endif //BOMBERMAN_EXPLOSIONRADIUSUPGRADE_H
