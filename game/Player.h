@@ -7,7 +7,6 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "AppManager.h"
 #include "Keys.h"
 #include "Color.h"
 #include "Tile.h"
@@ -16,7 +15,7 @@ namespace game {
 
 class Player : public GameObject {
 public:
-    Player();
+    Player(SDL_Scancode up, SDL_Scancode down, SDL_Scancode left, SDL_Scancode right, SDL_Scancode bomb);
     ~Player();
 
     void IncreaseSpeed(int value);
@@ -51,6 +50,11 @@ private:
     double move_timer_;
     const double kMaxMoveTimer = 1.0;
     const double kMinMoveTimer = 0.1;
+
+
+    // controls
+    SDL_Scancode up, down, left, right, bomb;
+
   };
 } //namespace game
 

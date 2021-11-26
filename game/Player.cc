@@ -6,14 +6,15 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "AppManager.h"
 #include "Keys.h"
 #include "Color.h"
 #include "Tile.h"
 
 namespace game {
 
-Player::Player(){
+Player::Player(SDL_Scancode up, SDL_Scancode down, SDL_Scancode left, SDL_Scancode right, SDL_Scancode bomb) :
+    up(up), down(down), left(left), right(right), bomb(bomb)
+{
   speed_ = 1;
   explosion_radius_ = 1;
   max_bomb_count_ = 1;
@@ -66,16 +67,16 @@ void Player::Update(double delta_time) {
   if (move_timer_ <= 0) {
     bool player_moved = false;
 
-    if (graphics.IsKeyHeld(graphics::key_player_1_up)) {
+    if (graphics.IsKeyHeld(up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_down)) {
+    } else if (graphics.IsKeyHeld(down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_left)) {
+    } else if (graphics.IsKeyHeld(left)) {
       player_moved = SetPosition(GetX()-1, GetY());
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_right)) {
+    } else if (graphics.IsKeyHeld(right)) {
       player_moved = SetPosition(GetX()+1, GetY());
     }
 

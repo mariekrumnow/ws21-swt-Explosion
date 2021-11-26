@@ -1,4 +1,4 @@
-//Autor: Tobias
+// Autor: Tobias, Carla, Dennis
 
 #include "Keys.h"
 
@@ -9,6 +9,12 @@ SDL_Scancode key_player_1_down = SDL_SCANCODE_S;
 SDL_Scancode key_player_1_left = SDL_SCANCODE_A;
 SDL_Scancode key_player_1_right = SDL_SCANCODE_D;
 SDL_Scancode key_player_1_bomb = SDL_SCANCODE_LSHIFT;
+
+SDL_Scancode key_player_2_up = SDL_SCANCODE_I;
+SDL_Scancode key_player_2_down = SDL_SCANCODE_K;
+SDL_Scancode key_player_2_left = SDL_SCANCODE_J;
+SDL_Scancode key_player_2_right = SDL_SCANCODE_L;
+SDL_Scancode key_player_2_bomb = SDL_SCANCODE_RSHIFT;
 
 SDL_Scancode key_return = SDL_SCANCODE_RETURN;
 SDL_Scancode key_escape = SDL_SCANCODE_ESCAPE;

@@ -12,6 +12,12 @@ extern SDL_Scancode key_player_1_left;
 extern SDL_Scancode key_player_1_right;
 extern SDL_Scancode key_player_1_bomb;
 
+extern SDL_Scancode key_player_2_up;
+extern SDL_Scancode key_player_2_down;
+extern SDL_Scancode key_player_2_left;
+extern SDL_Scancode key_player_2_right;
+extern SDL_Scancode key_player_2_bomb;
+
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
 extern SDL_Scancode key_fullscreen;
