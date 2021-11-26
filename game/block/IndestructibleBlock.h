@@ -2,8 +2,8 @@
 // Autor: Nina, Marie
 //
 
-#ifndef BOMBERMAN_INDESTRUCTABLE_H
-#define BOMBERMAN_INDESTRUCTABLE_H
+#ifndef BOMBERMAN_INDESTRUCTIBLE_H
+#define BOMBERMAN_INDESTRUCTIBLE_H
 
 #include "Block.h"
 #include "../graphics/Tile.h"
@@ -12,10 +12,10 @@
 namespace game {
 
 ///
-class IndestructableBlock : public Block{
+class IndestructibleBlock : public Block{
 public:
     /// Calls the constructor of Block
-    IndestructableBlock(int x, int y);
+    IndestructibleBlock(int x, int y);
 
     /// Sends signal that the explosion was ended by a block
     bool OnExplosion(GameObject& source);
@@ -29,4 +29,4 @@ public:
 
 } // namespace game
 
-#endif //BOMBERMAN_INDESTRUCTABLE_H
+#endif //BOMBERMAN_INDESTRUCTIBLE_H
