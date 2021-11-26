@@ -3,25 +3,25 @@
 //
 
 #include "Block.h"
-#include "IndestructableBlock.h"
+#include "IndestructibleBlock.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 
 namespace game {
 
-    IndestructableBlock::IndestructableBlock(int x, int y) :
+    IndestructibleBlock::IndestructibleBlock(int x, int y) :
       Block {x,y}
     {}
 
-    bool IndestructableBlock::OnExplosion(GameObject& source) {
+    bool IndestructibleBlock::OnExplosion(GameObject& source) {
           return true;
     }
 
-    graphics::Tile IndestructableBlock::GetTile() {
+    graphics::Tile IndestructibleBlock::GetTile() {
           return graphics::kTileSolidWall;
     }
 
-    graphics::Color IndestructableBlock::GetColor() {
+    graphics::Color IndestructibleBlock::GetColor() {
           return graphics::Color(105, 105, 105, 255);
     }
 
