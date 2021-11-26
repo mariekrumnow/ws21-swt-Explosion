@@ -6,18 +6,18 @@
 
 #include "Block.h"
 #include "GameManager.h"
-#include "DestructableBlock.h"
+#include "DestructibleBlock.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 
 namespace game {
 
-    DestructableBlock::DestructableBlock(int x, int y) :
+    DestructableBlock::DestructibleBlock(int x, int y) :
       Block {x,y}
     {}
 
-    bool DestructableBlock::OnExplosion(GameObject& source) {
-          //GameManager::RemoveGameObject(*this);
+    bool DestructibleBlock::OnExplosion(GameObject& source) {
+          GameManager::GetCurrentGame().RemoveGameObject(*this);
 
           srand(time(0));
           if (rand()%100 < 35) {
@@ -34,11 +34,11 @@ namespace game {
           return true;
     }
 
-    graphics::Tile DestructableBlock::GetTile() {
+    graphics::Tile DestructibleBlock::GetTile() {
           return graphics::kTileBrittleWall;
     }
 
-    graphics::Color DestructableBlock::GetColor() {
+    graphics::Color DestructibleBlock::GetColor() {
           return graphics::Color(169, 169, 169, 255);
     }
 
