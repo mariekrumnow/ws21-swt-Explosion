@@ -12,7 +12,7 @@
 
 namespace game {
 
-    DestructableBlock::DestructibleBlock(int x, int y) :
+    DestructibleBlock::DestructibleBlock(int x, int y) :
       Block {x,y}
     {}
 
