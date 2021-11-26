@@ -2,8 +2,8 @@
 // Autor: Nina, Marie
 //
 
-#ifndef BOMBERMAN_DESTRUCTABLE_H
-#define BOMBERMAN_DESTRUCTABLE_H
+#ifndef BOMBERMAN_DESTRUCTIBLE_H
+#define BOMBERMAN_DESTRUCTIBLE_H
 
 #include "Block.h"
 #include "../graphics/Tile.h"
@@ -12,10 +12,10 @@
 namespace game {
 
 /// Block that can be shown on the map and be destroyed by an explosion
-class DestructableBlock : public Block{
+class DestructibleBlock : public Block{
 public:
     /// Calls the constructor of Block
-    DestructableBlock(int x, int y);
+    DestructibleBlock(int x, int y);
 
     /// Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
     bool OnExplosion(GameObject& source);
@@ -29,4 +29,4 @@ public:
 
 } // namespace game
 
-#endif //BOMBERMAN_DESTRUCTABLE_H
+#endif //BOMBERMAN_DESTRUCTIBLE_H
