@@ -10,14 +10,23 @@
 #include "../graphics/Color.h"
 
 namespace game {
+
+/// Block that can be shown on the map and be destroyed by an explosion
 class DestructableBlock : public Block{
 public:
-    DestructableBlock();
-    ~DestructableBlock();
-    bool OnExplosion();
+    /// Calls the constructor of Block
+    DestructableBlock(int x, int y);
+
+    /// Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
+    bool OnExplosion(GameObject& source);
+
+    /// Returns the shape of the block
     graphics::Tile GetTile();
+
+    /// Returns color of the block
     graphics::Color GetColor();
 };
-}// namespace game
+
+} // namespace game
 
 #endif //BOMBERMAN_DESTRUCTABLE_H
