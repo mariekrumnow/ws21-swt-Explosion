@@ -1,4 +1,4 @@
-//Autor: Nina, Tobias
+//Autor: Nina, Tobias, Marie
 
 #include "GameObject.h"
 
@@ -11,6 +11,13 @@ namespace game {
 GameObject::GameObject(){
   x_ = 0;
   y_ = 0;
+}
+
+GameObject::GameObject(int x, int y){
+      if (!SetPosition(x, y)) {
+            x_ = 0;
+            y_ = 0;
+      }
 }
 
 GameObject::~GameObject(){
