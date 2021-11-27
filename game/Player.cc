@@ -54,7 +54,32 @@ void Player::IncreaseSpeed(int value) {
     speed_ += value;
 }
 
-//void Player::PlaceBomb(int x, int y) {}
+bool Player::PlaceBomb(int x, int y) {
+  GameManager& game = GameManager::GetCurrentGame();
+  if (GetOwnedBombs() < GetMaxBombCount()) {
+    //spawn bomb first, check for collision second
+    //(because OnCollision wants the colliding object as param)
+    bomb::Bomb* bomb = new bomb::Bomb(this, GetExplosionRadius(), 2.0);
+    game.AddGameObject(*bomb);
+    bomb->SetPosition(x, y);
+
+    //check for collision
+    bool collision = false;
+    for (GameObject* go : game.GetObjectsAtPos(x, y)) {
+      if (go != this && go != bomb) {
+        collision |= go->OnCollision(*bomb);
+      }
+    }
+
+    if (collision) {
+      delete bomb;
+    } else {
+      owned_bombs_++;
+      return true;
+    }
+  }
+  return false;
+}
 
 void Player::Update(double delta_time) {
   graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
@@ -65,6 +90,10 @@ void Player::Update(double delta_time) {
 
   if (move_timer_ <= 0) {
     bool player_moved = false;
+
+    if (graphics.IsKeyHeld(graphics::key_player_1_bomb)) {
+      PlaceBomb(GetX(), GetY());
+    }
 
     if (graphics.IsKeyHeld(graphics::key_player_1_up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
@@ -77,6 +106,7 @@ void Player::Update(double delta_time) {
 
     } else if (graphics.IsKeyHeld(graphics::key_player_1_right)) {
       player_moved = SetPosition(GetX()+1, GetY());
+
     }
 
     if (player_moved) {
@@ -94,7 +124,9 @@ graphics::Color Player::GetColor() {
   return graphics::Color(255, 0, 0, 255);
 }
 
-//void Player::OnBombDestroyed(Bomb bomb) {}
+void Player::OnBombDestroyed(bomb::Bomb& bomb) {
+  owned_bombs_--;
+}
 
 bool Player::OnCollision(GameObject &source) {
     return false;

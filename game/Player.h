@@ -4,6 +4,7 @@
 #define BOMBERMAN_PLAYER_H
 
 #include <vector>
+#include <iostream>
 
 #include "GameObject.h"
 #include "GameManager.h"
@@ -11,8 +12,11 @@
 #include "Keys.h"
 #include "Color.h"
 #include "Tile.h"
+#include "Bomb.h"
 
 namespace game {
+
+namespace bomb { class Bomb;}
 
 class Player : public GameObject {
 public:
@@ -22,7 +26,7 @@ public:
     void IncreaseSpeed(int value);
     void IncreaseExplosionRadius(int value);
     void IncreaseMaxBombCount(int value);
-    //boolvect OnBombDestroyed(Bomb& bomb);
+    void OnBombDestroyed(bomb::Bomb& bomb);
     void Update(double delta_time);
     bool OnExplosion(GameObject& source);
     bool OnCollision(GameObject& source);
@@ -35,7 +39,7 @@ public:
     graphics::Color GetColor();
 
 private:
-    //void PlaceBomb(int x,int y);
+    bool PlaceBomb(int x,int y);
     bool SetPosition(int x, int y);      //überprüft auch via OnPlayerCollision ob Position frei is
 
     int explosion_radius_;
