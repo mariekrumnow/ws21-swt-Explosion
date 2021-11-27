@@ -3,11 +3,13 @@
 #define BOMBERMAN_GAME_BOMB_BOMB_H
 
 #include <cmath>
+#include <iostream>
 
 #include "GameObject.h"
 #include "GameManager.h"
 #include "Player.h"
 #include "Tile.h"
+#include "Explosion.h"
 
 namespace game {
 namespace bomb {
@@ -28,8 +30,9 @@ private:
 	Player* owner_;
 	int power_;
 	double explosion_timer_;
+	bool exploding_; //so the bomb can't explode multiple times
 	void Explode();
-	void SpawnExplosion(int x, int y);
+	bool SpawnExplosion(int x, int y);
 };
 
 }

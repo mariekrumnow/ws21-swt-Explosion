@@ -59,7 +59,7 @@ bool Player::PlaceBomb(int x, int y) {
   if (GetOwnedBombs() < GetMaxBombCount()) {
     //spawn bomb first, check for collision second
     //(because OnCollision wants the colliding object as param)
-    bomb::Bomb* bomb = new bomb::Bomb(this, GetExplosionRadius(), 2.0);
+    bomb::Bomb* bomb = new bomb::Bomb(this, GetExplosionRadius(), 1.5);
     game.AddGameObject(*bomb);
     bomb->SetPosition(x, y);
 

@@ -9,12 +9,11 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 	owner_ = owner;
 	power_ = power;
 	explosion_timer_ = explosion_delay;
+	exploding_ = false;
 }
 
 Bomb::~Bomb() {
-	if (owner_) {
-		owner_->OnBombDestroyed(*this);
-	}
+
 }
 
 Player* Bomb::GetOwner() {
@@ -22,12 +21,16 @@ Player* Bomb::GetOwner() {
 }
 
 bool Bomb::OnExplosion(GameObject& source) {
-	Explode();
-	return true;
+	if (!exploding_) {
+		Explode();
+		return true;
+	} else {
+		return true;
+	}
 }
 
 bool Bomb::OnCollision(GameObject& source) {
-	return true;
+	return !exploding_; //exploding bombs aren't solid
 }
 
 graphics::Tile Bomb::GetTile() {
@@ -49,27 +52,45 @@ void Bomb::Update(double delta_time) {
 	}
 }
 
-void Bomb::SpawnExplosion(int x, int y) {
+bool Bomb::SpawnExplosion(int x, int y) {
+	GameManager& game = GameManager::GetCurrentGame();
+ 	Explosion* explosion = new Explosion();
+	game.AddGameObject(*explosion);
 
+	if (!explosion->SetPosition(x,y)) {
+		delete explosion;
+		return false;
+	}
+	return true;
 }
 
 void Bomb::Explode() {
+	std::cout << GetX() << std::endl;
 	GameManager& game = GameManager::GetCurrentGame();
 
+	exploding_ = true; //so the bomb isn't solid anymore
+
+	if (owner_) {
+		owner_->OnBombDestroyed(*this);
+	}
+
 	//The four explosion directions
-	int xTurn[4] = {0,1,0,-1};
-	int yTurn[4] = {1,0,-1,0};
+	int x_turn[4] = {0,1,0,-1};
+	int y_turn[4] = {1,0,-1,0};
+
+	int current_x = GetX();
+	int current_y = GetY();
 
 	//alwys spawn explosion where bomb is
-	SpawnExplosion(GetX(), GetY());
+	SpawnExplosion(current_x, current_y);
 
 	//for each of the four directions
 	for (int turn=0; turn<4; turn++) {
 		//explode for the given distance
 		for (int d=1; d<=power_; d++) {
 			//get rotated position
-			int x = GetX() + xTurn[turn]*d;
-			int y = GetY() + yTurn[turn]*d;
+			int x = current_x + x_turn[turn]*d;
+			int y = current_y + y_turn[turn]*d;
 
 			//check for obstacles
 			bool stopped = false;
@@ -81,12 +102,15 @@ void Bomb::Explode() {
 			if (stopped) {
 				break;
 			} else {
-				SpawnExplosion(x,y);
+				if (!SpawnExplosion(x,y)) {
+					break;
+				}
 			}
 		}
 	}
 
-	delete this;
+	//temporary, till Destroy is added
+	game.RemoveGameObject(*this);
 }
 
 } //namespace bomb

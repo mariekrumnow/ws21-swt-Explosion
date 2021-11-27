@@ -24,6 +24,8 @@ int main(int argc, char** argv)
 
     game::Player player = game::Player();
     player.IncreaseSpeed(9);
+    player.IncreaseExplosionRadius(3);
+    player.IncreaseMaxBombCount(1);
     game_manager.AddGameObject(player);
 
 
