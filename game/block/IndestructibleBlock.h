@@ -11,7 +11,9 @@
 
 namespace game {
 
-///
+namespace obstacles{
+
+/// Block that can be shown on the map and NOT be destroyed by an explosion
 class IndestructibleBlock : public Block{
 public:
     /// Calls the constructor of Block
@@ -26,6 +28,8 @@ public:
     /// Returns color of the block
     graphics::Color GetColor();
 };
+
+} // namespace obstacles
 
 } // namespace game
 

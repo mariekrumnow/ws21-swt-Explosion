@@ -11,6 +11,8 @@
 
 namespace game {
 
+namespace obstacles{
+
 /// Block that can be shown on the map and be destroyed by an explosion
 class DestructibleBlock : public Block{
 public:
@@ -26,6 +28,8 @@ public:
     /// Returns color of the block
     graphics::Color GetColor();
 };
+
+} // namespace obstacles
 
 } // namespace game
 

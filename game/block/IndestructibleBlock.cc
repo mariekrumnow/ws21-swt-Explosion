@@ -9,6 +9,8 @@
 
 namespace game {
 
+namespace obstacles{
+
     IndestructibleBlock::IndestructibleBlock(int x, int y) :
       Block {x,y}
     {}
@@ -25,4 +27,6 @@ namespace game {
           return graphics::Color(105, 105, 105, 255);
     }
 
-}// namespace game
+} // namespace obstacles
+
+} // namespace game

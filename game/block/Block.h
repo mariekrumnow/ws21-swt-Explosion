@@ -9,6 +9,8 @@
 
 namespace game {
 
+namespace obstacles{
+
 /// Abstract class to represent destructible and indestructible blocks
 class Block : public GameObject{
 public:
@@ -26,6 +28,8 @@ public:
 
 };
 
+} // namespace obstacles
+
 } // namespace game
 
-#endif //BOMBERMAN_BLOCK_H
+#endif // BOMBERMAN_BLOCK_H

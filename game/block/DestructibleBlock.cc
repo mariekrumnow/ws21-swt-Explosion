@@ -12,6 +12,8 @@
 
 namespace game {
 
+namespace obstacles{
+
     DestructibleBlock::DestructibleBlock(int x, int y) :
       Block {x,y}
     {}
@@ -42,4 +44,6 @@ namespace game {
           return graphics::Color(169, 169, 169, 255);
     }
 
-}// namespace game
+} // namespace obstacles
+
+} // namespace game

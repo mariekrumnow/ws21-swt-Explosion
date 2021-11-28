@@ -7,6 +7,8 @@
 
 namespace game {
 
+namespace obstacles{
+
     Block::Block(int x, int y) :
       GameObject {x,y}
     {}
@@ -21,4 +23,6 @@ namespace game {
           return true;
     }
 
-}// namespace game
+} // namespace obstacles
+
+} // namespace game
