@@ -11,22 +11,22 @@
 
 namespace game{
     namespace upgrade{
-        BombCountUpgrade::BombCountUpgrade() {
+        BombCountUpgrade::BombCountUpgrade(int x, int y) : Upgrade {x, y} {
 
-        }
-
-        BombCountUpgrade::~BombCountUpgrade() {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
         }
 
         bool BombCountUpgrade::OnPlayerCollision(Player& player) {
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
             if(player.GetMaxBombCount() <= player.GetKMaxBombCount()){
                 player.IncreaseMaxBombCount(1);
             }
 
-            //delete this;
+            return true;
+        }
 
-            return false;
+        bool BombCountUpgrade::OnExplosion(GameObject& source){
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            return true;
         }
 
         graphics::Color BombCountUpgrade::GetColor(){

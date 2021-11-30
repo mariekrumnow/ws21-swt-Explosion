@@ -11,22 +11,22 @@
 
 namespace game{
     namespace upgrade{
-        SpeedUpgrade::SpeedUpgrade() {
+        SpeedUpgrade::SpeedUpgrade(int x, int y) : Upgrade {x, y} {
 
-        }
-
-        SpeedUpgrade::~SpeedUpgrade() {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
         }
 
         bool SpeedUpgrade::OnPlayerCollision(Player& player) {
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
             if(player.GetSpeed() < player.GetKMaxSpeed()){
                 player.IncreaseSpeed(1);
             }
 
-            //delete this;
+            return true;
+        }
 
-            return false;
+        bool SpeedUpgrade::OnExplosion(GameObject& source){
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            return true;
         }
 
         graphics::Color SpeedUpgrade::GetColor(){

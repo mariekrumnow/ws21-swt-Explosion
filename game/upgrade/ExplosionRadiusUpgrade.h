@@ -13,16 +13,22 @@
 
 namespace game {
     namespace upgrade {
+        /// Upgrade to increase the explosion radius of the player
         class ExplosionRadiusUpgrade : public Upgrade {
         public:
-            ExplosionRadiusUpgrade();
+            /// Calls the constructor of Upgrade
+            ExplosionRadiusUpgrade(int x, int y);
 
-            ~ExplosionRadiusUpgrade();
-
+            /// Increases the explosion radius of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);
 
+            /// Removes the upgrade from the map
+            bool OnExplosion(GameObject& source);
+
+            /// Returns the color of the upgrade
             virtual graphics::Color GetColor();
 
+            /// Returns the shape of the upgrade
             virtual graphics::Tile GetTile();
         };
     }

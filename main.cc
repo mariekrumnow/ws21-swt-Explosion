@@ -24,9 +24,8 @@ int main(int argc, char** argv)
     app.SetActiveGameWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
-    game::upgrade::SpeedUpgrade speedUpgrade = game::upgrade::SpeedUpgrade();
-    game_manager.AddGameObject(speedUpgrade);
-    game_manager.ChangeObjectPosition(speedUpgrade, 3, 3);
+    //game::upgrade::SpeedUpgrade* speedUpgrade = new game::upgrade::SpeedUpgrade(3, 3);
+    //game_manager.AddGameObject(*speedUpgrade);
 
     game::Player player = game::Player();
     //player.IncreaseSpeed(9);

@@ -14,16 +14,22 @@
 
 namespace game {
     namespace upgrade {
+        /// Upgrade to increase the bomb count of the player
         class BombCountUpgrade : public Upgrade {
         public:
-            BombCountUpgrade();
+            /// Calls the constructor of Upgrade
+            BombCountUpgrade(int x, int y);
 
-            ~BombCountUpgrade();
-
+            /// Increases the bomb count of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);
 
+            /// Removes the upgrade from the map
+            bool OnExplosion(GameObject& source);
+
+            /// Returns the color of the upgrade
             virtual graphics::Color GetColor();
 
+            /// Returns the shape of the upgrade
             virtual graphics::Tile GetTile();
         };
     }

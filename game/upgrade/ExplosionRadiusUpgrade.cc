@@ -11,22 +11,22 @@
 
 namespace game{
     namespace upgrade{
-        ExplosionRadiusUpgrade::ExplosionRadiusUpgrade() {
+        ExplosionRadiusUpgrade::ExplosionRadiusUpgrade(int x, int y) : Upgrade {x, y} {
 
-        }
-
-        ExplosionRadiusUpgrade::~ExplosionRadiusUpgrade() {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
         }
 
         bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
             if(player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()){
                 player.IncreaseExplosionRadius(1);
             }
 
-            //delete this;
+            return true;
+        }
 
-            return false;
+        bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source){
+            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            return true;
         }
 
         graphics::Color ExplosionRadiusUpgrade::GetColor(){

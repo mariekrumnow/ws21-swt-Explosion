@@ -3,12 +3,6 @@
 #ifndef BOMBERMAN_UPGRADE_H
 #define BOMBERMAN_UPGRADE_H
 
-namespace game {
-    namespace upgrade {
-        class Upgrade;
-    }
-}
-
 #include "../GameObject.h"
 #include "../GameManager.h"
 #include "../Player.h"
@@ -18,22 +12,21 @@ namespace game {
 
 namespace game {
     namespace upgrade {
-        class BombCountUpgrade;
 
-        class ExplosionRadiusUpgrade;
-
-        class SpeedUpgrade;
-
+        /// Abstract class to represent all the different upgrades
         class Upgrade : public GameObject {
         public:
-            Upgrade();
+            /// Calls the constructor of GameObject
+            Upgrade(int x, int y);
 
-            ~Upgrade();
-
+            /// ???
             virtual bool OnCollision(GameObject& source);
 
-            virtual bool OnExplosion(GameObject& source);
+            virtual bool OnPlayerCollision(Player& player) = 0;
 
+            virtual bool OnExplosion(GameObject& source) = 0;
+
+            /// Overwrites virtual function of GameObject
             virtual void Update(double delta_time);
 
             virtual graphics::Color GetColor() = 0;

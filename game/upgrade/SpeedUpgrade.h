@@ -14,16 +14,22 @@
 
 namespace game {
     namespace upgrade {
+        /// Upgrade to increase the speed of the player
         class SpeedUpgrade : public Upgrade {
         public:
-            SpeedUpgrade();
+            /// Calls the constructor of Upgrade
+            SpeedUpgrade(int x, int y);
 
-            ~SpeedUpgrade();
-
+            /// Increases the speed of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);
 
+            /// Removes the upgrade from the map
+            bool OnExplosion(GameObject& source);
+
+            /// Returns the color of the upgrade
             virtual graphics::Color GetColor();
 
+            /// Returns the shape of the upgrade
             virtual graphics::Tile GetTile();
         };
     }

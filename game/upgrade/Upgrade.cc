@@ -11,26 +11,17 @@
 
 namespace game {
     namespace upgrade{
-        Upgrade::Upgrade(){
+        Upgrade::Upgrade(int x, int y) : GameObject {x, y}{
 
         }
 
-        Upgrade::~Upgrade(){
-
-        }
-
-        void Upgrade::Update(double delta_time) {
+        void Upgrade::Update(double delta_time){
 
         }
 
         bool Upgrade::OnCollision(GameObject& source){
-            return false;
+            return true;
         }
-
-        bool Upgrade::OnExplosion(GameObject& source){
-            return false;
-        }
-
 
     }
 }
