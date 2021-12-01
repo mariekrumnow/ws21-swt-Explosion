@@ -7,8 +7,6 @@
 #include <iostream>
 
 
-#include "Bomb.h"
-
 namespace game {
 
 namespace bomb { class Bomb;}
