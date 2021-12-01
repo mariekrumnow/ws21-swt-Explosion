@@ -11,6 +11,8 @@
 
 #include "Keys.h"
 
+#include "game/upgrade/SpeedUpgrade.h"
+
 int main(int argc, char** argv)
 {
     //initialize the app manager
@@ -42,7 +44,6 @@ int main(int argc, char** argv)
     player2.IncreaseSpeed(9);
     game_manager.AddGameObject(player1);
     game_manager.AddGameObject(player2);
-
 
     app.Run();
 

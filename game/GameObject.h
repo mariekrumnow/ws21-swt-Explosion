@@ -1,4 +1,4 @@
-//Autor: Nina, Tobias
+//Autor: Nina, Tobias, Marie
 
 #ifndef BOMBERMAN_GAMEOBJECT_H
 #define BOMBERMAN_GAMEOBJECT_H
@@ -18,6 +18,7 @@ class Player;
 class GameObject {
 public:
   GameObject();
+  GameObject(int x, int y);
   ~GameObject();
 
   virtual bool OnExplosion(GameObject& source);

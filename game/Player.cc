@@ -9,6 +9,8 @@
 #include "Keys.h"
 #include "Color.h"
 #include "Tile.h"
+#include "AppManager.h"
+
 
 namespace game {
 
@@ -54,7 +56,32 @@ void Player::IncreaseSpeed(int value) {
     speed_ += value;
 }
 
-//void Player::PlaceBomb(int x, int y) {}
+bool Player::PlaceBomb(int x, int y) {
+  GameManager& game = GameManager::GetCurrentGame();
+  if (GetOwnedBombs() < GetMaxBombCount()) {
+    //spawn bomb first, check for collision second
+    //(because OnCollision wants the colliding object as param)
+    bomb::Bomb* bomb = new bomb::Bomb(this, GetExplosionRadius(), 1.5);
+    game.AddGameObject(*bomb);
+    bomb->SetPosition(x, y);
+
+    //check for collision
+    bool collision = false;
+    for (GameObject* go : game.GetObjectsAtPos(x, y)) {
+      if (go != this && go != bomb) {
+        collision |= go->OnCollision(*bomb);
+      }
+    }
+
+    if (collision) {
+      delete bomb;
+    } else {
+      owned_bombs_++;
+      return true;
+    }
+  }
+  return false;
+}
 
 void Player::Update(double delta_time) {
   graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
@@ -77,6 +104,7 @@ void Player::Update(double delta_time) {
 
     } if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
+
     }
     if (graphics.IsKeyHeld(keys.bomb)) {
         PlaceBomb(GetX(), GetY());
@@ -97,7 +125,9 @@ graphics::Color Player::GetColor() {
   return graphics::Color(255, 0, 0, 255);
 }
 
-//void Player::OnBombDestroyed(Bomb bomb) {}
+void Player::OnBombDestroyed(bomb::Bomb& bomb) {
+  owned_bombs_--;
+}
 
 bool Player::OnCollision(GameObject &source) {
     return false;
@@ -120,6 +150,18 @@ int Player::GetMaxBombCount() {
 
 int Player::GetOwnedBombs() {
     return owned_bombs_;
+}
+
+int Player::GetKMaxExplosionRadius() {
+    return kMaxExplosionRadius;
+}
+
+int Player::GetKMaxBombCount() {
+    return kMaxMaxBombCount;
+}
+
+int Player::GetKMaxSpeed() {
+    return kMaxSpeed;
 }
 
 } //namespace game
