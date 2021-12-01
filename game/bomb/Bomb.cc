@@ -65,7 +65,6 @@ bool Bomb::SpawnExplosion(int x, int y) {
 }
 
 void Bomb::Explode() {
-	std::cout << GetX() << std::endl;
 	GameManager& game = GameManager::GetCurrentGame();
 
 	exploding_ = true; //so the bomb isn't solid anymore
