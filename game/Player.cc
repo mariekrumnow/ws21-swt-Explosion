@@ -12,8 +12,7 @@
 
 namespace game {
 
-Player::Player(SDL_Scancode up, SDL_Scancode down, SDL_Scancode left, SDL_Scancode right, SDL_Scancode bomb) :
-    up(up), down(down), left(left), right(right), bomb(bomb)
+Player::Player(graphics::PlayerKeys keys) : keys(keys)
 {
   speed_ = 1;
   explosion_radius_ = 1;
@@ -67,16 +66,16 @@ void Player::Update(double delta_time) {
   if (move_timer_ <= 0) {
     bool player_moved = false;
 
-    if (graphics.IsKeyHeld(up)) {
+    if (graphics.IsKeyHeld(keys.up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
 
-    } else if (graphics.IsKeyHeld(down)) {
+    } else if (graphics.IsKeyHeld(keys.down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
 
-    } else if (graphics.IsKeyHeld(left)) {
+    } else if (graphics.IsKeyHeld(keys.left)) {
       player_moved = SetPosition(GetX()-1, GetY());
 
-    } else if (graphics.IsKeyHeld(right)) {
+    } else if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
     }
 

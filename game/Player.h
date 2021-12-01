@@ -15,7 +15,7 @@ namespace game {
 
 class Player : public GameObject {
 public:
-    Player(SDL_Scancode up, SDL_Scancode down, SDL_Scancode left, SDL_Scancode right, SDL_Scancode bomb);
+    Player(graphics::PlayerKeys);
     ~Player();
 
     void IncreaseSpeed(int value);
@@ -53,7 +53,7 @@ private:
 
 
     // controls
-    SDL_Scancode up, down, left, right, bomb;
+    graphics::PlayerKeys keys;
 
   };
 } //namespace game

@@ -22,10 +22,20 @@ int main(int argc, char** argv)
     app.SetActiveGameWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
-    game::Player player1 = game::Player(graphics::key_player_1_up, graphics::key_player_1_down,
-                                        graphics::key_player_1_left, graphics::key_player_1_right, graphics::key_player_1_bomb);
-    game::Player player2 = game::Player(graphics::key_player_2_up, graphics::key_player_2_down,
-                                         graphics::key_player_2_left, graphics::key_player_2_right, graphics::key_player_2_bomb);
+    graphics::PlayerKeys player1keys{};
+    player1keys.up = SDL_SCANCODE_W;
+    player1keys.down = SDL_SCANCODE_S;
+    player1keys.left = SDL_SCANCODE_A;
+    player1keys.right = SDL_SCANCODE_D;
+
+    graphics::PlayerKeys player2keys{};
+    player2keys.up = SDL_SCANCODE_I;
+    player2keys.down = SDL_SCANCODE_K;
+    player2keys.left = SDL_SCANCODE_J;
+    player2keys.right = SDL_SCANCODE_L;
+
+    game::Player player1 = game::Player(player1keys);
+    game::Player player2 = game::Player(player2keys);
     player1.IncreaseSpeed(9);
     player2.IncreaseSpeed(9);
     game_manager.AddGameObject(player1);
