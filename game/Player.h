@@ -12,6 +12,7 @@
 #include "../graphics/Keys.h"
 #include "../graphics/Color.h"
 #include "../graphics/Tile.h"
+
 #include "Bomb.h"
 
 namespace game {
