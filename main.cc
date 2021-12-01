@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 
     game::Player player = game::Player();
 
+    //player.IncreaseSpeed(9);
     game_manager.AddGameObject(player);
 
     app.Run();
