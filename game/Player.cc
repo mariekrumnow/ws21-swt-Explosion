@@ -10,6 +10,7 @@
 #include "Color.h"
 #include "Tile.h"
 #include "AppManager.h"
+#include "Bomb.h"
 
 
 namespace game {
@@ -57,6 +58,7 @@ void Player::IncreaseSpeed(int value) {
 }
 
 bool Player::PlaceBomb(int x, int y) {
+  std::cout << explosion_radius_ << std::endl;
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
     //spawn bomb first, check for collision second
@@ -106,6 +108,7 @@ void Player::Update(double delta_time) {
       player_moved = SetPosition(GetX()+1, GetY());
 
     }
+
     if (graphics.IsKeyHeld(keys.bomb)) {
         PlaceBomb(GetX(), GetY());
     }

@@ -11,7 +11,9 @@
 
 #include "Keys.h"
 
-#include "game/upgrade/SpeedUpgrade.h"
+#include "game/upgrade/ExplosionRadiusUpgrade.h"
+#include "DestructibleBlock.h"
+#include "IndestructibleBlock.h"
 
 int main(int argc, char** argv)
 {
@@ -36,12 +38,20 @@ int main(int argc, char** argv)
     player2keys.down = SDL_SCANCODE_K;
     player2keys.left = SDL_SCANCODE_J;
     player2keys.right = SDL_SCANCODE_L;
-    player1keys.bomb = SDL_SCANCODE_RSHIFT;
+    player2keys.bomb = SDL_SCANCODE_RSHIFT;
+
+    game::upgrade::ExplosionRadiusUpgrade * upgrade
+      = new game::upgrade::ExplosionRadiusUpgrade(8,8);
+
+    game::obstacles::DestructibleBlock * block1 = new game::obstacles::DestructibleBlock(5,8);
+
+    game::obstacles::IndestructibleBlock * block2 = new game::obstacles::IndestructibleBlock(4,4);
+
 
     game::Player player1 = game::Player(player1keys);
     game::Player player2 = game::Player(player2keys);
-    player1.IncreaseSpeed(9);
-    player2.IncreaseSpeed(9);
+    player1.IncreaseSpeed(6);
+    player2.IncreaseSpeed(6);
     game_manager.AddGameObject(player1);
     game_manager.AddGameObject(player2);
 
