@@ -11,8 +11,8 @@
 
 namespace game {
     namespace upgrade{
-        Upgrade::Upgrade(int x, int y) : GameObject {x, y}{
-
+        Upgrade::Upgrade(int x, int y){
+          SetPosition(x,y);
         }
 
         void Upgrade::Update(double delta_time){

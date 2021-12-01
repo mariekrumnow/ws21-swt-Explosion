@@ -35,6 +35,10 @@ GameManager::~GameManager(){
 	}
 
 	for (GameObject* obj : GetAllObjects()) {
+		obj->Destroy();
+	}
+
+	for (GameObject* obj : destroyed_game_objects_) {
 		delete obj;
 	}
 
@@ -68,6 +72,11 @@ void GameManager::RemoveGameObject(GameObject& game_object) {
 			break;
 		}
 	}
+}
+
+void GameManager::DestroyGameObject(GameObject &game_object) {
+	RemoveGameObject(game_object);
+	destroyed_game_objects_.push_back(&game_object);
 }
 
 void GameManager::AddGameObject(GameObject& game_object) {

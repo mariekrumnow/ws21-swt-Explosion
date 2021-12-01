@@ -46,7 +46,8 @@ int main(int argc, char** argv)
     game::obstacles::DestructibleBlock * block1 = new game::obstacles::DestructibleBlock(5,8);
 
     game::obstacles::IndestructibleBlock * block2 = new game::obstacles::IndestructibleBlock(4,4);
-
+    block1->Destroy();
+    game::obstacles::DestructibleBlock * block3 = new game::obstacles::DestructibleBlock(4,8);
 
     game::Player player1 = game::Player(player1keys);
     game::Player player2 = game::Player(player2keys);

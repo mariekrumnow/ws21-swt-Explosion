@@ -58,7 +58,6 @@ void Player::IncreaseSpeed(int value) {
 }
 
 bool Player::PlaceBomb(int x, int y) {
-  std::cout << explosion_radius_ << std::endl;
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
     //spawn bomb first, check for collision second
