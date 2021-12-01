@@ -26,7 +26,6 @@ int main(int argc, char** argv)
 
     game_manager.AddGameObject(player);
 
-
     app.Run();
 
     return 0;
