@@ -4,8 +4,8 @@
 
 #include "../core/Window.h"
 #include "GameManager.h"
-#include "Tile.h"
-#include "Color.h"
+#include "../graphics/Tile.h"
+#include "../graphics/Color.h"
 
 namespace game {
 

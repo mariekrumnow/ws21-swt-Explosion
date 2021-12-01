@@ -6,10 +6,10 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "AppManager.h"
-#include "Keys.h"
-#include "Color.h"
-#include "Tile.h"
+#include "../core/AppManager.h"
+#include "../graphics/Keys.h"
+#include "../graphics/Color.h"
+#include "../graphics/Tile.h"
 
 namespace game {
 
@@ -117,6 +117,18 @@ int Player::GetMaxBombCount() {
 
 int Player::GetOwnedBombs() {
     return owned_bombs_;
+}
+
+int Player::GetKMaxExplosionRadius() {
+    return kMaxExplosionRadius;
+}
+
+int Player::GetKMaxBombCount() {
+    return kMaxMaxBombCount;
+}
+
+int Player::GetKMaxSpeed() {
+    return kMaxSpeed;
 }
 
 } //namespace game
