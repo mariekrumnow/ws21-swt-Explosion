@@ -13,8 +13,6 @@
 #include "../graphics/Color.h"
 #include "../graphics/Tile.h"
 
-#include "Bomb.h"
-
 namespace game {
 
 namespace bomb { class Bomb;}
