@@ -21,7 +21,6 @@ namespace obstacles{
     bool DestructibleBlock::OnExplosion(GameObject& source) {
           GameManager::GetCurrentGame().RemoveGameObject(*this);
 
-          srand(time(0));
           if (rand()%100 < 35) {
                 int rand_num = rand()%23;
                 if (rand_num < 11) {
