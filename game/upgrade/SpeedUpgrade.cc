@@ -26,7 +26,7 @@ namespace game{
 
         bool SpeedUpgrade::OnExplosion(GameObject& source){
             GameManager::GetCurrentGame().RemoveGameObject(*this);
-            return true;
+            return false;
         }
 
         graphics::Color SpeedUpgrade::GetColor(){

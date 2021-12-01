@@ -26,7 +26,7 @@ namespace game{
 
         bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source){
             GameManager::GetCurrentGame().RemoveGameObject(*this);
-            return true;
+            return false;
         }
 
         graphics::Color ExplosionRadiusUpgrade::GetColor(){

@@ -18,7 +18,6 @@ class Player;
 class GameObject {
 public:
   GameObject();
-  GameObject(int x, int y);
   ~GameObject();
 
   virtual bool OnExplosion(GameObject& source);

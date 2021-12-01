@@ -1,7 +1,7 @@
 //Autor Peter, Patrick
 
-#ifndef BOMBERMAN_SPEEDUPGRADE_H
-#define BOMBERMAN_SPEEDUPGRADE_H
+#ifndef BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
+#define BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
 
 #include "../GameObject.h"
 #include "../GameManager.h"

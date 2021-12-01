@@ -13,11 +13,6 @@ GameObject::GameObject(){
   y_ = 0;
 }
 
-GameObject::GameObject(int x, int y) {
-    x_ = x;
-    y_ = y;
-}
-
 GameObject::~GameObject(){
   GameManager::GetCurrentGame().RemoveGameObject(*this);
 }
