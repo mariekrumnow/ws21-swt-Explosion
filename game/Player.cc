@@ -6,14 +6,16 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "../core/AppManager.h"
-#include "../graphics/Keys.h"
-#include "../graphics/Color.h"
-#include "../graphics/Tile.h"
+#include "Keys.h"
+#include "Color.h"
+#include "Tile.h"
+#include "AppManager.h"
+
 
 namespace game {
 
-Player::Player(){
+Player::Player(graphics::PlayerKeys keys) : keys(keys)
+{
   speed_ = 1;
   explosion_radius_ = 1;
   max_bomb_count_ = 1;
@@ -91,22 +93,21 @@ void Player::Update(double delta_time) {
   if (move_timer_ <= 0) {
     bool player_moved = false;
 
-    if (graphics.IsKeyHeld(graphics::key_player_1_bomb)) {
-      PlaceBomb(GetX(), GetY());
-    }
-
-    if (graphics.IsKeyHeld(graphics::key_player_1_up)) {
+    if (graphics.IsKeyHeld(keys.up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_down)) {
+    } if (graphics.IsKeyHeld(keys.down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_left)) {
+    } if (graphics.IsKeyHeld(keys.left)) {
       player_moved = SetPosition(GetX()-1, GetY());
 
-    } else if (graphics.IsKeyHeld(graphics::key_player_1_right)) {
+    } if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
 
+    }
+    if (graphics.IsKeyHeld(keys.bomb)) {
+        PlaceBomb(GetX(), GetY());
     }
 
     if (player_moved) {

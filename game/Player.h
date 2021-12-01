@@ -8,10 +8,11 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "../core/AppManager.h"
-#include "../graphics/Keys.h"
-#include "../graphics/Color.h"
-#include "../graphics/Tile.h"
+#include "Keys.h"
+#include "Color.h"
+#include "Tile.h"
+#include "AppManager.h"
+
 
 namespace game {
 
@@ -19,7 +20,7 @@ namespace bomb { class Bomb;}
 
 class Player : public GameObject {
 public:
-    Player();
+    Player(graphics::PlayerKeys);
     ~Player();
 
     void IncreaseSpeed(int value);
@@ -57,6 +58,11 @@ private:
     double move_timer_;
     const double kMaxMoveTimer = 1.0;
     const double kMinMoveTimer = 0.1;
+
+
+    // controls
+    graphics::PlayerKeys keys;
+
   };
 } //namespace game
 

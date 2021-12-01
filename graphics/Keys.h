@@ -6,15 +6,18 @@
 
 namespace graphics {
 // declarations of re-assignable scancodes for each In-Game function
-extern SDL_Scancode key_player_1_up;
-extern SDL_Scancode key_player_1_down;
-extern SDL_Scancode key_player_1_left;
-extern SDL_Scancode key_player_1_right;
-extern SDL_Scancode key_player_1_bomb;
 
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
 extern SDL_Scancode key_fullscreen;
+
+struct PlayerKeys {
+    SDL_Scancode up;
+    SDL_Scancode down;
+    SDL_Scancode left;
+    SDL_Scancode right;
+    SDL_Scancode bomb;
+};
 
 }
 
