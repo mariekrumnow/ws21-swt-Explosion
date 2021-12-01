@@ -69,17 +69,17 @@ void Player::Update(double delta_time) {
     if (graphics.IsKeyHeld(keys.up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
 
-    } else if (graphics.IsKeyHeld(keys.down)) {
+    } if (graphics.IsKeyHeld(keys.down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
 
-    } else if (graphics.IsKeyHeld(keys.left)) {
+    } if (graphics.IsKeyHeld(keys.left)) {
       player_moved = SetPosition(GetX()-1, GetY());
 
-    } else if (graphics.IsKeyHeld(keys.right)) {
+    } if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
     }
-    else if (graphics.IsKeyHeld(keys.bomb)) {
-
+    if (graphics.IsKeyHeld(keys.bomb)) {
+        PlaceBomb(GetX(), GetY());
     }
 
     if (player_moved) {
