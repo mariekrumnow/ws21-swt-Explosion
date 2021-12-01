@@ -6,12 +6,7 @@
 #include <vector>
 #include <iostream>
 
-#include "GameObject.h"
-#include "GameManager.h"
-#include "AppManager.h"
-#include "Keys.h"
-#include "Color.h"
-#include "Tile.h"
+
 #include "Bomb.h"
 
 namespace game {
