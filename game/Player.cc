@@ -78,6 +78,9 @@ void Player::Update(double delta_time) {
     } else if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
     }
+    else if (graphics.IsKeyHeld(keys.bomb)) {
+
+    }
 
     if (player_moved) {
       move_timer_ = kMinMoveTimer +

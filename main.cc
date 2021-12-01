@@ -27,12 +27,14 @@ int main(int argc, char** argv)
     player1keys.down = SDL_SCANCODE_S;
     player1keys.left = SDL_SCANCODE_A;
     player1keys.right = SDL_SCANCODE_D;
+    player1keys.bomb = SDL_SCANCODE_LSHIFT;
 
     graphics::PlayerKeys player2keys{};
     player2keys.up = SDL_SCANCODE_I;
     player2keys.down = SDL_SCANCODE_K;
     player2keys.left = SDL_SCANCODE_J;
     player2keys.right = SDL_SCANCODE_L;
+    player1keys.bomb = SDL_SCANCODE_RSHIFT;
 
     game::Player player1 = game::Player(player1keys);
     game::Player player2 = game::Player(player2keys);
