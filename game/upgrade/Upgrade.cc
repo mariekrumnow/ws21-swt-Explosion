@@ -20,7 +20,7 @@ namespace game {
         }
 
         bool Upgrade::OnCollision(GameObject& source){
-            return true;
+            return false;
         }
 
     }
