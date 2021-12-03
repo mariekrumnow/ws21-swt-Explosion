@@ -29,8 +29,7 @@ Player::Player(graphics::PlayerKeys keys) : keys(keys)
 Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
       Player* temp = new Player(keys);
       if (temp!=nullptr){
-				GameManager::GetCurrentGame().AddGameObject(*temp);
-
+			GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
