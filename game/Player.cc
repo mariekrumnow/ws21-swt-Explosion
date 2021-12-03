@@ -29,11 +29,12 @@ Player::Player(graphics::PlayerKeys keys) : keys(keys)
 Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
       Player* temp = new Player(keys);
       if (temp!=nullptr){
+				GameManager::GetCurrentGame().AddGameObject(*temp);
+
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
                 }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
       }
       return temp;
 }
@@ -106,13 +107,13 @@ void Player::Update(double delta_time) {
     if (graphics.IsKeyHeld(keys.up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
 
-    } if (graphics.IsKeyHeld(keys.down)) {
+    } else if (graphics.IsKeyHeld(keys.down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
 
-    } if (graphics.IsKeyHeld(keys.left)) {
+    } else if (graphics.IsKeyHeld(keys.left)) {
       player_moved = SetPosition(GetX()-1, GetY());
 
-    } if (graphics.IsKeyHeld(keys.right)) {
+    } else if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
 
     }
