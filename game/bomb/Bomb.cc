@@ -17,11 +17,11 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_delay){
 	Bomb* temp = new Bomb(owner,power,explosion_delay);
 	if (temp!=nullptr){
+		    GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
                 }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
       }
 	return temp;
 }

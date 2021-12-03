@@ -19,11 +19,11 @@ namespace bomb {
     Explosion* Explosion::CreateExplosion(int x, int y){
           Explosion* temp = new Explosion();
           if (temp!=nullptr){
+                GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
                 }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
           }
           return temp;
     }
