@@ -3,6 +3,8 @@
 #include "Bomb.h"
 #include "Explosion.h"
 
+#include <iostream>
+
 namespace game {
 namespace bomb {
 
@@ -66,7 +68,6 @@ void Bomb::Update(double delta_time) {
 
 bool Bomb::SpawnExplosion(int x, int y) {
 	Explosion* explosion = Explosion::CreateExplosion(x,y);
-
 	if (explosion = nullptr) {
 		return false;
 	}
@@ -117,7 +118,6 @@ void Bomb::Explode() {
 			}
 		}
 	}
-
 	this->Destroy();
 }
 

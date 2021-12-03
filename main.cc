@@ -12,6 +12,7 @@
 #include "Keys.h"
 
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
+#include "game/upgrade/BombCountUpgrade.h"
 #include "../game/block/DestructibleBlock.h"
 #include "../game/block/IndestructibleBlock.h"
 
@@ -45,8 +46,10 @@ int main(int argc, char** argv)
     game::upgrade::ExplosionRadiusUpgrade * upgrade
       = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
 
+    //auto upgrade2 = game::upgrade::BombCountUpgrade::CreateBombCountUpgrade(1, 0);
+
     game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
-    
+
     game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
     game::obstacles::DestructibleBlock * block4 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
     game::obstacles::DestructibleBlock * block5 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,8);
@@ -59,6 +62,7 @@ int main(int argc, char** argv)
     game::Player * player1 = game::Player::CreatePlayer(0,0,player1keys);
     game::Player * player2 = game::Player::CreatePlayer(14,12,player2keys);
     player1->IncreaseSpeed(6);
+    player1->IncreaseMaxBombCount(2);
     player2->IncreaseSpeed(6);
 
     app.Run();

@@ -3,6 +3,7 @@
 #include "Player.h"
 
 #include <vector>
+#include <iostream>
 
 #include "GameObject.h"
 #include "GameManager.h"
@@ -75,17 +76,7 @@ bool Player::PlaceBomb(int x, int y) {
   if (GetOwnedBombs() < GetMaxBombCount()) {
     bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this, GetExplosionRadius(), 1.5);
 
-    //check for collision
-    bool collision = false;
-    for (GameObject* go : game.GetObjectsAtPos(x, y)) {
-      if (go != this && go != bomb) {
-        collision |= go->OnCollision(*bomb);
-      }
-    }
-
-    if (collision) {
-      bomb->Destroy();
-    } else {
+    if (bomb != nullptr) {
       owned_bombs_++;
       return true;
     }
