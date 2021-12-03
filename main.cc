@@ -12,8 +12,8 @@
 #include "Keys.h"
 
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
-#include "../game/block/DestructibleBlock.h"
-#include "../game/block/IndestructibleBlock.h"
+#include "DestructibleBlock.h"
+#include "IndestructibleBlock.h"
 
 int main(int argc, char** argv)
 {
@@ -25,8 +25,6 @@ int main(int argc, char** argv)
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveGameWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
-
-    srand(time(0));
 
     graphics::PlayerKeys player1keys{};
     player1keys.up = SDL_SCANCODE_W;
@@ -43,18 +41,20 @@ int main(int argc, char** argv)
     player2keys.bomb = SDL_SCANCODE_RSHIFT;
 
     game::upgrade::ExplosionRadiusUpgrade * upgrade
-      = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
+      = new game::upgrade::ExplosionRadiusUpgrade(8,8);
 
-    game::obstacles::DestructibleBlock * block1 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
+    game::obstacles::DestructibleBlock * block1 = new game::obstacles::DestructibleBlock(5,8);
 
-    game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
+    game::obstacles::IndestructibleBlock * block2 = new game::obstacles::IndestructibleBlock(4,4);
     block1->Destroy();
-    game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
+    game::obstacles::DestructibleBlock * block3 = new game::obstacles::DestructibleBlock(4,8);
 
-    game::Player * player1 = game::Player::CreatePlayer(0,0,player1keys);
-    game::Player * player2 = game::Player::CreatePlayer(14,12,player2keys);
-    player1->IncreaseSpeed(6);
-    player2->IncreaseSpeed(6);
+    game::Player player1 = game::Player(player1keys);
+    game::Player player2 = game::Player(player2keys);
+    player1.IncreaseSpeed(6);
+    player2.IncreaseSpeed(6);
+    game_manager.AddGameObject(player1);
+    game_manager.AddGameObject(player2);
 
     app.Run();
 
