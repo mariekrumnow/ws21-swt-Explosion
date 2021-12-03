@@ -19,12 +19,12 @@ bool GameObject::IsDestroyed() {
 }
 
 void GameObject::Destroy() {
-  GameManager::GetCurrentGame().RemoveGameObject(*this);
+  GameManager::GetCurrentGame().DestroyGameObject(*this);
   destroyed_ = true;
 }
 
 GameObject::~GameObject(){
-  GameManager::GetCurrentGame().RemoveGameObject(*this);
+  GameManager::GetCurrentGame().DestroyGameObject(*this);
 }
 
 bool GameObject::SetPosition(int x, int y) {

@@ -1,4 +1,4 @@
-//Autor: Peter, Nina, Tobias
+//Autor: Peter, Nina, Tobias, Marie
 
 #include "Player.h"
 
@@ -10,7 +10,7 @@
 #include "Color.h"
 #include "Tile.h"
 #include "AppManager.h"
-#include "Bomb.h"
+#include "../game/bomb/Bomb.h"
 
 
 namespace game {
@@ -23,6 +23,19 @@ Player::Player(graphics::PlayerKeys keys) : keys(keys)
   owned_bombs_ = 0;
 
   move_timer_ = 0;
+}
+
+/// If a nullptr is returned, an error occured or the object couldn't be placed
+Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
+      Player* temp = new Player(keys);
+      if (temp!=nullptr){
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+      }
+      return temp;
 }
 
 Player::~Player(){}
@@ -60,11 +73,7 @@ void Player::IncreaseSpeed(int value) {
 bool Player::PlaceBomb(int x, int y) {
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
-    //spawn bomb first, check for collision second
-    //(because OnCollision wants the colliding object as param)
-    bomb::Bomb* bomb = new bomb::Bomb(this, GetExplosionRadius(), 1.5);
-    game.AddGameObject(*bomb);
-    bomb->SetPosition(x, y);
+    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this, GetExplosionRadius(), 1.5);
 
     //check for collision
     bool collision = false;
@@ -75,7 +84,7 @@ bool Player::PlaceBomb(int x, int y) {
     }
 
     if (collision) {
-      delete bomb;
+      bomb->Destroy();
     } else {
       owned_bombs_++;
       return true;

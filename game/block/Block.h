@@ -15,7 +15,7 @@ namespace obstacles{
 class Block : public GameObject{
 public:
     /// Calls the constructor of GameObject
-    Block(int x, int y);
+    Block();
 
     /// Overwrites virtual function of GameObject
     void Update(double delta_time);

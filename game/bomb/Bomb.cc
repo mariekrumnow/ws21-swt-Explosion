@@ -1,6 +1,7 @@
-//Autor: Tobias
+//Autor: Tobias, Marie
 
 #include "Bomb.h"
+#include "Explosion.h"
 
 namespace game {
 namespace bomb {
@@ -12,9 +13,20 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 	exploding_ = false;
 }
 
-Bomb::~Bomb() {
-
+/// If a nullptr is returned, an error occured or the object couldn't be placed
+Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_delay){
+	Bomb* temp = new Bomb(owner,power,explosion_delay);
+	if (temp!=nullptr){
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+      }
+	return temp;
 }
+
+Bomb::~Bomb() {}
 
 Player* Bomb::GetOwner() {
 	return owner_;
@@ -53,14 +65,12 @@ void Bomb::Update(double delta_time) {
 }
 
 bool Bomb::SpawnExplosion(int x, int y) {
-	GameManager& game = GameManager::GetCurrentGame();
- 	Explosion* explosion = new Explosion();
-	game.AddGameObject(*explosion);
+	Explosion* explosion = Explosion::CreateExplosion(x,y);
 
-	if (!explosion->SetPosition(x,y)) {
-		delete explosion;
+	if (explosion = nullptr) {
 		return false;
 	}
+
 	return true;
 }
 
@@ -108,8 +118,7 @@ void Bomb::Explode() {
 		}
 	}
 
-	//temporary, till Destroy is added
-	game.RemoveGameObject(*this);
+	this->Destroy();
 }
 
 } //namespace bomb

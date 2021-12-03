@@ -91,7 +91,8 @@ bool GameManager::ChangeObjectPosition(GameObject& game_object, int x, int y) {
 	//check if position is in bounds
 	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight()) return false;
 
-	RemoveGameObject(game_object);
+	// RemoveGameObject(game_object);
+	game_object.Destroy();
 
 	std::vector<GameObject*>& object_vector = GetObjectsAtPos(x, y) ;
 

@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #include "SpeedUpgrade.h"
 
@@ -11,12 +11,23 @@
 
 namespace game{
     namespace upgrade{
-        SpeedUpgrade::SpeedUpgrade(int x, int y) : Upgrade {x, y} {
+        SpeedUpgrade::SpeedUpgrade() : Upgrade() {}
 
+        /// If a nullptr is returned, an error occured or the object couldn't be placed
+        SpeedUpgrade* SpeedUpgrade::CreateSpeedUpgrade(int x, int y){
+              SpeedUpgrade* temp = new SpeedUpgrade();
+              if (temp!=nullptr){
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+              }
+              return temp;
         }
 
         bool SpeedUpgrade::OnPlayerCollision(Player& player) {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             if(player.GetSpeed() < player.GetKMaxSpeed()){
                 player.IncreaseSpeed(1);
             }
@@ -25,7 +36,7 @@ namespace game{
         }
 
         bool SpeedUpgrade::OnExplosion(GameObject& source){
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             return false;
         }
 

@@ -16,8 +16,11 @@ namespace obstacles{
 /// Block that can be shown on the map and NOT be destroyed by an explosion
 class IndestructibleBlock : public Block{
 public:
-    /// Calls the constructor of Block
-    IndestructibleBlock(int x, int y);
+    /// asically calls the constructor of GameObject
+    IndestructibleBlock();
+
+    /// Creates an IndestructibleBlock on the map
+    static IndestructibleBlock* CreateIndestructibleBlock(int x, int y);
 
     /// Sends signal that the explosion was ended by a block
     bool OnExplosion(GameObject& source);

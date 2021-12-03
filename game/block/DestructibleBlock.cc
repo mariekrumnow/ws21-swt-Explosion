@@ -9,26 +9,40 @@
 #include "DestructibleBlock.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
+#include "../game/upgrade/ExplosionRadiusUpgrade.h"
+#include "../game/upgrade/BombCountUpgrade.h"
+#include "../game/upgrade/SpeedUpgrade.h"
 
 namespace game {
 
 namespace obstacles{
 
-    DestructibleBlock::DestructibleBlock(int x, int y) :
-      Block {x,y}
-    {}
+    DestructibleBlock::DestructibleBlock() : Block() {}
+
+    /// If a nullptr is returned, an error occured or the object couldn't be placed
+    DestructibleBlock* DestructibleBlock::CreateDestructibleBlock(int x, int y){
+          DestructibleBlock* temp = new DestructibleBlock();
+          if (temp!=nullptr){
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+          }
+          return temp;
+    }
 
     bool DestructibleBlock::OnExplosion(GameObject& source) {
-          GameManager::GetCurrentGame().RemoveGameObject(*this);
+          this->Destroy();
 
           if (rand()%100 < 35) {
                 int rand_num = rand()%23;
                 if (rand_num < 11) {
-                      //ExplosionRadiusUpgrade(x_,y_);
+                      upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(GetX(), GetY());
                 } else if (rand_num < 18) {
-                      //BombCountUpgrade(x_,y_);
+                      upgrade::BombCountUpgrade::CreateBombCountUpgrade(GetX(), GetY());
                 } else {
-                      //SpeedUpgrade(x_,y_);
+                      upgrade::SpeedUpgrade::CreateSpeedUpgrade(GetX(), GetY());
                 }
           }
 

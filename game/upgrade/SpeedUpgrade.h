@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #ifndef BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
 #define BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
@@ -17,8 +17,11 @@ namespace game {
         /// Upgrade to increase the speed of the player
         class SpeedUpgrade : public Upgrade {
         public:
-            /// Calls the constructor of Upgrade
-            SpeedUpgrade(int x, int y);
+            /// Basically calls the constructor of GameObject
+            SpeedUpgrade();
+
+            /// Creates a SpeedUpgrade on the map
+            static SpeedUpgrade* CreateSpeedUpgrade(int x, int y);
 
             /// Increases the speed of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);

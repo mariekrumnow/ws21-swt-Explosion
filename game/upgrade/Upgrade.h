@@ -17,7 +17,7 @@ namespace game {
         class Upgrade : public GameObject {
         public:
             /// Calls the constructor of GameObject
-            Upgrade(int x, int y);
+            Upgrade();
 
             /// ???
             virtual bool OnCollision(GameObject& source);

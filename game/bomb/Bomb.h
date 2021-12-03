@@ -1,4 +1,5 @@
-//Autor: Tobias
+//Autor: Tobias, Marie
+
 #ifndef BOMBERMAN_GAME_BOMB_BOMB_H
 #define BOMBERMAN_GAME_BOMB_BOMB_H
 
@@ -18,6 +19,7 @@ class Bomb : public GameObject{
 
 public:
 	Bomb(Player* owner, int power, double explosion_delay);
+	static Bomb* CreateBomb(int x, int y, Player* owner, int power, double explosion_delay);
 	~Bomb();
 	Player* GetOwner();
 	virtual bool OnExplosion(GameObject& source);

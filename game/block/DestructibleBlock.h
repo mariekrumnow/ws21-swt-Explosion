@@ -16,8 +16,11 @@ namespace obstacles{
 /// Block that can be shown on the map and be destroyed by an explosion
 class DestructibleBlock : public Block{
 public:
-    /// Calls the constructor of Block
-    DestructibleBlock(int x, int y);
+    /// Basically calls the constructor of GameObject
+    DestructibleBlock();
+
+    /// Creates a DestructibleBlock on the map
+    static DestructibleBlock* CreateDestructibleBlock(int x, int y);
 
     /// Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
     bool OnExplosion(GameObject& source);
