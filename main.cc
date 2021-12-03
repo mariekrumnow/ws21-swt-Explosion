@@ -23,7 +23,7 @@ int main(int argc, char** argv)
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
     game::GameWindow game_window = game::GameWindow();
-    app.SetActiveGameWindow(game_window);
+    app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
     srand(time(0));
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
       = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
 
     game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
-    
+
     game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
     game::obstacles::DestructibleBlock * block4 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
     game::obstacles::DestructibleBlock * block5 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,8);
