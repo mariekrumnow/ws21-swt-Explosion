@@ -19,19 +19,11 @@ namespace game {
             /// Calls the constructor of GameObject
             Upgrade();
 
-            /// ???
+            /// Sends signal that there's no collision with upgrades
             virtual bool OnCollision(GameObject& source);
-
-            virtual bool OnPlayerCollision(Player& player) = 0;
-
-            virtual bool OnExplosion(GameObject& source) = 0;
 
             /// Overwrites virtual function of GameObject
             virtual void Update(double delta_time);
-
-            virtual graphics::Color GetColor() = 0;
-
-            virtual graphics::Tile GetTile() = 0;
         };
     }
 }

@@ -2,13 +2,12 @@
 // Autor: Nina, Marie
 //
 
-#ifndef BOMBERMAN_BLOCK_H
-#define BOMBERMAN_BLOCK_H
+#ifndef BOMBERMAN_GAME_BLOCK_BLOCK_H
+#define BOMBERMAN_GAME_BLOCK_BLOCK_H
 
 #include "../game/GameObject.h"
 
 namespace game {
-
 namespace obstacles{
 
 /// Abstract class to represent destructible and indestructible blocks
@@ -29,7 +28,6 @@ public:
 };
 
 } // namespace obstacles
-
 } // namespace game
 
-#endif // BOMBERMAN_BLOCK_H
+#endif // BOMBERMAN_GAME_BLOCK_BLOCK_H

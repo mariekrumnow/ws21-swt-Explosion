@@ -2,15 +2,14 @@
 // Autor: Nina, Marie
 //
 
-#ifndef BOMBERMAN_DESTRUCTIBLE_H
-#define BOMBERMAN_DESTRUCTIBLE_H
+#ifndef BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
+#define BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
 
 #include "Block.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 
 namespace game {
-
 namespace obstacles{
 
 /// Block that can be shown on the map and be destroyed by an explosion
@@ -33,7 +32,6 @@ public:
 };
 
 } // namespace obstacles
-
 } // namespace game
 
-#endif //BOMBERMAN_DESTRUCTIBLE_H
+#endif // BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H

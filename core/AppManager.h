@@ -1,7 +1,7 @@
-//Author: Tobias
+// Author: Tobias
 
-#ifndef ENGINE_APPMANAGER_H_
-#define ENGINE_APPMANAGER_H_
+#ifndef BOMBERMAN_CORE_APPMANAGER_H_
+#define BOMBERMAN_CORE_APPMANAGER_H_
 
 #include "Window.h"
 
@@ -12,8 +12,8 @@
 
 namespace core {
 
-//AppManager: The main class of the program, containing a static reference to
-//itself and the main loop of the game
+// AppManager: The main class of the program, containing a static reference to
+// itself and the main loop of the game
     class AppManager {
 
     public:
@@ -21,15 +21,15 @@ namespace core {
 
         graphics::GraphicsManager& GetGraphics();
 
-        //init_graphics can be set to false to disable graphical function for testing
+        // init_graphics can be set to false to disable graphical function for testing
         explicit AppManager(bool init_graphics);
         ~AppManager();
 
-        //sets the active window. DOESN'T delete the current window.
+        // sets the active window. DOESN'T delete the current window.
         void SetActiveWindow(Window& window);
         Window& GetActiveWindow();
         void RunFrame(double deltaTime);
-        //Run game for ever
+        // Run game for ever
         [[noreturn]] void Run();
 
     private:
@@ -37,10 +37,10 @@ namespace core {
 
         graphics::GraphicsManager graphics_;
 
-        //The static reference to the current AppManager
+        // The static reference to the current AppManager
         static AppManager* manager_;
     };
 
-} //namespace engine
+} // namespace engine
 
-#endif
+#endif // BOMBERMAN_CORE_APPMANAGER_H_

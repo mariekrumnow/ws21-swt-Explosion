@@ -1,6 +1,7 @@
-//Author: Tobias
-#ifndef GRAPHICS_TILESET_H_
-#define GRAPHICS_TILESET_H_
+// Author: Tobias
+
+#ifndef BOMBERMAN_GRAPHICS_TILESET_H_
+#define BOMBERMAN_GRAPHICS_TILESET_H_
 
 #include <SDL.h>
 #include <string>
@@ -10,7 +11,7 @@
 
 namespace graphics {
 
-//manages drawing of the tiles from a texture atlas
+// manages drawing of the tiles from a texture atlas
     class TileSet {
     public:
         TileSet(SDL_Renderer* renderer, std::string file,
@@ -23,6 +24,6 @@ namespace graphics {
         int tile_size_y_;
     };
 
-} //namespace graphics
+} // namespace graphics
 
-#endif
+#endif // BOMBERMAN_GRAPHICS_TILESET_H_

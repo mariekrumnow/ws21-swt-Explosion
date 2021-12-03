@@ -1,7 +1,7 @@
-//Autor: Nina, Tobias, Marie
+// Autor: Nina, Tobias, Marie
 
-#ifndef BOMBERMAN_GAMEOBJECT_H
-#define BOMBERMAN_GAMEOBJECT_H
+#ifndef BOMBERMAN_GAME_GAMEOBJECT_H
+#define BOMBERMAN_GAME_GAMEOBJECT_H
 
 namespace game {
   class GameObject;
@@ -39,7 +39,7 @@ private:
   int y_;
 	bool destroyed_;
 };
-} //namespace game
+} // namespace game
 
 
-#endif //BOMBERMAN_GAMEOBJECT_H
+#endif // BOMBERMAN_GAME_GAMEOBJECT_H

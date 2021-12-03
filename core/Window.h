@@ -1,6 +1,7 @@
 // Author: Tobias
-#ifndef ENGINE_GAMEWINDOW_H_
-#define ENGINE_GAMEWINDOW_H_
+
+#ifndef BOMBERMAN_CORE_GAMEWINDOW_H_
+#define BOMBERMAN_CORE_GAMEWINDOW_H_
 
 namespace core {
 
@@ -14,4 +15,4 @@ namespace core {
 
 }
 
-#endif
+#endif // BOMBERMAN_CORE_GAMEWINDOW_H_
