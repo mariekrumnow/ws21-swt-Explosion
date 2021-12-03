@@ -17,11 +17,11 @@ namespace game{
         BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y){
               BombCountUpgrade* temp = new BombCountUpgrade();
               if (temp!=nullptr){
-                if (!temp->SetPosition(x,y)) {
+                    GameManager::GetCurrentGame().AddGameObject(*temp);
+                  if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
-                }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
+                  }
               }
               return temp;
         }

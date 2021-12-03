@@ -17,11 +17,11 @@ namespace game{
         ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int x, int y){
               ExplosionRadiusUpgrade* temp = new ExplosionRadiusUpgrade();
               if (temp!=nullptr){
-                if (!temp->SetPosition(x,y)) {
-                      temp->Destroy();
-                      return nullptr;
-                }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
+                    GameManager::GetCurrentGame().AddGameObject(*temp);
+                      if (!temp->SetPosition(x,y)) {
+                            temp->Destroy();
+                            return nullptr;
+                      }
               }
               return temp;
         }

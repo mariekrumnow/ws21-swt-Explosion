@@ -17,11 +17,11 @@ namespace game{
         SpeedUpgrade* SpeedUpgrade::CreateSpeedUpgrade(int x, int y){
               SpeedUpgrade* temp = new SpeedUpgrade();
               if (temp!=nullptr){
-                if (!temp->SetPosition(x,y)) {
-                      temp->Destroy();
-                      return nullptr;
-                }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
+                    GameManager::GetCurrentGame().AddGameObject(*temp);
+                      if (!temp->SetPosition(x,y)) {
+                            temp->Destroy();
+                            return nullptr;
+                      }
               }
               return temp;
         }
