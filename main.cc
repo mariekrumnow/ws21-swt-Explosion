@@ -24,7 +24,7 @@ int main(int argc, char** argv)
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
     game::GameWindow game_window = game::GameWindow();
-    app.SetActiveGameWindow(game_window);
+    app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
     srand(time(0));

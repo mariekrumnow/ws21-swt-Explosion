@@ -36,7 +36,7 @@ namespace core {
         AppManager::manager_ = nullptr;
     }
 
-    void AppManager::SetActiveGameWindow(Window &window) {
+    void AppManager::SetActiveWindow(Window &window) {
         active_window_ = &window;
     }
 

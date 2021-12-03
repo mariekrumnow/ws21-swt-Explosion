@@ -25,8 +25,8 @@ namespace core {
         explicit AppManager(bool init_graphics);
         ~AppManager();
 
-        //sets the active game window. DOESN'T delete the current window.
-        void SetActiveGameWindow(Window& window);
+        //sets the active window. DOESN'T delete the current window.
+        void SetActiveWindow(Window& window);
         Window& GetActiveWindow();
         void RunFrame(double deltaTime);
         //Run game for ever
