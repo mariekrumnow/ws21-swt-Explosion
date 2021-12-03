@@ -45,11 +45,16 @@ int main(int argc, char** argv)
     game::upgrade::ExplosionRadiusUpgrade * upgrade
       = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
 
-    game::obstacles::DestructibleBlock * block1 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
-
     game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
-    block1->Destroy();
+    
     game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
+    game::obstacles::DestructibleBlock * block4 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
+    game::obstacles::DestructibleBlock * block5 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,8);
+    game::obstacles::DestructibleBlock * block6 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,9);
+    game::obstacles::DestructibleBlock * block7 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,10);
+    game::obstacles::DestructibleBlock * block8 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,11);
+    game::obstacles::DestructibleBlock * block9 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,6);
+    game::obstacles::DestructibleBlock * block10 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,5);
 
     game::Player * player1 = game::Player::CreatePlayer(0,0,player1keys);
     game::Player * player2 = game::Player::CreatePlayer(14,12,player2keys);
