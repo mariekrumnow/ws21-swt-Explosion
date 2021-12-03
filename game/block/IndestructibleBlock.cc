@@ -11,9 +11,20 @@ namespace game {
 
 namespace obstacles{
 
-    IndestructibleBlock::IndestructibleBlock(int x, int y) :
-      Block {x,y}
-    {}
+    IndestructibleBlock::IndestructibleBlock() : Block() {}
+
+    /// If a nullptr is returned, an error occured or the object couldn't be placed
+    IndestructibleBlock* IndestructibleBlock::CreateIndestructibleBlock(int x, int y){
+          IndestructibleBlock* temp = new IndestructibleBlock();
+          if (temp!=nullptr){
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+          }
+          return temp;
+    }
 
     bool IndestructibleBlock::OnExplosion(GameObject& source) {
           return true;

@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #include "BombCountUpgrade.h"
 
@@ -11,12 +11,23 @@
 
 namespace game{
     namespace upgrade{
-        BombCountUpgrade::BombCountUpgrade(int x, int y) : Upgrade {x, y} {
+        BombCountUpgrade::BombCountUpgrade() : Upgrade() {}
 
+        /// If a nullptr is returned, an error occured or the object couldn't be placed
+        BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y){
+              BombCountUpgrade* temp = new BombCountUpgrade();
+              if (temp!=nullptr){
+                    GameManager::GetCurrentGame().AddGameObject(*temp);
+                  if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                  }
+              }
+              return temp;
         }
 
         bool BombCountUpgrade::OnPlayerCollision(Player& player) {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             if(player.GetMaxBombCount() <= player.GetKMaxBombCount()){
                 player.IncreaseMaxBombCount(1);
             }
@@ -25,7 +36,7 @@ namespace game{
         }
 
         bool BombCountUpgrade::OnExplosion(GameObject& source){
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             return false;
         }
 

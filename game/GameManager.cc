@@ -3,6 +3,7 @@
 #include "GameManager.h"
 
 #include <vector>
+#include <iostream>
 
 #include "GameObject.h"
 #include "../core/AppManager.h"
@@ -35,6 +36,10 @@ GameManager::~GameManager(){
 	}
 
 	for (GameObject* obj : GetAllObjects()) {
+		obj->Destroy();
+	}
+
+	for (GameObject* obj : destroyed_game_objects_) {
 		delete obj;
 	}
 
@@ -70,6 +75,11 @@ void GameManager::RemoveGameObject(GameObject& game_object) {
 	}
 }
 
+void GameManager::DestroyGameObject(GameObject &game_object) {
+	RemoveGameObject(game_object);
+	destroyed_game_objects_.push_back(&game_object);
+}
+
 void GameManager::AddGameObject(GameObject& game_object) {
 	std::vector<GameObject*>& object_vector = objects_by_pos_
 		[game_object.GetX()][game_object.GetY()];
@@ -78,16 +88,15 @@ void GameManager::AddGameObject(GameObject& game_object) {
 }
 
 bool GameManager::ChangeObjectPosition(GameObject& game_object, int x, int y) {
-
 	//check if position is in bounds
 	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight()) return false;
 
 	RemoveGameObject(game_object);
+	//game_object.Destroy();
 
 	std::vector<GameObject*>& object_vector = GetObjectsAtPos(x, y) ;
 
 	object_vector.push_back(&game_object);
-
 	return true;
 }
 

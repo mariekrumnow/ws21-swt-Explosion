@@ -1,4 +1,4 @@
-//Autor: Peter, Nina, Tobias
+//Autor: Peter, Nina, Tobias, Marie
 
 #ifndef BOMBERMAN_PLAYER_H
 #define BOMBERMAN_PLAYER_H
@@ -21,6 +21,7 @@ namespace bomb { class Bomb;}
 class Player : public GameObject {
 public:
     Player(graphics::PlayerKeys);
+    static Player* CreatePlayer(int x, int y, graphics::PlayerKeys keys);
     ~Player();
 
     void IncreaseSpeed(int value);

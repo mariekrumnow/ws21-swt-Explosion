@@ -12,8 +12,9 @@
 #include "Keys.h"
 
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
-#include "DestructibleBlock.h"
-#include "IndestructibleBlock.h"
+#include "game/upgrade/BombCountUpgrade.h"
+#include "../game/block/DestructibleBlock.h"
+#include "../game/block/IndestructibleBlock.h"
 
 int main(int argc, char** argv)
 {
@@ -23,8 +24,10 @@ int main(int argc, char** argv)
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
     game::GameWindow game_window = game::GameWindow();
-    app.SetActiveGameWindow(game_window);
+    app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
+
+    srand(time(0));
 
     graphics::PlayerKeys player1keys{};
     player1keys.up = SDL_SCANCODE_W;
@@ -41,19 +44,26 @@ int main(int argc, char** argv)
     player2keys.bomb = SDL_SCANCODE_RSHIFT;
 
     game::upgrade::ExplosionRadiusUpgrade * upgrade
-      = new game::upgrade::ExplosionRadiusUpgrade(8,8);
+      = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
 
-    game::obstacles::DestructibleBlock * block1 = new game::obstacles::DestructibleBlock(5,8);
+    //auto upgrade2 = game::upgrade::BombCountUpgrade::CreateBombCountUpgrade(1, 0);
 
-    game::obstacles::IndestructibleBlock * block2 = new game::obstacles::IndestructibleBlock(4,4);
+    game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
 
+    game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
+    game::obstacles::DestructibleBlock * block4 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
+    game::obstacles::DestructibleBlock * block5 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,8);
+    game::obstacles::DestructibleBlock * block6 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,9);
+    game::obstacles::DestructibleBlock * block7 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,10);
+    game::obstacles::DestructibleBlock * block8 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,11);
+    game::obstacles::DestructibleBlock * block9 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,6);
+    game::obstacles::DestructibleBlock * block10 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,5);
 
-    game::Player player1 = game::Player(player1keys);
-    game::Player player2 = game::Player(player2keys);
-    player1.IncreaseSpeed(6);
-    player2.IncreaseSpeed(6);
-    game_manager.AddGameObject(player1);
-    game_manager.AddGameObject(player2);
+    game::Player * player1 = game::Player::CreatePlayer(0,0,player1keys);
+    game::Player * player2 = game::Player::CreatePlayer(14,12,player2keys);
+    player1->IncreaseSpeed(6);
+    player1->IncreaseMaxBombCount(2);
+    player2->IncreaseSpeed(6);
 
     app.Run();
 

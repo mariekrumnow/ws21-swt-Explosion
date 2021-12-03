@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #ifndef BOMBERMAN_GAME_UPGRADE_EXPLOSIONRADIUSUPGRADE_H
 #define BOMBERMAN_GAME_UPGRADE_EXPLOSIONRADIUSUPGRADE_H
@@ -16,8 +16,11 @@ namespace game {
         /// Upgrade to increase the explosion radius of the player
         class ExplosionRadiusUpgrade : public Upgrade {
         public:
-            /// Calls the constructor of Upgrade
-            ExplosionRadiusUpgrade(int x, int y);
+            /// Basically calls the constructor of GameObject
+            ExplosionRadiusUpgrade();
+
+            /// Creates a ExplosionRadiusUpgrade on the map
+            static ExplosionRadiusUpgrade* CreateExplosionRadiusUpgrade(int x, int y);
 
             /// Increases the explosion radius of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);

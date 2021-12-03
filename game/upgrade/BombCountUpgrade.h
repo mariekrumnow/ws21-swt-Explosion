@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #ifndef BOMBERMAN_GAME_UPGRADE_BOMBCOUNTUPGRADE_H
 #define BOMBERMAN_GAME_UPGRADE_BOMBCOUNTUPGRADE_H
@@ -17,8 +17,11 @@ namespace game {
         /// Upgrade to increase the bomb count of the player
         class BombCountUpgrade : public Upgrade {
         public:
-            /// Calls the constructor of Upgrade
-            BombCountUpgrade(int x, int y);
+            /// Basically calls the constructor of GameObject
+            BombCountUpgrade();
+
+            /// Creates a BombCountUpgrade on the map
+            static BombCountUpgrade* CreateBombCountUpgrade(int x, int y);
 
             /// Increases the bomb count of the player, if possible, and removes the upgrade
             bool OnPlayerCollision(Player &player);

@@ -1,4 +1,4 @@
-//Autor Peter, Patrick
+//Autor Peter, Patrick, Marie
 
 #include "ExplosionRadiusUpgrade.h"
 
@@ -11,12 +11,23 @@
 
 namespace game{
     namespace upgrade{
-        ExplosionRadiusUpgrade::ExplosionRadiusUpgrade(int x, int y) : Upgrade {x, y} {
+        ExplosionRadiusUpgrade::ExplosionRadiusUpgrade() : Upgrade() {}
 
+        /// If a nullptr is returned, an error occured or the object couldn't be placed
+        ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int x, int y){
+              ExplosionRadiusUpgrade* temp = new ExplosionRadiusUpgrade();
+              if (temp!=nullptr){
+                    GameManager::GetCurrentGame().AddGameObject(*temp);
+                      if (!temp->SetPosition(x,y)) {
+                            temp->Destroy();
+                            return nullptr;
+                      }
+              }
+              return temp;
         }
 
         bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             if(player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()){
                 player.IncreaseExplosionRadius(1);
             }
@@ -25,7 +36,7 @@ namespace game{
         }
 
         bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source){
-            GameManager::GetCurrentGame().RemoveGameObject(*this);
+            this->Destroy();
             return false;
         }
 

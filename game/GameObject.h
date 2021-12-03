@@ -18,7 +18,6 @@ class Player;
 class GameObject {
 public:
   GameObject();
-  GameObject(int x, int y);
   ~GameObject();
 
   virtual bool OnExplosion(GameObject& source);
@@ -31,11 +30,14 @@ public:
   virtual int GetY();
   virtual bool SetPosition(int x, int y);
 
+	virtual void Destroy();
+	bool IsDestroyed();
 
 private:
 
   int x_;
   int y_;
+	bool destroyed_;
 };
 } //namespace game
 

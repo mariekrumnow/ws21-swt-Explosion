@@ -11,17 +11,20 @@ namespace game {
 GameObject::GameObject(){
   x_ = 0;
   y_ = 0;
+  destroyed_ = false;
 }
 
-GameObject::GameObject(int x, int y){
-      if (!SetPosition(x, y)) {
-            x_ = 0;
-            y_ = 0;
-      }
+bool GameObject::IsDestroyed() {
+  return destroyed_;
+}
+
+void GameObject::Destroy() {
+  GameManager::GetCurrentGame().DestroyGameObject(*this);
+  destroyed_ = true;
 }
 
 GameObject::~GameObject(){
-  GameManager::GetCurrentGame().RemoveGameObject(*this);
+  GameManager::GetCurrentGame().DestroyGameObject(*this);
 }
 
 bool GameObject::SetPosition(int x, int y) {

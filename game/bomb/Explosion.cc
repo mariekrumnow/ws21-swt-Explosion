@@ -1,4 +1,4 @@
-//Autor: Marlene,  Tobias
+//Autor: Marlene, Tobias, Marie
 
 #include "Explosion.h"
 
@@ -13,6 +13,19 @@ namespace bomb {
 
     Explosion::Explosion() {
         timer_ = kExplosionDuration;
+    }
+
+    /// If a nullptr is returned, an error occured or the object couldn't be placed
+    Explosion* Explosion::CreateExplosion(int x, int y){
+          Explosion* temp = new Explosion();
+          if (temp!=nullptr){
+                GameManager::GetCurrentGame().AddGameObject(*temp);
+                if (!temp->SetPosition(x,y)) {
+                      temp->Destroy();
+                      return nullptr;
+                }
+          }
+          return temp;
     }
 
     Explosion::~Explosion() {}

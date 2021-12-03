@@ -9,9 +9,7 @@ namespace game {
 
 namespace obstacles{
 
-    Block::Block(int x, int y) :
-      GameObject {x,y}
-    {}
+    Block::Block() : GameObject() {}
 
     void Block::Update(double delta_time) {}
 

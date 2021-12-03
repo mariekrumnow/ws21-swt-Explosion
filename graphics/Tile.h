@@ -45,6 +45,7 @@ namespace graphics {
     const Tile kTileZ = Tile(10,5);
 
 //Game tile definitions
+//curses 16x16
     const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(10,15);
     const Tile kTilePlayer = Tile(1,0);
@@ -56,6 +57,20 @@ namespace graphics {
     const Tile kTileSpeedUpgrade = Tile(15,10);
     const Tile kTileExplosionRadiusUpgrade = Tile(13,1);
     const Tile kTileBombCountUpgrade = Tile(5,14);
+//HuhnPNG
+    /*const Tile kTileEmpty = Tile(0,0);
+    const Tile kTileDot = Tile(0,0);
+    const Tile kTilePlayer = Tile(0,4);
+    const Tile kTileSolidWall = Tile(2,0);
+    const Tile kTileBrittleWall = Tile(1,0);
+    const Tile kTileExplosion = Tile(1,2);
+    const Tile kTileBomb = Tile(0,2);
+    const Tile kTileMenuCursor = Tile(0,1);
+    const Tile kTileSpeedUpgrade = Tile(0,1);
+    const Tile kTileExplosionRadiusUpgrade = Tile(1,1);
+    const Tile kTileBombCountUpgrade = Tile(2,1);*/
+
+
 
 } //namespace graphics
 
