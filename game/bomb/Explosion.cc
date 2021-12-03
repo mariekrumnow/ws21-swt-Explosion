@@ -2,11 +2,11 @@
 
 #include "Explosion.h"
 
-#include "GameObject.h"
-#include "GameManager.h"
-#include "AppManager.h"
-#include "Color.h"
-#include "Tile.h"
+#include "../GameObject.h"
+#include "../GameManager.h"
+#include "../../core/AppManager.h"
+#include "../../graphics/Color.h"
+#include "../../graphics/Tile.h"
 
 namespace game {
 namespace bomb {
@@ -15,7 +15,7 @@ namespace bomb {
         timer_ = kExplosionDuration;
     }
 
-    /// If a nullptr is returned, an error occured or the object couldn't be placed
+    /// \brief If a nullptr is returned, an error occured or the object couldn't be placed
     Explosion* Explosion::CreateExplosion(int x, int y){
           Explosion* temp = new Explosion();
           if (temp!=nullptr){
@@ -51,5 +51,5 @@ namespace bomb {
         }
     }
 
-}   //namespace bomb
-} //namespace game
+} // namespace bomb
+} // namespace game

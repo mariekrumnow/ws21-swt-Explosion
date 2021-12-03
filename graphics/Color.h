@@ -7,7 +7,7 @@
 
 namespace graphics {
 
-// Color: a representation of an RGBA color
+/// Color: a representation of an RGBA color
     class Color {
     public:
         uint8_t red_;

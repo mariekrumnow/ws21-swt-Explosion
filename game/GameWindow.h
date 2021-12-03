@@ -3,8 +3,8 @@
 #ifndef BOMBERMAN_GAME_GAMEWINDOW_H
 #define BOMBERMAN_GAME_GAMEWINDOW_H
 
-#include "../core/Window.h"
 #include "GameManager.h"
+#include "../core/Window.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 

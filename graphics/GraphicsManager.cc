@@ -1,4 +1,5 @@
 //Author: Tobias
+
 #include "GraphicsManager.h"
 
 namespace graphics {
@@ -34,20 +35,20 @@ namespace graphics {
 
     void GraphicsManager::BeginFrame() {
         if (window_ == nullptr) return;
-        //fill the screen black
+        ///fill the screen black
         SDL_SetRenderDrawColor(renderer_, 0,0,0,255);
         SDL_RenderClear(renderer_);
 
-        //All keys held on the previous frame are now not pressed anymore
+        ///All keys held on the previous frame are now not pressed anymore
         for (int i=0; i<SDL_NUM_SCANCODES; i++) {
             key_not_pressed_[i] = key_held_[i];
         }
 
-        //handle all new events
+        ///handle all new events
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
             switch (event.type) {
-                //events sent by the window manager
+                ///events sent by the window manager
                 case SDL_WINDOWEVENT:
 
                     switch (event.window.event) {
@@ -57,12 +58,12 @@ namespace graphics {
                     }
                     break;
 
-                //quit event
+                ///quit event
                 case SDL_QUIT:
                     Quit();
                     break;
 
-                //events sent by the keyboard
+                ///events sent by the keyboard
                 case SDL_KEYDOWN:
                     key_held_[event.key.keysym.scancode] = true;
                     break;
@@ -112,4 +113,4 @@ namespace graphics {
 			SDL_Delay(millis);
 		}
 
-} //namespace graphics
+} // namespace graphics

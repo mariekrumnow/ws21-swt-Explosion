@@ -2,15 +2,14 @@
 
 #include <iostream>
 
-#include "AppManager.h"
-#include "GraphicsManager.h"
+#include "core/AppManager.h"
 
-#include "GameWindow.h"
-#include "GameManager.h"
-#include "Player.h"
+#include "graphics/GraphicsManager.h"
+#include "graphics/Keys.h"
 
-#include "Keys.h"
-
+#include "game/GameWindow.h"
+#include "game/GameManager.h"
+#include "game/Player.h"
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
 #include "game/upgrade/BombCountUpgrade.h"
 #include "../game/block/DestructibleBlock.h"
@@ -18,7 +17,7 @@
 
 int main(int argc, char** argv)
 {
-    //initialize the app manager
+    ///initialize the app manager
     core::AppManager app = core::AppManager(true);
 
     graphics::GraphicsManager& graphics = app.GetGraphics();

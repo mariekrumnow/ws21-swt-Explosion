@@ -11,21 +11,23 @@
 #include "../../graphics/Tile.h"
 
 namespace game {
-    namespace upgrade {
+namespace upgrade {
 
-        /// Abstract class to represent all the different upgrades
-        class Upgrade : public GameObject {
-        public:
-            /// Calls the constructor of GameObject
-            Upgrade();
+/// Abstract class to represent all the different upgrades
+class Upgrade : public GameObject {
+public:
+    /// Calls the constructor of GameObject
+    Upgrade();
 
-            /// Sends signal that there's no collision with upgrades
-            virtual bool OnCollision(GameObject& source);
+    /// Sends signal that there's no collision with upgrades
+    virtual bool OnCollision(GameObject& source);
 
-            /// Overwrites virtual function of GameObject
-            virtual void Update(double delta_time);
-        };
-    }
-}
+    /// Overwrites virtual function of GameObject
+    /// \param delta_time The amount of time that has passed since last update
+    virtual void Update(double delta_time);
+};
+
+} // namespace upgrade
+} // namespace game
 
 #endif //BOMBERMAN_UPGRADE_H

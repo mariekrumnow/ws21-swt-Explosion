@@ -4,16 +4,14 @@
 
 #include "Block.h"
 #include "IndestructibleBlock.h"
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
+#include "../../graphics/Tile.h"
+#include "../../graphics/Color.h"
 
 namespace game {
-
 namespace obstacles{
 
     IndestructibleBlock::IndestructibleBlock() : Block() {}
 
-    /// If a nullptr is returned, an error occured or the object couldn't be placed
     IndestructibleBlock* IndestructibleBlock::CreateIndestructibleBlock(int x, int y){
           IndestructibleBlock* temp = new IndestructibleBlock();
           if (temp!=nullptr){
@@ -39,5 +37,4 @@ namespace obstacles{
     }
 
 } // namespace obstacles
-
 } // namespace game

@@ -1,4 +1,5 @@
 //Author: Tobias
+
 #include "TileSet.h"
 
 namespace graphics {
@@ -26,4 +27,4 @@ namespace graphics {
         SDL_RenderCopy(renderer, tile_atlas_, &kSource, &kDestination);
     }
 
-} //namespace graphics
+} // namespace graphics

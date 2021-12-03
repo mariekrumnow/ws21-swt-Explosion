@@ -6,11 +6,11 @@
 #include <cmath>
 #include <iostream>
 
-#include "GameObject.h"
-#include "GameManager.h"
-#include "Player.h"
-#include "Tile.h"
 #include "Explosion.h"
+#include "../GameObject.h"
+#include "../GameManager.h"
+#include "../Player.h"
+#include "../../graphics/Tile.h"
 
 namespace game {
 namespace bomb {
@@ -32,7 +32,7 @@ private:
 	Player* owner_;
 	int power_;
 	double explosion_timer_;
-	bool exploding_; // so the bomb can't explode multiple times
+	bool exploding_; ///< so the bomb can't explode multiple times
 	void Explode();
 	bool SpawnExplosion(int x, int y);
 };

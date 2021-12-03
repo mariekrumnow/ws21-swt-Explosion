@@ -44,7 +44,7 @@ bool Bomb::OnExplosion(GameObject& source) {
 }
 
 bool Bomb::OnCollision(GameObject& source) {
-	return !exploding_; //exploding bombs aren't solid
+	return !exploding_; ///exploding bombs aren't solid
 }
 
 graphics::Tile Bomb::GetTile() {
@@ -78,7 +78,7 @@ bool Bomb::SpawnExplosion(int x, int y) {
 void Bomb::Explode() {
 	GameManager& game = GameManager::GetCurrentGame();
 
-	exploding_ = true; //so the bomb isn't solid anymore
+	exploding_ = true; ///so the bomb isn't solid anymore
 
 	if (owner_) {
 		owner_->OnBombDestroyed(*this);
@@ -91,24 +91,24 @@ void Bomb::Explode() {
 	int current_x = GetX();
 	int current_y = GetY();
 
-	//alwys spawn explosion where bomb is
+	///always spawn explosion where bomb is
 	SpawnExplosion(current_x, current_y);
 
-	//for each of the four directions
+	///for each of the four directions
 	for (int turn=0; turn<4; turn++) {
-		//explode for the given distance
+		///explode for the given distance
 		for (int d=1; d<=power_; d++) {
-			//get rotated position
+			///get rotated position
 			int x = current_x + x_turn[turn]*d;
 			int y = current_y + y_turn[turn]*d;
 
-			//check for obstacles
+			///check for obstacles
 			bool stopped = false;
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
 				stopped |= go->OnExplosion(*this);
 			}
 
-			//if none there, spawn explosion
+			///if none there, spawn explosion
 			if (stopped) {
 				break;
 			} else {
@@ -121,5 +121,5 @@ void Bomb::Explode() {
 	this->Destroy();
 }
 
-} //namespace bomb
-} //namespace game
+} // namespace bomb
+} // namespace game

@@ -7,9 +7,9 @@ namespace game {
   class GameObject;
 }
 
+#include "GameManager.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
-#include "GameManager.h"
 
 namespace game {
 
