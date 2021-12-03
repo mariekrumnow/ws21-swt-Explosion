@@ -17,11 +17,11 @@ namespace obstacles{
     IndestructibleBlock* IndestructibleBlock::CreateIndestructibleBlock(int x, int y){
           IndestructibleBlock* temp = new IndestructibleBlock();
           if (temp!=nullptr){
+                GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
                 }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
           }
           return temp;
     }

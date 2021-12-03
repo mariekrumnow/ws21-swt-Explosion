@@ -23,11 +23,11 @@ namespace obstacles{
     DestructibleBlock* DestructibleBlock::CreateDestructibleBlock(int x, int y){
           DestructibleBlock* temp = new DestructibleBlock();
           if (temp!=nullptr){
+                GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
                 }
-                GameManager::GetCurrentGame().AddGameObject(*temp);
           }
           return temp;
     }
