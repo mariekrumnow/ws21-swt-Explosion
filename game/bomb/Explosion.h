@@ -3,11 +3,11 @@
 #ifndef BOMBERMAN_GAME_BOMB_EXPLOSION_H
 #define BOMBERMAN_GAME_BOMB_EXPLOSION_H
 
-#include "GameObject.h"
-#include "GameManager.h"
-#include "AppManager.h"
-#include "Color.h"
-#include "Tile.h"
+#include "../GameObject.h"
+#include "../GameManager.h"
+#include "../../core/AppManager.h"
+#include "../../graphics/Color.h"
+#include "../../graphics/Tile.h"
 
 namespace game {
 namespace bomb {

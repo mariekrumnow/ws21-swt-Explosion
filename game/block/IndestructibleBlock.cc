@@ -4,8 +4,8 @@
 
 #include "Block.h"
 #include "IndestructibleBlock.h"
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
+#include "../../graphics/Tile.h"
+#include "../../graphics/Color.h"
 
 namespace game {
 

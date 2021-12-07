@@ -6,10 +6,10 @@
 #include <cmath>
 #include <iostream>
 
-#include "GameObject.h"
-#include "GameManager.h"
-#include "Player.h"
-#include "Tile.h"
+#include "../GameObject.h"
+#include "../GameManager.h"
+#include "../Player.h"
+#include "../../graphics/Tile.h"
 #include "Explosion.h"
 
 namespace game {

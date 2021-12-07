@@ -5,7 +5,7 @@
 #ifndef BOMBERMAN_BLOCK_H
 #define BOMBERMAN_BLOCK_H
 
-#include "../game/GameObject.h"
+#include "../GameObject.h"
 
 namespace game {
 

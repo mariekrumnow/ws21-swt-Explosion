@@ -8,10 +8,10 @@
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "Keys.h"
-#include "Color.h"
-#include "Tile.h"
-#include "AppManager.h"
+#include "../graphics/Keys.h"
+#include "../graphics/Color.h"
+#include "../graphics/Tile.h"
+#include "../core/AppManager.h"
 
 
 namespace game {

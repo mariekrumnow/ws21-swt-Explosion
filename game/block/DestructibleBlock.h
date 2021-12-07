@@ -6,8 +6,8 @@
 #define BOMBERMAN_DESTRUCTIBLE_H
 
 #include "Block.h"
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
+#include "../../graphics/Tile.h"
+#include "../../graphics/Color.h"
 
 namespace game {
 

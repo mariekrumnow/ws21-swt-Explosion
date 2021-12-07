@@ -5,13 +5,13 @@
 #include <time.h>
 
 #include "Block.h"
-#include "GameManager.h"
+#include "../GameManager.h"
 #include "DestructibleBlock.h"
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
-#include "../game/upgrade/ExplosionRadiusUpgrade.h"
-#include "../game/upgrade/BombCountUpgrade.h"
-#include "../game/upgrade/SpeedUpgrade.h"
+#include "../../graphics/Tile.h"
+#include "../../graphics/Color.h"
+#include "../../game/upgrade/ExplosionRadiusUpgrade.h"
+#include "../../game/upgrade/BombCountUpgrade.h"
+#include "../../game/upgrade/SpeedUpgrade.h"
 
 namespace game {
 
