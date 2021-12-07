@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-#include "AppManager.h"
-#include "GraphicsManager.h"
+#include "core/AppManager.h"
 
-#include "GameWindow.h"
-#include "GameManager.h"
-#include "Player.h"
+#include "game/GameWindow.h"
+#include "game/GameManager.h"
+#include "game/Player.h"
 
-#include "Keys.h"
+#include "graphics/Keys.h"
+#include "graphics/GraphicsManager.h"
 
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
 #include "game/upgrade/BombCountUpgrade.h"
