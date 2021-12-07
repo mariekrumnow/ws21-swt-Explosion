@@ -21,8 +21,8 @@ namespace core {
       return graphics_;
     }
 
-    AppManager::AppManager(bool init_graphics) :
-            graphics_(graphics::GraphicsManager(init_graphics)) {
+    AppManager::AppManager(std::string title, bool init_graphics) :
+            graphics_(graphics::GraphicsManager(title, init_graphics)) {
         //ensure the reference to the AppManager stays active, and there is only one.
         if(AppManager::manager_ != nullptr) {
             delete AppManager::manager_;

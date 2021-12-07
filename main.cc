@@ -19,7 +19,7 @@
 int main(int argc, char** argv)
 {
     //initialize the app manager
-    core::AppManager app = core::AppManager(true);
+    core::AppManager app = core::AppManager("Bomberman Explosion", true);
 
     graphics::GraphicsManager& graphics = app.GetGraphics();
 

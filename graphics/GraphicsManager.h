@@ -5,9 +5,16 @@
 #include "TileSet.h"
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <cstdlib>
 
 namespace graphics {
+
+    enum class FontSize {
+      kSmall,
+      kMedium,
+      kLarge
+    };
 
 //Graphics Manager: The class that manages all the graphics
     class GraphicsManager {
@@ -15,12 +22,14 @@ namespace graphics {
         const int kWindowHeight = 360;
         const int kWindowWidth = 480;
 
-        GraphicsManager(bool init_graphics);
+        GraphicsManager(std::string title, bool init_graphics);
         ~GraphicsManager();
 
         //call at the start of every frame
         void BeginFrame();
         void DrawTile(Tile tile, Color color, int x, int y);
+        //sizes 14, 20, and 30 are supported
+        void WriteText(std::string text, Color color, FontSize size, bool bold, int x, int y);
         //call at the end of every frame
         void EndFrame();
 
@@ -40,6 +49,10 @@ namespace graphics {
         TileSet* text_tileset_;
         SDL_Window * window_;
         SDL_Renderer * renderer_;
+
+        TTF_Font * font_small_;
+        TTF_Font * font_medium_;
+        TTF_Font * font_large_;
 
         //stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];
