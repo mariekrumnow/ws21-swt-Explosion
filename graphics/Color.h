@@ -1,12 +1,13 @@
-//Author: Tobias
-#ifndef GRAPHICS_COLOR_H_
-#define GRAPHICS_COLOR_H_
+// Author: Tobias
+
+#ifndef BOMBERMAN_GRAPHICS_COLOR_H_
+#define BOMBERMAN_GRAPHICS_COLOR_H_
 
 #include <cstdint>
 
 namespace graphics {
 
-//Color: a representation of an RGBA color
+/// Color: a representation of an RGBA color
     class Color {
     public:
         uint8_t red_;
@@ -17,6 +18,6 @@ namespace graphics {
                 red_(red), green_(green), blue_(blue), alpha_(alpha) {}
     };
 
-} //namespace graphics
+} // namespace graphics
 
-#endif
+#endif // BOMBERMAN_GRAPHICS_COLOR_H_

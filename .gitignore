@@ -4,6 +4,7 @@
 *.obj
 *.gch
 *.zip
+*.cmd
 
 /build
 

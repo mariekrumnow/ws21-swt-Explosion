@@ -1,17 +1,17 @@
-//Autor: Peter, Nina, Tobias, Marie
+// Autor: Peter, Nina, Tobias, Marie
 
-#ifndef BOMBERMAN_PLAYER_H
-#define BOMBERMAN_PLAYER_H
+#ifndef BOMBERMAN_GAME_PLAYER_H
+#define BOMBERMAN_GAME_PLAYER_H
 
 #include <vector>
 #include <iostream>
 
 #include "GameObject.h"
 #include "GameManager.h"
-#include "Keys.h"
-#include "Color.h"
-#include "Tile.h"
-#include "AppManager.h"
+#include "../graphics/Keys.h"
+#include "../graphics/Color.h"
+#include "../graphics/Tile.h"
+#include "../core/AppManager.h"
 
 
 namespace game {
@@ -44,7 +44,9 @@ public:
 
 private:
     bool PlaceBomb(int x,int y);
-    bool SetPosition(int x, int y);      //überprüft auch via OnPlayerCollision ob Position frei is
+
+    /// überprüft auch via OnPlayerCollision ob Position frei is
+    bool SetPosition(int x, int y);
 
     int explosion_radius_;
     int max_bomb_count_;
@@ -55,16 +57,14 @@ private:
 
     int owned_bombs_;
 
-    //timer till player can move again
-    double move_timer_;
+
+    double move_timer_;  ///< timer till player can move again
     const double kMaxMoveTimer = 1.0;
     const double kMinMoveTimer = 0.1;
 
-
-    // controls
-    graphics::PlayerKeys keys;
+    graphics::PlayerKeys keys; ///< controls
 
   };
-} //namespace game
+} // namespace game
 
-#endif //BOMBERMAN_PLAYER_H
+#endif // BOMBERMAN_GAME_PLAYER_H

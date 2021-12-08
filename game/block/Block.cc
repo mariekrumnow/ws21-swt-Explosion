@@ -3,10 +3,10 @@
 //
 
 #include "Block.h"
+#include "../GameObject.h"
 
 
 namespace game {
-
 namespace obstacles{
 
     Block::Block() : GameObject() {}
@@ -22,5 +22,4 @@ namespace obstacles{
     }
 
 } // namespace obstacles
-
 } // namespace game

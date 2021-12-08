@@ -23,7 +23,7 @@ namespace core {
 
     AppManager::AppManager(bool init_graphics) :
             graphics_(graphics::GraphicsManager(init_graphics)) {
-        //ensure the reference to the AppManager stays active, and there is only one.
+        ///ensure the reference to the AppManager stays active, and there is only one.
         if(AppManager::manager_ != nullptr) {
             delete AppManager::manager_;
         }
@@ -88,4 +88,4 @@ namespace core {
     }
 
 
-} //namespace engine
+} // namespace core
