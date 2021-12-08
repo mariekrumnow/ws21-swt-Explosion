@@ -124,7 +124,7 @@ graphics::Tile Player::GetTile() {
 }
 
 graphics::Color Player::GetColor() {
-  return graphics::Color(255, 0, 0, 255);
+    return graphics::Color(255,255,255,0);
 }
 
 void Player::OnBombDestroyed(bomb::Bomb& bomb) {

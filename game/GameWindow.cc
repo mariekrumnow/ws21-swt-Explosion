@@ -26,13 +26,10 @@ void GameWindow::Draw() {
 
 			std::vector<GameObject*>& objects = game.GetObjectsAtPos(x, y);
 
-			if (objects.size() == 0) {
-				graphics.DrawTile(graphics::kTileDot, graphics::Color(200,200,200,255),
-					x_offset + x*16, y_offset + y*16);
-			} else {
-				graphics.DrawTile(objects[0]->GetTile(), objects[0]->GetColor(),
-					x_offset + x*16, y_offset + y*16);
-			}
+            graphics.DrawTile(graphics::kTileEmpty,graphics::Color(255,255,255,255),x_offset + x*60, y_offset + y*60);
+            if (objects.size() != 0) {
+                graphics.DrawTile(objects[0]->GetTile(), objects[0]->GetColor(),x_offset + x*60, y_offset + y*60);
+            }
 		}
 	}
 

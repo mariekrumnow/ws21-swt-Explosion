@@ -53,9 +53,9 @@ graphics::Tile Bomb::GetTile() {
 
 graphics::Color Bomb::GetColor() {
 	if (std::fmod(explosion_timer_, 0.5) < 0.25) {
-		return graphics::Color(255,0,0,255);
+        return graphics::Color(255,255,255,255);
 	} else {
-		return graphics::Color(255,255,0,255);
+        return graphics::Color(255,255,255,255);
 	}
 }
 

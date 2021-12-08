@@ -36,7 +36,7 @@ namespace bomb {
     }
 
     graphics::Color Explosion::GetColor() {
-        return graphics::Color(255, 128, 0, 255);
+        return graphics::Color(255,255,255,255);
     }
 
     void Explosion::Update(double delta_time) {

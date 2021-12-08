@@ -52,7 +52,7 @@ namespace obstacles{
     }
 
     graphics::Color DestructibleBlock::GetColor() {
-          return graphics::Color(169, 169, 169, 255);
+        return graphics::Color(255,255,255,255);
     }
 
 } // namespace obstacles

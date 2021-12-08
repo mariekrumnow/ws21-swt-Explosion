@@ -40,7 +40,7 @@ bool BombCountUpgrade::OnExplosion(GameObject& source){
 }
 
 graphics::Color BombCountUpgrade::GetColor(){
-    return graphics::Color(255,255,0,255);
+    return graphics::Color(255,255,255,255);
 }
 
 graphics::Tile BombCountUpgrade::GetTile(){

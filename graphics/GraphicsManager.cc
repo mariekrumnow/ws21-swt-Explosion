@@ -15,8 +15,8 @@ namespace graphics {
 
             SDL_SetWindowTitle(window_, title.c_str());
 
-            game_tileset_ = new TileSet(renderer_, "assets/curses_square_16x16.bmp",
-                                        16,16);
+            game_tileset_ = new TileSet(renderer_, "assets/Huhn.bmp",
+                                        60,60);
             text_tileset_ = new TileSet(renderer_, "assets/curses_640x300.bmp", 9, 12);
 
             for (int i=0; i<SDL_NUM_SCANCODES; i++) {

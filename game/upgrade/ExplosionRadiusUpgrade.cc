@@ -40,7 +40,7 @@ bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source){
 }
 
 graphics::Color ExplosionRadiusUpgrade::GetColor(){
-    return graphics::Color(255,255,0,255);
+    return graphics::Color(255,255,255,255);
 }
 
 graphics::Tile ExplosionRadiusUpgrade::GetTile(){
