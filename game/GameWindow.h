@@ -1,10 +1,10 @@
-//Autor Nina, Tobias
+// Autor Nina, Tobias
 
-#ifndef BOMBERMAN_GAMEWINDOW_H
-#define BOMBERMAN_GAMEWINDOW_H
+#ifndef BOMBERMAN_GAME_GAMEWINDOW_H
+#define BOMBERMAN_GAME_GAMEWINDOW_H
 
-#include "../core/Window.h"
 #include "GameManager.h"
+#include "../core/Window.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 
@@ -18,7 +18,7 @@ public:
     void Update(double delta_time);
 };
 
-} //namespace game
+} // namespace game
 
 
-#endif //BOMBERMAN_GAMEWINDOW_H
+#endif // BOMBERMAN_GAME_GAMEWINDOW_H

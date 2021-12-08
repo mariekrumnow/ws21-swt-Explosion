@@ -13,29 +13,35 @@
 
 
 namespace game {
-    namespace upgrade {
-        /// Upgrade to increase the bomb count of the player
-        class BombCountUpgrade : public Upgrade {
-        public:
-            /// Basically calls the constructor of GameObject
-            BombCountUpgrade();
+namespace upgrade {
 
-            /// Creates a BombCountUpgrade on the map
-            static BombCountUpgrade* CreateBombCountUpgrade(int x, int y);
+/// Upgrade to increase the bomb count of the player
+class BombCountUpgrade : public Upgrade {
+    public:
+    /// Basically calls the constructor of GameObject
+    BombCountUpgrade();
 
-            /// Increases the bomb count of the player, if possible, and removes the upgrade
-            bool OnPlayerCollision(Player &player);
+    /// Creates a BombCountUpgrade on the map
+    ///
+    /// \param x the x-coordinate of the new block
+    /// \param y the y-coordinate of the new block
+    /// \return A Pointer on the newly created upgrade or nullptr if an error occurred
+    static BombCountUpgrade* CreateBombCountUpgrade(int x, int y);
 
-            /// Removes the upgrade from the map
-            bool OnExplosion(GameObject& source);
+    /// Increases the bomb count of the player, if possible, and removes the upgrade
+    bool OnPlayerCollision(Player &player);
 
-            /// Returns the color of the upgrade
-            virtual graphics::Color GetColor();
+    /// Removes the upgrade from the map
+    bool OnExplosion(GameObject& source);
 
-            /// Returns the shape of the upgrade
-            virtual graphics::Tile GetTile();
-        };
-    }
-}
+    /// Returns the color of the upgrade
+    virtual graphics::Color GetColor();
+
+    /// Returns the shape of the upgrade
+    virtual graphics::Tile GetTile();
+};
+
+} // namespace upgrade
+} // namespace game
 
 #endif //BOMBERMAN_BOMBCOUNTUPGRADE_H

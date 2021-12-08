@@ -1,9 +1,10 @@
-//Author: Tobias
-#ifndef GRAPHICS_TILE_H_
-#define GRAPHICS_TILE_H_
+// Author: Tobias
+
+#ifndef BOMBERMAN_GRAPHICS_TILE_H_
+#define BOMBERMAN_GRAPHICS_TILE_H_
 
 namespace graphics {
-//Tile: Contains an offset into a tile atlas
+/// Contains an offset into a tile atlas
     class Tile {
     public:
         Tile(int x_offset, int y_offset) : x_offset_(x_offset), y_offset_(y_offset) {}
@@ -16,7 +17,7 @@ namespace graphics {
 
     };
 
-//Text tile definitions
+/// Text tile definitions
     const Tile kTileA = Tile(1,4);
     const Tile kTileB = Tile(2,4);
     const Tile kTileC = Tile(3,4);
@@ -44,8 +45,8 @@ namespace graphics {
     const Tile kTileY = Tile(9,5);
     const Tile kTileZ = Tile(10,5);
 
-//Game tile definitions
-//curses 16x16
+/// Game tile definitions
+/// curses 16x16
     const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(10,15);
     const Tile kTilePlayer = Tile(1,0);
@@ -57,7 +58,7 @@ namespace graphics {
     const Tile kTileSpeedUpgrade = Tile(15,10);
     const Tile kTileExplosionRadiusUpgrade = Tile(13,1);
     const Tile kTileBombCountUpgrade = Tile(5,14);
-//HuhnPNG
+/// HuhnPNG
     /*const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(0,0);
     const Tile kTilePlayer = Tile(0,4);
@@ -72,6 +73,6 @@ namespace graphics {
 
 
 
-} //namespace graphics
+} // namespace graphics
 
-#endif
+#endif // BOMBERMAN_GRAPHICS_TILE_H_

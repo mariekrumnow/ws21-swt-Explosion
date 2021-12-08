@@ -11,7 +11,7 @@
 #include "../graphics/Color.h"
 #include "../graphics/Tile.h"
 #include "../core/AppManager.h"
-#include "bomb/Bomb.h"
+#include "../game/bomb/Bomb.h"
 
 
 namespace game {
@@ -41,7 +41,7 @@ Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
 
 Player::~Player(){}
 
-//überprüft auch via OnPlayerCollision ob Position frei is
+///überprüft auch via OnPlayerCollision ob Position frei is
 bool Player::SetPosition(int x, int y) {
 
   GameManager& game = GameManager::GetCurrentGame();
@@ -166,4 +166,4 @@ int Player::GetKMaxSpeed() {
     return kMaxSpeed;
 }
 
-} //namespace game
+} // namespace game

@@ -1,6 +1,7 @@
-//Author: Tobias
-#ifndef GRAPHICS_GRAPHICSMANAGER_H_
-#define GRAPHICS_GRAPHICSMANAGER_H_
+// Author: Tobias
+
+#ifndef BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_
+#define BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_
 
 #include "TileSet.h"
 
@@ -16,7 +17,7 @@ namespace graphics {
       kLarge
     };
 
-//Graphics Manager: The class that manages all the graphics
+/// Manages all the graphics
     class GraphicsManager {
     public:
         const int kWindowHeight = 360;
@@ -25,19 +26,19 @@ namespace graphics {
         GraphicsManager(std::string title, bool init_graphics);
         ~GraphicsManager();
 
-        //call at the start of every frame
+        /// call at the start of every frame
         void BeginFrame();
         void DrawTile(Tile tile, Color color, int x, int y);
-        //sizes 14, 20, and 30 are supported
+        /// sizes 14, 20, and 30 are supported
         void WriteText(std::string text, Color color, FontSize size, bool bold, int x, int y);
-        //call at the end of every frame
+        /// call at the end of every frame
         void EndFrame();
 
         void SetFullscreen(bool fullscreen);
 
-        //only returns true on the first frame the key is pressed
+        /// only returns true on the first frame the key is pressed
         bool IsKeyPressed(int scancode);
-        //returns true as long as the key is pressed
+        /// returns true as long as the key is pressed
         bool IsKeyHeld(int scancode);
 
         void Quit();
@@ -53,15 +54,15 @@ namespace graphics {
         TTF_Font * font_small_;
         TTF_Font * font_medium_;
         TTF_Font * font_large_;
-
-        //stores all keys that were already held on the last frame
+      
+        /// stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];
-        //stores all keys that are held on this frame
+        /// stores all keys that are held on this frame
         bool key_held_[SDL_NUM_SCANCODES];
-        //a key gets set to just held on the first frame,
-        //and then to "not pressed" and held on the second
+        /// a key gets set to just held on the first frame,
+        /// and then to "not pressed" and held on the second
     };
 
-} //namespace graphics
+} // namespace graphics
 
-#endif
+#endif // BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_

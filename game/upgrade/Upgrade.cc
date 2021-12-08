@@ -10,14 +10,14 @@
 #include "../../graphics/Tile.h"
 
 namespace game {
-    namespace upgrade{
-        Upgrade::Upgrade() : GameObject() {}
+namespace upgrade{
+Upgrade::Upgrade() : GameObject() {}
 
-        void Upgrade::Update(double delta_time){}
+void Upgrade::Update(double delta_time){}
 
-        bool Upgrade::OnCollision(GameObject& source){
-             return false;
-       }
-
-    }
+bool Upgrade::OnCollision(GameObject& source){
+    return false;
 }
+
+} // namespace upgrade
+} // namespace game

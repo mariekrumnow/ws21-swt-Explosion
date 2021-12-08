@@ -2,8 +2,8 @@
 
 #include "GameWindow.h"
 
-#include "../core/Window.h"
 #include "GameManager.h"
+#include "../core/Window.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 
@@ -51,4 +51,4 @@ void GameWindow::Update(double delta_time) {
 	game.Update(delta_time);
 }
 
-}  //namespace game
+} // namespace game

@@ -4,13 +4,12 @@
 
 #include "core/AppManager.h"
 
+
+#include "graphics/GraphicsManager.h"
+#include "graphics/Keys.h"
 #include "game/GameWindow.h"
 #include "game/GameManager.h"
 #include "game/Player.h"
-
-#include "graphics/Keys.h"
-#include "graphics/GraphicsManager.h"
-
 #include "game/upgrade/ExplosionRadiusUpgrade.h"
 #include "game/upgrade/BombCountUpgrade.h"
 #include "../game/block/DestructibleBlock.h"
@@ -18,8 +17,9 @@
 
 int main(int argc, char** argv)
 {
-    //initialize the app manager
+    /// Initialize the app manager
     core::AppManager app = core::AppManager("Bomberman Explosion", true);
+
 
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
@@ -43,24 +43,50 @@ int main(int argc, char** argv)
     player2keys.right = SDL_SCANCODE_L;
     player2keys.bomb = SDL_SCANCODE_RSHIFT;
 
-    game::upgrade::ExplosionRadiusUpgrade * upgrade
-      = game::upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(8,8);
-
     //auto upgrade2 = game::upgrade::BombCountUpgrade::CreateBombCountUpgrade(1, 0);
 
-    game::obstacles::IndestructibleBlock * block2 = game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(4,4);
+    // Outer walls (minus 0,0: somehow won't be placed)
+    for (int i=0; i<15; i++) {
+          game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,0); // Upper wall
+          game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,12); // Lower wall
 
-    game::obstacles::DestructibleBlock * block3 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,8);
-    game::obstacles::DestructibleBlock * block4 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,8);
-    game::obstacles::DestructibleBlock * block5 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,8);
-    game::obstacles::DestructibleBlock * block6 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,9);
-    game::obstacles::DestructibleBlock * block7 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,10);
-    game::obstacles::DestructibleBlock * block8 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(4,11);
-    game::obstacles::DestructibleBlock * block9 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(6,6);
-    game::obstacles::DestructibleBlock * block10 = game::obstacles::DestructibleBlock::CreateDestructibleBlock(5,5);
+          if (i==0 || i==14) { // Left or right wall
+                for (int j=1; j <12; j++) {
+                      game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,j);
+                }
+          }
+    }
 
-    game::Player * player1 = game::Player::CreatePlayer(0,0,player1keys);
-    game::Player * player2 = game::Player::CreatePlayer(14,12,player2keys);
+    // Indestructible blocks in the middle
+    for (int i=2; i<=12; i+=2) {
+          for(int j=2; j<=10; j+=2){
+                game::obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,j);
+          }
+    }
+
+    // Randomly placed destructible blocks
+    //game::obstacles::DestructibleBlock * blocks[14][12];
+    for (int i=1; i<14; i++) {
+          for (int j=1; j<12; j++) {
+                // Is a destructible block allowed?
+                if ( (i%2 || j%2)
+                        && !(
+                        (i==1 && j==1) || (i==1 && j==2) || (i==2 && j==1) // Top left corner
+                        || (i==1 && j==10) || (i==1 && j==11) || (i==2 && j==11) // Bottom left corner
+                        || (i==12 && j==11) || (i==13 && j==11) || (i==13 && j==10) // Bottom right corner
+                        || (i==12 && j==1) || (i==13 && j==1) || (i==13 && j==2) /* Top right corner */      ) )
+                {
+                      if (rand()%100 <=85) { // Places destructible block with a 85% chance
+                           /*blocks[i][j] =*/ game::obstacles::DestructibleBlock::CreateDestructibleBlock(i,j);
+                      }
+                }
+
+          }
+    }
+
+
+    game::Player * player1 = game::Player::CreatePlayer(1,1,player1keys);
+    game::Player * player2 = game::Player::CreatePlayer(13,11,player2keys);
     player1->IncreaseSpeed(6);
     player1->IncreaseMaxBombCount(2);
     player2->IncreaseSpeed(6);

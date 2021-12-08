@@ -1,4 +1,5 @@
 //Author: Tobias
+
 #include "Tile.h"
 
 namespace graphics {
@@ -11,4 +12,4 @@ namespace graphics {
         return y_offset_;
     }
 
-} //namespace graphics
+} // namespace graphics

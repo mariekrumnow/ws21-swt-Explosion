@@ -32,6 +32,6 @@ private:
 
 
 }  // namespace bomb
-}   //namespace game
+}  // namespace game
 
-#endif //BOMBERMAN_GAME_BOMB_EXPLOSION_H
+#endif // BOMBERMAN_GAME_BOMB_EXPLOSION_H

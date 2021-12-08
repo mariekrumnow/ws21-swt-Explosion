@@ -15,7 +15,7 @@ namespace bomb {
         timer_ = kExplosionDuration;
     }
 
-    /// If a nullptr is returned, an error occured or the object couldn't be placed
+    /// \brief If a nullptr is returned, an error occured or the object couldn't be placed
     Explosion* Explosion::CreateExplosion(int x, int y){
           Explosion* temp = new Explosion();
           if (temp!=nullptr){
@@ -51,5 +51,5 @@ namespace bomb {
         }
     }
 
-}   //namespace bomb
-} //namespace game
+} // namespace bomb
+} // namespace game

@@ -5,21 +5,19 @@
 #include <time.h>
 
 #include "Block.h"
-#include "../GameManager.h"
 #include "DestructibleBlock.h"
+#include "../GameManager.h"
 #include "../../graphics/Tile.h"
 #include "../../graphics/Color.h"
-#include "../../game/upgrade/ExplosionRadiusUpgrade.h"
-#include "../../game/upgrade/BombCountUpgrade.h"
-#include "../../game/upgrade/SpeedUpgrade.h"
+#include "../upgrade/ExplosionRadiusUpgrade.h"
+#include "../upgrade/BombCountUpgrade.h"
+#include "../upgrade/SpeedUpgrade.h"
 
 namespace game {
-
 namespace obstacles{
 
     DestructibleBlock::DestructibleBlock() : Block() {}
 
-    /// If a nullptr is returned, an error occured or the object couldn't be placed
     DestructibleBlock* DestructibleBlock::CreateDestructibleBlock(int x, int y){
           DestructibleBlock* temp = new DestructibleBlock();
           if (temp!=nullptr){
@@ -58,5 +56,4 @@ namespace obstacles{
     }
 
 } // namespace obstacles
-
 } // namespace game
