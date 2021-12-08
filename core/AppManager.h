@@ -21,8 +21,9 @@ namespace core {
 
         graphics::GraphicsManager& GetGraphics();
 
-        /// init_graphics can be set to false to disable graphical function for testing
-        explicit AppManager(bool init_graphics);
+        //init_graphics can be set to false to disable graphical function for testing
+        explicit AppManager(std::string title, bool init_graphics);
+
         ~AppManager();
 
         /// sets the active window. DOESN'T delete the current window.

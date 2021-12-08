@@ -4,9 +4,9 @@
 
 #include "core/AppManager.h"
 
+
 #include "graphics/GraphicsManager.h"
 #include "graphics/Keys.h"
-
 #include "game/GameWindow.h"
 #include "game/GameManager.h"
 #include "game/Player.h"
@@ -17,8 +17,9 @@
 
 int main(int argc, char** argv)
 {
-    ///initialize the app manager
-    core::AppManager app = core::AppManager(true);
+    /// Initialize the app manager
+    core::AppManager app = core::AppManager("Bomberman Explosion", true);
+
 
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
