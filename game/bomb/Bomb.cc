@@ -1,4 +1,4 @@
-//Autor: Tobias, Marie
+//Autor: Tobias, Marie, Carla, Nina
 
 #include "Bomb.h"
 #include "Explosion.h"
@@ -66,8 +66,8 @@ void Bomb::Update(double delta_time) {
 	}
 }
 
-bool Bomb::SpawnExplosion(int x, int y) {
-	Explosion* explosion = Explosion::CreateExplosion(x,y);
+bool Bomb::SpawnExplosion(int x, int y, int t) {
+	Explosion* explosion = Explosion::CreateExplosion(x,y,t);
 	if (explosion = nullptr) {
 		return false;
 	}
@@ -92,7 +92,7 @@ void Bomb::Explode() {
 	int current_y = GetY();
 
 	///always spawn explosion where bomb is
-	SpawnExplosion(current_x, current_y);
+	SpawnExplosion(current_x, current_y,10);
 
 	///for each of the four directions
 	for (int turn=0; turn<4; turn++) {
@@ -107,12 +107,30 @@ void Bomb::Explode() {
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
 				stopped |= go->OnExplosion(*this);
 			}
-
+            int t=turn;
+            ///differetiation between middle- and end- explosions
+            if(d==power_)
+            {
+                switch(turn){
+                    case 0 :
+                        t=4;
+                        break;
+                    case 1 :
+                        t=5;
+                        break;
+                    case 2 :
+                        t=6;
+                        break;
+                    case 3 :
+                        t=7;
+                        break;
+                }
+            }
 			///if none there, spawn explosion
 			if (stopped) {
 				break;
 			} else {
-				if (!SpawnExplosion(x,y)) {
+				if (!SpawnExplosion(x,y,t)) {
 					break;
 				}
 			}

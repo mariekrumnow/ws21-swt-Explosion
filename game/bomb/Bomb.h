@@ -1,4 +1,4 @@
-// Autor: Tobias, Marie
+// Autor: Tobias, Marie, Carla, Nina
 
 #ifndef BOMBERMAN_GAME_BOMB_BOMB_H
 #define BOMBERMAN_GAME_BOMB_BOMB_H
@@ -34,7 +34,7 @@ private:
 	double explosion_timer_;
 	bool exploding_; ///< so the bomb can't explode multiple times
 	void Explode();
-	bool SpawnExplosion(int x, int y);
+	bool SpawnExplosion(int x, int y, int t);
 };
 
 }

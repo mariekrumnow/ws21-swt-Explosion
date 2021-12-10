@@ -1,4 +1,4 @@
-//Autor: Marlene, Tobias, Marie
+//Autor: Marlene, Tobias, Marie, Carla, Nina
 
 #include "Explosion.h"
 
@@ -15,11 +15,16 @@ namespace bomb {
         timer_ = kExplosionDuration;
     }
 
+    int Explosion::GetOrientation(){
+        return orientation_;
+    }
+
     /// \brief If a nullptr is returned, an error occured or the object couldn't be placed
-    Explosion* Explosion::CreateExplosion(int x, int y){
+    Explosion* Explosion::CreateExplosion(int x, int y, int t){
           Explosion* temp = new Explosion();
           if (temp!=nullptr){
                 GameManager::GetCurrentGame().AddGameObject(*temp);
+                temp->orientation_=t;
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;
@@ -31,8 +36,37 @@ namespace bomb {
     Explosion::~Explosion() {}
 
 
+    /// defines witch Tile of an Explosion is correct to be drawn
     graphics::Tile Explosion::GetTile() {
-        return graphics::kTileExplosion;
+        switch(orientation_) {
+            case 0 :
+                return graphics::kTileExplosionVertical;
+                break;
+            case 1 :
+                return graphics::kTileExplosionHorizontal;
+                break;
+            case 2 :
+                return graphics::kTileExplosionVertical;
+                break;
+            case 3 :
+                return graphics::kTileExplosionHorizontal;
+                break;
+            case 4 :
+                return graphics::kTileExplosionDown;
+                break;
+            case 5 :
+                return graphics::kTileExplosionRight;
+                break;
+            case 6 :
+                return graphics::kTileExplosionUp;
+                break;
+            case 7 :
+                return graphics::kTileExplosionLeft;
+                break;
+            case 10 :
+                return graphics::kTileExplosionMiddle;
+                break;
+        }
     }
 
     graphics::Color Explosion::GetColor() {

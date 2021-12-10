@@ -1,4 +1,4 @@
-// Autor: Peter, Nina, Tobias, Marie
+// Autor: Peter, Nina, Tobias, Marie, Carla
 
 #ifndef BOMBERMAN_GAME_PLAYER_H
 #define BOMBERMAN_GAME_PLAYER_H
@@ -38,6 +38,7 @@ public:
     int GetKMaxExplosionRadius();
     int GetKMaxBombCount();
     int GetKMaxSpeed();
+    int GetOrientation();
 
     graphics::Tile GetTile();
     graphics::Color GetColor();
@@ -56,6 +57,8 @@ private:
     const int kMaxSpeed = 7;
 
     int owned_bombs_;
+
+    int orientation_=0;
 
 
     double move_timer_;  ///< timer till player can move again

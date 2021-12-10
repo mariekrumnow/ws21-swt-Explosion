@@ -1,4 +1,4 @@
-//Autor: Peter, Nina, Tobias, Marie
+//Autor: Peter, Nina, Tobias, Marie, Carla
 
 #include "Player.h"
 
@@ -96,15 +96,19 @@ void Player::Update(double delta_time) {
 
     if (graphics.IsKeyHeld(keys.up)) {
       player_moved = SetPosition(GetX(), GetY()-1);
+      orientation_=0;
 
     } else if (graphics.IsKeyHeld(keys.down)) {
       player_moved = SetPosition(GetX(), GetY()+1);
+      orientation_=1;
 
     } else if (graphics.IsKeyHeld(keys.left)) {
       player_moved = SetPosition(GetX()-1, GetY());
+      orientation_=2;
 
     } else if (graphics.IsKeyHeld(keys.right)) {
       player_moved = SetPosition(GetX()+1, GetY());
+      orientation_=3;
 
     }
 
@@ -120,7 +124,16 @@ void Player::Update(double delta_time) {
 }
 
 graphics::Tile Player::GetTile() {
-  return graphics::kTilePlayer;
+    switch(orientation_){
+        case 0 :
+            return graphics::kTilePlayer1Up;
+        case 1 :
+            return graphics::kTilePlayer1Down;
+        case 2 :
+            return graphics::kTilePlayer1Left;
+        case 3 :
+            return graphics::kTilePlayer1Right;
+    }
 }
 
 graphics::Color Player::GetColor() {

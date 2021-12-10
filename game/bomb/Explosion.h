@@ -1,4 +1,4 @@
-// Autor: Marlene, Marie
+// Autor: Marlene, Marie, Carla, Nina
 
 #ifndef BOMBERMAN_GAME_BOMB_EXPLOSION_H
 #define BOMBERMAN_GAME_BOMB_EXPLOSION_H
@@ -15,7 +15,7 @@ namespace bomb {
 class Explosion : public GameObject {
 public:
     Explosion();
-    static Explosion* CreateExplosion(int x, int y);
+    static Explosion* CreateExplosion(int x, int y,int t);
     ~Explosion();
 
     graphics::Tile GetTile();
@@ -26,8 +26,11 @@ public:
 
     const double kExplosionDuration = 0.5;
 
+    int GetOrientation();
+
 private:
     double timer_;
+    int orientation_;
 };
 
 

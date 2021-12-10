@@ -61,12 +61,32 @@ namespace graphics {
 /// Grafiken
     const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(0,0);
-    const Tile kTilePlayer = Tile(0,4);
+
+    const Tile kTilePlayer1Up = Tile(0,3);
+    const Tile kTilePlayer1Down = Tile(1,3);
+    const Tile kTilePlayer1Right = Tile(3,3);
+    const Tile kTilePlayer1Left = Tile(2,3);
+
+    const Tile kTilePlayer2Up = Tile(0,4);
+    const Tile kTilePlayer2Down = Tile(1,4);
+    const Tile kTilePlayer2Right = Tile(3,4);
+    const Tile kTilePlayer2Left = Tile(2,4);
+
     const Tile kTileSolidWall = Tile(2,0);
     const Tile kTileBrittleWall = Tile(1,0);
-    const Tile kTileExplosion = Tile(1,2);
+
+    const Tile kTileExplosionMiddle = Tile(1,2);
+    const Tile kTileExplosionHorizontal = Tile(2,2);
+    const Tile kTileExplosionVertical = Tile(3,2);
+    const Tile kTileExplosionUp = Tile(3,1);
+    const Tile kTileExplosionRight = Tile(4,0);
+    const Tile kTileExplosionLeft = Tile(3,0);
+    const Tile kTileExplosionDown = Tile(4,2);
+
     const Tile kTileBomb = Tile(0,2);
+
     const Tile kTileMenuCursor = Tile(0,1);
+
     const Tile kTileSpeedUpgrade = Tile(0,1);
     const Tile kTileExplosionRadiusUpgrade = Tile(1,1);
     const Tile kTileBombCountUpgrade = Tile(2,1);
