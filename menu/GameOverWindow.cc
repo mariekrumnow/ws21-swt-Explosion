@@ -10,15 +10,9 @@ namespace menu{
             winner_name_ = "Spieler1";
         }
     }
-    GameOverWindow::~GameOverWindow(){}
-
 
     void GameOverWindow::Draw(){}
 
     void GameOverWindow::OnMenuItemSelect(int selected_option){}
-
-    std::string& GameOverWindow::GetWinner(){}
-
-    graphics::Color& GameOverWindow::GetWinnerColor(){}
 
 }

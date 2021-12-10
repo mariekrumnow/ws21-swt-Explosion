@@ -5,7 +5,6 @@
 
 namespace menu{
     InstructionWindow::InstructionWindow(){}
-    InstructionWindow::~InstructionWindow(){}
 
     void InstructionWindow::Draw(){}
 

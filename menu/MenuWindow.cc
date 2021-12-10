@@ -4,25 +4,40 @@
 #include <vector>
 
 #include "MenuWindow.h"
+#include "../graphics/Keys.h"
+#include "../core/AppManager.h"
 
 
 namespace menu{
-    MenuWindow::MenuWindow(){}
-    MenuWindow::~MenuWindow(){}
+    void MenuWindow::Update(double delta_time){
+          graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
+          // Goes up or down in the selectable buttons
+          if (graphics.IsKeyHeld(graphics::PlayerKeys.up)) {
+                selected_option_--;
+          } else if (graphics.IsKeyHeld(graphics::PlayerKeys.down)) {
+                selected_option_++;
+          }
 
-    void MenuWindow::Update(double delta_time){}
-
-    void MenuWindow::Draw(){}
+          // Sends signal that the MenuItem wants to be activated
+          if (graphics.IsKeyPressed(graphics::key_return)) {
+                OnMenuItemSelect(selected_option_);
+          }
+   }
 
 
     void MenuWindow::OnMenuItemSelect(int selected_option){}
 
-    int MenuWindow::GetSelectedOption(){}
+    int MenuWindow::GetSelectedOption(){
+          return selected_option_;
+   }
 
-    std::vector<MenuItem>& MenuWindow::GetMenuItems(){}
+    std::vector<MenuItem>& MenuWindow::GetMenuItems(){
+          return menu_items_;
+   }
 
-    void MenuWindow::AddMenuItem(MenuItem menu_item){}
+    void MenuWindow::AddMenuItem(MenuItem menu_item){
+          menu_items_.push_back(menu_item);
+   }
 
 }   // namespace menu
-

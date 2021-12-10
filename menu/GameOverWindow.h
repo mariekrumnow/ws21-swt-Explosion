@@ -18,16 +18,11 @@ class GameOverWindow : public MenuWindow {
 public:
     ///
     GameOverWindow(game::Player *winner);
-    ~GameOverWindow();
 
     ///
     void Draw();
     ///
     void OnMenuItemSelect(int selected_option);
-    ///
-    std::string& GetWinner();
-    ///
-    graphics::Color& GetWinnerColor();
 
 private:
     ///

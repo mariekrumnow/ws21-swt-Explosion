@@ -13,33 +13,24 @@
 
 namespace menu{
 
-class MenuWindow : public Window {
+class MenuWindow : public core::Window {
 public:
-    ///
-    MenuWindow();
-    ///
-    ~MenuWindow();
-
-    ///
+    /// Changes the selected MenuItem or sends a signal if keys are pressed
     void Update(double delta_time);
-    ///
-    void Draw();
 
-    ///
-    void OnMenuItemSelect(int selected_option);
-    ///
+    virtual void OnMenuItemSelect(int selected_option);
+
     int GetSelectedOption();
-    ///
     std::vector<MenuItem>& GetMenuItems();
 
 
 private:
-    ///
+    /// The MenuItem the user is currently hovering over
     int selected_option_;
-    ///
+    /// All MenuItems on screen in order from top to bottom (or left to right)
     std::vector<MenuItem> menu_items_;
 
-    ///
+    /// Adds a MenuItem to the current MenuWindow and shows it
     void AddMenuItem(MenuItem menu_item);
 };
 

@@ -14,15 +14,12 @@ class InstructionWindow : public MenuWindow {
 public:
     ///
     InstructionWindow();
-    ~InstructionWindow();
 
-    ///
+    /// Shows the current MenuWindow on screen
     void Draw();
 
-    ///
+    /// Activates the effect of the respective MenuItem
     void OnMenuItemSelect(int selected_option);
-
-
 
 };
 
