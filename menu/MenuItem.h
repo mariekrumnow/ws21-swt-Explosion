@@ -9,13 +9,11 @@
 #include <string>
 
 namespace menu{
-// Has to be pre-declared for the constructor
-class MenuWindow;
 
 class MenuItem {
 public:
     /// Creates an Item and puts it in the window
-    MenuItem(std::string text, int x, int y, MenuWindow& window);
+    MenuItem(std::string text, int x, int y);
 
     std::string GetText();
     int GetXPosition();

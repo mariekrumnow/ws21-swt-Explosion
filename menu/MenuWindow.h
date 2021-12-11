@@ -7,8 +7,9 @@
 
 #include <vector>
 
-#include "../core/Window.h"
 #include "MenuItem.h"
+#include "../core/Window.h"
+#include "../graphics/Keys.h"
 
 
 namespace menu{

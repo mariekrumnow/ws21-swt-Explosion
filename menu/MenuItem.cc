@@ -4,11 +4,8 @@
 #include "MenuItem.h"
 
 namespace menu{
-    MenuItem::MenuItem(std::string text, int x, int y, MenuWindow& window)
-      : text_(text), x_(x), y_(y)
-    {
-          window.AddMenuItem(*this);
-    }
+    MenuItem::MenuItem(std::string text, int x, int y)
+      : text_(text), x_(x), y_(y) {}
 
     std::string MenuItem::GetText(){
           return text_;
