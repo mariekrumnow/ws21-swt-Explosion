@@ -13,7 +13,9 @@ namespace obstacles{
     IndestructibleBlock::IndestructibleBlock() : Block() {}
 
     IndestructibleBlock* IndestructibleBlock::CreateIndestructibleBlock(int x, int y){
-          IndestructibleBlock* temp = new IndestructibleBlock();
+
+
+        IndestructibleBlock* temp = new IndestructibleBlock();
           if (temp!=nullptr){
                 GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {

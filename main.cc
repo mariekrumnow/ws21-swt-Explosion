@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveWindow(game_window);
-    game::GameManager game_manager = game::GameManager(15,13, 15, 2, player_keys, winCondition);
+    game::GameManager game_manager = game::GameManager(15,13, 100, 2, player_keys, winCondition);
 
     app.Run();
 

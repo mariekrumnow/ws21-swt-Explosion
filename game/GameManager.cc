@@ -167,6 +167,9 @@ int GameManager::GetPlayerCount() const {
 }
 
 void GameManager::GenerateMap(const int indes_prop) const {
+
+    obstacles::IndestructibleBlock::CreateIndestructibleBlock(0,0);
+
     // Outer walls (minus 0,0: somehow won't be placed)
     for (int i=0; i<width_; i++) {
         obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,0); // Upper wall

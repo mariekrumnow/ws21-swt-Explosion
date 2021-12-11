@@ -28,23 +28,7 @@ SDL_ttf.h
 cstdlib
 -
 
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Keys.cc
-Keys.h
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Keys.h
-
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Keys.h
-SDL.h
--
-
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Tile.cc
-Tile.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Tile.h
-
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Tile.h
-
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/TileSet.cc
-TileSet.h
-/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/TileSet.h
 
 /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/TileSet.h
 SDL.h
@@ -696,10 +680,6 @@ SDL_surface.h
 begin_code.h
 /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/begin_code.h
 close_code.h
-/opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/close_code.h
-
-/opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/begin_code.h
-
 /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/close_code.h
 
 /opt/homebrew/include/SDL2/SDL_ttf.h

@@ -11,29 +11,28 @@
 namespace core {
 
 
-    AppManager* AppManager::manager_;
+AppManager* AppManager::manager_;
 
-    AppManager& AppManager::GetAppManager() {
-        return *AppManager::manager_;
+AppManager& AppManager::GetAppManager() {
+    return *AppManager::manager_;
+}
+
+graphics::GraphicsManager& AppManager::GetGraphics() {
+    return graphics_;
+}
+
+
+AppManager::AppManager(std::string title, bool init_graphics) : isRunning_(true),
+    graphics_(graphics::GraphicsManager(title, init_graphics)) {
+    //ensure the reference to the AppManager stays active, and there is only one.
+
+    if(AppManager::manager_ != nullptr) {
+        delete AppManager::manager_;
     }
 
-    graphics::GraphicsManager& AppManager::GetGraphics() {
-      return graphics_;
-    }
-
-
-    AppManager::AppManager(std::string title, bool init_graphics) :
-            graphics_(graphics::GraphicsManager(title, init_graphics)) {
-        //ensure the reference to the AppManager stays active, and there is only one.
-
-              
-        if(AppManager::manager_ != nullptr) {
-            delete AppManager::manager_;
-        }
-
-        AppManager::manager_ = this;
-        active_window_ = nullptr;
-    }
+    AppManager::manager_ = this;
+    active_window_ = nullptr;
+}
 
     AppManager::~AppManager() {
         AppManager::manager_ = nullptr;
@@ -64,7 +63,7 @@ namespace core {
 
 				const int min_delta_time = 1000000 / 60; //limit to ~60 fps
 
-        while (true) {
+        while (isRunning_) {
             auto start_time = std::chrono::high_resolution_clock::now();
             RunFrame(delta_time);
             auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
@@ -75,19 +74,24 @@ namespace core {
             }
 
             if (graphics_.IsKeyPressed(graphics::key_escape)) {
-              graphics_.Quit();
+              isRunning_ = false;
             }
 
 						int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
                                  .count();
-
-            if (elapsed_microsecs < min_delta_time) {
-              graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
+            if (elapsed_microsecs < min_delta_time) {graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
               elapsed_microsecs = min_delta_time;
             }
 
             delta_time = elapsed_microsecs/1000000.0;
         }
+
+        graphics_.Quit();
+    }
+
+    void AppManager::Quit()
+    {
+        isRunning_ = false;
     }
 
 
