@@ -1,4 +1,5 @@
 //Autor: Tobias, Carla, Dennis
+#include "game/win_condition/StandardWinCondition.h"
 #include "core/AppManager.h"
 
 #include "graphics/Keys.h"
@@ -26,13 +27,12 @@ int main(int argc, char** argv)
     player_keys[1].right = graphics::key_l;
     player_keys[1].bomb = graphics::key_r_shift;
 
+    game::win_condition::BaseWinCondition *winCondition = new game::win_condition::StandardWinCondition();
 
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveWindow(game_window);
-    game::GameManager game_manager = game::GameManager(15,13, 2, player_keys);
+    game::GameManager game_manager = game::GameManager(15,13, 15, 2, player_keys, winCondition);
 
-
-    // bleibt hier
     app.Run();
 
     return 0;

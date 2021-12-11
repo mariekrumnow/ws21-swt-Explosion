@@ -8,6 +8,8 @@ CMakeFiles/bomberman.dir/main.cc.o
  /Users/dennisneuhaus/Projects/games/swt-bomberman/game/GameObject.h
  /Users/dennisneuhaus/Projects/games/swt-bomberman/game/GameWindow.h
  /Users/dennisneuhaus/Projects/games/swt-bomberman/game/Player.h
+ /Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/BaseWinCondition.h
+ /Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.h
  /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Color.h
  /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/GraphicsManager.h
  /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Keys.h

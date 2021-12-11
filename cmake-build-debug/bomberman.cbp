@@ -323,6 +323,15 @@
 		<Unit filename="/Users/dennisneuhaus/Projects/games/swt-bomberman/game/upgrade/Upgrade.h">
 			<Option target="game"/>
 		</Unit>
+		<Unit filename="/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/BaseWinCondition.h">
+			<Option target="game"/>
+		</Unit>
+		<Unit filename="/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.cc">
+			<Option target="game"/>
+		</Unit>
+		<Unit filename="/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.h">
+			<Option target="game"/>
+		</Unit>
 		<Unit filename="/Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Color.h">
 			<Option target="graphics"/>
 		</Unit>

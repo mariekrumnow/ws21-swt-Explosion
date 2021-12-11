@@ -11,6 +11,7 @@ game/CMakeFiles/game.dir/GameManager.cc.o: \
  ../game/block/Block.h \
  ../game/block/DestructibleBlock.h \
  ../game/block/IndestructibleBlock.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -71,6 +72,7 @@ game/CMakeFiles/game.dir/GameObject.cc.o: \
  ../game/GameManager.h \
  ../game/GameObject.cc \
  ../game/GameObject.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -132,6 +134,7 @@ game/CMakeFiles/game.dir/GameWindow.cc.o: \
  ../game/GameObject.h \
  ../game/GameWindow.cc \
  ../game/GameWindow.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -195,6 +198,7 @@ game/CMakeFiles/game.dir/Player.cc.o: \
  ../game/Player.h \
  ../game/bomb/Bomb.h \
  ../game/bomb/Explosion.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -256,6 +260,7 @@ game/CMakeFiles/game.dir/block/Block.cc.o: \
  ../game/GameObject.h \
  ../game/block/Block.cc \
  ../game/block/Block.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -323,6 +328,7 @@ game/CMakeFiles/game.dir/block/DestructibleBlock.cc.o: \
  ../game/upgrade/ExplosionRadiusUpgrade.h \
  ../game/upgrade/SpeedUpgrade.h \
  ../game/upgrade/Upgrade.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -385,6 +391,7 @@ game/CMakeFiles/game.dir/block/IndestructibleBlock.cc.o: \
  ../game/block/Block.h \
  ../game/block/IndestructibleBlock.cc \
  ../game/block/IndestructibleBlock.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -448,6 +455,7 @@ game/CMakeFiles/game.dir/bomb/Bomb.cc.o: \
  ../game/bomb/Bomb.cc \
  ../game/bomb/Bomb.h \
  ../game/bomb/Explosion.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -509,6 +517,7 @@ game/CMakeFiles/game.dir/bomb/Explosion.cc.o: \
  ../game/GameObject.h \
  ../game/bomb/Explosion.cc \
  ../game/bomb/Explosion.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -572,6 +581,7 @@ game/CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.o: \
  ../game/upgrade/BombCountUpgrade.cc \
  ../game/upgrade/BombCountUpgrade.h \
  ../game/upgrade/Upgrade.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -635,6 +645,7 @@ game/CMakeFiles/game.dir/upgrade/ExplosionRadiusUpgrade.cc.o: \
  ../game/upgrade/ExplosionRadiusUpgrade.cc \
  ../game/upgrade/ExplosionRadiusUpgrade.h \
  ../game/upgrade/Upgrade.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -698,6 +709,7 @@ game/CMakeFiles/game.dir/upgrade/SpeedUpgrade.cc.o: \
  ../game/upgrade/SpeedUpgrade.cc \
  ../game/upgrade/SpeedUpgrade.h \
  ../game/upgrade/Upgrade.h \
+ ../game/win_condition/BaseWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \
@@ -760,6 +772,69 @@ game/CMakeFiles/game.dir/upgrade/Upgrade.cc.o: \
  ../game/Player.h \
  ../game/upgrade/Upgrade.cc \
  ../game/upgrade/Upgrade.h \
+ ../game/win_condition/BaseWinCondition.h \
+ ../graphics/Color.h \
+ ../graphics/GraphicsManager.h \
+ ../graphics/Keys.h \
+ ../graphics/Tile.h \
+ ../graphics/TileSet.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_assert.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_atomic.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_audio.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_blendmode.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_clipboard.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_config.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_cpuinfo.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_endian.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_error.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_events.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_filesystem.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_gamecontroller.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_gesture.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_haptic.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_hints.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_joystick.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_keyboard.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_keycode.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_loadso.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_locale.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_log.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_main.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_messagebox.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_metal.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_misc.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_mouse.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_mutex.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_pixels.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_platform.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_power.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_quit.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_rect.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_render.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_rwops.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_scancode.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_sensor.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_shape.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_stdinc.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_surface.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_system.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_thread.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_timer.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_touch.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_version.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/SDL_video.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/begin_code.h \
+ /opt/homebrew/Cellar/sdl2/2.0.16/include/SDL2/close_code.h \
+ /opt/homebrew/include/SDL2/SDL_ttf.h
+game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o: \
+ ../core/AppManager.h \
+ ../core/Window.h \
+ ../game/GameManager.h \
+ ../game/GameObject.h \
+ ../game/win_condition/BaseWinCondition.h \
+ ../game/win_condition/StandardWinCondition.cc \
+ ../game/win_condition/StandardWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \

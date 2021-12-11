@@ -33,6 +33,8 @@ namespace core {
         /// Run game for ever
         [[noreturn]] void Run();
 
+        void Quit();
+
     private:
         Window* active_window_;
 
@@ -40,6 +42,8 @@ namespace core {
 
 
         static AppManager* manager_; ///< The static reference to the current AppManager
+
+        bool isRunning_;
     };
 
 } // namespace core

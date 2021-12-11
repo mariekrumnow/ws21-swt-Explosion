@@ -1,4 +1,4 @@
-//Autor: Peter, Nina, Tobias, Marie, Carla
+//Autor: Peter, Nina, Tobias, Marie, Carla, Dennis
 
 #include "Player.h"
 
@@ -149,6 +149,8 @@ bool Player::OnCollision(GameObject &source) {
 }
 
 bool Player::OnExplosion(GameObject &source) {
+    this->Destroy();
+    GameManager::GetCurrentGame().ReducePlayerCount();
     return false;
 }
 

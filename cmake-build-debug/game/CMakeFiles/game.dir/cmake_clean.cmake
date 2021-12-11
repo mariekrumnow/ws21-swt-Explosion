@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/game.dir/upgrade/ExplosionRadiusUpgrade.cc.o"
   "CMakeFiles/game.dir/upgrade/SpeedUpgrade.cc.o"
   "CMakeFiles/game.dir/upgrade/Upgrade.cc.o"
+  "CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o"
   "libgame.a"
   "libgame.pdb"
 )

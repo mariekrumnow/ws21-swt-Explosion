@@ -1,4 +1,4 @@
-//Author: Tobias
+//Author: Tobias, Dennis, Peter
 
 #include "Tile.h"
 

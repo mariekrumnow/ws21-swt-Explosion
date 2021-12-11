@@ -68,7 +68,7 @@ void Bomb::Update(double delta_time) {
 
 bool Bomb::SpawnExplosion(int x, int y, int t) {
 	Explosion* explosion = Explosion::CreateExplosion(x,y,t);
-	if (explosion = nullptr) {
+	if (explosion == nullptr) {
 		return false;
 	}
 

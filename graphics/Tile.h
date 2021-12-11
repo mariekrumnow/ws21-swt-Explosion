@@ -1,4 +1,4 @@
-// Author: Tobias
+// Author: Tobias, Dennis, Peter
 
 #ifndef BOMBERMAN_GRAPHICS_TILE_H_
 #define BOMBERMAN_GRAPHICS_TILE_H_

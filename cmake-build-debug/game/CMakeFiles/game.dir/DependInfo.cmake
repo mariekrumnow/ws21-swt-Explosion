@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/dennisneuhaus/Projects/games/swt-bomberman/game/upgrade/ExplosionRadiusUpgrade.cc" "/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/game.dir/upgrade/ExplosionRadiusUpgrade.cc.o"
   "/Users/dennisneuhaus/Projects/games/swt-bomberman/game/upgrade/SpeedUpgrade.cc" "/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/game.dir/upgrade/SpeedUpgrade.cc.o"
   "/Users/dennisneuhaus/Projects/games/swt-bomberman/game/upgrade/Upgrade.cc" "/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/game.dir/upgrade/Upgrade.cc.o"
+  "/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.cc" "/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

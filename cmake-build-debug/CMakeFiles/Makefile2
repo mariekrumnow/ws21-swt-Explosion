@@ -141,7 +141,7 @@ CMakeFiles/bomberman.dir/all: graphics/CMakeFiles/graphics.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bomberman.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bomberman.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/bomberman.dir/rule
@@ -189,12 +189,12 @@ game/CMakeFiles/game.dir/all: core/CMakeFiles/core.dir/all
 game/CMakeFiles/game.dir/all: graphics/CMakeFiles/graphics.dir/all
 	$(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/depend
 	$(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target game"
 .PHONY : game/CMakeFiles/game.dir/all
 
 # Build rule for subdir invocation for target.
 game/CMakeFiles/game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/CMakeFiles/game.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles 0
 .PHONY : game/CMakeFiles/game.dir/rule
@@ -215,7 +215,7 @@ game/CMakeFiles/game.dir/clean:
 graphics/CMakeFiles/graphics.dir/all:
 	$(MAKE) $(MAKESILENT) -f graphics/CMakeFiles/graphics.dir/build.make graphics/CMakeFiles/graphics.dir/depend
 	$(MAKE) $(MAKESILENT) -f graphics/CMakeFiles/graphics.dir/build.make graphics/CMakeFiles/graphics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=19,20,21,22,23 "Built target graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=20,21,22,23,24 "Built target graphics"
 .PHONY : graphics/CMakeFiles/graphics.dir/all
 
 # Build rule for subdir invocation for target.

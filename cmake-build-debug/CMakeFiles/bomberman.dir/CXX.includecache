@@ -27,6 +27,8 @@ GameObject.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/game/GameObject.h
 ../core/AppManager.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/core/AppManager.h
+win_condition/BaseWinCondition.h
+/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/BaseWinCondition.h
 
 /Users/dennisneuhaus/Projects/games/swt-bomberman/game/GameObject.h
 GameManager.h
@@ -64,6 +66,12 @@ GameManager.h
 ../core/AppManager.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/core/AppManager.h
 
+/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/BaseWinCondition.h
+
+/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.h
+BaseWinCondition.h
+/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/BaseWinCondition.h
+
 /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Color.h
 cstdint
 -
@@ -95,6 +103,8 @@ Tile.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/graphics/Tile.h
 
 /Users/dennisneuhaus/Projects/games/swt-bomberman/main.cc
+game/win_condition/StandardWinCondition.h
+/Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.h
 core/AppManager.h
 /Users/dennisneuhaus/Projects/games/swt-bomberman/core/AppManager.h
 graphics/Keys.h

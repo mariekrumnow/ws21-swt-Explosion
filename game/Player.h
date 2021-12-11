@@ -1,4 +1,4 @@
-// Autor: Peter, Nina, Tobias, Marie, Carla
+// Autor: Peter, Nina, Tobias, Marie, Carla, Dennis
 
 #ifndef BOMBERMAN_GAME_PLAYER_H
 #define BOMBERMAN_GAME_PLAYER_H

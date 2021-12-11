@@ -1,4 +1,4 @@
-// Autor: Tobias, Carla, Dennis
+// Autor: Tobias, Carla, Dennis, Peter
 
 #include "Keys.h"
 

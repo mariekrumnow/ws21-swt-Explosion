@@ -30,14 +30,14 @@ public:
   virtual int GetY();
   virtual bool SetPosition(int x, int y);
 
-	virtual void Destroy();
-	bool IsDestroyed();
+  virtual void Destroy();
+  bool IsDestroyed();
 
 private:
 
   int x_;
   int y_;
-	bool destroyed_;
+  bool destroyed_;
 };
 } // namespace game
 

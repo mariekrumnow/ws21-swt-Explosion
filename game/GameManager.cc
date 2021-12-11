@@ -7,15 +7,21 @@
 #include "block/DestructibleBlock.h"
 #include "Player.h"
 
+#include <iostream>
+
 #include "GameObject.h"
-#include "../graphics/Tile.h"
 
 
 namespace game {
 
 GameManager* GameManager::current_game_;
 
-GameManager::GameManager(const int width, const int height, const int player_count, graphics::PlayerKeys* player_keys){
+GameManager::GameManager(const int width, const int height, const int indest_prop, const int playerCount, graphics::PlayerKeys* player_keys, win_condition::BaseWinCondition *winCondition) :
+            width_(width),
+            height_(height),
+            playerCount_(playerCount),
+            winCondition_(winCondition)
+            {
 		width_ = width;
 		height_ = height;
 
@@ -32,12 +38,12 @@ GameManager::GameManager(const int width, const int height, const int player_cou
 		}
 
         // generate map
-        this->GenerateMap(85);
+        this->GenerateMap(indest_prop);
 
         // player
-        Player* players[player_count];
+        Player* players[playerCount_];
 
-        for (int i = 0; i < player_count; i++) {
+        for (int i = 0; i < playerCount_; i++) {
             if (i == 0) {
                 players[i] = Player::CreatePlayer(1,1, player_keys[i], graphics::player1Tiles);
             }
@@ -51,7 +57,6 @@ GameManager::GameManager(const int width, const int height, const int player_cou
                 players[i] = Player::CreatePlayer((width_-2), 1, player_keys[i], graphics::player2Tiles);
             }
         }
-
 
 }
 
@@ -79,6 +84,10 @@ void GameManager::Update(double delta_time) {
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Update(delta_time);
 	}
+
+    if (this->winCondition_->checkWin()) {
+        core::AppManager::GetAppManager().Quit();
+    }
 }
 
 GameManager& GameManager::GetCurrentGame() {
@@ -145,16 +154,19 @@ std::vector<GameObject*> GameManager::GetAllObjects() {
 	return all_objects;
 }
 
-int GameManager::GetWidth() {
+int GameManager::GetWidth() const {
 	return width_;
 }
 
-int GameManager::GetHeight() {
+int GameManager::GetHeight() const {
 	return height_;
 }
 
+int GameManager::GetPlayerCount() const {
+    return playerCount_;
+}
 
-void GameManager::GenerateMap(const int indes_prop) {
+void GameManager::GenerateMap(const int indes_prop) const {
     // Outer walls (minus 0,0: somehow won't be placed)
     for (int i=0; i<width_; i++) {
         obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,0); // Upper wall
@@ -197,6 +209,10 @@ void GameManager::GenerateMap(const int indes_prop) {
 
     }
 
+}
+
+void GameManager::ReducePlayerCount() {
+    this->playerCount_--;
 }
 
 } // namespace game

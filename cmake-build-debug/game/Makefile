@@ -442,6 +442,30 @@ upgrade/Upgrade.cc.s:
 	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/upgrade/Upgrade.cc.s
 .PHONY : upgrade/Upgrade.cc.s
 
+win_condition/StandardWinCondition.o: win_condition/StandardWinCondition.cc.o
+.PHONY : win_condition/StandardWinCondition.o
+
+# target to build an object file
+win_condition/StandardWinCondition.cc.o:
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o
+.PHONY : win_condition/StandardWinCondition.cc.o
+
+win_condition/StandardWinCondition.i: win_condition/StandardWinCondition.cc.i
+.PHONY : win_condition/StandardWinCondition.i
+
+# target to preprocess a source file
+win_condition/StandardWinCondition.cc.i:
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.i
+.PHONY : win_condition/StandardWinCondition.cc.i
+
+win_condition/StandardWinCondition.s: win_condition/StandardWinCondition.cc.s
+.PHONY : win_condition/StandardWinCondition.s
+
+# target to generate assembly for a file
+win_condition/StandardWinCondition.cc.s:
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.s
+.PHONY : win_condition/StandardWinCondition.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -490,6 +514,9 @@ help:
 	@echo "... upgrade/Upgrade.o"
 	@echo "... upgrade/Upgrade.i"
 	@echo "... upgrade/Upgrade.s"
+	@echo "... win_condition/StandardWinCondition.o"
+	@echo "... win_condition/StandardWinCondition.i"
+	@echo "... win_condition/StandardWinCondition.s"
 .PHONY : help
 
 

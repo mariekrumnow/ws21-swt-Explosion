@@ -8,6 +8,8 @@ CMakeFiles/bomberman.dir/main.cc.o: \
  ../game/GameObject.h \
  ../game/GameWindow.h \
  ../game/Player.h \
+ ../game/win_condition/BaseWinCondition.h \
+ ../game/win_condition/StandardWinCondition.h \
  ../graphics/Color.h \
  ../graphics/GraphicsManager.h \
  ../graphics/Keys.h \

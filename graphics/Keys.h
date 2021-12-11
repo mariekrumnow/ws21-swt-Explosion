@@ -1,4 +1,4 @@
-// Autor: Tobias
+// Autor: Tobias, Dennis, Peter
 
 #ifndef BOMBERMAN_GRAPHICS_KEYS_H_
 #define BOMBERMAN_GRAPHICS_KEYS_H_

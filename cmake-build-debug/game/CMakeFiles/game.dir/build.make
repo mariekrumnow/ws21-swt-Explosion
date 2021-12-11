@@ -235,6 +235,19 @@ game/CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.s"
 	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dennisneuhaus/Projects/games/swt-bomberman/game/upgrade/BombCountUpgrade.cc -o CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.s
 
+game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o: game/CMakeFiles/game.dir/flags.make
+game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o: ../game/win_condition/StandardWinCondition.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o"
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o -c /Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.cc
+
+game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.i"
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.cc > CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.i
+
+game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.s"
+	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/dennisneuhaus/Projects/games/swt-bomberman/game/win_condition/StandardWinCondition.cc -o CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.s
+
 # Object files for target game
 game_OBJECTS = \
 "CMakeFiles/game.dir/GameManager.cc.o" \
@@ -249,7 +262,8 @@ game_OBJECTS = \
 "CMakeFiles/game.dir/upgrade/Upgrade.cc.o" \
 "CMakeFiles/game.dir/upgrade/SpeedUpgrade.cc.o" \
 "CMakeFiles/game.dir/upgrade/ExplosionRadiusUpgrade.cc.o" \
-"CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.o"
+"CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.o" \
+"CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o"
 
 # External object files for target game
 game_EXTERNAL_OBJECTS =
@@ -267,9 +281,10 @@ game/libgame.a: game/CMakeFiles/game.dir/upgrade/Upgrade.cc.o
 game/libgame.a: game/CMakeFiles/game.dir/upgrade/SpeedUpgrade.cc.o
 game/libgame.a: game/CMakeFiles/game.dir/upgrade/ExplosionRadiusUpgrade.cc.o
 game/libgame.a: game/CMakeFiles/game.dir/upgrade/BombCountUpgrade.cc.o
+game/libgame.a: game/CMakeFiles/game.dir/win_condition/StandardWinCondition.cc.o
 game/libgame.a: game/CMakeFiles/game.dir/build.make
 game/libgame.a: game/CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX static library libgame.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libgame.a"
 	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && $(CMAKE_COMMAND) -P CMakeFiles/game.dir/cmake_clean_target.cmake
 	cd /Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/game.dir/link.txt --verbose=$(VERBOSE)
 
