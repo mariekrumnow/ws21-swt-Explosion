@@ -22,6 +22,8 @@ public:
     /// Sends signal that there's no collision with upgrades
     virtual bool OnCollision(GameObject& source);
 
+    virtual bool OnExplosion(GameObject& source);
+
     /// Overwrites virtual function of GameObject
     /// \param delta_time The amount of time that has passed since last update
     virtual void Update(double delta_time);

@@ -105,7 +105,7 @@ void Bomb::Explode() {
 			///check for obstacles
 			bool stopped = false;
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
-				stopped |= go->OnExplosion(*this);
+				stopped = go->OnExplosion(*this);
 			}
             int t=turn;
             ///differetiation between middle- and end- explosions

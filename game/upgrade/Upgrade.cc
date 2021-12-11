@@ -19,5 +19,9 @@ bool Upgrade::OnCollision(GameObject& source){
     return false;
 }
 
+bool Upgrade::OnExplosion(GameObject &source) {
+    return false;
+}
+
 } // namespace upgrade
 } // namespace game

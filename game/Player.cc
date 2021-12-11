@@ -149,7 +149,7 @@ bool Player::OnCollision(GameObject &source) {
 }
 
 bool Player::OnExplosion(GameObject &source) {
-    return true;
+    return false;
 }
 
 int Player::GetSpeed() {
