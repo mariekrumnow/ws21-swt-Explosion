@@ -20,8 +20,8 @@ namespace bomb { class Bomb;}
 
 class Player : public GameObject {
 public:
-    Player(graphics::PlayerKeys);
-    static Player* CreatePlayer(int x, int y, graphics::PlayerKeys keys);
+    Player(graphics::PlayerKeys, graphics::PlayerTile);
+    static Player* CreatePlayer(int x, int y, graphics::PlayerKeys keys, graphics::PlayerTile tiles);
     ~Player();
 
     void IncreaseSpeed(int value);
@@ -66,6 +66,7 @@ private:
     const double kMinMoveTimer = 0.1;
 
     graphics::PlayerKeys keys; ///< controls
+    graphics::PlayerTile tiles;
 
   };
 } // namespace game

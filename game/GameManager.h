@@ -13,7 +13,7 @@ namespace game {
 
 class GameManager {
 public:
-    GameManager(const int width, const int height);
+    GameManager(const int width, const int height, const int player_count, graphics::PlayerKeys* player_keys);
     ~GameManager();
 
     void Update(double delta_time);
@@ -30,7 +30,6 @@ public:
     /// returns false if position isn't valid
     bool ChangeObjectPosition(GameObject& game_object, int x, int y);
 
-    void Draw();
     std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
     std::vector<GameObject*> GetAllObjects();
 
@@ -40,6 +39,8 @@ public:
     // WinCondition win_condidion_;
 
 private:
+    void GenerateMap(const int indest_prop);
+
     std::vector<GameObject*>** objects_by_pos_;
     std::vector<GameObject*> empty_object_vector_; ///< as a default for oob positions
     std::list<GameObject*> destroyed_game_objects_;

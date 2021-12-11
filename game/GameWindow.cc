@@ -9,7 +9,8 @@
 
 namespace game {
 
-GameWindow::GameWindow() {}
+GameWindow::GameWindow() {
+}
 
 GameWindow::~GameWindow() {}
 

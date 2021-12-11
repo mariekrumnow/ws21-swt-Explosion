@@ -1,0 +1,12 @@
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/CMakeFiles/bomberman.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/core/CMakeFiles/rebuild_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/core/CMakeFiles/edit_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/core/CMakeFiles/core.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/rebuild_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/edit_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/game/CMakeFiles/game.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/graphics/CMakeFiles/rebuild_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/graphics/CMakeFiles/edit_cache.dir
+/Users/dennisneuhaus/Projects/games/swt-bomberman/cmake-build-debug/graphics/CMakeFiles/graphics.dir

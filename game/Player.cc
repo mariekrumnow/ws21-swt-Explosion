@@ -16,9 +16,9 @@
 
 namespace game {
 
-Player::Player(graphics::PlayerKeys keys) : keys(keys)
+Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles) : keys(keys), tiles(tiles)
 {
-  speed_ = 1;
+  speed_ = 7;
   explosion_radius_ = 1;
   max_bomb_count_ = 1;
   owned_bombs_ = 0;
@@ -27,8 +27,8 @@ Player::Player(graphics::PlayerKeys keys) : keys(keys)
 }
 
 /// If a nullptr is returned, an error occured or the object couldn't be placed
-Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
-      Player* temp = new Player(keys);
+Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys, graphics::PlayerTile tiles){
+      Player* temp = new Player(keys, tiles);
       if (temp!=nullptr){
 			GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
@@ -126,13 +126,13 @@ void Player::Update(double delta_time) {
 graphics::Tile Player::GetTile() {
     switch(orientation_){
         case 0 :
-            return graphics::kTilePlayer1Up;
+            return tiles.up;
         case 1 :
-            return graphics::kTilePlayer1Down;
+            return tiles.down;
         case 2 :
-            return graphics::kTilePlayer1Left;
+            return tiles.left;
         case 3 :
-            return graphics::kTilePlayer1Right;
+            return tiles.right;
     }
 }
 

@@ -59,18 +59,20 @@ namespace graphics {
     const Tile kTileExplosionRadiusUpgrade = Tile(13,1);
     const Tile kTileBombCountUpgrade = Tile(5,14);*/
 /// Grafiken
+    struct PlayerTile {
+        PlayerTile(Tile up, Tile down, Tile left, Tile right);
+
+        Tile up;
+        Tile down;
+        Tile left;
+        Tile right;
+    };
+
     const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(0,0);
 
-    const Tile kTilePlayer1Up = Tile(0,3);
-    const Tile kTilePlayer1Down = Tile(1,3);
-    const Tile kTilePlayer1Right = Tile(3,3);
-    const Tile kTilePlayer1Left = Tile(2,3);
-
-    const Tile kTilePlayer2Up = Tile(0,4);
-    const Tile kTilePlayer2Down = Tile(1,4);
-    const Tile kTilePlayer2Right = Tile(3,4);
-    const Tile kTilePlayer2Left = Tile(2,4);
+    const PlayerTile player1Tiles(Tile(0,3), Tile(1,3), Tile(3,3), Tile(2,3));
+    const PlayerTile player2Tiles(Tile(0,4), Tile(1,4),Tile(2,4), Tile(3,4));
 
     const Tile kTileSolidWall = Tile(2,0);
     const Tile kTileBrittleWall = Tile(1,0);
