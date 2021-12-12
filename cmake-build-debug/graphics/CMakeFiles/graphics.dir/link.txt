@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libgraphics.a CMakeFiles/graphics.dir/GraphicsManager.cc.o CMakeFiles/graphics.dir/Keys.cc.o CMakeFiles/graphics.dir/Tile.cc.o CMakeFiles/graphics.dir/TileSet.cc.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libgraphics.a
