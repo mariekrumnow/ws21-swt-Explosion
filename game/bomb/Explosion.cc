@@ -20,11 +20,11 @@ namespace bomb {
     }
 
     /// \brief If a nullptr is returned, an error occured or the object couldn't be placed
-    Explosion* Explosion::CreateExplosion(int x, int y, int t){
+    Explosion* Explosion::CreateExplosion(int x, int y, int oriented){
           Explosion* temp = new Explosion();
           if (temp!=nullptr){
                 GameManager::GetCurrentGame().AddGameObject(*temp);
-                temp->orientation_=t;
+                temp->orientation_=oriented;
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
                       return nullptr;

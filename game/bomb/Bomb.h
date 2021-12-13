@@ -34,7 +34,7 @@ private:
 	double explosion_timer_;
 	bool exploding_; ///< so the bomb can't explode multiple times
 	void Explode();
-	bool SpawnExplosion(int x, int y, int t);
+	bool SpawnExplosion(int x, int y, int oriented);
 };
 
 }

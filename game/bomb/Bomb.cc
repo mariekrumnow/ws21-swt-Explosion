@@ -66,8 +66,8 @@ void Bomb::Update(double delta_time) {
 	}
 }
 
-bool Bomb::SpawnExplosion(int x, int y, int t) {
-	Explosion* explosion = Explosion::CreateExplosion(x,y,t);
+bool Bomb::SpawnExplosion(int x, int y, int oriented) {
+	Explosion* explosion = Explosion::CreateExplosion(x,y,oriented);
 	if (explosion == nullptr) {
 		return false;
 	}
@@ -107,22 +107,22 @@ void Bomb::Explode() {
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
 				stopped |= go->OnExplosion(*this);
 			}
-            int t=turn;
+            int oriented=turn;
             ///differetiation between middle- and end- explosions
             if(d==power_)
             {
                 switch(turn){
                     case 0 :
-                        t=4;
+                        oriented=4;
                         break;
                     case 1 :
-                        t=5;
+                        oriented=5;
                         break;
                     case 2 :
-                        t=6;
+                        oriented=6;
                         break;
                     case 3 :
-                        t=7;
+                        oriented=7;
                         break;
                 }
             }
@@ -130,7 +130,7 @@ void Bomb::Explode() {
 			if (stopped) {
 				break;
 			} else {
-				if (!SpawnExplosion(x,y,t)) {
+				if (!SpawnExplosion(x,y,oriented)) {
 					break;
 				}
 			}

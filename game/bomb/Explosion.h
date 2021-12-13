@@ -15,7 +15,7 @@ namespace bomb {
 class Explosion : public GameObject {
 public:
     Explosion();
-    static Explosion* CreateExplosion(int x, int y,int t);
+    static Explosion* CreateExplosion(int x, int y,int oriented);
     ~Explosion();
 
     graphics::Tile GetTile();
