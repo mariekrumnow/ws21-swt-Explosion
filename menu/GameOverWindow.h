@@ -19,9 +19,6 @@ public:
     /// Initialises the game outcome text based on the winning player
     GameOverWindow(game::Player *winner);
 
-    /// Shows the current GameOverWindow on screen
-    void Draw();
-
     /// Activates the effect of the respective MenuItem
     void OnMenuItemSelect(int selected_option);
 

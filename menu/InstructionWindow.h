@@ -16,9 +16,6 @@ public:
     /// Initialises the instructions and the button to start the game
     InstructionWindow();
 
-    /// Shows the current InstructionsWindow on screen
-    void Draw();
-
     /// Activates the effect of the respective MenuItem
     void OnMenuItemSelect(int selected_option);
 

@@ -6,7 +6,9 @@
 #include "../core/AppManager.h"
 
 namespace menu{
-    GameOverWindow::GameOverWindow(game::Player *winner) {
+    GameOverWindow::GameOverWindow(game::Player *winner)
+    : MenuWindow(0,1)
+    {
         if (winner != nullptr) {
             //Je nach Sieger wird die entsprechende Nummer als winner_name_ gewählt
             //MenuItem erstellen mit Text für Sieg des jeweiligen Spielers
@@ -20,15 +22,9 @@ namespace menu{
         //AddMenuItem aufrufen
     }
 
-    void GameOverWindow::Draw(){
-        graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
-        //Anzeige der MenuItems per Textrendering an der jeweiligen Position
-        //Die Farbe ist einheitlich außer bei dem zur Zeit ausgewählten MenuItem
-    }
-
     void GameOverWindow::OnMenuItemSelect(int selected_option){
         switch(selected_option){
-            case 1:
+            case 0:
                 //Exitbutton ist ausgewählt
                 //Das Programm wird geschlossen (hier?)
                 break;
