@@ -71,7 +71,7 @@ namespace graphics {
     const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(0,0);
 
-    const PlayerTile player1Tiles(Tile(0,3), Tile(1,3), Tile(3,3), Tile(2,3));
+    const PlayerTile player1Tiles(Tile(0,3), Tile(1,3), Tile(2,3), Tile(3,3));
     const PlayerTile player2Tiles(Tile(0,4), Tile(1,4),Tile(2,4), Tile(3,4));
 
     const Tile kTileSolidWall = Tile(2,0);
