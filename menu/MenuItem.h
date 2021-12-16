@@ -10,7 +10,7 @@
 
 namespace menu{
 
-/// Clickable and non-clickable Text on Menus
+/// Clickable Text on Menus
 class MenuItem {
 public:
     /// Creates an Item and puts it in the window
@@ -24,7 +24,7 @@ public:
 private:
     /// What's written on the Item
     std::string text_;
-    /// Button-number, -1 if Item is not a button, 0 if top button
+    /// The higher the number the lower the Item, 0 = top
     int option_num_;
     /// Position of the Item
     int x_;

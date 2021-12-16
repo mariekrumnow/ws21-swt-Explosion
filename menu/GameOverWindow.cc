@@ -7,19 +7,23 @@
 
 namespace menu{
     GameOverWindow::GameOverWindow(game::Player *winner)
-    : MenuWindow(0,1)
+    : MenuWindow(0)
     {
         if (winner != nullptr) {
-            //Je nach Sieger wird die entsprechende Nummer als winner_name_ gewählt
-            //MenuItem erstellen mit Text für Sieg des jeweiligen Spielers
-            //AddMenuItem aufrufen
+             outcome_text_ = "Spieler xy gewinnt!";
         }else{
-            //Unentschieden
-            //MenuItem erstellen mit Text für Unentschieden
-            //AddMenuItem aufrufen
+             outcome_text_ = "Unentschieden";
         }
-        //MenuItem erstellen als Exitbutton
-        //AddMenuItem aufrufen
+
+        MenuItem exit = MenuItem("Spiel schließen",0,10,10);
+        MenuWindow::AddMenuItem(exit);
+    }
+
+    void GameOverWindow::Draw(){
+        MenuWindow::Draw();
+
+        graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
+        graphics.WriteText(outcome_text_, graphics::Color(0, 0, 255, 255), graphics::FontSize::kLarge, false, 10, 40);
     }
 
     void GameOverWindow::OnMenuItemSelect(int selected_option){
