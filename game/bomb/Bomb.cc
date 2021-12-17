@@ -1,9 +1,11 @@
 //Autor: Tobias, Marie, Carla, Nina
 
 #include "Bomb.h"
-#include "Explosion.h"
 
 #include <iostream>
+
+#include "Explosion.h"
+
 
 namespace game {
 namespace bomb {
@@ -18,7 +20,7 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 /// If a nullptr is returned, an error occured or the object couldn't be placed
 Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_delay){
 	Bomb* temp = new Bomb(owner,power,explosion_delay);
-	if (temp!=nullptr){
+	if (temp!=nullptr) {
 		    GameManager::GetCurrentGame().AddGameObject(*temp);
                 if (!temp->SetPosition(x,y)) {
                       temp->Destroy();
@@ -52,11 +54,11 @@ graphics::Tile Bomb::GetTile() {
 }
 
 graphics::Color Bomb::GetColor() {
-	if (std::fmod(explosion_timer_, 0.5) < 0.25) {
-        return graphics::Color(255,255,255,255);
-	} else {
-        return graphics::Color(255,255,255,255);
-	}
+       if (std::fmod(explosion_timer_, 0.4) < 0.2) {
+           return graphics::Color(255,255,255,255);
+       } else {
+           return graphics::Color(230,200,200,255);
+       }
 }
 
 void Bomb::Update(double delta_time) {
@@ -109,8 +111,7 @@ void Bomb::Explode() {
 			}
             int oriented=turn;
             ///differetiation between middle- and end- explosions
-            if(d==power_)
-            {
+            if (d==power_) {
                 switch(turn){
                     case 0 :
                         oriented=4;
@@ -129,10 +130,8 @@ void Bomb::Explode() {
 			///if none there, spawn explosion
 			if (stopped) {
 				break;
-			} else {
-				if (!SpawnExplosion(x,y,oriented)) {
-					break;
-				}
+			} else if (!SpawnExplosion(x,y,oriented)) {
+                break;
 			}
 		}
 	}

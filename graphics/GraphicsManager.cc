@@ -44,14 +44,17 @@ namespace graphics {
     }
 
     GraphicsManager::~GraphicsManager() {
-        if (game_tileset_ != nullptr) delete game_tileset_;
-        if (text_tileset_ != nullptr) delete text_tileset_;
+        if (game_tileset_ != nullptr)
+            delete game_tileset_;
+        if (text_tileset_ != nullptr)
+            delete text_tileset_;
         SDL_Quit();
         TTF_Quit();
     }
 
     void GraphicsManager::BeginFrame() {
-        if (window_ == nullptr) return;
+        if (window_ == nullptr)
+            return;
         ///fill the screen black
         SDL_SetRenderDrawColor(renderer_, 0,0,0,255);
         SDL_RenderClear(renderer_);
@@ -67,29 +70,24 @@ namespace graphics {
             switch (event.type) {
                 ///events sent by the window manager
                 case SDL_WINDOWEVENT:
-
                     switch (event.window.event) {
                         case SDL_WINDOWEVENT_CLOSE:
                             Quit();
                             break;
                     }
                     break;
-
                 ///quit event
                 case SDL_QUIT:
                     Quit();
                     break;
-
                 ///events sent by the keyboard
                 case SDL_KEYDOWN:
                     key_held_[event.key.keysym.scancode] = true;
                     break;
-
                 case SDL_KEYUP:
                     key_not_pressed_[event.key.keysym.scancode] = false;
                     key_held_[event.key.keysym.scancode] = false;
                     break;
-
             }
         }
     }
@@ -107,7 +105,7 @@ namespace graphics {
       int x,
       int y) {
 
-      TTF_Font * font = NULL;
+      TTF_Font* font = NULL;
 
       switch (size) {
         case FontSize::kSmall:
@@ -124,11 +122,11 @@ namespace graphics {
 
       TTF_SetFontStyle(font, bold ? TTF_STYLE_BOLD : 0);
 
-      SDL_Surface * text_surface =
+      SDL_Surface* text_surface =
         TTF_RenderUTF8_Shaded(font, text.c_str(),
           {color.red_, color.green_, color.blue_, color.alpha_}, {0,0,0,0});
 
-      SDL_Texture * text_texture = SDL_CreateTextureFromSurface(renderer_, text_surface);
+      SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer_, text_surface);
 
       SDL_Rect text_size;
       SDL_GetClipRect(text_surface, &text_size);
@@ -143,7 +141,8 @@ namespace graphics {
     }
 
     void GraphicsManager::EndFrame() {
-        if (window_ == nullptr) return;
+        if (window_ == nullptr)
+            return;
         SDL_RenderPresent(renderer_);
     }
 
@@ -156,12 +155,14 @@ namespace graphics {
     }
 
     bool GraphicsManager::IsKeyPressed(int scancode) {
-        if (scancode < 0 || scancode >= SDL_NUM_SCANCODES) return false;
+        if (scancode < 0 || scancode >= SDL_NUM_SCANCODES)
+            return false;
         return key_held_[scancode] && !key_not_pressed_[scancode];
     }
 
     bool GraphicsManager::IsKeyHeld(int scancode) {
-        if (scancode < 0 || scancode >= SDL_NUM_SCANCODES) return false;
+        if (scancode < 0 || scancode >= SDL_NUM_SCANCODES)
+            return false;
         return key_held_[scancode];
     }
 
@@ -169,8 +170,8 @@ namespace graphics {
       	exit(0);
     }
 
-		void GraphicsManager::Sleep(int millis) {
-			SDL_Delay(millis);
-		}
+    void GraphicsManager::Sleep(int millis) {
+        SDL_Delay(millis);
+    }
 
 } // namespace graphics

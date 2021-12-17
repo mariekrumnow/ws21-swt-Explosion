@@ -2,18 +2,18 @@
 
 #include "ExplosionRadiusUpgrade.h"
 
-#include "../GameObject.h"
-#include "../GameManager.h"
-#include "../Player.h"
-#include "../../core/AppManager.h"
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
+#include "../GameManager.h"
+#include "../GameObject.h"
+#include "../Player.h"
 
 namespace game{
 namespace upgrade{
+
 ExplosionRadiusUpgrade::ExplosionRadiusUpgrade() : Upgrade() {}
 
-ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int x, int y){
+ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int x, int y) {
     ExplosionRadiusUpgrade* temp = new ExplosionRadiusUpgrade();
     if (temp!=nullptr){
         GameManager::GetCurrentGame().AddGameObject(*temp);
@@ -27,14 +27,14 @@ ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int
 
 bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
     this->Destroy();
-    if(player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()){
+    if (player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()) {
         player.IncreaseExplosionRadius(1);
     }
 
     return true;
 }
 
-bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source){
+bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source) {
     this->Destroy();
     return false;
 }

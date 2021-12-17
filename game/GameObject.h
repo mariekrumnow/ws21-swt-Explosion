@@ -7,9 +7,9 @@ namespace game {
   class GameObject;
 }
 
-#include "GameManager.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
+#include "GameManager.h"
 
 namespace game {
 
@@ -29,16 +29,14 @@ public:
   virtual int GetX();
   virtual int GetY();
   virtual bool SetPosition(int x, int y);
-
   virtual void Destroy();
-  bool IsDestroyed();
 
 private:
-
-  int x_;
-  int y_;
-  bool destroyed_;
+  int x_ = 0;
+  int y_ = 0;
+  bool destroyed_ = false;
 };
+
 } // namespace game
 
 

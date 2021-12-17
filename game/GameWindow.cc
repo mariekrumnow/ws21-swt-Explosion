@@ -2,15 +2,14 @@
 
 #include "GameWindow.h"
 
-#include "GameManager.h"
-#include "../core/Window.h"
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
+#include "GameManager.h"
+
 
 namespace game {
 
-GameWindow::GameWindow() {
-}
+GameWindow::GameWindow() {}
 
 GameWindow::~GameWindow() {}
 
@@ -33,14 +32,6 @@ void GameWindow::Draw() {
             }
 		}
 	}
-
-	//Graphik Test Beispiele
-	/*graphics.WriteText("Hallo Carla!", graphics::Color(255,128,0,255), graphics::FontSize::kLarge, false, 10,10);
-	graphics.WriteText("Hallo Carla!", graphics::Color(255,0,0,255), graphics::FontSize::kMedium, false, 10,100);
-	graphics.WriteText("Hallo Carla!", graphics::Color(0,255,0,255), graphics::FontSize::kSmall, false, 10,200);
-	graphics.WriteText("Hallo Carla!", graphics::Color(255,128,0,255), graphics::FontSize::kLarge, true, 200,10);
-	graphics.WriteText("Hallo Carla!", graphics::Color(255,0,0,255), graphics::FontSize::kMedium, true, 200,100);
-	graphics.WriteText("Hallo Carla!", graphics::Color(0,255,0,255), graphics::FontSize::kSmall, true, 200,200);*/
 }
 
 void GameWindow::Update(double delta_time) {

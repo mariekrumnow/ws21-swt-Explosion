@@ -1,6 +1,5 @@
-//
 // Autor: Nina, Marie
-//
+
 
 #ifndef BOMBERMAN_GAME_BLOCK_BLOCK_H
 #define BOMBERMAN_GAME_BLOCK_BLOCK_H

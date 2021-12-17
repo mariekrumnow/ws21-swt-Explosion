@@ -3,11 +3,11 @@
 #ifndef BOMBERMAN_GAME_GAMEMANAGER_H
 #define BOMBERMAN_GAME_GAMEMANAGER_H
 
-#include <vector>
 #include <list>
-#include "GameObject.h"
-#include "../core/AppManager.h"
+#include <vector>
 
+#include "../core/AppManager.h"
+#include "GameObject.h"
 #include "win_condition/BaseWinCondition.h"
 
 namespace game {
@@ -37,10 +37,11 @@ public:
     std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
     std::vector<GameObject*> GetAllObjects();
 
+    void ReducePlayerCount();
+
     int GetWidth() const;
     int GetHeight() const;
     int GetPlayerCount() const;
-    void ReducePlayerCount();
 
 private:
     void GenerateMap(const int indest_prop) const;
@@ -57,7 +58,7 @@ private:
     int width_;
     int height_;
 
-    };
+};
 
 } // namespace game
 

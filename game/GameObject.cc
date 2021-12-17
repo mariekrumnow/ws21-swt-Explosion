@@ -3,20 +3,10 @@
 #include "GameObject.h"
 
 #include "GameManager.h"
-#include "../graphics/Tile.h"
-#include "../graphics/Color.h"
 
 namespace game {
 
-GameObject::GameObject() {
-    x_ = 0;
-    y_ = 0;
-    destroyed_ = false;
-}
-
-bool GameObject::IsDestroyed() {
-    return destroyed_;
-}
+GameObject::GameObject() {}
 
 void GameObject::Destroy() {
     GameManager::GetCurrentGame().DestroyGameObject(*this);
@@ -29,12 +19,13 @@ GameObject::~GameObject() {
 
 bool GameObject::SetPosition(int x, int y) {
 
-    if (x == this->x_ && y == this->y_) return true;
+    if (x == this->x_ && y == this->y_)
+        return true;
 
-    GameManager &game = GameManager::GetCurrentGame();
+    GameManager& game = GameManager::GetCurrentGame();
 
     bool collision = false;
-    for (GameObject *object: game.GetObjectsAtPos(x, y)) {
+    for (GameObject* object: game.GetObjectsAtPos(x, y)) {
         collision |= object->OnCollision(*this);
     }
 
@@ -46,15 +37,15 @@ bool GameObject::SetPosition(int x, int y) {
     return false;
 }
 
-bool GameObject::OnExplosion(GameObject &source) {
+bool GameObject::OnExplosion(GameObject& source) {
     return false;
 }
 
-bool GameObject::OnPlayerCollision(Player &player) {
+bool GameObject::OnPlayerCollision(Player& player) {
     return false;
 }
 
-bool GameObject::OnCollision(GameObject &source) {
+bool GameObject::OnCollision(GameObject& source) {
     return false;
 }
 
@@ -65,6 +56,5 @@ int GameObject::GetX() {
 int GameObject::GetY() {
     return y_;
 }
-
 
 } // namespace game

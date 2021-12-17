@@ -1,12 +1,11 @@
 //Autor: Tobias, Carla, Dennis
-#include "game/win_condition/StandardWinCondition.h"
-#include "core/AppManager.h"
 
-#include "graphics/Keys.h"
+#include "game/win_condition/StandardWinCondition.h"
 #include "game/GameWindow.h"
 #include "game/GameManager.h"
 #include "game/Player.h"
-
+#include "graphics/Keys.h"
+#include "core/AppManager.h"
 
 int main(int argc, char** argv)
 {
@@ -27,7 +26,7 @@ int main(int argc, char** argv)
     player_keys[1].right = graphics::key_l;
     player_keys[1].bomb = graphics::key_r_shift;
 
-    game::win_condition::BaseWinCondition *winCondition = new game::win_condition::StandardWinCondition();
+    game::win_condition::BaseWinCondition* winCondition = new game::win_condition::StandardWinCondition();
 
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveWindow(game_window);

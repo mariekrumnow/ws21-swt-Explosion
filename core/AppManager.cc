@@ -4,9 +4,10 @@
 
 #include <chrono>
 
-#include "Window.h"
-#include "../graphics/GraphicsManager.h"
 #include "../graphics/Keys.h"
+#include "../graphics/GraphicsManager.h"
+#include "Window.h"
+
 
 namespace core {
 
@@ -61,7 +62,7 @@ AppManager::AppManager(std::string title, bool init_graphics) : isRunning_(true)
         double delta_time = 0.05;
         bool fullscreen = false;
 
-				const int min_delta_time = 1000000 / 60; //limit to ~60 fps
+        const int min_delta_time = 1000000 / 60; //limit to ~60 fps
 
         while (isRunning_) {
             auto start_time = std::chrono::high_resolution_clock::now();
@@ -77,15 +78,14 @@ AppManager::AppManager(std::string title, bool init_graphics) : isRunning_(true)
               isRunning_ = false;
             }
 
-						int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
-                                 .count();
-            if (elapsed_microsecs < min_delta_time) {graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
+            int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+            if (elapsed_microsecs < min_delta_time) {
+              graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
               elapsed_microsecs = min_delta_time;
             }
 
             delta_time = elapsed_microsecs/1000000.0;
         }
-
         graphics_.Quit();
     }
 

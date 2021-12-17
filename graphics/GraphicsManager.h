@@ -48,12 +48,12 @@ namespace graphics {
     private:
         TileSet* game_tileset_;
         TileSet* text_tileset_;
-        SDL_Window * window_;
-        SDL_Renderer * renderer_;
+        SDL_Window* window_;
+        SDL_Renderer* renderer_;
 
-        TTF_Font * font_small_;
-        TTF_Font * font_medium_;
-        TTF_Font * font_large_;
+        TTF_Font* font_small_;
+        TTF_Font* font_medium_;
+        TTF_Font* font_large_;
       
         /// stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];

@@ -2,18 +2,18 @@
 
 #include "SpeedUpgrade.h"
 
-#include "../GameObject.h"
-#include "../GameManager.h"
-#include "../Player.h"
-#include "../../core/AppManager.h"
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
+#include "../GameManager.h"
+#include "../GameObject.h"
+#include "../Player.h"
 
 namespace game{
 namespace upgrade{
+
 SpeedUpgrade::SpeedUpgrade() : Upgrade() {}
 
-SpeedUpgrade* SpeedUpgrade::CreateSpeedUpgrade(int x, int y){
+SpeedUpgrade* SpeedUpgrade::CreateSpeedUpgrade(int x, int y) {
              SpeedUpgrade* temp = new SpeedUpgrade();
              if (temp!=nullptr){
                  GameManager::GetCurrentGame().AddGameObject(*temp);
@@ -27,7 +27,7 @@ SpeedUpgrade* SpeedUpgrade::CreateSpeedUpgrade(int x, int y){
 
 bool SpeedUpgrade::OnPlayerCollision(Player& player) {
     this->Destroy();
-    if(player.GetSpeed() < player.GetKMaxSpeed()){
+    if (player.GetSpeed() < player.GetKMaxSpeed()) {
         player.IncreaseSpeed(1);
     }
     return true;

@@ -1,11 +1,11 @@
-//
 // Autor: Nina, Marie
-//
+
 
 #ifndef BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
 #define BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
 
 #include "Block.h"
+
 #include "../../graphics/Tile.h"
 #include "../../graphics/Color.h"
 

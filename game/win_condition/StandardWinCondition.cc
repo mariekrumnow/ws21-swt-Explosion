@@ -1,8 +1,9 @@
 // Autor Dennis, Peter
 
-
 #include "StandardWinCondition.h"
+
 #include <iostream>
+
 #include "../GameManager.h"
 
 namespace game {
@@ -18,8 +19,6 @@ bool StandardWinCondition::checkWin() {
     }
 
 }
-
-
 
 } // namespace win_condition
 } // namespace game
