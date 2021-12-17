@@ -15,9 +15,7 @@ namespace game {
 class GameManager {
 public:
     GameManager(
-            const int width, const int height,const int indest_prop, const int player_count,
-            graphics::PlayerKeys* player_keys, win_condition::BaseWinCondition *winCondition
-            );
+            const int width, const int height, const int playerCount, win_condition::BaseWinCondition *winCondition);
     ~GameManager();
 
     void Update(double delta_time);
@@ -39,12 +37,13 @@ public:
 
     int GetWidth() const;
     int GetHeight() const;
+
+    // p
     int GetPlayerCount() const;
     void ReducePlayerCount();
 
-private:
-    void GenerateMap(const int indest_prop) const;
 
+private:
     std::vector<GameObject*>** objects_by_pos_;
     std::vector<GameObject*> empty_object_vector_; ///< as a default for oob positions
     std::list<GameObject*> destroyed_game_objects_;
@@ -52,6 +51,7 @@ private:
 
     win_condition::BaseWinCondition* winCondition_;
 
+    // status
     int playerCount_;
 
     int width_;

@@ -3,6 +3,7 @@ add_library(game
         GameObject.cc GameObject.h
         Player.cc Player.h
         GameWindow.cc GameWindow.h
+        GameFactory.cc GameFactory.h
 
         block/Block.h block/Block.cc
         block/DestructibleBlock.h block/DestructibleBlock.cc

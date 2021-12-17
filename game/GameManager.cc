@@ -16,7 +16,8 @@ namespace game {
 
 GameManager* GameManager::current_game_;
 
-GameManager::GameManager(const int width, const int height, const int indest_prop, const int playerCount, graphics::PlayerKeys* player_keys, win_condition::BaseWinCondition *winCondition) :
+GameManager::GameManager(const int width, const int height,
+                         const int playerCount, win_condition::BaseWinCondition *winCondition) :
             width_(width),
             height_(height),
             playerCount_(playerCount),
@@ -28,7 +29,6 @@ GameManager::GameManager(const int width, const int height, const int indest_pro
 		// enforce singleton
         delete GameManager::current_game_;
 
-
 		GameManager::current_game_ = this;
 
 		// create the object arrays
@@ -36,27 +36,6 @@ GameManager::GameManager(const int width, const int height, const int indest_pro
 		for (int i=0; i<width; i++) {
 			objects_by_pos_[i] = new std::vector<GameObject*>[height];
 		}
-
-        // generate map
-        this->GenerateMap(indest_prop);
-
-        // player
-        Player* players[playerCount_];
-
-        for (int i = 0; i < playerCount_; i++) {
-            if (i == 0) {
-                players[i] = Player::CreatePlayer(1,1, player_keys[i], graphics::player1Tiles);
-            }
-            else if (i == 1) {
-                players[i] = Player::CreatePlayer((width_-2),(height_-2), player_keys[i], graphics::player2Tiles);
-            }
-            else if (i == 2) {
-                players[i] = Player::CreatePlayer(1,(height_-2), player_keys[i], graphics::player1Tiles);
-            }
-            else if (i == 3) {
-                players[i] = Player::CreatePlayer((width_-2), 1, player_keys[i], graphics::player2Tiles);
-            }
-        }
 
 }
 
@@ -166,56 +145,9 @@ int GameManager::GetPlayerCount() const {
     return playerCount_;
 }
 
-void GameManager::GenerateMap(const int indes_prop) const {
-
-    obstacles::IndestructibleBlock::CreateIndestructibleBlock(0,0);
-
-    // Outer walls (minus 0,0: somehow won't be placed)
-    for (int i=0; i<width_; i++) {
-        obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,0); // Upper wall
-        obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,(height_-1)); // Lower wall
-
-        if (i==0 || i==(width_-1)) { // Left or right wall
-            for (int j=1; j <(height_-1); j++) {
-                obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,j);
-            }
-        }
-    }
-
-
-    // Indestructible blocks in the middle
-    for (int i=2; i<=(width_-3); i+=2) {
-        for(int j=2; j<=(height_-3); j+=2){
-            obstacles::IndestructibleBlock::CreateIndestructibleBlock(i,j);
-        }
-    }
-
-
-
-    // Randomly placed destructible blocks
-    for (int i=1; i<width_-1; i++) {
-        for (int j=1; j<height_-1; j++) {
-            // Is a destructible block allowed?
-
-            if ((i%2 || j%2) && !(
-                    ( (i == (1) && j == (1)) || (i == (1) && j == (2)) || (i == (2) && j == (1)) ) ||                                               // top left
-                    ( (i == (1) && j==(height_-2)) || (i == (1) && j ==(height_-3)) || (i == (2) && j == (height_-2)) ) ||                          // bottom left
-                    ( (i == (width_-3) && j == (1)) || (i == (width_-2) && j == (1)) || (i == (width_-2) && j == (2)) ) ||                          // top right
-                    ( (i == (width_-3) && j == (height_-2)) || ( i == (width_-2)) && (j == (height_-2)) || (i == (width_-2) && (j == (height_-3)))) // bottom right
-                    )) {
-                if (rand()%100 <= indes_prop) { // Places destructible block with a 85% chance
-                    obstacles::DestructibleBlock::CreateDestructibleBlock(i,j);
-                }
-            }
-
-        }
-
-    }
-
-}
-
 void GameManager::ReducePlayerCount() {
     this->playerCount_--;
 }
+
 
 } // namespace game
