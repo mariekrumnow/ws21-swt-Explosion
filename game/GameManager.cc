@@ -2,21 +2,23 @@
 
 #include "GameManager.h"
 
-#include <iostream>
 #include <vector>
-
 #include "block/IndestructibleBlock.h"
 #include "block/DestructibleBlock.h"
 #include "Player.h"
+
+#include <iostream>
+
+#include "GameObject.h"
+
 
 namespace game {
 
 GameManager* GameManager::current_game_;
 
-GameManager::GameManager(const int width, const int height,
-                         const int indest_prop, const int playerCount,
-                         graphics::PlayerKeys* player_keys,
-                         win_condition::BaseWinCondition* winCondition) :
+GameManager::GameManager(const int width, const int height, const int indest_prop,
+                         const int playerCount, graphics::PlayerKeys* player_keys,
+                         win_condition::BaseWinCondition *winCondition) :
             width_(width),
             height_(height),
             playerCount_(playerCount),
@@ -45,19 +47,19 @@ GameManager::GameManager(const int width, const int height,
 
         for (int i = 0; i < playerCount_; i++) {
             if (i == 0) {
-                players[i] = Player::CreatePlayer(1,1,
-                                                  player_keys[i], graphics::kplayer1Tiles);
-            } else if (i == 1) {
-                players[i] = Player::CreatePlayer((width_-2),(height_-2),
-                                                  player_keys[i], graphics::kplayer2Tiles);
-            } else if (i == 2) {
-                players[i] = Player::CreatePlayer(1,(height_-2),
-                                                  player_keys[i], graphics::kplayer1Tiles);
-            } else if (i == 3) {
-                players[i] = Player::CreatePlayer((width_-2), 1,
-                                                  player_keys[i], graphics::kplayer2Tiles);
+                players[i] = Player::CreatePlayer(1,1, player_keys[i], graphics::kPlayer1Tiles);
+            }
+            else if (i == 1) {
+                players[i] = Player::CreatePlayer((width_-2),(height_-2), player_keys[i], graphics::kPlayer2Tiles);
+            }
+            else if (i == 2) {
+                players[i] = Player::CreatePlayer(1,(height_-2), player_keys[i], graphics::kPlayer1Tiles);
+            }
+            else if (i == 3) {
+                players[i] = Player::CreatePlayer((width_-2), 1, player_keys[i], graphics::kPlayer2Tiles);
             }
         }
+
 }
 
 GameManager::~GameManager(){
@@ -91,7 +93,7 @@ void GameManager::Update(double delta_time) {
 }
 
 GameManager& GameManager::GetCurrentGame() {
-	return *GameManager::current_game_;
+	return * GameManager::current_game_;
 }
 
 void GameManager::RemoveGameObject(GameObject& game_object) {
@@ -109,7 +111,7 @@ void GameManager::RemoveGameObject(GameObject& game_object) {
 	}
 }
 
-void GameManager::DestroyGameObject(GameObject& game_object) {
+void GameManager::DestroyGameObject(GameObject &game_object) {
 	RemoveGameObject(game_object);
 	destroyed_game_objects_.push_back(&game_object);
 }
@@ -122,9 +124,8 @@ void GameManager::AddGameObject(GameObject& game_object) {
 }
 
 bool GameManager::ChangeObjectPosition(GameObject& game_object, int x, int y) {
-	///checks if position is in bounds
-	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight())
-        return false;
+	///check if position is in bounds
+	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight()) return false;
 
 	RemoveGameObject(game_object);
 	//game_object.Destroy();
@@ -136,8 +137,7 @@ bool GameManager::ChangeObjectPosition(GameObject& game_object, int x, int y) {
 }
 
 std::vector<GameObject*>& GameManager::GetObjectsAtPos(int x, int y) {
-	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight())
-        return empty_object_vector_;
+	if (x < 0 || x>=GetWidth() || y < 0 || y>=GetHeight()) return empty_object_vector_;
 
 	return objects_by_pos_[x][y];
 }
@@ -168,10 +168,6 @@ int GameManager::GetPlayerCount() const {
     return playerCount_;
 }
 
-void GameManager::ReducePlayerCount() {
-    this->playerCount_--;
-}
-
 void GameManager::GenerateMap(const int indes_prop) const {
 
     obstacles::IndestructibleBlock::CreateIndestructibleBlock(0,0);
@@ -188,6 +184,7 @@ void GameManager::GenerateMap(const int indes_prop) const {
         }
     }
 
+
     // Indestructible blocks in the middle
     for (int i=2; i<=(width_-3); i+=2) {
         for(int j=2; j<=(height_-3); j+=2){
@@ -195,26 +192,32 @@ void GameManager::GenerateMap(const int indes_prop) const {
         }
     }
 
+
+
     // Randomly placed destructible blocks
     for (int i=1; i<width_-1; i++) {
         for (int j=1; j<height_-1; j++) {
             // Is a destructible block allowed?
+
             if ((i%2 || j%2) && !(
-                    ( (i == (1) && j == (1)) || (i == (1) &&
-                    j == (2)) || (i == (2) && j == (1)) ) ||                           // top left
-                    ( (i == (1) && j==(height_-2)) || (i == (1) &&
-                    j ==(height_-3)) || (i == (2) && j == (height_-2)) ) ||            // bottom left
-                    ( (i == (width_-3) && j == (1)) || (i == (width_-2) &&
-                    j == (1)) || (i == (width_-2) && j == (2)) ) ||                    // top right
-                    ( (i == (width_-3) && j == (height_-2)) || ( i == (width_-2)) &&
-                    (j == (height_-2)) || (i == (width_-2) && (j == (height_-3))))     // bottom right
+                    ( (i == (1) && j == (1)) || (i == (1) && j == (2)) || (i == (2) && j == (1)) ) ||                                               // top left
+                    ( (i == (1) && j==(height_-2)) || (i == (1) && j ==(height_-3)) || (i == (2) && j == (height_-2)) ) ||                          // bottom left
+                    ( (i == (width_-3) && j == (1)) || (i == (width_-2) && j == (1)) || (i == (width_-2) && j == (2)) ) ||                          // top right
+                    ( (i == (width_-3) && j == (height_-2)) || ( i == (width_-2)) && (j == (height_-2)) || (i == (width_-2) && (j == (height_-3)))) // bottom right
                     )) {
                 if (rand()%100 <= indes_prop) { // Places destructible block with a 85% chance
                     obstacles::DestructibleBlock::CreateDestructibleBlock(i,j);
                 }
             }
+
         }
+
     }
+
+}
+
+void GameManager::ReducePlayerCount() {
+    this->playerCount_--;
 }
 
 } // namespace game

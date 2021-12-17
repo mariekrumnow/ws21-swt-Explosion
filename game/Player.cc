@@ -138,8 +138,8 @@ bool Player::OnCollision(GameObject &source) {
 }
 
 bool Player::OnExplosion(GameObject &source) {
-    this->Destroy();
     GameManager::GetCurrentGame().ReducePlayerCount();
+    this->Destroy();
     return false;
 }
 

@@ -19,8 +19,6 @@ add_library(game
         win_condition/BaseWinCondition.h
         win_condition/StandardWinCondition.cc win_condition/StandardWinCondition.h)
 
-
-
 target_include_directories (game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(game PUBLIC core)
