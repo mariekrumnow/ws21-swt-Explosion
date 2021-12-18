@@ -11,6 +11,8 @@
 
 namespace menu{
 
+enum{Start};
+
 /// Shows instruction text and MenuItem to start the game
 class InstructionWindow : public MenuWindow {
 public:

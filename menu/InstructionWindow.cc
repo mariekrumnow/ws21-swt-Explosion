@@ -7,14 +7,12 @@
 
 namespace menu{
     InstructionWindow::InstructionWindow()
-    : MenuWindow(0)
+    : MenuWindow(Start)
     {
         //x und y Positionen müssen so gewählt werden, dass die Spielanleitung über dem Button ist
-        MenuItem start = MenuItem("Spiel starten",0,50,100);
+        MenuItem start = MenuItem("Spiel starten",Start,50,100);
         MenuWindow::AddMenuItem(start);
 
-        MenuItem test = MenuItem("Button Test",1,50,150);
-        MenuWindow::AddMenuItem(test);
     }
 
     void InstructionWindow::Draw(){
@@ -32,7 +30,7 @@ namespace menu{
 
     void InstructionWindow::OnMenuItemSelect(int selected_option){
         switch(selected_option){
-            case 0:
+            case Start:
                 //Startbutton ist ausgewählt
                 //Das Spiel wird gestartet
                 //Das InstructionWindow wird geschlossen (hier?)

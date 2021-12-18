@@ -7,15 +7,9 @@
 
 namespace menu{
     GameOverWindow::GameOverWindow(game::Player *winner)
-    : MenuWindow(0)
+    : MenuWindow(Exit2) , winner_(winner)
     {
-        if (winner != nullptr) {
-             outcome_text_ = "Spieler xy gewinnt!";
-        }else{
-             outcome_text_ = "Unentschieden";
-        }
-
-        MenuItem exit = MenuItem("Spiel schließen",0,10,10);
+        MenuItem exit = MenuItem("Spiel schließen",Exit2,10,10);
         MenuWindow::AddMenuItem(exit);
     }
 
@@ -23,12 +17,19 @@ namespace menu{
         MenuWindow::Draw();
 
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
-        graphics.WriteText(outcome_text_, graphics::Color(0, 0, 255, 255), graphics::FontSize::kLarge, false, 10, 40);
+
+        if (winner_ != nullptr){
+            graphics.DrawTile(winner_->GetTile(), winner_->GetColor(),30, 50);
+            graphics.WriteText("Du gewinnst!!!", graphics::Color(0, 0, 255, 255), graphics::FontSize::kLarge, false, 80, 50);
+        }else{
+            graphics.WriteText("-Unentschieden-", graphics::Color(0, 0, 255, 255), graphics::FontSize::kLarge, false, 80, 50);
+        }
+
     }
 
     void GameOverWindow::OnMenuItemSelect(int selected_option){
         switch(selected_option){
-            case 0:
+            case Exit2:
                 //Exitbutton ist ausgewählt
                 //Das Programm wird geschlossen (hier?)
                 break;

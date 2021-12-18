@@ -15,7 +15,7 @@
 #include "../game/block/DestructibleBlock.h"
 #include "../game/block/IndestructibleBlock.h"
 
-#include "../menu/InstructionWindow.h"
+#include "../menu/MainWindow.h"
 
 int main(int argc, char** argv)
 {
@@ -25,8 +25,8 @@ int main(int argc, char** argv)
 
     graphics::GraphicsManager& graphics = app.GetGraphics();
 
-    menu::InstructionWindow instructions = menu::InstructionWindow();
-    app.SetActiveWindow(instructions);
+    menu::MainWindow mainW = menu::MainWindow();
+    app.SetActiveWindow(mainW);
 
     // game::GameWindow game_window = game::GameWindow();
     // app.SetActiveWindow(game_window);

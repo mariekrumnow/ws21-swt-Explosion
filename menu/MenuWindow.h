@@ -14,6 +14,7 @@
 
 namespace menu{
 
+
 class MenuWindow : public core::Window {
 public:
     /// Simple constructor

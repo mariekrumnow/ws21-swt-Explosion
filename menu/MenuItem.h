@@ -16,6 +16,7 @@ public:
     /// Creates an Item and puts it in the window
     MenuItem(std::string text, int option_num, int x, int y);
 
+    void SetText(std::string text);
     std::string GetText();
     int GetOptionNum();
     int GetX();

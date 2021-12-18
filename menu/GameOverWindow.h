@@ -14,6 +14,8 @@
 
 namespace menu{
 
+enum {Exit2};
+
 /// Shown after a game has ended, shows the outcome and an exit Item
 class GameOverWindow : public MenuWindow {
 public:
@@ -27,7 +29,7 @@ public:
     void OnMenuItemSelect(int selected_option);
 
 private:
-    std::string outcome_text_;
+    game::Player *winner_;
 
 };
 
