@@ -21,6 +21,9 @@ void ChannelFinishedCallback(int channel) {
 SoundManager::SoundManager(bool init_sound) {
 	playing_alone_ = std::list<SoundEffect*>();
 	current_battle_music_ = 0;
+	master_volume_ = 1.0;
+	music_volume_ = 1.0;
+	effect_volume_ = 1.0;
 
 	if (init_sound) {
 		if (Mix_Init(0) == -1) {
@@ -41,6 +44,40 @@ SoundManager::~SoundManager() {
 	if (fake_) return;
 	Mix_CloseAudio();
 	Mix_Quit();
+}
+
+void SoundManager::SetMasterVolume(double volume)  {
+	if (volume < 0) volume = 0;
+	if (volume > 1) volume = 1;
+	master_volume_ = volume;
+	SetMusicVolume(music_volume_);
+	SetSoundEffectVolume(effect_volume_);
+}
+
+void SoundManager::SetMusicVolume(double volume)  {
+	if (volume < 0) volume = 0;
+	if (volume > 1) volume = 1;
+	music_volume_ = volume;
+	Mix_VolumeMusic(MIX_MAX_VOLUME * master_volume_ * volume);
+}
+
+void SoundManager::SetSoundEffectVolume(double volume) {
+	if (volume < 0) volume = 0;
+	if (volume > 1) volume = 1;
+	effect_volume_ = volume;
+	Mix_Volume(-1, MIX_MAX_VOLUME * master_volume_  * volume);
+}
+
+double SoundManager::GetMasterVolume() {
+	return master_volume_;
+}
+
+double SoundManager::GetMusicVolume() {
+	return music_volume_;
+}
+
+double SoundManager::GetSoundEffectVolume() {
+	return effect_volume_;
 }
 
 void SoundManager::PlayMusic(Music* music) {

@@ -16,6 +16,7 @@
 #include "../game/block/IndestructibleBlock.h"
 #include "sound/SoundEffect.h"
 #include "sound/Music.h"
+#include "sound/SoundManager.h"
 
 int main(int argc, char** argv)
 {
@@ -29,10 +30,15 @@ int main(int argc, char** argv)
     app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
-    sound::LoadSoundEffects("default");
-    sound::LoadMusic("default");
+    sound::LoadSoundEffects("halloween");
+    sound::LoadMusic("halloween");
 
-    app.GetSound().PlayRandomBattleMusic();
+    sound::SoundManager& sound = app.GetSound();
+
+    sound.SetMasterVolume(0.7);
+    sound.SetMusicVolume(0.9);
+
+    sound.PlayRandomBattleMusic();
 
     srand(time(0));
 

@@ -11,7 +11,10 @@ namespace graphics {
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
 extern SDL_Scancode key_fullscreen;
+
 extern SDL_Scancode key_switch_music;
+extern SDL_Scancode key_volume_louder;
+extern SDL_Scancode key_volume_quieter;
 
 struct PlayerKeys {
     SDL_Scancode up;

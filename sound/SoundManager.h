@@ -19,6 +19,14 @@ public:
 	SoundManager(bool init_sound);
 	~SoundManager();
 
+	void SetMasterVolume(double volume);
+	void SetMusicVolume(double volume);
+	void SetSoundEffectVolume(double volume);
+
+	double GetMasterVolume();
+	double GetMusicVolume();
+	double GetSoundEffectVolume();
+
 	void PlayMusic(Music* music);
 	void PlayNextBattleMusic();
 	void PlayRandomBattleMusic();
@@ -35,6 +43,10 @@ public:
 private:
 	std::list<SoundEffect*> playing_alone_;
 	int current_battle_music_;
+
+	double master_volume_;
+	double music_volume_;
+	double effect_volume_;
 
 	//set to true if the AppManager is in Test Mode, so no hardware is initialized.
 	bool fake_;
