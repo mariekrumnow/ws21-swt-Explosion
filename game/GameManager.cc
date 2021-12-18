@@ -7,6 +7,7 @@
 
 #include "GameObject.h"
 #include "../core/AppManager.h"
+#include "../graphics/Keys.h"
 
 namespace game {
 
@@ -53,6 +54,12 @@ GameManager::~GameManager(){
 void GameManager::Update(double delta_time) {
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Update(delta_time);
+	}
+
+	core::AppManager& app = core::AppManager::GetAppManager();
+
+	if (app.GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+		app.GetSound().PlayNextBattleMusic();
 	}
 }
 

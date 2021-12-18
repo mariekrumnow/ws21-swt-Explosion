@@ -7,6 +7,7 @@
 #include "Music.h"
 
 #include <list>
+#include <string>
 
 #include <SDL_mixer.h>
 
@@ -15,11 +16,12 @@ namespace sound {
 
 class SoundManager {
 public:
-	SoundManager();
+	SoundManager(bool init_sound);
 	~SoundManager();
 
 	void PlayMusic(Music* music);
 	void PlayNextBattleMusic();
+	void PlayRandomBattleMusic();
 
 	void PlaySoundEffect(SoundEffect* effect, int loops); //loops=1 => 2 playbacks
 
@@ -27,13 +29,17 @@ public:
 	void PlaySoundEffectAlone(SoundEffect* effect, int loops);
 
 	void StopAllPlayback(); //call this before any music assets are deleted!
-private:
+
+	//only used as a global callback, do not call manually
 	void OnChannelFinished(int channel);
+private:
 	std::list<SoundEffect*> playing_alone_;
 	int current_battle_music_;
 
-}
+	//set to true if the AppManager is in Test Mode, so no hardware is initialized.
+	bool fake_;
+};
 
-}
+} //namespace sound
 
 #endif

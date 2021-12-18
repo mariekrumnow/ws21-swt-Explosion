@@ -3,6 +3,8 @@
 #ifndef SOUND_SOUNDEFFECT_H
 #define SOUND_SOUNDEFFECT_H
 
+#include <string>
+
 #include <SDL_mixer.h>
 
 namespace sound {
@@ -18,15 +20,17 @@ public:
 private:
 	Mix_Chunk* sample_;
 	int current_channel_; //only set if the sound effects plays in "alone" mode
-}
+};
 
 
 extern SoundEffect* effect_bomb_explode;
 extern SoundEffect* effect_bomb_tick;
 extern SoundEffect* effect_menu_click;
 extern SoundEffect* effect_upgrade_collect;
-extern SoundEffect*
+extern SoundEffect* effect_walk;
 
-}
+bool LoadSoundEffects(std::string theme);
+
+} //namespace sound
 
 #endif

@@ -14,6 +14,8 @@
 #include "game/upgrade/BombCountUpgrade.h"
 #include "../game/block/DestructibleBlock.h"
 #include "../game/block/IndestructibleBlock.h"
+#include "sound/SoundEffect.h"
+#include "sound/Music.h"
 
 int main(int argc, char** argv)
 {
@@ -26,6 +28,11 @@ int main(int argc, char** argv)
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
+
+    sound::LoadSoundEffects("default");
+    sound::LoadMusic("default");
+
+    app.GetSound().PlayRandomBattleMusic();
 
     srand(time(0));
 

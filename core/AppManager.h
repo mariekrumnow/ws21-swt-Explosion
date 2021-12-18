@@ -9,6 +9,7 @@
 
 #include "../graphics/GraphicsManager.h"
 #include "../graphics/Keys.h"
+#include "../sound/SoundManager.h"
 
 namespace core {
 
@@ -20,6 +21,7 @@ namespace core {
         static AppManager& GetAppManager();
 
         graphics::GraphicsManager& GetGraphics();
+        sound::SoundManager& GetSound();
 
         //init_graphics can be set to false to disable graphical function for testing
         explicit AppManager(std::string title, bool init_graphics);
@@ -37,6 +39,7 @@ namespace core {
         Window* active_window_;
 
         graphics::GraphicsManager graphics_;
+        sound::SoundManager sound_;
 
 
         static AppManager* manager_; ///< The static reference to the current AppManager
