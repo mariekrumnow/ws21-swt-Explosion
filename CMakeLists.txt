@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 
-add_executable(bomberman main.cc menu/MenuWindow.cc menu/MenuWindow.h menu/MenuItem.cc menu/MenuItem.h menu/InstructionWindow.cc menu/InstructionWindow.h menu/GameOverWindow.cc menu/GameOverWindow.h menu/MainWindow.cc menu/MainWindow.h)
+add_executable(bomberman main.cc)
 
 # Libraries
 find_package(SDL2 REQUIRED)
@@ -39,5 +39,10 @@ add_subdirectory(graphics)
 target_include_directories(bomberman PRIVATE graphics)
 target_link_directories(bomberman PRIVATE graphics)
 target_link_libraries(bomberman graphics)
+
+add_subdirectory(menu)
+target_include_directories(bomberman PRIVATE menu)
+target_link_directories(bomberman PRIVATE menu)
+target_link_libraries(bomberman menu)
 
 add_subdirectory(tests)

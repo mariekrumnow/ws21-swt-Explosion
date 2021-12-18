@@ -4,13 +4,13 @@
 
 #include "InstructionWindow.h"
 #include "../core/AppManager.h"
+#include "../game/GameManager.h"
 
 namespace menu{
-    InstructionWindow::InstructionWindow()
-    : MenuWindow(Start)
+    InstructionWindow::InstructionWindow(int theme)
+    : MenuWindow(Start), theme_(theme)
     {
-        //x und y Positionen müssen so gewählt werden, dass die Spielanleitung über dem Button ist
-        MenuItem start = MenuItem("Spiel starten",Start,50,100);
+        MenuItem start = MenuItem("Los geht's!",Start,350,400);
         MenuWindow::AddMenuItem(start);
 
     }
@@ -20,21 +20,44 @@ namespace menu{
 
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
         // Spielanleitung
-        graphics.WriteText("Bei Bomberman muesst ihr eure Mitspieler mittels Bomben ausschalten und als letzter ueberleben.",
-                        graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 20);
-        graphics.WriteText("Um zu euren Mitspielern zu gelangen muesst ihr dafuer erst die perforierten Bloecke durch Explosionen zerstoeren.",
-                        graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 40);
-        graphics.WriteText("Unter diesen Bloecken koennen sich manchmal auch Upgrades befinden, die ihr einsammeln koennt.",
-                        graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 60);
+        std::string instructionText[] = {"So geht's:",
+                                         "Bei Bomberman muesst ihr eure Mitspieler mittels Bomben ausschalten und als letzter ueberleben.",
+                                         "Um zu euren Mitspielern zu gelangen muesst ihr dafuer erst die perforierten Bloecke durch Explosionen zerstoeren.",
+                                         "Unter diesen Bloecken koennen sich manchmal auch Upgrades befinden, die ihr einsammeln koennt."};
+        int counter = 1;
+        for(std::string tmp: instructionText){
+            graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 10, counter++ * 25);
+        }
+
+        std::string playerText[3][2] = {{"Bewegen", "Bombe legen"},
+                                        {"WASD", "Linkes Shift"},
+                                        {"IJKL", "Rechtes Shift"}};
+        for(int i = 0; i < 2; i++){
+            //Tiles der Spieler malen
+            for(int j = 0; j < 3; j++) {
+                graphics.WriteText(playerText[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false,
+                                   100 + i * 110, 145 + j * 40);
+            }
+        }
+
+        std::string upgradeText[] = {"Upgrade",
+                                     "Hoehere Bombenzahl",
+                                     "Groessere Explosionen",
+                                     "Hoehere Schnelligkeit"};
+        counter = 0;
+        for(std::string tmp: upgradeText){
+            //Tiles der Upgrades malen
+            graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 100, 305 + counter++ * 40);
+        }
     }
 
     void InstructionWindow::OnMenuItemSelect(int selected_option){
         switch(selected_option){
             case Start:
                 //Startbutton ist ausgewählt
-                //Das Spiel wird gestartet
+                //Das Spiel wird gestartet mit entsprechendem Theme
                 //Das InstructionWindow wird geschlossen (hier?)
-                core::AppManager::GetAppManager().GetGraphics().Quit(); //Nur testweise, gehört eig in GameOver, später quit-Funktion von Peter/Dennis nutzen
+                //CreateGameManager(15, 13, 70, 2, player_keys, winCondition);
                 break;
             default:
                 //Fehler, es sollte eigentlich immer ein gültiger Button ausgewählt sein

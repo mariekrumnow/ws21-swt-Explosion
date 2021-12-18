@@ -17,13 +17,16 @@ enum{Start};
 class InstructionWindow : public MenuWindow {
 public:
     /// Initialises the instructions and the button to start the game
-    InstructionWindow();
+    InstructionWindow(int theme);
 
     /// Shows all MenuItems on screen and draws instruction text
     void Draw();
 
     /// Activates the effect of the respective MenuItem
     void OnMenuItemSelect(int selected_option);
+
+private:
+    int theme_;
 
 };
 

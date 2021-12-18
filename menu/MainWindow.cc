@@ -14,7 +14,7 @@ namespace menu{
         MenuItem start = MenuItem("Spiel starten",Instructions,50,100);
         MenuWindow::AddMenuItem(start);
 
-        MenuItem changeTheme = MenuItem("Thema auswaehlen",ChangeTheme,50,150);
+        MenuItem changeTheme = MenuItem("Thema wechseln",ChangeTheme,50,150);
         MenuWindow::AddMenuItem(changeTheme);
 
         MenuItem exit = MenuItem("Spiel beenden",Exit1,50,200);
@@ -28,50 +28,48 @@ namespace menu{
 
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
+        std::string themeText;
         switch (theme_){
             case Classic:
-                graphics.WriteText("Bomberman",
-                                   graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 50);
+                themeText = "Bomberman";
+                //Male Tile vom Spieler der nach rechts läuft für das Tileset Bomberman
+                //graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 10, 50);
                 break;
             case Halloween:
-                graphics.WriteText("Ghostman",
-                                   graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 50);
+                themeText = "Ghostman";
+                //Male Tile vom Spieler der nach rechts läuft für das Tileset Ghostman
                 break;
             case Chicken:
-                graphics.WriteText("Birdman",
-                                   graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 50);
+                themeText = "Birdman";
+                //Male Tile vom Spieler der nach rechts läuft für das Tileset Birdman
                 break;
             case Corona:
-                graphics.WriteText("Coronaman",
-                                   graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 50);
+                themeText = "Coronaman";
+                //Male Tile vom Spieler der nach rechts läuft für das Tileset Coronaman
                 break;
             default:
                 break;
         }
-        //graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 10, 50);
+        graphics.WriteText(themeText, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 10, 50);
 
-        graphics.WriteText("Credits:",
-                           graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 250);
-        graphics.WriteText("Carla, Dennis, Marie, Marlene, Nina, Patrick, Peter, Tobias",
-                           graphics::Color(0, 0, 255, 255), graphics::FontSize::kSmall, false, 10, 270);
-
-
-
+        std::string creditText[] = {"Credits:",
+                                    "Carla, Dennis, Marie, Marlene, Nina, Patrick, Peter, Tobias"};
+        int counter = 0;
+        for(std::string tmp: creditText){
+            graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 10, 250 + counter++ * 20);
+        }
     }
 
     void MainWindow::OnMenuItemSelect(int selected_option){
-        InstructionWindow instruction = InstructionWindow();
+        InstructionWindow *instruction = new InstructionWindow(theme_);
         switch (selected_option){
             case Instructions:
-                // Start Game
-                core::AppManager::GetAppManager().SetActiveWindow(instruction);
+                core::AppManager::GetAppManager().SetActiveWindow(*instruction);
                 break;
             case ChangeTheme:
-                // change theme
                 theme_ = (theme_+1) % 4;
                 break;
             case Exit1:
-                // exit game
                 // wird sich gegebenenfalls noch verändern, durch quit-funktion im AppManager
                 core::AppManager::GetAppManager().GetGraphics().Quit();
                 break;

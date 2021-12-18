@@ -53,7 +53,7 @@ namespace graphics {
     void GraphicsManager::BeginFrame() {
         if (window_ == nullptr) return;
         ///fill the screen black
-        SDL_SetRenderDrawColor(renderer_, 0,0,0,255);
+        SDL_SetRenderDrawColor(renderer_, 50,130,255,255);
         SDL_RenderClear(renderer_);
 
         ///All keys held on the previous frame are now not pressed anymore
@@ -126,7 +126,7 @@ namespace graphics {
 
       SDL_Surface * text_surface =
         TTF_RenderUTF8_Shaded(font, text.c_str(),
-          {color.red_, color.green_, color.blue_, color.alpha_}, {0,0,0,0});
+          {color.red_, color.green_, color.blue_, color.alpha_}, {50,130,255,0});
 
       SDL_Texture * text_texture = SDL_CreateTextureFromSurface(renderer_, text_surface);
 

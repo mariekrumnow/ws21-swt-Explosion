@@ -16,6 +16,7 @@
 #include "../game/block/IndestructibleBlock.h"
 
 #include "../menu/MainWindow.h"
+#include "../menu/GameOverWindow.h"
 
 int main(int argc, char** argv)
 {
@@ -27,6 +28,21 @@ int main(int argc, char** argv)
 
     menu::MainWindow mainW = menu::MainWindow();
     app.SetActiveWindow(mainW);
+
+//    menu::InstructionWindow instruction = menu::InstructionWindow(0);
+//    app.SetActiveWindow(instruction);
+
+//     graphics::PlayerKeys player1keys{};
+//     player1keys.up = SDL_SCANCODE_W;
+//     player1keys.down = SDL_SCANCODE_S;
+//     player1keys.left = SDL_SCANCODE_A;
+//     player1keys.right = SDL_SCANCODE_D;
+//     player1keys.bomb = SDL_SCANCODE_LSHIFT;
+//    game::GameManager game_manager = game::GameManager(15,13);
+//    game::Player * player1 = game::Player::CreatePlayer(1,1,player1keys);
+//
+//    menu::GameOverWindow instruction = menu::GameOverWindow(player1);
+//    app.SetActiveWindow(instruction);
 
     // game::GameWindow game_window = game::GameWindow();
     // app.SetActiveWindow(game_window);

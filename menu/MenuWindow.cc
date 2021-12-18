@@ -17,9 +17,9 @@ namespace menu{
           graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
           // Goes up or down in the selectable MenuItems
-          if (graphics.IsKeyPressed(graphics::key_menu_up)) {
+          if (graphics.IsKeyPressed(graphics::key_menu_up[0]) || graphics.IsKeyPressed(graphics::key_menu_up[1])) {
                 selected_option_ = (selected_option_==0) ? menu_items_.size()-1 : selected_option_-1;
-          } else if (graphics.IsKeyPressed(graphics::key_menu_down)) {
+          } else if (graphics.IsKeyPressed(graphics::key_menu_down[0]) || graphics.IsKeyPressed(graphics::key_menu_down[1])) {
                 selected_option_ = (selected_option_+1) %menu_items_.size();
           }
 
@@ -33,14 +33,13 @@ namespace menu{
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
         for (auto it = menu_items_.begin(); it!=menu_items_.end(); it++) {
-   		if (it->GetOptionNum() == selected_option_) {
+   		    if (it->GetOptionNum() == selected_option_) {
                   // Currently chosen button is highlighted by different colour
-                  // FontSize kann noch auf kMedium/kSmall gesetzt werden, Bold=true
-                  graphics.WriteText(it->GetText(), graphics::Color(0, 255, 255, 255), graphics::FontSize::kMedium, false, it->GetX(), it->GetY());
-   		} else {
-                  graphics.WriteText(it->GetText(), graphics::Color(255, 255, 255, 255), graphics::FontSize::kMedium, false, it->GetX(), it->GetY());
+                  graphics.WriteText(it->GetText(), graphics::Color(255, 140, 0, 255), graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
+   		    } else {
+                  graphics.WriteText(it->GetText(), graphics::Color(255, 255, 255, 255), graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
             }
-   	 }
+   	    }
     }
 
 

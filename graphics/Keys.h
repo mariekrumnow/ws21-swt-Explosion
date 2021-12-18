@@ -11,8 +11,8 @@ namespace graphics {
 extern SDL_Scancode key_return;
 extern SDL_Scancode key_escape;
 extern SDL_Scancode key_fullscreen;
-extern SDL_Scancode key_menu_up;
-extern SDL_Scancode key_menu_down;
+extern SDL_Scancode key_menu_up[2];
+extern SDL_Scancode key_menu_down[2];
 
 
 struct PlayerKeys {
