@@ -10,7 +10,6 @@
 
 namespace menu{
 
-enum{Classic, Halloween, Chicken, Corona};
 enum{Instructions, ChangeTheme, Exit1};
 
 /// Shows the credits and buttons to start and close the game or change the theme
@@ -25,13 +24,10 @@ public:
     /// Activates the effect of the respective MenuItem
     void OnMenuItemSelect(int selected_option);
 
-
 private:
     int theme_;
 
-
 };
-
 
 }   // namespace Menu
 

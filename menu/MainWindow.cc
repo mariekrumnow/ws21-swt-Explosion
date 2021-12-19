@@ -1,9 +1,11 @@
 //
 // Autor: Marlene, Marie, Patrick
 //
-# include "MainWindow.h"
-#include "../core/AppManager.h"
+
+#include "MainWindow.h"
 #include "InstructionWindow.h"
+#include "../core/AppManager.h"
+
 
 namespace menu{
     MainWindow::MainWindow()
@@ -11,16 +13,14 @@ namespace menu{
     {
         theme_ = Classic;
 
-        MenuItem start = MenuItem("Spiel starten",Instructions,50,100);
+        MenuItem start = MenuItem("Spiel starten", Instructions, 50, 100);
         MenuWindow::AddMenuItem(start);
 
-        MenuItem changeTheme = MenuItem("Thema wechseln",ChangeTheme,50,150);
+        MenuItem changeTheme = MenuItem("Thema wechseln", ChangeTheme, 50, 150);
         MenuWindow::AddMenuItem(changeTheme);
 
-        MenuItem exit = MenuItem("Spiel beenden",Exit1,50,200);
+        MenuItem exit = MenuItem("Spiel beenden", Exit1, 50, 200);
         MenuWindow::AddMenuItem(exit);
-
-
     }
 
     void MainWindow::Draw(){
@@ -29,7 +29,7 @@ namespace menu{
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
         std::string themeText;
-        switch (theme_){
+        switch (theme_) {
             case Classic:
                 themeText = "Bomberman";
                 //Male Tile vom Spieler der nach rechts läuft für das Tileset Bomberman
@@ -55,19 +55,19 @@ namespace menu{
         std::string creditText[] = {"Credits:",
                                     "Carla, Dennis, Marie, Marlene, Nina, Patrick, Peter, Tobias"};
         int counter = 0;
-        for(std::string tmp: creditText){
+        for (std::string tmp: creditText) {
             graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 10, 250 + counter++ * 20);
         }
     }
 
     void MainWindow::OnMenuItemSelect(int selected_option){
-        InstructionWindow *instruction = new InstructionWindow(theme_);
-        switch (selected_option){
+        bool openInstructions = false;
+        switch (selected_option) {
             case Instructions:
-                core::AppManager::GetAppManager().SetActiveWindow(*instruction);
+                openInstructions = true;
                 break;
             case ChangeTheme:
-                theme_ = (theme_+1) % 4;
+                theme_ = (theme_+1)%4;
                 break;
             case Exit1:
                 // wird sich gegebenenfalls noch verändern, durch quit-funktion im AppManager
@@ -76,10 +76,10 @@ namespace menu{
             default:
                 break;
         }
-
+        if (openInstructions) {
+              InstructionWindow *instruction = new InstructionWindow(theme_);
+              core::AppManager::GetAppManager().SetActiveWindow(*instruction);
+        }
     }
-
-
-
 
 }   //namespace menu

@@ -14,6 +14,7 @@
 
 namespace menu{
 
+enum{Classic, Halloween, Chicken, Corona};
 
 class MenuWindow : public core::Window {
 public:
@@ -33,12 +34,12 @@ public:
     int GetSelectedOption();
     std::list<MenuItem>& GetMenuItems();
 
-
 private:
     /// The MenuItem the user is currently hovering over, can be 0 to menu_items_.size()
     int selected_option_;
     /// All Buttons and texts on screen
     std::list<MenuItem> menu_items_;
+
 };
 
 }   // namespace menu

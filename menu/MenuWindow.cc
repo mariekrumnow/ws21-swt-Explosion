@@ -1,6 +1,7 @@
 //
 // Autor: Marlene, Marie, Patrick
 //
+
 #include <list>
 
 #include "MenuWindow.h"
@@ -8,9 +9,9 @@
 
 
 namespace menu{
+
     MenuWindow::MenuWindow(int selected_option)
-    : selected_option_(selected_option)
-    {}
+    : selected_option_(selected_option) {}
 
 
     void MenuWindow::Update(double delta_time){
@@ -33,13 +34,10 @@ namespace menu{
         graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
         for (auto it = menu_items_.begin(); it!=menu_items_.end(); it++) {
-   		    if (it->GetOptionNum() == selected_option_) {
-                  // Currently chosen button is highlighted by different colour
-                  graphics.WriteText(it->GetText(), graphics::Color(255, 140, 0, 255), graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
-   		    } else {
-                  graphics.WriteText(it->GetText(), graphics::Color(255, 255, 255, 255), graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
-            }
-   	    }
+                // Currently chosen button is highlighted by different colour
+                graphics::Color buttonColor = (it->GetOptionNum() == selected_option_) ? graphics::Color(255, 140, 0, 255) : graphics::Color(255, 255, 255, 255);
+                graphics.WriteText(it->GetText(), buttonColor, graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
+   	  }
     }
 
 

@@ -2,11 +2,11 @@
 // Autor: Marlene, Marie, Patrick
 //
 
-
 #ifndef BOMBERMAN_MENU_MENUITEM_H
 #define BOMBERMAN_MENU_MENUITEM_H
 
 #include <string>
+
 
 namespace menu{
 
@@ -15,8 +15,8 @@ class MenuItem {
 public:
     /// Creates an Item and puts it in the window
     MenuItem(std::string text, int option_num, int x, int y);
-
     void SetText(std::string text);
+
     std::string GetText();
     int GetOptionNum();
     int GetX();
@@ -30,9 +30,8 @@ private:
     /// Position of the Item
     int x_;
     int y_;
-
+    
 };
-
 
 }   // namespace menu
 

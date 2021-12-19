@@ -2,7 +2,6 @@
 // Autor: Marlene, Marie, Patrick
 //
 
-
 #ifndef BOMBERMAN_MENU_GAMEOVERWINDOW_H
 #define BOMBERMAN_MENU_GAMEOVERWINDOW_H
 
@@ -11,6 +10,7 @@
 #include "MenuWindow.h"
 #include "../graphics/Color.h"
 #include "../game/Player.h"
+
 
 namespace menu{
 
@@ -32,7 +32,6 @@ private:
     game::Player *winner_;
 
 };
-
 
 }   // namespace menu
 
