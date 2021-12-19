@@ -32,25 +32,26 @@ namespace menu{
         switch (theme_) {
             case Classic:
                 themeText = "Bomberman";
-                //Male Tile vom Spieler der nach rechts läuft für das Tileset Bomberman
-                //graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 10, 50);
+                //Setze Player-Tiles auf Bomberman
                 break;
             case Halloween:
                 themeText = "Ghostman";
-                //Male Tile vom Spieler der nach rechts läuft für das Tileset Ghostman
+                //Setze Player-Tiles auf Ghostman
                 break;
             case Chicken:
                 themeText = "Birdman";
-                //Male Tile vom Spieler der nach rechts läuft für das Tileset Birdman
+                //Setze Player-Tiles auf Birdman
                 break;
             case Corona:
                 themeText = "Coronaman";
-                //Male Tile vom Spieler der nach rechts läuft für das Tileset Coronaman
+                //Setze Player-Tiles auf Coronaman
                 break;
             default:
                 break;
         }
-        graphics.WriteText(themeText, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 10, 50);
+        //graphics::kPlayer2Tiles.right
+        graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 50);
+        graphics.WriteText(themeText, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 100, 50);
 
         std::string creditText[] = {"Credits:",
                                     "Carla, Dennis, Marie, Marlene, Nina, Patrick, Peter, Tobias"};

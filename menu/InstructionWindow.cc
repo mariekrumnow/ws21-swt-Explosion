@@ -36,25 +36,28 @@ namespace menu{
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
                 graphics.WriteText(playerText[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 100+i*110, 145+j*40);
-            }
 
-            switch (theme_) {
-                case Classic:
-                    //Male Tile vom Spieler der nach rechts läuft für das Tileset Bomberman
-                    //graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 10, 50);
-                    //graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 10, 50);
-                    break;
-                case Halloween:
-                    //Male Tile vom Spieler der nach rechts läuft für das Tileset Ghostman
-                    break;
-                case Chicken:
-                    //Male Tile vom Spieler der nach rechts läuft für das Tileset Birdman
-                    break;
-                case Corona:
-                    //Male Tile vom Spieler der nach rechts läuft für das Tileset Coronaman
-                    break;
-                default:
-                    break;
+                if (i==0){
+                      switch (theme_) {
+                         case Classic:
+                             //Setze Player-Tiles auf Bomberman
+                             break;
+                         case Halloween:
+                             //Setze Player-Tiles auf Ghostman
+                             break;
+                         case Chicken:
+                             //Setze Player-Tiles auf Birdman
+                             break;
+                         case Corona:
+                             //Setze Player-Tiles auf Coronaman
+                             break;
+                         default:
+                             break;
+                     }
+                     //graphics::kPlayer2Tiles.right
+                     graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
+                     graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
+               }
             }
         }
 
@@ -63,10 +66,13 @@ namespace menu{
                                      "Hoehere Bombenzahl",
                                      "Groessere Explosionen",
                                      "Hoehere Schnelligkeit"};
+        graphics::Tile upgradeTile[] = {graphics::kTileBombCountUpgrade,
+                                      graphics::kTileExplosionRadiusUpgrade,
+                                      graphics::kTileSpeedUpgrade};
         counter = 0;
         for (std::string tmp: upgradeText) {
-            //Tiles der Upgrades malen
-            graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 100, 305+counter++*40);
+            graphics.DrawTile(upgradeTile[counter], graphics::Color(255,255,255,255), 20, 305+(counter+1)*40);
+            graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 100, 305+(counter++)*40);
         }
     }
 
