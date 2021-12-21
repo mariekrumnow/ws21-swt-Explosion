@@ -84,11 +84,11 @@ void GameFactory::GeneratePlayers(int player_count, graphics::PlayerKeys* player
 
     for (int i = 0; i < player_count; i++) {
         if (i == 0) {
-            players[i] = Player::CreatePlayer(1, 1, player_keys[i], graphics::kPlayer1Tiles, i+1);
+            players[i] = Player::CreatePlayer(1, 1, player_keys[i], graphics::kPlayer1Tiles, 1);
         } else if (i == 1) {
-            players[i] = Player::CreatePlayer((width_ - 2), (height_ - 2), player_keys[i], graphics::kPlayer2Tiles, i+1);
+            players[i] = Player::CreatePlayer((width_ - 2), (height_ - 2), player_keys[i], graphics::kPlayer2Tiles, 2);
         } else if (i == 2) {
-            players[i] = Player::CreatePlayer(1, (height_ - 2), player_keys[i], graphics::kPlayer1Tiles, i+1);
+            players[i] = Player::CreatePlayer(1, (height_ - 2), player_keys[i], graphics::kPlayer1Tiles, 3);
         } else if (i == 3) {
             players[i] = Player::CreatePlayer((width_ - 2), 1, player_keys[i], graphics::kPlayer2Tiles, i+1);
         }
