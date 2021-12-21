@@ -1,8 +1,6 @@
-// Autor Dennis, Peter
+// Autor: Dennis, Peter
 
 #include "StandardWinCondition.h"
-
-#include <iostream>
 
 #include "../GameManager.h"
 

@@ -3,7 +3,6 @@
 #include "GameManager.h"
 
 #include <iostream>
-#include <list>
 #include <vector>
 
 #include "GameObject.h"
@@ -62,7 +61,7 @@ void GameManager::Update(double delta_time) {
 
     if (this->win_condition_->checkWin()) {
         core::AppManager::GetAppManager().Quit();
-        std::cout << "Gewonnen hat: " << players_.front()->GetId() <<std::endl;
+        std::cout << "Gewonnen hat Spieler " << players_.front()->GetId() << "." <<  std::endl;
     }
 }
 
