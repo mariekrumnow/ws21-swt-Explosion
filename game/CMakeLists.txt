@@ -17,7 +17,7 @@ add_library(game
         upgrade/BombCountUpgrade.h upgrade/BombCountUpgrade.cc
 
         win_condition/BaseWinCondition.h
-        win_condition/StandardWinCondition.cc win_condition/StandardWinCondition.h)
+        win_condition/StandardWinCondition.cc win_condition/StandardWinCondition.h GameFactory.cc GameFactory.h)
 
 target_include_directories (game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

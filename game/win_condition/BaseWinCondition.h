@@ -3,13 +3,14 @@
 #ifndef BOMBERMAN_BASEWINCONDITION_H
 #define BOMBERMAN_BASEWINCONDITION_H
 
+#include <vector>
+
 namespace game {
 namespace win_condition {
 
 class BaseWinCondition {
 public:
     virtual bool checkWin() = 0;
-
 };
 
 } // namespace win_condition

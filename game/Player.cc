@@ -12,22 +12,23 @@
 #include "../graphics/Color.h"
 #include "../graphics/Keys.h"
 #include "../graphics/Tile.h"
+#include "win_condition/BaseWinCondition.h"
 
 namespace game {
 
-Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles)
-                : keys_(keys), tiles_(tiles) {}
+Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles, int id)
+                : keys_(keys), tiles_(tiles), id_(id) {}
 
 /// If a nullptr is returned, an error occured or the object couldn't be placed
 Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys,
-                             graphics::PlayerTile tiles)                {
-      Player* temp = new Player(keys, tiles);
+                             graphics::PlayerTile tiles, int id)                {
+    Player* temp = new Player(keys, tiles, id);
       if (temp!=nullptr) {
-			GameManager::GetCurrentGame().AddGameObject(*temp);
-                if (!temp->SetPosition(x,y)) {
-                      temp->Destroy();
-                      return nullptr;
-                }
+          GameManager::GetCurrentGame().AddPlayer(temp);
+            if (!temp->SetPosition(x,y)) {
+                  temp->Destroy();
+                  return nullptr;
+            }
       }
       return temp;
 }
@@ -138,7 +139,7 @@ bool Player::OnCollision(GameObject &source) {
 }
 
 bool Player::OnExplosion(GameObject &source) {
-    GameManager::GetCurrentGame().ReducePlayerCount();
+    GameManager::GetCurrentGame().RemovePlayer(*this);
     this->Destroy();
     return false;
 }
@@ -168,6 +169,10 @@ int Player::GetKMaxBombCount() const {
 
 int Player::GetKMaxSpeed() const {
     return kMaxSpeed;
+}
+
+int Player::GetId() const {
+    return id_;
 }
 
 } // namespace game

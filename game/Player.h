@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "GameManager.h"
+#include "GameObject.h"
 #include "../graphics/Keys.h"
 #include "../graphics/Color.h"
 #include "../graphics/Tile.h"
@@ -17,9 +18,9 @@ namespace bomb { class Bomb;}
 
 class Player : public GameObject {
 public:
+    Player(graphics::PlayerKeys, graphics::PlayerTile, int id);
     static Player* CreatePlayer(int x, int y, graphics::PlayerKeys keys,
-                                graphics::PlayerTile tiles);
-    Player(graphics::PlayerKeys, graphics::PlayerTile);
+                                graphics::PlayerTile tiles, int id);
     ~Player();
 
     void IncreaseSpeed(int value);
@@ -36,6 +37,8 @@ public:
     int GetKMaxExplosionRadius() const;
     int GetKMaxBombCount() const;
     int GetKMaxSpeed() const;
+
+    int GetId() const;
 
     graphics::Tile GetTile();
     graphics::Color GetColor();
@@ -55,6 +58,8 @@ private:
     const int kMaxSpeed = 7;
 
     int orientation_ = 0;
+
+    int id_;
 
     double move_timer_;  ///< timer till player can move again
     const double kMaxMoveTimer = 1.0;

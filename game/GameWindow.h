@@ -5,8 +5,6 @@
 
 #include "../core/Window.h"
 
-
-
 namespace game {
 
 class GameWindow : public core::Window {
@@ -18,6 +16,5 @@ public:
 };
 
 } // namespace game
-
 
 #endif // BOMBERMAN_GAME_GAMEWINDOW_H

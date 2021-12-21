@@ -6,18 +6,20 @@
 #include <list>
 #include <vector>
 
-#include "../core/AppManager.h"
+namespace game {
+    class Player;
+}
+
 #include "GameObject.h"
+#include "../core/AppManager.h"
 #include "win_condition/BaseWinCondition.h"
 
 namespace game {
 
+
 class GameManager {
 public:
-    GameManager(
-            const int width, const int height,const int indest_prop, const int player_count,
-            graphics::PlayerKeys* player_keys, win_condition::BaseWinCondition *winCondition
-            );
+    GameManager(const int width, const int height, win_condition::BaseWinCondition* winCondition);
     ~GameManager();
 
     void Update(double delta_time);
@@ -37,30 +39,26 @@ public:
     std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
     std::vector<GameObject*> GetAllObjects();
 
-    void ReducePlayerCount();
-
     int GetWidth() const;
     int GetHeight() const;
-    int GetPlayerCount() const;
+
+    void RemovePlayer(Player player);
+    void AddPlayer(Player* player);
+    int GetPlayerCount();
 
 private:
-    void GenerateMap(const int indest_prop) const;
-
     std::vector<GameObject*>** objects_by_pos_;
     std::vector<GameObject*> empty_object_vector_; ///< as a default for oob positions
     std::list<GameObject*> destroyed_game_objects_;
     static GameManager* current_game_;
+    win_condition::BaseWinCondition* win_condition_;
 
-    win_condition::BaseWinCondition* winCondition_;
-
-    int playerCount_;
+    std::vector<Player*> players_;
 
     int width_;
     int height_;
-
 };
 
 } // namespace game
-
 
 #endif // BOMBERMAN_GAME_GAMEMANAGER_H
