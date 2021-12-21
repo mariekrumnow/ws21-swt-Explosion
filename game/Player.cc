@@ -13,6 +13,9 @@
 #include "../graphics/Keys.h"
 #include "../graphics/Tile.h"
 #include "win_condition/BaseWinCondition.h"
+#include "../core/AppManager.h"
+#include "../sound/SoundEffect.h"
+#include "../game/bomb/Bomb.h"
 
 namespace game {
 
@@ -79,7 +82,8 @@ bool Player::PlaceBomb(int x, int y) {
 }
 
 void Player::Update(double delta_time) {
-  graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
+    core::AppManager& app = core::AppManager::GetAppManager();
+  graphics::GraphicsManager& graphics = app.GetGraphics();
 
   if (move_timer_ > 0) {
     move_timer_ -= delta_time;
@@ -107,8 +111,9 @@ void Player::Update(double delta_time) {
     }
 
     if (player_moved) {
-      move_timer_ = kMinMoveTimer +
-        (kMaxMoveTimer - kMinMoveTimer) * (1 - ((double)speed_) / kMaxSpeed);
+        app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
+        move_timer_ = kMinMoveTimer +
+            (kMaxMoveTimer - kMinMoveTimer) * (1 - ((double)speed_) / kMaxSpeed);
     }
   }
 }

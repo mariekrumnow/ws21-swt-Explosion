@@ -7,7 +7,7 @@
 #include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
 #include "Window.h"
-
+#include "../sound/SoundManager.h"
 
 namespace core {
 
@@ -22,45 +22,53 @@ graphics::GraphicsManager& AppManager::GetGraphics() {
     return graphics_;
 }
 
-
-AppManager::AppManager(std::string title, bool init_graphics) : isRunning_(true),
-    graphics_(graphics::GraphicsManager(title, init_graphics)) {
-    //ensure the reference to the AppManager stays active, and there is only one.
-
-    if(AppManager::manager_ != nullptr) {
-        delete AppManager::manager_;
-    }
-
-    AppManager::manager_ = this;
-    active_window_ = nullptr;
+sound::SoundManager& AppManager::GetSound() {
+    return sound_;
 }
 
-    AppManager::~AppManager() {
-        AppManager::manager_ = nullptr;
-    }
 
-    void AppManager::SetActiveWindow(Window &window) {
-        active_window_ = &window;
-    }
 
-    Window& AppManager::GetActiveWindow() {
-        return *active_window_;
-    }
+AppManager::AppManager(std::string title, bool init_hardware) :
+        graphics_(graphics::GraphicsManager(title, init_hardware)),
+        sound_(sound::SoundManager(init_hardware)) {
+        //ensure the reference to the AppManager stays active, and there is only one.
 
-    void AppManager::RunFrame(double delta_time) {
-        if (active_window_ != nullptr) {
-            graphics_.BeginFrame();
 
-            active_window_->Update(delta_time);
-            active_window_->Draw();
-
-            graphics_.EndFrame();
+        if(AppManager::manager_ != nullptr) {
+            delete AppManager::manager_;
         }
-    }
 
-    void AppManager::Run() {
-        double delta_time = 0.05;
-        bool fullscreen = false;
+        AppManager::manager_ = this;
+        active_window_ = nullptr;
+
+}
+
+AppManager::~AppManager() {
+    AppManager::manager_ = nullptr;
+}
+
+void AppManager::SetActiveWindow(Window &window) {
+    active_window_ = &window;
+}
+
+Window& AppManager::GetActiveWindow() {
+    return *active_window_;
+}
+
+void AppManager::RunFrame(double delta_time) {
+    if (active_window_ != nullptr) {
+        graphics_.BeginFrame();
+
+        active_window_->Update(delta_time);
+        active_window_->Draw();
+
+        graphics_.EndFrame();
+    }
+}
+
+void AppManager::Run() {
+    double delta_time = 0.05;
+    bool fullscreen = false;
 
         const int min_delta_time = 1000000 / 60; //limit to ~60 fps
 
@@ -74,25 +82,33 @@ AppManager::AppManager(std::string title, bool init_graphics) : isRunning_(true)
               graphics_.SetFullscreen(fullscreen);
             }
 
-            if (graphics_.IsKeyPressed(graphics::key_escape)) {
-              isRunning_ = false;
-            }
+          if (graphics_.IsKeyPressed(graphics::key_escape)) {
+            graphics_.Quit();
+          }
 
-            int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
-            if (elapsed_microsecs < min_delta_time) {
-              graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
-              elapsed_microsecs = min_delta_time;
-            }
+          if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+              GetSound().PlayNextBattleMusic();
+          }
 
-            delta_time = elapsed_microsecs/1000000.0;
-        }
-        graphics_.Quit();
-    }
+          if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
+              GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
+          }
 
-    void AppManager::Quit()
-    {
-        isRunning_ = false;
-    }
+          if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
+              GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
+          }
+
+          int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
+                     .count();
+
+          if (elapsed_microsecs < min_delta_time) {
+            graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
+            elapsed_microsecs = min_delta_time;
+          }
+
+          delta_time = elapsed_microsecs/1000000.0;
+      }
+}
 
 
 } // namespace core

@@ -7,7 +7,7 @@
 #include "../GameManager.h"
 #include "../GameObject.h"
 #include "../Player.h"
-
+#include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{
@@ -27,6 +27,8 @@ BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y) {
 }
 
 bool BombCountUpgrade::OnPlayerCollision(Player& player) {
+    core::AppManager::GetAppManager().GetSound()
+        .PlaySoundEffect(sound::effect_upgrade_collect, 0);
     this->Destroy();
     if (player.GetMaxBombCount() <= player.GetKMaxBombCount()) {
         player.IncreaseMaxBombCount(1);

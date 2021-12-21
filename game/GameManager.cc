@@ -7,6 +7,8 @@
 
 #include "GameObject.h"
 #include "Player.h"
+#include "../core/AppManager.h"
+#include "../graphics/Keys.h"
 
 namespace game {
 

@@ -38,5 +38,8 @@ SDL_Scancode key_z = SDL_SCANCODE_Z;
 SDL_Scancode key_r_shift = SDL_SCANCODE_RSHIFT;
 SDL_Scancode key_l_shift = SDL_SCANCODE_LSHIFT;
 
+SDL_Scancode key_switch_music = SDL_SCANCODE_F12;
+SDL_Scancode key_volume_louder = SDL_SCANCODE_F8;
+SDL_Scancode key_volume_quieter = SDL_SCANCODE_F7;
 
 } // namespace graphics

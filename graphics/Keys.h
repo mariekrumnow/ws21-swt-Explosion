@@ -24,6 +24,9 @@ extern SDL_Scancode key_k;
 extern SDL_Scancode key_l;
 extern SDL_Scancode key_r_shift;
 
+extern SDL_Scancode key_switch_music;
+extern SDL_Scancode key_volume_louder;
+extern SDL_Scancode key_volume_quieter;
 
 struct PlayerKeys {
     SDL_Scancode up;
