@@ -41,29 +41,36 @@ SoundManager::SoundManager(bool init_sound) {
 }
 
 SoundManager::~SoundManager() {
-	if (fake_) return;
+	if (fake_)
+		return;
 	Mix_CloseAudio();
 	Mix_Quit();
 }
 
 void SoundManager::SetMasterVolume(double volume)  {
-	if (volume < 0) volume = 0;
-	if (volume > 1) volume = 1;
+	if (volume < 0)
+		volume = 0;
+	if (volume > 1)
+		volume = 1;
 	master_volume_ = volume;
 	SetMusicVolume(music_volume_);
 	SetSoundEffectVolume(effect_volume_);
 }
 
 void SoundManager::SetMusicVolume(double volume)  {
-	if (volume < 0) volume = 0;
-	if (volume > 1) volume = 1;
+	if (volume < 0)
+		volume = 0;
+	if (volume > 1)
+		volume = 1;
 	music_volume_ = volume;
 	Mix_VolumeMusic(MIX_MAX_VOLUME * master_volume_ * volume);
 }
 
 void SoundManager::SetSoundEffectVolume(double volume) {
-	if (volume < 0) volume = 0;
-	if (volume > 1) volume = 1;
+	if (volume < 0)
+		volume = 0;
+	if (volume > 1)
+		volume = 1;
 	effect_volume_ = volume;
 	Mix_Volume(-1, MIX_MAX_VOLUME * master_volume_  * volume);
 }
@@ -81,12 +88,14 @@ double SoundManager::GetSoundEffectVolume() {
 }
 
 void SoundManager::PlayMusic(Music* music) {
-	if (fake_) return;
+	if (fake_)
+		return;
 	Mix_PlayMusic(music->GetMusic(), -1);
 }
 
 void SoundManager::PlayNextBattleMusic() {
-	if (fake_) return;
+	if (fake_)
+		return;
 
 	PlayMusic( battle_music[current_battle_music_] );
 
@@ -101,12 +110,14 @@ void SoundManager::PlayRandomBattleMusic() {
 }
 
 void SoundManager::PlaySoundEffect(SoundEffect* effect, int loops) {
-	if (fake_) return;
+	if (fake_)
+		return;
 	Mix_PlayChannel(-1, effect->GetSample(), loops);
 }
 
 void SoundManager::PlaySoundEffectAlone(SoundEffect* effect, int loops) {
-	if (fake_) return;
+	if (fake_)
+		return;
 	if (effect->GetCurrentChannel() != -1) {
 		Mix_HaltChannel(effect->GetCurrentChannel());
 	}
@@ -129,7 +140,8 @@ void SoundManager::OnChannelFinished(int channel) {
 }
 
 void SoundManager::StopAllPlayback() {
-	if (fake_) return;
+	if (fake_)
+		return;
 	Mix_HaltChannel(-1);
 	Mix_HaltMusic();
 	current_battle_music_ = 0;

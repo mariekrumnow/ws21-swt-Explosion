@@ -85,8 +85,20 @@ void AppManager::Run() {
           graphics_.Quit();
         }
 
-					int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
-                             .count();
+        if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+            GetSound().PlayNextBattleMusic();
+        }
+
+        if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
+            GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
+        }
+
+        if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
+            GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
+        }
+
+		int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
+                 .count();
 
         if (elapsed_microsecs < min_delta_time) {
           graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);

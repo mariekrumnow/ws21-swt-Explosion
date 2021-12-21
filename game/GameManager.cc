@@ -55,20 +55,6 @@ void GameManager::Update(double delta_time) {
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Update(delta_time);
 	}
-
-	core::AppManager& app = core::AppManager::GetAppManager();
-
-	if (app.GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
-		app.GetSound().PlayNextBattleMusic();
-	}
-
-	if (app.GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
-		app.GetSound().SetMasterVolume(app.GetSound().GetMasterVolume() + 0.1);
-	}
-
-	if (app.GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
-		app.GetSound().SetMasterVolume(app.GetSound().GetMasterVolume() - 0.1);
-	}
 }
 
 GameManager& GameManager::GetCurrentGame() {

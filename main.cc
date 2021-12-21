@@ -30,8 +30,8 @@ int main(int argc, char** argv)
     app.SetActiveWindow(game_window);
     game::GameManager game_manager = game::GameManager(15,13);
 
-    sound::LoadSoundEffects("halloween");
-    sound::LoadMusic("halloween");
+    sound::LoadSoundEffects("default");
+    sound::LoadMusic("default");
 
     sound::SoundManager& sound = app.GetSound();
 
