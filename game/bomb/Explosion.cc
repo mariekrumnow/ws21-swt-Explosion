@@ -65,6 +65,8 @@ graphics::Tile Explosion::GetTile() {
         case 10 :
             return graphics::kTileExplosionMiddle;
             break;
+        default :
+            return graphics::kTileEmpty;
     }
 }
 

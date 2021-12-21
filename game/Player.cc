@@ -123,6 +123,8 @@ graphics::Tile Player::GetTile() {
             return tiles_.left;
         case 3 :
             return tiles_.right;
+        default :
+            return graphics::kTileEmpty;
     }
 }
 
