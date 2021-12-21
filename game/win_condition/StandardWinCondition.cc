@@ -11,8 +11,6 @@ namespace win_condition{
 
 bool StandardWinCondition::checkWin() {
 
-    std::cout << GameManager::GetCurrentGame().GetPlayerCount() << std::endl;
-
     if (GameManager::GetCurrentGame().GetPlayerCount() <= 1) {
         return true;
     }

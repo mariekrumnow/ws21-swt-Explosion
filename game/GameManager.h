@@ -42,7 +42,7 @@ public:
     int GetWidth() const;
     int GetHeight() const;
 
-    void RemovePlayer(Player player);
+    void RemovePlayer(Player &player);
     void AddPlayer(Player* player);
     int GetPlayerCount();
 

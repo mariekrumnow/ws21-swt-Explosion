@@ -62,7 +62,7 @@ void GameManager::Update(double delta_time) {
 
     if (this->win_condition_->checkWin()) {
         core::AppManager::GetAppManager().Quit();
-        std::cout << "Gewonnen hat: " << std::endl;
+        std::cout << "Gewonnen hat: " << players_.front()->GetId() <<std::endl;
     }
 }
 
@@ -137,12 +137,14 @@ int GameManager::GetHeight() const {
 	return height_;
 }
 
-void GameManager::RemovePlayer(Player player) {
+void GameManager::RemovePlayer(Player &player) {
     int i=0;
+
     for (auto it = players_.begin();
          i<players_.size(); i++, it++) {
 
         if (players_[i] == &(player)) {
+
             players_.erase(it);
             break;
         }
