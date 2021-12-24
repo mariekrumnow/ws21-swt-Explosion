@@ -1,13 +1,15 @@
-//Autor: Tobias, Marie
+//Autor: Tobias, Marie, Carla, Nina
 
 #include "Bomb.h"
-#include "Explosion.h"
 
 #include "../core/AppManager.h"
 #include "../sound/SoundEffect.h"
 
 #include <cmath>
 #include <iostream>
+
+#include "Explosion.h"
+
 
 namespace game {
 namespace bomb {
@@ -22,7 +24,7 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 /// If a nullptr is returned, an error occured or the object couldn't be placed
 Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_delay){
 	Bomb* temp = new Bomb(owner,power,explosion_delay);
-	if (temp!=nullptr){
+	if (temp!=nullptr) {
 		    GameManager::GetCurrentGame().AddGameObject(*temp);
 	            if (!temp->SetPosition(x,y)) {
 	                  temp->Destroy();
@@ -62,11 +64,11 @@ graphics::Tile Bomb::GetTile() {
 }
 
 graphics::Color Bomb::GetColor() {
-	if (std::fmod(explosion_timer_, 0.5) < 0.25) {
-		return graphics::Color(255,0,0,255);
-	} else {
-		return graphics::Color(255,255,0,255);
-	}
+       if (std::fmod(explosion_timer_, 0.4) < 0.2) {
+           return graphics::Color(255,255,255,255);
+       } else {
+           return graphics::Color(230,200,200,255);
+       }
 }
 
 void Bomb::Update(double delta_time) {
@@ -76,9 +78,9 @@ void Bomb::Update(double delta_time) {
 	}
 }
 
-bool Bomb::SpawnExplosion(int x, int y) {
-	Explosion* explosion = Explosion::CreateExplosion(x,y);
-	if (explosion = nullptr) {
+bool Bomb::SpawnExplosion(int x, int y, int oriented) {
+	Explosion* explosion = Explosion::CreateExplosion(x,y,oriented);
+	if (explosion == nullptr) {
 		return false;
 	}
 
@@ -105,7 +107,7 @@ void Bomb::Explode() {
 	int current_y = GetY();
 
 	///always spawn explosion where bomb is
-	SpawnExplosion(current_x, current_y);
+	SpawnExplosion(current_x, current_y,10);
 
 	///for each of the four directions
 	for (int turn=0; turn<4; turn++) {
@@ -120,14 +122,29 @@ void Bomb::Explode() {
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
 				stopped |= go->OnExplosion(*this);
 			}
-
+            int oriented=turn;
+            ///differetiation between middle- and end- explosions
+            if (d==power_) {
+                switch(turn){
+                    case 0 :
+                        oriented=4;
+                        break;
+                    case 1 :
+                        oriented=5;
+                        break;
+                    case 2 :
+                        oriented=6;
+                        break;
+                    case 3 :
+                        oriented=7;
+                        break;
+                }
+            }
 			///if none there, spawn explosion
 			if (stopped) {
 				break;
-			} else {
-				if (!SpawnExplosion(x,y)) {
-					break;
-				}
+			} else if (!SpawnExplosion(x,y,oriented)) {
+                break;
 			}
 		}
 	}

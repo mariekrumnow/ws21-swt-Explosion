@@ -40,4 +40,4 @@ target_include_directories(bomberman PRIVATE graphics)
 target_link_directories(bomberman PRIVATE graphics)
 target_link_libraries(bomberman graphics)
 
-add_subdirectory(tests)
+#add_subdirectory(tests)

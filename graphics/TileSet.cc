@@ -17,7 +17,7 @@ namespace graphics {
 
     void TileSet::DrawTile(SDL_Renderer* renderer, Tile tile, Color color, int x, int y){
         const SDL_Rect kSource =
-                {tile.getXOffset() * tile_size_x_, tile.getYOffset() * tile_size_y_,
+                {tile.getXOffset()* tile_size_x_, tile.getYOffset() * tile_size_y_,
                  tile_size_x_, tile_size_y_};
 
         const SDL_Rect kDestination =

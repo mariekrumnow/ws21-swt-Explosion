@@ -1,41 +1,37 @@
-//Autor: Peter, Nina, Tobias, Marie
+//Autor: Peter, Nina, Tobias, Marie, Carla, Dennis
 
 #include "Player.h"
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
-#include "GameObject.h"
 #include "GameManager.h"
-#include "../graphics/Keys.h"
+#include "GameObject.h"
+#include "../game/bomb/Bomb.h"
+#include "../core/AppManager.h"
 #include "../graphics/Color.h"
+#include "../graphics/Keys.h"
 #include "../graphics/Tile.h"
+#include "win_condition/BaseWinCondition.h"
 #include "../core/AppManager.h"
 #include "../sound/SoundEffect.h"
 #include "../game/bomb/Bomb.h"
 
-
 namespace game {
 
-Player::Player(graphics::PlayerKeys keys) : keys(keys)
-{
-  speed_ = 1;
-  explosion_radius_ = 1;
-  max_bomb_count_ = 1;
-  owned_bombs_ = 0;
-
-  move_timer_ = 0;
-}
+Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles, int id)
+                : keys_(keys), tiles_(tiles), id_(id) {}
 
 /// If a nullptr is returned, an error occured or the object couldn't be placed
-Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys){
-      Player* temp = new Player(keys);
-      if (temp!=nullptr){
-			GameManager::GetCurrentGame().AddGameObject(*temp);
-                if (!temp->SetPosition(x,y)) {
-                      temp->Destroy();
-                      return nullptr;
-                }
+Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys,
+                             graphics::PlayerTile tiles, int id)                {
+    Player* temp = new Player(keys, tiles, id);
+      if (temp!=nullptr) {
+          GameManager::GetCurrentGame().AddPlayer(temp);
+            if (!temp->SetPosition(x,y)) {
+                  temp->Destroy();
+                  return nullptr;
+            }
       }
       return temp;
 }
@@ -75,7 +71,7 @@ void Player::IncreaseSpeed(int value) {
 bool Player::PlaceBomb(int x, int y) {
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
-    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this, GetExplosionRadius(), 1.5);
+    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), 1.5);
 
     if (bomb != nullptr) {
       owned_bombs_++;
@@ -96,21 +92,21 @@ void Player::Update(double delta_time) {
   if (move_timer_ <= 0) {
     bool player_moved = false;
 
-    if (graphics.IsKeyHeld(keys.up)) {
-      player_moved = SetPosition(GetX(), GetY()-1);
-
-    } else if (graphics.IsKeyHeld(keys.down)) {
-      player_moved = SetPosition(GetX(), GetY()+1);
-
-    } else if (graphics.IsKeyHeld(keys.left)) {
-      player_moved = SetPosition(GetX()-1, GetY());
-
-    } else if (graphics.IsKeyHeld(keys.right)) {
-      player_moved = SetPosition(GetX()+1, GetY());
-
+    if (graphics.IsKeyHeld(keys_.up)) {
+        player_moved = SetPosition(GetX(), GetY()-1);
+        orientation_=0;
+    } else if (graphics.IsKeyHeld(keys_.down)) {
+        player_moved = SetPosition(GetX(), GetY()+1);
+        orientation_=1;
+    } else if (graphics.IsKeyHeld(keys_.left)) {
+        player_moved = SetPosition(GetX()-1, GetY());
+        orientation_=2;
+    } else if (graphics.IsKeyHeld(keys_.right)) {
+        player_moved = SetPosition(GetX()+1, GetY());
+        orientation_=3;
     }
 
-    if (graphics.IsKeyHeld(keys.bomb)) {
+    if (graphics.IsKeyHeld(keys_.bomb)) {
         PlaceBomb(GetX(), GetY());
     }
 
@@ -123,11 +119,22 @@ void Player::Update(double delta_time) {
 }
 
 graphics::Tile Player::GetTile() {
-  return graphics::kTilePlayer;
+    switch(orientation_){
+        case 0 :
+            return tiles_.up;
+        case 1 :
+            return tiles_.down;
+        case 2 :
+            return tiles_.left;
+        case 3 :
+            return tiles_.right;
+        default :
+            return graphics::kTileEmpty;
+    }
 }
 
 graphics::Color Player::GetColor() {
-  return graphics::Color(255, 0, 0, 255);
+    return graphics::Color(255,255,255,0);
 }
 
 void Player::OnBombDestroyed(bomb::Bomb& bomb) {
@@ -139,34 +146,40 @@ bool Player::OnCollision(GameObject &source) {
 }
 
 bool Player::OnExplosion(GameObject &source) {
-    return true;
+    GameManager::GetCurrentGame().RemovePlayer(*this);
+    this->Destroy();
+    return false;
 }
 
-int Player::GetSpeed() {
+int Player::GetSpeed() const {
     return speed_;
 }
 
-int Player::GetExplosionRadius() {
+int Player::GetExplosionRadius() const {
     return explosion_radius_;
 }
-int Player::GetMaxBombCount() {
+int Player::GetMaxBombCount() const {
     return max_bomb_count_;
 }
 
-int Player::GetOwnedBombs() {
+int Player::GetOwnedBombs() const {
     return owned_bombs_;
 }
 
-int Player::GetKMaxExplosionRadius() {
+int Player::GetKMaxExplosionRadius() const {
     return kMaxExplosionRadius;
 }
 
-int Player::GetKMaxBombCount() {
+int Player::GetKMaxBombCount() const {
     return kMaxMaxBombCount;
 }
 
-int Player::GetKMaxSpeed() {
+int Player::GetKMaxSpeed() const {
     return kMaxSpeed;
+}
+
+int Player::GetId() const {
+    return id_;
 }
 
 } // namespace game

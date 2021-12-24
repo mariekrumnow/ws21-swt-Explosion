@@ -1,13 +1,14 @@
-//
 // Autor: Nina, Marie
-//
+
 
 #ifndef BOMBERMAN_GAME_BLOCK_INDESTRUCTIBLE_H
 #define BOMBERMAN_GAME_BLOCK_INDESTRUCTIBLE_H
 
 #include "Block.h"
+
 #include "../../graphics/Tile.h"
 #include "../../graphics/Color.h"
+#include "GameObject.h"
 
 namespace game {
 namespace obstacles{

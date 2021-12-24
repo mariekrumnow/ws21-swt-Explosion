@@ -4,9 +4,9 @@
 
 #include <chrono>
 
-#include "Window.h"
-#include "../graphics/GraphicsManager.h"
 #include "../graphics/Keys.h"
+#include "../graphics/GraphicsManager.h"
+#include "Window.h"
 #include "../sound/SoundManager.h"
 
 namespace core {
@@ -19,7 +19,7 @@ AppManager& AppManager::GetAppManager() {
 }
 
 graphics::GraphicsManager& AppManager::GetGraphics() {
-  return graphics_;
+    return graphics_;
 }
 
 sound::SoundManager& AppManager::GetSound() {
@@ -27,18 +27,19 @@ sound::SoundManager& AppManager::GetSound() {
 }
 
 
+
 AppManager::AppManager(std::string title, bool init_hardware) :
         graphics_(graphics::GraphicsManager(title, init_hardware)),
         sound_(sound::SoundManager(init_hardware)) {
-    //ensure the reference to the AppManager stays active, and there is only one.
+        //ensure the reference to the AppManager stays active, and there is only one.
 
 
-    if(AppManager::manager_ != nullptr) {
-        delete AppManager::manager_;
-    }
+        if(AppManager::manager_ != nullptr) {
+            delete AppManager::manager_;
+        }
 
-    AppManager::manager_ = this;
-    active_window_ = nullptr;
+        AppManager::manager_ = this;
+        active_window_ = nullptr;
 
 }
 
@@ -69,44 +70,44 @@ void AppManager::Run() {
     double delta_time = 0.05;
     bool fullscreen = false;
 
-			const int min_delta_time = 1000000 / 60; //limit to ~60 fps
+        const int min_delta_time = 1000000 / 60; //limit to ~60 fps
 
-    while (true) {
-        auto start_time = std::chrono::high_resolution_clock::now();
-        RunFrame(delta_time);
-        auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
+        while (isRunning_) {
+            auto start_time = std::chrono::high_resolution_clock::now();
+            RunFrame(delta_time);
+            auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
 
-        if (graphics_.IsKeyPressed(graphics::key_fullscreen)) {
-          fullscreen = !fullscreen;
-          graphics_.SetFullscreen(fullscreen);
-        }
+            if (graphics_.IsKeyPressed(graphics::key_fullscreen)) {
+              fullscreen = !fullscreen;
+              graphics_.SetFullscreen(fullscreen);
+            }
 
-        if (graphics_.IsKeyPressed(graphics::key_escape)) {
-          graphics_.Quit();
-        }
+          if (graphics_.IsKeyPressed(graphics::key_escape)) {
+            graphics_.Quit();
+          }
 
-        if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
-            GetSound().PlayNextBattleMusic();
-        }
+          if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+              GetSound().PlayNextBattleMusic();
+          }
 
-        if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
-            GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
-        }
+          if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
+              GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
+          }
 
-        if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
-            GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
-        }
+          if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
+              GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
+          }
 
-		int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
-                 .count();
+          int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
+                     .count();
 
-        if (elapsed_microsecs < min_delta_time) {
-          graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
-          elapsed_microsecs = min_delta_time;
-        }
+          if (elapsed_microsecs < min_delta_time) {
+            graphics_.Sleep((min_delta_time - elapsed_microsecs)/1000);
+            elapsed_microsecs = min_delta_time;
+          }
 
-        delta_time = elapsed_microsecs/1000000.0;
-    }
+          delta_time = elapsed_microsecs/1000000.0;
+      }
 }
 
 

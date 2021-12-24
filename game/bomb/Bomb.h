@@ -1,4 +1,4 @@
-// Autor: Tobias, Marie
+// Autor: Tobias, Marie, Carla, Nina
 
 #ifndef BOMBERMAN_GAME_BOMB_BOMB_H
 #define BOMBERMAN_GAME_BOMB_BOMB_H
@@ -6,11 +6,13 @@
 #include <cmath>
 #include <iostream>
 
-#include "Explosion.h"
-#include "../GameObject.h"
-#include "../GameManager.h"
-#include "../Player.h"
 #include "../../graphics/Tile.h"
+#include "../GameManager.h"
+#include "../GameObject.h"
+#include "../Player.h"
+#include "Explosion.h"
+
+
 
 namespace game {
 namespace bomb {
@@ -29,12 +31,13 @@ public:
 	void Update(double delta_time);
 
 private:
+    void Explode();
+    bool SpawnExplosion(int x, int y, int oriented);
+
 	Player* owner_;
 	int power_;
 	double explosion_timer_;
 	bool exploding_; ///< so the bomb can't explode multiple times
-	void Explode();
-	bool SpawnExplosion(int x, int y);
 };
 
 }

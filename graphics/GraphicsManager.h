@@ -20,8 +20,8 @@ namespace graphics {
 /// Manages all the graphics
     class GraphicsManager {
     public:
-        const int kWindowHeight = 360;
-        const int kWindowWidth = 480;
+        const int kWindowHeight = 900;
+        const int kWindowWidth = 1100;
 
         GraphicsManager(std::string title, bool init_graphics);
         ~GraphicsManager();
@@ -43,17 +43,17 @@ namespace graphics {
 
         void Quit();
 
-				void Sleep(int millis);
+        void Sleep(int millis);
 
     private:
         TileSet* game_tileset_;
         TileSet* text_tileset_;
-        SDL_Window * window_;
-        SDL_Renderer * renderer_;
+        SDL_Window* window_;
+        SDL_Renderer* renderer_;
 
-        TTF_Font * font_small_;
-        TTF_Font * font_medium_;
-        TTF_Font * font_large_;
+        TTF_Font* font_small_;
+        TTF_Font* font_medium_;
+        TTF_Font* font_large_;
       
         /// stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];

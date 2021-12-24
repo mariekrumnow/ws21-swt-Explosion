@@ -1,11 +1,12 @@
-//Autor: Peter, Nina, Tobias
+//Autor: Peter, Nina, Tobias, Dennis
 
 #include "GameManager.h"
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 #include "GameObject.h"
+#include "Player.h"
 #include "../core/AppManager.h"
 #include "../graphics/Keys.h"
 
@@ -13,18 +14,18 @@ namespace game {
 
 GameManager* GameManager::current_game_;
 
-GameManager::GameManager(const int width, const int height){
+GameManager::GameManager(const int width, const int height, win_condition::BaseWinCondition *winCondition) :
+            width_(width),
+            height_(height),
+            win_condition_(winCondition)
+            {
 		width_ = width;
 		height_ = height;
 
-		//enforce singleton
-		if (GameManager::current_game_ != nullptr) {
-			delete GameManager::current_game_;
-		}
-
+		// enforce singleton
 		GameManager::current_game_ = this;
 
-		//create the object arrays
+		// create the object arrays
 		objects_by_pos_ = new std::vector<GameObject*>*[width];
 		for (int i=0; i<width; i++) {
 			objects_by_pos_[i] = new std::vector<GameObject*>[height];
@@ -32,9 +33,11 @@ GameManager::GameManager(const int width, const int height){
 }
 
 GameManager::~GameManager(){
+    std::cout << "Anfang Destruktor GameManager" << std::endl;
 	if (GameManager::current_game_ == this) {
 		GameManager::current_game_ = nullptr;
 	}
+
 
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Destroy();
@@ -49,16 +52,23 @@ GameManager::~GameManager(){
 	}
 
 	delete [] objects_by_pos_;
+
+    std::cout << "Ende Destruktor GameManager" << std::endl;
 }
 
 void GameManager::Update(double delta_time) {
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Update(delta_time);
 	}
+
+    if (this->win_condition_->checkWin()) {
+        core::AppManager::GetAppManager().Quit();
+        std::cout << "Gewonnen hat Spieler " << players_.front()->GetId() << "." <<  std::endl;
+    }
 }
 
 GameManager& GameManager::GetCurrentGame() {
-	return * GameManager::current_game_;
+	return *GameManager::current_game_;
 }
 
 void GameManager::RemoveGameObject(GameObject& game_object) {
@@ -117,16 +127,38 @@ std::vector<GameObject*> GameManager::GetAllObjects() {
 			}
 		}
 	}
-
 	return all_objects;
 }
 
-int GameManager::GetWidth() {
+int GameManager::GetWidth() const {
 	return width_;
 }
 
-int GameManager::GetHeight() {
+int GameManager::GetHeight() const {
 	return height_;
+}
+
+void GameManager::RemovePlayer(Player &player) {
+    int i=0;
+
+    for (auto it = players_.begin();
+         i<players_.size(); i++, it++) {
+
+        if (players_[i] == &(player)) {
+
+            players_.erase(it);
+            break;
+        }
+    }
+}
+
+void GameManager::AddPlayer(Player* player) {
+    this->AddGameObject(*player);
+    players_.push_back(player);
+}
+
+int GameManager::GetPlayerCount() {
+    return (int)players_.size();
 }
 
 } // namespace game
