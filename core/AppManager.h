@@ -39,6 +39,9 @@ public:
     //ends the game after the current frame has completed
     void Quit();
 
+    //laods all assets for a theme
+    bool LoadTheme(std::string theme);
+
 private:
     Window* active_window_;
 

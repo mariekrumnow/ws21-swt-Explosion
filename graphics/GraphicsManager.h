@@ -4,6 +4,7 @@
 #define BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_
 
 #include "TileSet.h"
+#include "Font.h"
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -45,15 +46,18 @@ namespace graphics {
 
         void Sleep(int millis);
 
+        //loads the graphics assets of a theme
+        bool LoadTileset(std::string theme);
+        bool LoadFonts(std::string theme);
+
     private:
         TileSet* game_tileset_;
-        TileSet* text_tileset_;
         SDL_Window* window_;
         SDL_Renderer* renderer_;
 
-        TTF_Font* font_small_;
-        TTF_Font* font_medium_;
-        TTF_Font* font_large_;
+        Font* font_small_;
+        Font* font_medium_;
+        Font* font_large_;
 
         /// stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];

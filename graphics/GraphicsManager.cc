@@ -2,22 +2,28 @@
 
 #include "GraphicsManager.h"
 
+#include "Font.h"
+
 #include <SDL_ttf.h>
 #include <iostream>
 
 namespace graphics {
 
 GraphicsManager::GraphicsManager(std::string title, bool init_graphics) {
+
+    window_ = nullptr;
+    renderer_ = nullptr;
+    game_tileset_ = nullptr;
+    font_small_ = nullptr;
+    font_medium_ = nullptr;
+    font_large_ = nullptr;
+
     if (init_graphics) {
         SDL_Init(SDL_INIT_EVERYTHING);
         SDL_CreateWindowAndRenderer(kWindowWidth, kWindowHeight, 0,
                                     &window_, &renderer_);
 
         SDL_SetWindowTitle(window_, title.c_str());
-
-        game_tileset_ = new TileSet(renderer_, "assets/Halloween.bmp",
-                                    60,60);
-        text_tileset_ = new TileSet(renderer_, "assets/curses_640x300.bmp", 9, 12);
 
         for (int i=0; i<SDL_NUM_SCANCODES; i++) {
             key_not_pressed_[i] = false;
@@ -28,26 +34,51 @@ GraphicsManager::GraphicsManager(std::string title, bool init_graphics) {
             std::cout << "TTF initialization error" << std::endl;
         }
 
-        font_small_ = TTF_OpenFont("assets/font.ttf", 14);
-        font_medium_ = TTF_OpenFont("assets/font.ttf", 20);
-        font_large_ = TTF_OpenFont("assets/font.ttf", 30);
-        if (!font_small_ || !font_medium_ || !font_large_) {
-            std::cout << "Font initialization error" << std::endl;
-        }
-
-        } else {
-            window_ = nullptr;
-            renderer_ = nullptr;
-            game_tileset_ = nullptr;
-            text_tileset_ = nullptr;
     }
 }
 
+bool GraphicsManager::LoadTileset(std::string theme) {
+    delete game_tileset_;
+    game_tileset_ = TileSet::CreateTileset(renderer_, "assets/"+theme+"/tileset.bmp",
+                                60,60);
+    if (!game_tileset_) { //load default, if that doesn't work, print error
+        if (theme == "default") {
+            std::cout << "Couldn't load tileset: " << SDL_GetError() << std::endl;
+            return false;
+        } else {
+            return LoadTileset("default");
+        }
+    }
+
+    return true;
+}
+
+bool GraphicsManager::LoadFonts(std::string theme) {
+    delete font_small_;
+    delete font_medium_;
+    delete font_large_;
+    font_small_ = Font::CreateFont("assets/"+theme+"/font.ttf", 14);
+    font_medium_ = Font::CreateFont("assets/"+theme+"/font.ttf", 20);
+    font_large_ = Font::CreateFont("assets/"+theme+"/font.ttf", 30);
+
+    if (!font_small_ || !font_medium_ || !font_large_) {
+        //load default, if that doesn't work, print error
+        if (theme == "default") {
+            std::cout << "Couldn't load fonts: " << TTF_GetError() << std::endl;
+            return false;
+        } else {
+            return LoadFonts("default");
+        }
+    }
+
+    return true;
+}
+
 GraphicsManager::~GraphicsManager() {
-    if (game_tileset_ != nullptr)
-        delete game_tileset_;
-    if (text_tileset_ != nullptr)
-        delete text_tileset_;
+    delete game_tileset_;
+    delete font_small_;
+    delete font_medium_;
+    delete font_large_;
     SDL_Quit();
     TTF_Quit();
 }
@@ -100,7 +131,7 @@ void GraphicsManager::DrawTile(Tile tile, Color color, int x, int y) {
 void GraphicsManager::WriteText(std::string text,Color color,
                                 FontSize size,bool bold,
                                 int x,int y) {
-    TTF_Font* font = NULL;
+    Font* font = NULL;
 
     switch (size) {
         case FontSize::kSmall:
@@ -115,23 +146,7 @@ void GraphicsManager::WriteText(std::string text,Color color,
 
     if (!font) return;
 
-    TTF_SetFontStyle(font, bold ? TTF_STYLE_BOLD : 0);
-
-    SDL_Surface* text_surface =TTF_RenderUTF8_Shaded(font, text.c_str(),
-                                  {color.red_, color.green_, color.blue_, color.alpha_}, {0,0,0,0});
-
-    SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer_, text_surface);
-
-    SDL_Rect text_size;
-    SDL_GetClipRect(text_surface, &text_size);
-    const SDL_Rect kDestination =
-            {x, y, text_size.w, text_size.h};
-
-    SDL_SetTextureColorMod(text_texture, 255, 255, 255);
-    SDL_RenderCopy(renderer_, text_texture, NULL, &kDestination);
-
-    SDL_DestroyTexture(text_texture);
-    SDL_FreeSurface(text_surface);
+    font->WriteText(renderer_, text, color, bold, x, y);
 }
 
 void GraphicsManager::EndFrame() {
@@ -141,10 +156,27 @@ void GraphicsManager::EndFrame() {
 }
 
 void GraphicsManager::SetFullscreen(bool fullscreen) {
+    int screen_width, screen_height;
+
     if (fullscreen) {
-        SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
+        //switch to unscaled fullscreen mode and change renderer scale,
+        //so the renderer graphics fill the screen.
+        SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+        SDL_GetWindowSize(window_, &screen_width, &screen_height);
+
+        float scale_factor;
+        if (screen_width / kWindowWidth < screen_height / kWindowHeight) {
+            scale_factor = static_cast<float>(screen_width) / kWindowWidth;
+        } else {
+            scale_factor = static_cast<float>(screen_height) / kWindowHeight;
+        }
+
+        SDL_RenderSetScale(renderer_, scale_factor, scale_factor);
+
     } else {
+        //switch to windowed and reset renderer scale
         SDL_SetWindowFullscreen(window_, 0);
+        SDL_RenderSetScale(renderer_, 1, 1);
     }
 }
 

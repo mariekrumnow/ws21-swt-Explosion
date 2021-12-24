@@ -2,6 +2,8 @@
 
 #include "GameWindow.h"
 
+#include <iostream>
+
 #include "../graphics/Tile.h"
 #include "../graphics/Color.h"
 #include "GameManager.h"
@@ -36,7 +38,6 @@ void GameWindow::Draw() {
 
 void GameWindow::Update(double delta_time) {
 	GameManager& game = GameManager::GetCurrentGame();
-
 	game.Update(delta_time);
 }
 

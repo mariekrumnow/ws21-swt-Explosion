@@ -14,8 +14,13 @@ namespace graphics {
 /// manages drawing of the tiles from a texture atlas
     class TileSet {
     public:
-        TileSet(SDL_Renderer* renderer, std::string file,
+        static TileSet* CreateTileset(SDL_Renderer* renderer, std::string file,
                 int tile_size_x, int tile_size_y);
+
+        TileSet(SDL_Renderer* renderer, SDL_Texture* tile_atlas,
+                int tile_size_x, int tile_size_y);
+
+        ~TileSet();
         void DrawTile(SDL_Renderer* renderer, Tile tile, Color color, int x, int y);
 
     private:

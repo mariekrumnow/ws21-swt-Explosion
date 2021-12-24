@@ -2,6 +2,8 @@
 
 #include "Explosion.h"
 
+#include <iostream>
+
 #include "../../core/AppManager.h"
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
@@ -25,6 +27,7 @@ Explosion* Explosion::CreateExplosion(int x, int y, int oriented) {
     if (temp!=nullptr) {
         GameManager::GetCurrentGame().AddGameObject(*temp);
         temp->orientation_=oriented;
+
         if (!temp->SetPosition(x,y)) {
             temp->Destroy();
             return nullptr;

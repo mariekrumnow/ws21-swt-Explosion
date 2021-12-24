@@ -1,20 +1,21 @@
-// Autor Dennis, Peter
+// Autor Dennis, Peter, Tobias
 
 #include "GameFactory.h"
 
-#include "Player.h"
-#include "GameManager.h"
+#include "../core/AppManager.h"
 #include "../graphics/Keys.h"
 #include "block/IndestructibleBlock.h"
 #include "block/DestructibleBlock.h"
 #include "win_condition/StandardWinCondition.h"
-
+#include "Player.h"
+#include "GameManager.h"
+#include "GameWindow.h"
 
 namespace game {
 
 GameFactory::GameFactory(int width, int height): width_(width), height_(height) {
-    game::win_condition::BaseWinCondition* winCondition = new game::win_condition::StandardWinCondition();
-    auto* game_manager = new GameManager(15, 13, winCondition);
+    win_condition::BaseWinCondition* winCondition = new win_condition::StandardWinCondition();
+    new GameManager(15, 13, winCondition);
 }
 
 void GameFactory::GenerateGame(int player_count, int indest_prop) {
@@ -93,6 +94,18 @@ void GameFactory::GeneratePlayers(int player_count, graphics::PlayerKeys* player
             players[i] = Player::CreatePlayer((width_ - 2), 1, player_keys[i], graphics::kPlayer2Tiles, 4);
         }
     }
+}
+
+void StartClassicGame() {
+    GameFactory factory = GameFactory(15, 12);
+    factory.GenerateGame(2, 85);
+
+    core::AppManager& app = core::AppManager::GetAppManager();
+
+    GameWindow * game_window = new GameWindow();
+    app.SetActiveWindow(*game_window);
+
+    app.GetSound().PlayRandomBattleMusic();
 }
 
 } // namespace game

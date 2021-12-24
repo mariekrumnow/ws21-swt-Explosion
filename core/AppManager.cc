@@ -3,10 +3,13 @@
 #include "AppManager.h"
 
 #include <chrono>
+#include <iostream>
 
 #include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
 #include "Window.h"
+#include "../sound/SoundEffect.h"
+#include "../sound/Music.h"
 #include "../sound/SoundManager.h"
 
 namespace core {
@@ -49,6 +52,7 @@ AppManager::~AppManager() {
 }
 
 void AppManager::SetActiveWindow(Window &window) {
+    delete active_window_;
     active_window_ = &window;
 }
 
@@ -58,6 +62,17 @@ Window& AppManager::GetActiveWindow() {
 
 void AppManager::Quit() {
     is_running_ = false;
+}
+
+bool AppManager::LoadTheme(std::string theme) {
+    bool success = true;
+    success &= graphics_.LoadTileset(theme);
+    success &= graphics_.LoadFonts(theme);
+
+    success &= sound::LoadSoundEffects(theme);
+    success &= sound::LoadMusic(theme);
+
+    return success;
 }
 
 void AppManager::RunFrame(double delta_time) {
@@ -113,6 +128,7 @@ void AppManager::Run() {
 
           delta_time = elapsed_microsecs/1000000.0;
       }
+      std::cout << "Quitting..." << std::endl;
       graphics_.Quit();
 }
 
