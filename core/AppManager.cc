@@ -30,7 +30,8 @@ sound::SoundManager& AppManager::GetSound() {
 
 AppManager::AppManager(std::string title, bool init_hardware) :
         graphics_(graphics::GraphicsManager(title, init_hardware)),
-        sound_(sound::SoundManager(init_hardware)) {
+        sound_(sound::SoundManager(init_hardware)),
+        is_running_(true) {
         //ensure the reference to the AppManager stays active, and there is only one.
 
 
@@ -55,6 +56,10 @@ Window& AppManager::GetActiveWindow() {
     return *active_window_;
 }
 
+void AppManager::Quit() {
+    is_running_ = false;
+}
+
 void AppManager::RunFrame(double delta_time) {
     if (active_window_ != nullptr) {
         graphics_.BeginFrame();
@@ -72,7 +77,7 @@ void AppManager::Run() {
 
         const int min_delta_time = 1000000 / 60; //limit to ~60 fps
 
-        while (isRunning_) {
+        while (is_running_) {
             auto start_time = std::chrono::high_resolution_clock::now();
             RunFrame(delta_time);
             auto elapsed = std::chrono::high_resolution_clock::now() - start_time;
@@ -83,7 +88,7 @@ void AppManager::Run() {
             }
 
           if (graphics_.IsKeyPressed(graphics::key_escape)) {
-            graphics_.Quit();
+            Quit();
           }
 
           if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
@@ -108,6 +113,7 @@ void AppManager::Run() {
 
           delta_time = elapsed_microsecs/1000000.0;
       }
+      graphics_.Quit();
 }
 
 

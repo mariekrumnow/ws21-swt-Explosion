@@ -36,11 +36,16 @@ public:
     /// Run game for ever
     [[noreturn]] void Run();
 
+    //ends the game after the current frame has completed
+    void Quit();
+
 private:
     Window* active_window_;
 
     graphics::GraphicsManager graphics_;
     sound::SoundManager sound_;
+
+    bool is_running_;
 
 
     static AppManager* manager_; ///< The static reference to the current AppManager

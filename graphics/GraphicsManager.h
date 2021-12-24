@@ -41,7 +41,7 @@ namespace graphics {
         /// returns true as long as the key is pressed
         bool IsKeyHeld(int scancode);
 
-        void Quit();
+        [[noreturn]] void Quit();
 
         void Sleep(int millis);
 
@@ -54,7 +54,7 @@ namespace graphics {
         TTF_Font* font_small_;
         TTF_Font* font_medium_;
         TTF_Font* font_large_;
-      
+
         /// stores all keys that were already held on the last frame
         bool key_not_pressed_[SDL_NUM_SCANCODES];
         /// stores all keys that are held on this frame
