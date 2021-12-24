@@ -1,4 +1,4 @@
-// Author: Tobias
+// Author: Tobias, Dennis, Peter
 
 #ifndef BOMBERMAN_GRAPHICS_TILE_H_
 #define BOMBERMAN_GRAPHICS_TILE_H_
@@ -47,7 +47,7 @@ namespace graphics {
 
 /// Game tile definitions
 /// curses 16x16
-    const Tile kTileEmpty = Tile(0,0);
+    /*const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(10,15);
     const Tile kTilePlayer = Tile(1,0);
     const Tile kTileSolidWall = Tile(11,13);
@@ -57,19 +57,41 @@ namespace graphics {
     const Tile kTileMenuCursor = Tile(0,1);
     const Tile kTileSpeedUpgrade = Tile(15,10);
     const Tile kTileExplosionRadiusUpgrade = Tile(13,1);
-    const Tile kTileBombCountUpgrade = Tile(5,14);
-/// HuhnPNG
-    /*const Tile kTileEmpty = Tile(0,0);
+    const Tile kTileBombCountUpgrade = Tile(5,14);*/
+/// Grafiken
+    struct PlayerTile {
+        PlayerTile(Tile up, Tile down, Tile left, Tile right);
+
+        Tile up;
+        Tile down;
+        Tile left;
+        Tile right;
+    };
+
+    const Tile kTileEmpty = Tile(0,0);
     const Tile kTileDot = Tile(0,0);
-    const Tile kTilePlayer = Tile(0,4);
+
+    const PlayerTile kPlayer1Tiles(Tile(0,3), Tile(1,3), Tile(2,3), Tile(3,3));
+    const PlayerTile kPlayer2Tiles(Tile(0,4), Tile(1,4),Tile(2,4), Tile(3,4));
+
     const Tile kTileSolidWall = Tile(2,0);
     const Tile kTileBrittleWall = Tile(1,0);
-    const Tile kTileExplosion = Tile(1,2);
+
+    const Tile kTileExplosionMiddle = Tile(1,2);
+    const Tile kTileExplosionHorizontal = Tile(2,2);
+    const Tile kTileExplosionVertical = Tile(3,2);
+    const Tile kTileExplosionUp = Tile(3,1);
+    const Tile kTileExplosionRight = Tile(4,0);
+    const Tile kTileExplosionLeft = Tile(3,0);
+    const Tile kTileExplosionDown = Tile(4,2);
+
     const Tile kTileBomb = Tile(0,2);
+
     const Tile kTileMenuCursor = Tile(0,1);
+
     const Tile kTileSpeedUpgrade = Tile(0,1);
     const Tile kTileExplosionRadiusUpgrade = Tile(1,1);
-    const Tile kTileBombCountUpgrade = Tile(2,1);*/
+    const Tile kTileBombCountUpgrade = Tile(2,1);
 
 
 

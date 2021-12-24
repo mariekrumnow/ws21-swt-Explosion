@@ -1,19 +1,25 @@
-// Autor: Peter, Nina, Tobias
+// Autor: Peter, Nina, Tobias, Dennis
 
 #ifndef BOMBERMAN_GAME_GAMEMANAGER_H
 #define BOMBERMAN_GAME_GAMEMANAGER_H
 
-#include <vector>
 #include <list>
+#include <vector>
+
+namespace game {
+    class Player;
+}
 
 #include "GameObject.h"
 #include "../core/AppManager.h"
+#include "win_condition/BaseWinCondition.h"
 
 namespace game {
 
+
 class GameManager {
 public:
-    GameManager(const int width, const int height);
+    GameManager(const int width, const int height, win_condition::BaseWinCondition* winCondition);
     ~GameManager();
 
     void Update(double delta_time);
@@ -30,27 +36,29 @@ public:
     /// returns false if position isn't valid
     bool ChangeObjectPosition(GameObject& game_object, int x, int y);
 
-    void Draw();
     std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
     std::vector<GameObject*> GetAllObjects();
 
-    int GetWidth();
-    int GetHeight();
+    int GetWidth() const;
+    int GetHeight() const;
 
-    // WinCondition win_condidion_;
+    void RemovePlayer(Player &player);
+    void AddPlayer(Player* player);
+    int GetPlayerCount();
 
 private:
     std::vector<GameObject*>** objects_by_pos_;
     std::vector<GameObject*> empty_object_vector_; ///< as a default for oob positions
     std::list<GameObject*> destroyed_game_objects_;
     static GameManager* current_game_;
+    win_condition::BaseWinCondition* win_condition_;
+
+    std::vector<Player*> players_;
 
     int width_;
     int height_;
-
-    };
+};
 
 } // namespace game
-
 
 #endif // BOMBERMAN_GAME_GAMEMANAGER_H

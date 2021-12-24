@@ -19,7 +19,7 @@ namespace graphics {
         void DrawTile(SDL_Renderer* renderer, Tile tile, Color color, int x, int y);
 
     private:
-        SDL_Texture * tile_atlas_;
+        SDL_Texture* tile_atlas_;
         int tile_size_x_;
         int tile_size_y_;
     };

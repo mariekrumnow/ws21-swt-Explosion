@@ -7,8 +7,12 @@
 *.cmd
 
 /build
+/temp
 
 # Jetbrains
 /idea/
 /.idea/
+
+#
+cmake-build-debug
 

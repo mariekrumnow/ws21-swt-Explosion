@@ -45,4 +45,4 @@ target_include_directories(bomberman PRIVATE menu)
 target_link_directories(bomberman PRIVATE menu)
 target_link_libraries(bomberman menu)
 
-add_subdirectory(tests)
+#add_subdirectory(tests)

@@ -1,4 +1,4 @@
-//Author: Tobias
+//Author: Tobias, Dennis, Peter
 
 #include "Tile.h"
 
@@ -12,4 +12,8 @@ namespace graphics {
         return y_offset_;
     }
 
+    PlayerTile::PlayerTile(Tile up, Tile down, Tile left, Tile right)
+                            : up(up), down(down), left(left), right(right) {
+
+    }
 } // namespace graphics

@@ -14,8 +14,8 @@ namespace graphics {
         uint8_t green_;
         uint8_t blue_;
         uint8_t alpha_;
-        Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) :
-                red_(red), green_(green), blue_(blue), alpha_(alpha) {}
+        Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
+                : red_(red), green_(green), blue_(blue), alpha_(alpha) {}
     };
 
 } // namespace graphics

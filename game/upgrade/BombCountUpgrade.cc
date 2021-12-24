@@ -2,21 +2,21 @@
 
 #include "BombCountUpgrade.h"
 
-#include "../GameObject.h"
-#include "../GameManager.h"
-#include "../Player.h"
-#include "../../core/AppManager.h"
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
+#include "../GameManager.h"
+#include "../GameObject.h"
+#include "../Player.h"
+#include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{
 
 BombCountUpgrade::BombCountUpgrade() : Upgrade() {}
 
-BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y){
+BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y) {
     BombCountUpgrade* temp = new BombCountUpgrade();
-    if (temp!=nullptr){
+    if (temp!=nullptr) {
         GameManager::GetCurrentGame().AddGameObject(*temp);
         if (!temp->SetPosition(x,y)) {
             temp->Destroy();
@@ -27,8 +27,10 @@ BombCountUpgrade* BombCountUpgrade::CreateBombCountUpgrade(int x, int y){
 }
 
 bool BombCountUpgrade::OnPlayerCollision(Player& player) {
+    core::AppManager::GetAppManager().GetSound()
+        .PlaySoundEffect(sound::effect_upgrade_collect, 0);
     this->Destroy();
-    if(player.GetMaxBombCount() <= player.GetKMaxBombCount()){
+    if (player.GetMaxBombCount() <= player.GetKMaxBombCount()) {
         player.IncreaseMaxBombCount(1);
     }
     return true;
@@ -40,7 +42,7 @@ bool BombCountUpgrade::OnExplosion(GameObject& source){
 }
 
 graphics::Color BombCountUpgrade::GetColor(){
-    return graphics::Color(255,255,0,255);
+    return graphics::Color(255,255,255,255);
 }
 
 graphics::Tile BombCountUpgrade::GetTile(){
