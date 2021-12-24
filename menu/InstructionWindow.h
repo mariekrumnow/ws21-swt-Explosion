@@ -5,13 +5,13 @@
 #ifndef BOMBERMAN_MENU_INSTRUCTIONWINDOW_H
 #define BOMBERMAN_MENU_INSTRUCTIONWINDOW_H
 
-#include "MenuWindow.h"
 #include "../graphics/Keys.h"
+#include "MenuWindow.h"
 
 
 namespace menu{
 
-enum{Start};
+enum InstructionButton {kStart=0};
 
 /// Shows instruction text and MenuItem to start the game
 class InstructionWindow : public MenuWindow {

@@ -7,14 +7,14 @@
 
 #include <list>
 
-#include "MenuItem.h"
 #include "../core/Window.h"
 #include "../graphics/Keys.h"
+#include "MenuItem.h"
 
 
 namespace menu{
 
-enum{Classic, Halloween, Chicken, Corona};
+enum Theme {kClassic=0, kHalloween=1, kChicken=2, kCorona=3};
 
 class MenuWindow : public core::Window {
 public:

@@ -10,7 +10,7 @@
 
 namespace menu{
 
-enum{Instructions, ChangeTheme, Exit1};
+enum MainButton {kInstructions=0, kChangeTheme=1, kExit1=2};
 
 /// Shows the credits and buttons to start and close the game or change the theme
 class MainWindow: public MenuWindow{
@@ -29,7 +29,7 @@ private:
 
 };
 
-}   // namespace Menu
+}   // namespace menu
 
 
 #endif //BOMBERMAN_MENU_MAINWINDOW_H

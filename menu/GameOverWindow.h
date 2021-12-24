@@ -7,14 +7,14 @@
 
 #include <string>
 
-#include "MenuWindow.h"
-#include "../graphics/Color.h"
 #include "../game/Player.h"
+#include "../graphics/Color.h"
+#include "MenuWindow.h"
 
 
 namespace menu{
 
-enum {Exit2};
+enum GameOverButton {kExit2=0};
 
 /// Shown after a game has ended, shows the outcome and an exit Item
 class GameOverWindow : public MenuWindow {
