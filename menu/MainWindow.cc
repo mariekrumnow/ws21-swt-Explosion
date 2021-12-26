@@ -18,8 +18,8 @@ MainWindow::MainWindow()
     MenuItem start = MenuItem("Spiel starten", kInstructions, 50, 100);
     MenuWindow::AddMenuItem(start);
 
-    MenuItem changeTheme = MenuItem("Thema wechseln", kChangeTheme, 50, 150);
-    MenuWindow::AddMenuItem(changeTheme);
+    MenuItem change_theme = MenuItem("Thema wechseln", kChangeTheme, 50, 150);
+    MenuWindow::AddMenuItem(change_theme);
 
     MenuItem exit = MenuItem("Spiel beenden", kExit1, 50, 200);
     MenuWindow::AddMenuItem(exit);
@@ -30,22 +30,22 @@ void MainWindow::Draw(){
 
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
-    std::string themeText;
+    std::string theme_text;
     switch (theme_) {
         case kClassic:
-            themeText = "Bomberman";
+            theme_text = "Bomberman";
             //Setze Player-Tiles auf Bomberman
             break;
         case kHalloween:
-            themeText = "Ghostman";
+            theme_text = "Ghostman";
             //Setze Player-Tiles auf Ghostman
             break;
         case kChicken:
-            themeText = "Birdman";
+            theme_text = "Birdman";
             //Setze Player-Tiles auf Birdman
             break;
         case kCorona:
-            themeText = "Coronaman";
+            theme_text = "Coronaman";
             //Setze Player-Tiles auf Coronaman
             break;
         default:
@@ -53,13 +53,13 @@ void MainWindow::Draw(){
     }
     //graphics::kPlayer2Tiles.right
     graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 50);
-    graphics.WriteText(themeText, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 100, 50);
+    graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 100, 50);
 
-    std::string creditText[] = {"Credits:",
+    std::string credit_text[] = {"Credits:",
                                 "Peter Dechering, Carla Eckelt, Marie Krumnow, Marlene Mendler,",
                                 "Patrick Möbius, Dennis Neuhaus, Tobias Oehme, Nina Willms"};
     int counter = 0;
-    for (std::string tmp: creditText) {
+    for (std::string tmp: credit_text) {
         graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium,
                                                                         false, 10, 250+counter*20);
         counter++;
@@ -67,10 +67,10 @@ void MainWindow::Draw(){
 }
 
 void MainWindow::OnMenuItemSelect(int selected_option){
-    bool openInstructions = false;
+    bool open_instructions = false;
     switch (selected_option) {
         case kInstructions:
-            openInstructions = true;
+            open_instructions = true;
             break;
         case kChangeTheme:
             theme_ = (theme_+1)%4;
@@ -82,7 +82,7 @@ void MainWindow::OnMenuItemSelect(int selected_option){
         default:
             break;
     }
-    if (openInstructions) {
+    if (open_instructions) {
           InstructionWindow *instruction = new InstructionWindow(theme_);
           core::AppManager::GetAppManager().SetActiveWindow(*instruction);
     }

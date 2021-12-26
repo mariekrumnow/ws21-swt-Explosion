@@ -22,7 +22,7 @@ void InstructionWindow::Draw(){
 
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
     // Instructions on how to play the game
-    std::string instructionText[] = {"So geht's:",
+    std::string instruction_text[] = {"So geht's:",
                                      "Bei Bomberman müsst ihr eure Mitspieler mittels Bomben ausschalten und als "
                                      "letzter überleben.",
                                      "Um zu euren Mitspielern zu gelangen müsst ihr dafür erst die bröckeligen Blöcke"
@@ -30,18 +30,18 @@ void InstructionWindow::Draw(){
                                      "Unter diesen Blöcken können sich manchmal auch Upgrades befinden, die ihr"
                                      "einsammeln könnt."};
     int counter = 1;
-    for (std::string tmp: instructionText) {
+    for (std::string tmp: instruction_text) {
         graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium, false, 10, counter*25);
         counter++;
     }
 
     // Key-Assignement for players
-    std::string playerText[3][2] = {{"Bewegen", "Bombe legen"},
+    std::string player_text[3][2] = {{"Bewegen", "Bombe legen"},
                                     {"WASD", "Linkes Shift"},
                                     {"IJKL", "Rechtes Shift"}};
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
-            graphics.WriteText(playerText[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
+            graphics.WriteText(player_text[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
                                                                                     false, 100+i*110, 145+j*40);
 
             if (i==0) {
@@ -69,16 +69,16 @@ void InstructionWindow::Draw(){
     }
 
     // Use of upgrades
-    std::string upgradeText[] = {"Upgrade",
+    std::string upgrade_text[] = {"Upgrade",
                                  "Höhere Bombenzahl",
                                  "Größere Explosionen",
                                  "Höhere Schnelligkeit"};
-    graphics::Tile upgradeTile[] = {graphics::kTileBombCountUpgrade,
+    graphics::Tile upgrade_tile[] = {graphics::kTileBombCountUpgrade,
                                   graphics::kTileExplosionRadiusUpgrade,
                                   graphics::kTileSpeedUpgrade};
     counter = 0;
-    for (std::string tmp: upgradeText) {
-        graphics.DrawTile(upgradeTile[counter], graphics::Color(255,255,255,255), 20, 305+(counter+1)*40);
+    for (std::string tmp: upgrade_text) {
+        graphics.DrawTile(upgrade_tile[counter], graphics::Color(255,255,255,255), 20, 305+(counter+1)*40);
         graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
                                                                     false, 100, 305+counter*40);
         counter++;
