@@ -106,7 +106,7 @@ void Player::Update(double delta_time) {
         orientation_=3;
     }
 
-    if (graphics.IsKeyPressed(keys_.bomb)) {
+    if (graphics.IsKeyHeld(keys_.bomb)) {
         PlaceBomb(GetX(), GetY());
     }
 
