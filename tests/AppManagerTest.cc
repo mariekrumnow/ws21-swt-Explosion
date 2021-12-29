@@ -2,7 +2,7 @@
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN
-#include "AppManager.h"
+#include "../core/AppManager.h"
 
 #include <boost/test/unit_test.hpp>
 

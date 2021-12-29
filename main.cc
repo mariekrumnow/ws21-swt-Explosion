@@ -13,6 +13,8 @@
 #include "sound/Music.h"
 #include "sound/SoundManager.h"
 
+#include "../menu/MainWindow.h"
+
 int main(int argc, char** argv)
 {
     srand(time(0)); //seed the rng with the current unix time
