@@ -62,8 +62,8 @@ void InstructionWindow::Draw(){
                          break;
                  }
                  //graphics::kPlayer2Tiles.right
-                 graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
-                 graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
+                 //graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
+                 //graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 145+j*40);
            }
         }
     }

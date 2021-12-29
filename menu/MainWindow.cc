@@ -52,7 +52,7 @@ void MainWindow::Draw(){
             break;
     }
     //graphics::kPlayer2Tiles.right
-    graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 50);
+    //graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 50);
     graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 100, 50);
 
     std::string credit_text[] = {"Credits:",
