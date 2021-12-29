@@ -29,7 +29,7 @@ public:
 
     ~AppManager();
 
-    /// sets the active window. DOESN'T delete the current window.
+    /// sets the active window and deletes the current window.
     void SetActiveWindow(Window& window);
     Window& GetActiveWindow();
     void RunFrame(double deltaTime);
@@ -38,6 +38,9 @@ public:
 
     //ends the game after the current frame has completed
     void Quit();
+
+    //loads all assets for a theme
+    bool LoadTheme(std::string theme);
 
 private:
     Window* active_window_;

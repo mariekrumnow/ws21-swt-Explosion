@@ -21,6 +21,9 @@ private:
     int width_, height_;
 };
 
+//initializes a new classic mode game
+void StartClassicGame();
+
 } // namespace game
 
 #endif //BOMBERMAN_GAMEFACTORY_H

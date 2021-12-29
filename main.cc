@@ -17,30 +17,19 @@
 
 int main(int argc, char** argv)
 {
+    srand(time(0)); //seed the rng with the current unix time
+
     /// Initialize the app manager
     core::AppManager app = core::AppManager("Bomberman Explosion", true);
 
-    game::GameFactory factory = game::GameFactory(15, 12);
-    factory.GenerateGame(2, 85);
-
-//    // Testen des Main- & InstructionWindow
-//    menu::MainWindow mainW = menu::MainWindow();
-//    app.SetActiveWindow(mainW);
-
-    game::GameWindow game_window = game::GameWindow();
-    app.SetActiveWindow(game_window);
-
-    sound::LoadSoundEffects("default");
-    sound::LoadMusic("default");
+    app.LoadTheme("halloween");
 
     sound::SoundManager& sound = app.GetSound();
 
     sound.SetMasterVolume(0.7);
     sound.SetMusicVolume(0.9);
 
-    sound.PlayRandomBattleMusic();
-
-    srand(time(0));
+    game::StartClassicGame();
 
     app.Run();
 

@@ -142,6 +142,11 @@ void Bomb::Explode() {
             }
 			///if none there, spawn explosion
 			if (stopped) {
+				//if the tile that stopped you is now empty, place end piece
+				if (game.GetObjectsAtPos(x,y).size() == 0) {
+					if (oriented <=3) oriented += 4; //turn it into an end piece
+					SpawnExplosion(x,y,oriented);
+				}
 				break;
 			} else if (!SpawnExplosion(x,y,oriented)) {
                 break;
