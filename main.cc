@@ -22,14 +22,11 @@ int main(int argc, char** argv)
     /// Initialize the app manager
     core::AppManager app = core::AppManager("Bomberman Explosion", true);
 
-    // In Init. vom Appmanager oder MainWindow packen?
-    app.LoadTheme("default");
-
     // sound::SoundManager& sound = app.GetSound();
     //
     // sound.SetMasterVolume(0.7);
     // sound.SetMusicVolume(0.9);
-    
+
     menu::MainWindow * mainW = new menu::MainWindow();
     app.SetActiveWindow(*mainW);
 

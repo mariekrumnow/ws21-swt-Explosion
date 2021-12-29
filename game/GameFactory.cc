@@ -96,7 +96,7 @@ void GameFactory::GeneratePlayers(int player_count, graphics::PlayerKeys* player
 }
 
 void StartClassicGame() {
-    GameFactory factory = GameFactory(15, 12);
+    GameFactory factory = GameFactory(15, 13);
     factory.GenerateGame(2, 85);
 
     core::AppManager& app = core::AppManager::GetAppManager();

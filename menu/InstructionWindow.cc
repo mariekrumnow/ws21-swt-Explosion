@@ -5,8 +5,8 @@
 #include "InstructionWindow.h"
 
 #include "../core/AppManager.h"
-#include "../game/GameManager.h"
 #include "../game/GameFactory.h"
+#include "MainWindow.h"
 
 
 namespace menu{
@@ -14,8 +14,11 @@ namespace menu{
 InstructionWindow::InstructionWindow()
 : MenuWindow(kStart)
 {
-    MenuItem start = MenuItem("Los geht's!", kStart, 400, 750);
+    MenuItem start = MenuItem("Los geht's!", kStart, 400, 700);
     MenuWindow::AddMenuItem(start);
+
+    MenuItem back = MenuItem("Zurück", kBack, 400, 800);
+    MenuWindow::AddMenuItem(back);
 }
 
 void InstructionWindow::Draw(){
@@ -72,13 +75,21 @@ void InstructionWindow::Draw(){
 }
 
 void InstructionWindow::OnMenuItemSelect(int selected_option){
+    bool go_back = false;
     switch (selected_option) {
         case kStart:
             game::StartClassicGame();
             break;
+        case kBack:
+            go_back = true;
+            break;
         default:
             //Error, a button should always be selected
             break;
+    }
+    if (go_back) {
+          MainWindow * mainW = new MainWindow();
+          core::AppManager::GetAppManager().SetActiveWindow(*mainW);
     }
 }
 

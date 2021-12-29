@@ -5,6 +5,8 @@
 #include "GameOverWindow.h"
 
 #include "../core/AppManager.h"
+#include "../game/GameFactory.h"
+#include "MainWindow.h"
 
 
 namespace menu{
@@ -16,6 +18,12 @@ GameOverWindow::GameOverWindow(game::Player *winner)
 
     MenuItem exit = MenuItem("Spiel schließen", kExit2, 350, 450);
     MenuWindow::AddMenuItem(exit);
+
+    MenuItem new_round = MenuItem("Neue Runde", kNewRound, 350, 550);
+    MenuWindow::AddMenuItem(new_round);
+
+    MenuItem main = MenuItem("Zum Hauptmenü", kToMain, 350, 650);
+    MenuWindow::AddMenuItem(main);
 }
 
 void GameOverWindow::Draw(){
@@ -35,14 +43,25 @@ void GameOverWindow::Draw(){
 }
 
 void GameOverWindow::OnMenuItemSelect(int selected_option){
+    bool switch_to_main = false;
     switch (selected_option) {
         case kExit2:
-            //Muss Fenster gelöscht werden? Wenn ja, wie?
             core::AppManager::GetAppManager().Quit();
+            delete this;
+            break;
+        case kNewRound:
+            game::StartClassicGame();
+            break;
+        case kToMain:
+            switch_to_main = true;
             break;
         default:
             //Error, a button should always be selected
             break;
+    }
+    if (switch_to_main) {
+          MainWindow * mainW = new MainWindow();
+          core::AppManager::GetAppManager().SetActiveWindow(*mainW);
     }
 }
 
