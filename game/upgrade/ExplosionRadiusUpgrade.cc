@@ -7,7 +7,7 @@
 #include "../GameManager.h"
 #include "../GameObject.h"
 #include "../Player.h"
-#include "../../sound/SoundEffect.h"
+// #include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{
@@ -27,8 +27,8 @@ ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int
 }
 
 bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
-    core::AppManager::GetAppManager().GetSound()
-        .PlaySoundEffect(sound::effect_upgrade_collect, 0);
+    // core::AppManager::GetAppManager().GetSound()
+    //     .PlaySoundEffect(sound::effect_upgrade_collect, 0);
     this->Destroy();
     if (player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()) {
         player.IncreaseExplosionRadius(1);

@@ -9,7 +9,8 @@
 
 namespace graphics {
 
-GraphicsManager::GraphicsManager(std::string title, bool init_graphics) {
+GraphicsManager::GraphicsManager(std::string title, bool init_graphics)
+      : background_color_{graphics::Color(50,130,255,0)} {
 
     window_ = nullptr;
     renderer_ = nullptr;
@@ -87,7 +88,7 @@ void GraphicsManager::BeginFrame() {
     if (window_ == nullptr)
         return;
     ///fill the screen black
-    SDL_SetRenderDrawColor(renderer_, 0,0,0,255);
+    SDL_SetRenderDrawColor(renderer_, background_color_.red_, background_color_.green_, background_color_.blue_, 255);
     SDL_RenderClear(renderer_);
 
     ///All keys held on the previous frame are now not pressed anymore
@@ -146,7 +147,7 @@ void GraphicsManager::WriteText(std::string text,Color color,
 
     if (!font) return;
 
-    font->WriteText(renderer_, text, color, bold, x, y);
+    font->WriteText(renderer_, text, color, background_color_, bold, x, y);
 }
 
 void GraphicsManager::EndFrame() {
@@ -178,6 +179,10 @@ void GraphicsManager::SetFullscreen(bool fullscreen) {
         SDL_SetWindowFullscreen(window_, 0);
         SDL_RenderSetScale(renderer_, 1, 1);
     }
+}
+
+void GraphicsManager::SetBackgroundColor(Color background_color){
+      background_color_ = background_color;
 }
 
 bool GraphicsManager::IsKeyPressed(int scancode) {

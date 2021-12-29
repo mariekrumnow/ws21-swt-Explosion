@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "../core/AppManager.h"
 #include "../graphics/Keys.h"
+#include "../menu/GameOverWindow.h"
 
 namespace game {
 
@@ -62,8 +63,8 @@ void GameManager::Update(double delta_time) {
 	}
 
     if (this->win_condition_->checkWin()) {
-        core::AppManager::GetAppManager().Quit();
-        std::cout << "Gewonnen hat Spieler " << players_.front()->GetId() << "." <<  std::endl;
+        menu::GameOverWindow *over_w = new menu::GameOverWindow(players_.front());
+        core::AppManager::GetAppManager().SetActiveWindow(*over_w);
     }
 }
 

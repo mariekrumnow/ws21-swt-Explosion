@@ -9,7 +9,7 @@
 
 #include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
-#include "../sound/SoundManager.h"
+// #include "../sound/SoundManager.h"
 
 namespace core {
 
@@ -22,7 +22,7 @@ public:
     static AppManager& GetAppManager();
 
     graphics::GraphicsManager& GetGraphics();
-    sound::SoundManager& GetSound();
+    // sound::SoundManager& GetSound();
 
     //init_graphics can be set to false to disable graphical function for testing
     explicit AppManager(std::string title, bool init_graphics);
@@ -41,12 +41,14 @@ public:
 
     //loads all assets for a theme
     bool LoadTheme(std::string theme);
+    void ChangeBackgroundColor(graphics::Color background_color);
 
 private:
     Window* active_window_;
+    Window* previous_window_;
 
     graphics::GraphicsManager graphics_;
-    sound::SoundManager sound_;
+    // sound::SoundManager sound_;
 
     bool is_running_;
 

@@ -16,7 +16,7 @@ public:
 	Font(TTF_Font* font);
 	~Font();
 
-	void WriteText(SDL_Renderer* renderer, std::string text, Color color,
+	void WriteText(SDL_Renderer* renderer, std::string text, Color color, Color background_color,
 		bool bold, int x, int y);
 
 private:

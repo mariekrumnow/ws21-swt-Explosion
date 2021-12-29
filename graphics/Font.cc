@@ -26,13 +26,14 @@ Font::~Font() {
 	TTF_CloseFont(font_);
 }
 
-void Font::WriteText(SDL_Renderer* renderer, std::string text, Color color,
+void Font::WriteText(SDL_Renderer* renderer, std::string text, Color color, Color background_color,
 	bool bold, int x, int y) {
 
 	TTF_SetFontStyle(font_, bold ? TTF_STYLE_BOLD : 0);
 
     SDL_Surface* text_surface =TTF_RenderUTF8_Shaded(font_, text.c_str(),
-                                  {color.red_, color.green_, color.blue_, color.alpha_}, {0,0,0,0});
+                                  {color.red_, color.green_, color.blue_, color.alpha_}, {background_color.red_,
+						    background_color.green_, background_color.blue_, background_color.alpha_});
 
     SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
 

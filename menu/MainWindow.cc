@@ -15,13 +15,13 @@ MainWindow::MainWindow()
 {
     theme_ = kClassic;
 
-    MenuItem start = MenuItem("Spiel starten", kInstructions, 50, 100);
+    MenuItem start = MenuItem("Spiel starten", kInstructions, 400, 300);
     MenuWindow::AddMenuItem(start);
 
-    MenuItem change_theme = MenuItem("Thema wechseln", kChangeTheme, 50, 150);
+    MenuItem change_theme = MenuItem("Thema wechseln", kChangeTheme, 400, 400);
     MenuWindow::AddMenuItem(change_theme);
 
-    MenuItem exit = MenuItem("Spiel beenden", kExit1, 50, 200);
+    MenuItem exit = MenuItem("Spiel beenden", kExit1, 400, 500);
     MenuWindow::AddMenuItem(exit);
 }
 
@@ -34,26 +34,25 @@ void MainWindow::Draw(){
     switch (theme_) {
         case kClassic:
             theme_text = "Bomberman";
-            //Setze Player-Tiles auf Bomberman
+            core::AppManager::GetAppManager().LoadTheme("default");
             break;
         case kHalloween:
             theme_text = "Ghostman";
-            //Setze Player-Tiles auf Ghostman
+            core::AppManager::GetAppManager().LoadTheme("halloween");
             break;
         case kChicken:
             theme_text = "Birdman";
-            //Setze Player-Tiles auf Birdman
+            core::AppManager::GetAppManager().LoadTheme("farm");
             break;
         case kCorona:
             theme_text = "Coronaman";
-            //Setze Player-Tiles auf Coronaman
+            core::AppManager::GetAppManager().LoadTheme("corona");
             break;
         default:
             break;
     }
-    //graphics::kPlayer2Tiles.right
-    //graphics.DrawTile(graphics::kTilePlayer, graphics::Color(255,255,255,0), 20, 50);
-    graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium, false, 100, 50);
+    graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 370, 100);
+    graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kLarge, false, 450, 115);
 
     std::string credit_text[] = {"Credits:",
                                 "Peter Dechering, Carla Eckelt, Marie Krumnow, Marlene Mendler,",
@@ -61,7 +60,7 @@ void MainWindow::Draw(){
     int counter = 0;
     for (std::string tmp: credit_text) {
         graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium,
-                                                                        false, 10, 250+counter*20);
+                                                                        false, 20, 800+counter*30);
         counter++;
     }
 }
@@ -76,14 +75,14 @@ void MainWindow::OnMenuItemSelect(int selected_option){
             theme_ = (theme_+1)%4;
             break;
         case kExit1:
-            // wird sich gegebenenfalls noch verändern, durch quit-funktion im AppManager
-            core::AppManager::GetAppManager().GetGraphics().Quit();
+            core::AppManager::GetAppManager().Quit();
             break;
         default:
+            //Error, a button should always be selected
             break;
     }
     if (open_instructions) {
-          InstructionWindow *instruction = new InstructionWindow(theme_);
+          InstructionWindow *instruction = new InstructionWindow();
           core::AppManager::GetAppManager().SetActiveWindow(*instruction);
     }
 }

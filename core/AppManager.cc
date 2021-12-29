@@ -8,9 +8,9 @@
 #include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
 #include "Window.h"
-#include "../sound/SoundEffect.h"
-#include "../sound/Music.h"
-#include "../sound/SoundManager.h"
+// #include "../sound/SoundEffect.h"
+// #include "../sound/Music.h"
+// #include "../sound/SoundManager.h"
 
 namespace core {
 
@@ -25,15 +25,15 @@ graphics::GraphicsManager& AppManager::GetGraphics() {
     return graphics_;
 }
 
-sound::SoundManager& AppManager::GetSound() {
-    return sound_;
-}
+// sound::SoundManager& AppManager::GetSound() {
+//     return sound_;
+// }
 
 
 
 AppManager::AppManager(std::string title, bool init_hardware) :
         graphics_(graphics::GraphicsManager(title, init_hardware)),
-        sound_(sound::SoundManager(init_hardware)),
+        // sound_(sound::SoundManager(init_hardware)),
         is_running_(true) {
         //ensure the reference to the AppManager stays active, and there is only one.
 
@@ -52,8 +52,11 @@ AppManager::~AppManager() {
 }
 
 void AppManager::SetActiveWindow(Window &window) {
-    delete active_window_;
+    // Window *tmp = active_window_;
+    // delete active_window_;
+    previous_window_ = active_window_;
     active_window_ = &window;
+    // delete tmp;
 }
 
 Window& AppManager::GetActiveWindow() {
@@ -69,10 +72,14 @@ bool AppManager::LoadTheme(std::string theme) {
     success &= graphics_.LoadTileset(theme);
     success &= graphics_.LoadFonts(theme);
 
-    success &= sound::LoadSoundEffects(theme);
-    success &= sound::LoadMusic(theme);
+    // success &= sound::LoadSoundEffects(theme);
+    // success &= sound::LoadMusic(theme);
 
     return success;
+}
+
+void AppManager::ChangeBackgroundColor(graphics::Color background_color){
+      graphics_.SetBackgroundColor(background_color);
 }
 
 void AppManager::RunFrame(double delta_time) {
@@ -84,6 +91,7 @@ void AppManager::RunFrame(double delta_time) {
 
         graphics_.EndFrame();
     }
+    // delete previous_window_;
 }
 
 void AppManager::Run() {
@@ -106,17 +114,17 @@ void AppManager::Run() {
             Quit();
           }
 
-          if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
-              GetSound().PlayNextBattleMusic();
-          }
-
-          if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
-              GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
-          }
-
-          if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
-              GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
-          }
+          // if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+          //     GetSound().PlayNextBattleMusic();
+          // }
+          //
+          // if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
+          //     GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
+          // }
+          //
+          // if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
+          //     GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
+          // }
 
           int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
                      .count();

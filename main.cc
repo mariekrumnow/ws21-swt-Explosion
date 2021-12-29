@@ -9,9 +9,9 @@
 #include "game/upgrade/BombCountUpgrade.h"
 #include "../game/block/DestructibleBlock.h"
 #include "../game/block/IndestructibleBlock.h"
-#include "sound/SoundEffect.h"
-#include "sound/Music.h"
-#include "sound/SoundManager.h"
+// #include "sound/SoundEffect.h"
+// #include "sound/Music.h"
+// #include "sound/SoundManager.h"
 
 #include "../menu/MainWindow.h"
 
@@ -22,14 +22,16 @@ int main(int argc, char** argv)
     /// Initialize the app manager
     core::AppManager app = core::AppManager("Bomberman Explosion", true);
 
-    app.LoadTheme("halloween");
+    // In Init. vom Appmanager oder MainWindow packen?
+    app.LoadTheme("default");
 
-    sound::SoundManager& sound = app.GetSound();
+    // sound::SoundManager& sound = app.GetSound();
+    //
+    // sound.SetMasterVolume(0.7);
+    // sound.SetMusicVolume(0.9);
 
-    sound.SetMasterVolume(0.7);
-    sound.SetMusicVolume(0.9);
-
-    game::StartClassicGame();
+    menu::MainWindow mainW = menu::MainWindow();
+    app.SetActiveWindow(mainW);
 
     app.Run();
 

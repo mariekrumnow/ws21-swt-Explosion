@@ -3,7 +3,7 @@
 #include "Bomb.h"
 
 #include "../core/AppManager.h"
-#include "../sound/SoundEffect.h"
+// #include "../sound/SoundEffect.h"
 
 #include <cmath>
 #include <iostream>
@@ -34,8 +34,8 @@ Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_
 
 	//if explosion_delay is below 0.5, the loop formuar would fail.
 	if (explosion_delay >= 0.5) {
-		core::AppManager::GetAppManager().GetSound()
-			.PlaySoundEffectAlone(sound::effect_bomb_tick, trunc(explosion_delay/0.5)-1);
+		// core::AppManager::GetAppManager().GetSound()
+		// 	.PlaySoundEffectAlone(sound::effect_bomb_tick, trunc(explosion_delay/0.5)-1);
 	}
 	return temp;
 }
@@ -90,8 +90,8 @@ bool Bomb::SpawnExplosion(int x, int y, int oriented) {
 void Bomb::Explode() {
 	GameManager& game = GameManager::GetCurrentGame();
 
-	core::AppManager::GetAppManager().GetSound()
-		.PlaySoundEffect(sound::effect_bomb_explode, 0);
+	// core::AppManager::GetAppManager().GetSound()
+	// 	.PlaySoundEffect(sound::effect_bomb_explode, 0);
 
 	exploding_ = true; ///so the bomb isn't solid anymore
 

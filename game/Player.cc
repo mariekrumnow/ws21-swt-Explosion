@@ -14,7 +14,7 @@
 #include "../graphics/Tile.h"
 #include "win_condition/BaseWinCondition.h"
 #include "../core/AppManager.h"
-#include "../sound/SoundEffect.h"
+// #include "../sound/SoundEffect.h"
 #include "../game/bomb/Bomb.h"
 
 namespace game {
@@ -111,7 +111,7 @@ void Player::Update(double delta_time) {
     }
 
     if (player_moved) {
-        app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
+        // app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
         move_timer_ = kMinMoveTimer +
             (kMaxMoveTimer - kMinMoveTimer) * (1 - ((double)speed_) / kMaxSpeed);
     }

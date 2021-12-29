@@ -17,7 +17,7 @@ enum InstructionButton {kStart=0};
 class InstructionWindow : public MenuWindow {
 public:
     /// Initialises the instructions and the button to start the game
-    InstructionWindow(int theme);
+    InstructionWindow();
 
     /// Shows all MenuItems on screen and draws instruction text
     void Draw();

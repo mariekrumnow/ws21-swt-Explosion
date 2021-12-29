@@ -37,6 +37,8 @@ namespace graphics {
 
         void SetFullscreen(bool fullscreen);
 
+        void SetBackgroundColor(Color background_color);
+
         /// only returns true on the first frame the key is pressed
         bool IsKeyPressed(int scancode);
         /// returns true as long as the key is pressed
@@ -54,6 +56,7 @@ namespace graphics {
         TileSet* game_tileset_;
         SDL_Window* window_;
         SDL_Renderer* renderer_;
+        Color background_color_;
 
         Font* font_small_;
         Font* font_medium_;
