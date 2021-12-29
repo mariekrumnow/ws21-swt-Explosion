@@ -13,6 +13,8 @@
 #include "sound/Music.h"
 #include "sound/SoundManager.h"
 
+#include "../menu/MainWindow.h"
+
 int main(int argc, char** argv)
 {
     /// Initialize the app manager
@@ -20,6 +22,10 @@ int main(int argc, char** argv)
 
     game::GameFactory factory = game::GameFactory(15, 12);
     factory.GenerateGame(2, 85);
+
+//    // Testen des Main- & InstructionWindow
+//    menu::MainWindow mainW = menu::MainWindow();
+//    app.SetActiveWindow(mainW);
 
     game::GameWindow game_window = game::GameWindow();
     app.SetActiveWindow(game_window);
