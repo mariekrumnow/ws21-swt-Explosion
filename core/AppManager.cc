@@ -52,11 +52,8 @@ AppManager::~AppManager() {
 }
 
 void AppManager::SetActiveWindow(Window &window) {
-    // Window *tmp = active_window_;
-    // delete active_window_;
-    previous_window_ = active_window_;
+    delete active_window_;
     active_window_ = &window;
-    // delete tmp;
 }
 
 Window& AppManager::GetActiveWindow() {
@@ -91,7 +88,6 @@ void AppManager::RunFrame(double delta_time) {
 
         graphics_.EndFrame();
     }
-    // delete previous_window_;
 }
 
 void AppManager::Run() {

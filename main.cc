@@ -29,9 +29,9 @@ int main(int argc, char** argv)
     //
     // sound.SetMasterVolume(0.7);
     // sound.SetMusicVolume(0.9);
-
-    menu::MainWindow mainW = menu::MainWindow();
-    app.SetActiveWindow(mainW);
+    
+    menu::MainWindow * mainW = new menu::MainWindow();
+    app.SetActiveWindow(*mainW);
 
     app.Run();
 

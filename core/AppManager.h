@@ -45,7 +45,6 @@ public:
 
 private:
     Window* active_window_;
-    Window* previous_window_;
 
     graphics::GraphicsManager graphics_;
     // sound::SoundManager sound_;
