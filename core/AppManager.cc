@@ -45,6 +45,7 @@ AppManager::AppManager(std::string title, bool init_hardware) :
         AppManager::manager_ = this;
         active_window_ = nullptr;
 
+        LoadTheme("default");
 }
 
 AppManager::~AppManager() {
@@ -69,10 +70,14 @@ bool AppManager::LoadTheme(std::string theme) {
     success &= graphics_.LoadTileset(theme);
     success &= graphics_.LoadFonts(theme);
 
-    success &= sound::LoadSoundEffects(theme);
-    success &= sound::LoadMusic(theme);
+     success &= sound::LoadSoundEffects(theme);
+     success &= sound::LoadMusic(theme);
 
     return success;
+}
+
+void AppManager::ChangeBackgroundColor(graphics::Color background_color){
+      graphics_.SetBackgroundColor(background_color);
 }
 
 void AppManager::RunFrame(double delta_time) {
@@ -102,21 +107,17 @@ void AppManager::Run() {
               graphics_.SetFullscreen(fullscreen);
             }
 
-          if (graphics_.IsKeyPressed(graphics::key_escape)) {
-            Quit();
-          }
+            if (graphics_.IsKeyPressed(graphics::key_escape)) {
+              Quit();
+            }
 
-          if (GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
-              GetSound().PlayNextBattleMusic();
-          }
+           if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
+               GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.02);
+           }
 
-          if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
-              GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
-          }
-
-          if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
-              GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
-          }
+           if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
+               GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.02);
+           }
 
           int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)
                      .count();

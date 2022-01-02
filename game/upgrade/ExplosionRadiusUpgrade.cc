@@ -28,7 +28,7 @@ ExplosionRadiusUpgrade* ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(int
 
 bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
     core::AppManager::GetAppManager().GetSound()
-        .PlaySoundEffect(sound::effect_upgrade_collect, 0);
+         .PlaySoundEffect(sound::effect_upgrade_collect, 0);
     this->Destroy();
     if (player.GetExplosionRadius() <= player.GetKMaxExplosionRadius()) {
         player.IncreaseExplosionRadius(1);

@@ -41,6 +41,7 @@ public:
 
     //loads all assets for a theme
     bool LoadTheme(std::string theme);
+    void ChangeBackgroundColor(graphics::Color background_color);
 
 private:
     Window* active_window_;

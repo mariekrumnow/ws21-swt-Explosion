@@ -39,6 +39,12 @@ void GameWindow::Draw() {
 void GameWindow::Update(double delta_time) {
 	GameManager& game = GameManager::GetCurrentGame();
 	game.Update(delta_time);
+
+	//This needs to be in the Game Window, otherwise you can cycle through
+	//battle music in the main menu
+	if (core::AppManager::GetAppManager().GetGraphics().IsKeyPressed(graphics::key_switch_music)) {
+		core::AppManager::GetAppManager().GetSound().PlayNextBattleMusic();
+	}
 }
 
 } // namespace game

@@ -2,6 +2,7 @@
 
 
 #include <time.h>
+#include <iostream>
 
 #include "DestructibleBlock.h"
 

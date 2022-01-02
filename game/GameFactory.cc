@@ -83,24 +83,25 @@ void GameFactory::GeneratePlayers(int player_count, graphics::PlayerKeys* player
     // player
     Player* players[player_count];
 
-    for (int i = 0; i < player_count; i++) {
-        if (i == 0) {
-            players[i] = Player::CreatePlayer(1, 1, player_keys[i], graphics::kPlayer1Tiles, 1);
-        } else if (i == 1) {
-            players[i] = Player::CreatePlayer((width_ - 2), (height_ - 2), player_keys[i], graphics::kPlayer2Tiles, 2);
-        } else if (i == 2) {
-            players[i] = Player::CreatePlayer(1, (height_ - 2), player_keys[i], graphics::kPlayer1Tiles, 3);
-        } else if (i == 3) {
-            players[i] = Player::CreatePlayer((width_ - 2), 1, player_keys[i], graphics::kPlayer2Tiles, 4);
-        }
+    switch (player_count) {
+        case 4:
+            players[3] = Player::CreatePlayer((width_ - 2), 1, player_keys[3], graphics::kPlayer2Tiles, 4);
+        case 3:
+            players[2] = Player::CreatePlayer(1, (height_ - 2), player_keys[2], graphics::kPlayer1Tiles, 3);
+        case 2:
+            players[1] = Player::CreatePlayer((width_ - 2), (height_ - 2), player_keys[1], graphics::kPlayer2Tiles, 2);
+        case 1:
+            players[0] = Player::CreatePlayer(1, 1, player_keys[0], graphics::kPlayer1Tiles, 1);
     }
 }
 
 void StartClassicGame() {
-    GameFactory factory = GameFactory(15, 12);
+    GameFactory factory = GameFactory(15, 13);
     factory.GenerateGame(2, 85);
 
     core::AppManager& app = core::AppManager::GetAppManager();
+
+    app.ChangeBackgroundColor(graphics::Color(113,104,98,0));
 
     GameWindow * game_window = new GameWindow();
     app.SetActiveWindow(*game_window);

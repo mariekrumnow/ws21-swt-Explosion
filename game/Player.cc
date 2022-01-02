@@ -3,6 +3,7 @@
 #include "Player.h"
 
 #include <iostream>
+#include <cmath>
 #include <vector>
 
 #include "GameManager.h"
@@ -14,7 +15,7 @@
 #include "../graphics/Tile.h"
 #include "win_condition/BaseWinCondition.h"
 #include "../core/AppManager.h"
-#include "../sound/SoundEffect.h"
+// #include "../sound/SoundEffect.h"
 #include "../game/bomb/Bomb.h"
 
 namespace game {
@@ -81,12 +82,21 @@ bool Player::PlaceBomb(int x, int y) {
   return false;
 }
 
+double Player::GetCurrentMovementTimer() {
+    //exponential speed distribution for more uniform feeling of speed increase
+    return (kMaxMoveTimer - 1) + pow(kMinMoveTimer - kMaxMoveTimer + 1, (static_cast<double>(speed_)) / kMaxSpeed);
+}
+
 void Player::Update(double delta_time) {
     core::AppManager& app = core::AppManager::GetAppManager();
   graphics::GraphicsManager& graphics = app.GetGraphics();
 
   if (move_timer_ > 0) {
     move_timer_ -= delta_time;
+  }
+
+  if (graphics.IsKeyHeld(keys_.bomb)) {
+      PlaceBomb(GetX(), GetY());
   }
 
   if (move_timer_ <= 0) {
@@ -106,14 +116,9 @@ void Player::Update(double delta_time) {
         orientation_=3;
     }
 
-    if (graphics.IsKeyHeld(keys_.bomb)) {
-        PlaceBomb(GetX(), GetY());
-    }
-
     if (player_moved) {
         app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
-        move_timer_ = kMinMoveTimer +
-            (kMaxMoveTimer - kMinMoveTimer) * (1 - ((double)speed_) / kMaxSpeed);
+        move_timer_ = GetCurrentMovementTimer();
     }
   }
 }

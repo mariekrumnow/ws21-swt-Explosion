@@ -7,6 +7,7 @@
 #include <list>
 
 #include "../core/AppManager.h"
+#include "../sound/SoundEffect.h"
 
 
 namespace menu{
@@ -20,14 +21,18 @@ void MenuWindow::Update(double delta_time){
 
       // Goes up or down in the selectable MenuItems
       if (graphics.IsKeyPressed(graphics::key_menu_up[0]) || graphics.IsKeyPressed(graphics::key_menu_up[1])) {
+          core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
+
             selected_option_ = (selected_option_==0) ? menu_items_.size()-1 : selected_option_-1;
       } else if (graphics.IsKeyPressed(graphics::key_menu_down[0])
                     || graphics.IsKeyPressed(graphics::key_menu_down[1])) {
+            core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
             selected_option_ = (selected_option_+1) %menu_items_.size();
       }
 
       // Sends signal that the MenuItem wants to be activated
       if (graphics.IsKeyPressed(graphics::key_return)) {
+          core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
             OnMenuItemSelect(selected_option_);
       }
 }
@@ -36,9 +41,14 @@ void MenuWindow::Draw(){
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
     for (auto it = menu_items_.begin(); it!=menu_items_.end(); it++) {
-            // Currently chosen button is highlighted by different colour
-            graphics::Color buttonColor = (it->GetOptionNum() == selected_option_) ? graphics::Color(255, 140, 0, 255)
-                                                                                : graphics::Color(255, 255, 255, 255);
+            graphics::Color buttonColor = graphics::Color(255, 255, 255, 255);
+
+            if (it->GetOptionNum() == selected_option_){
+                  // Currently chosen button is highlighted by different color and a sign
+                  buttonColor = graphics::Color(255, 140, 0, 255);
+                  graphics.WriteText(">", buttonColor, graphics::FontSize::kLarge, true, it->GetX()-35, it->GetY());
+            }
+
             graphics.WriteText(it->GetText(), buttonColor, graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
 	  }
 }

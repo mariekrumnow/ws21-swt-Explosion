@@ -34,8 +34,8 @@ Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_
 
 	//if explosion_delay is below 0.5, the loop formuar would fail.
 	if (explosion_delay >= 0.5) {
-		core::AppManager::GetAppManager().GetSound()
-			.PlaySoundEffectAlone(sound::effect_bomb_tick, trunc(explosion_delay/0.5)-1);
+		 core::AppManager::GetAppManager().GetSound()
+		 	.PlaySoundEffectAlone(sound::effect_bomb_tick, trunc(explosion_delay/0.5)-1);
 	}
 	return temp;
 }
