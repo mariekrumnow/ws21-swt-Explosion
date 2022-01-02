@@ -71,6 +71,8 @@ void Player::IncreaseSpeed(int value) {
 bool Player::PlaceBomb(int x, int y) {
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
+      //scale explosion timer after the players speed, so you can actually
+      //run away from your own bombs
       double explosion_timer = GetCurrentMovementTimer() * 4;
       if (explosion_timer < 1.5) explosion_timer = 1.5;
     bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), explosion_timer);
