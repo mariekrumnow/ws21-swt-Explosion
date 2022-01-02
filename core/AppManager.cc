@@ -112,11 +112,11 @@ void AppManager::Run() {
             }
 
            if (GetGraphics().IsKeyPressed(graphics::key_volume_louder)) {
-               GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.1);
+               GetSound().SetMasterVolume(GetSound().GetMasterVolume() + 0.02);
            }
 
            if (GetGraphics().IsKeyPressed(graphics::key_volume_quieter)) {
-               GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.1);
+               GetSound().SetMasterVolume(GetSound().GetMasterVolume() - 0.02);
            }
 
           int elapsed_microsecs = std::chrono::duration_cast<std::chrono::microseconds>(elapsed)

@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 
     sound::SoundManager& sound = app.GetSound();
 
-    sound.SetMasterVolume(0.5);
+    sound.SetMasterVolume(0.1);
     sound.SetMusicVolume(0.9);
 
     core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
