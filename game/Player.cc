@@ -83,9 +83,6 @@ bool Player::PlaceBomb(int x, int y) {
 }
 
 double Player::GetCurrentMovementTimer() {
-    /*return kMinMoveTimer +
-        (kMaxMoveTimer - kMinMoveTimer) * (1 - (static_cast<double>(speed_)) / kMaxSpeed);*/
-
     //exponential speed distribution for more uniform feeling of speed increase
     return (kMaxMoveTimer - 1) + pow(kMinMoveTimer - kMaxMoveTimer + 1, (static_cast<double>(speed_)) / kMaxSpeed);
 }

@@ -62,7 +62,7 @@ private:
 
     int id_;
 
-    double move_timer_;  ///< timer till player can move again
+    double move_timer_ = 0;  ///< timer till player can move again
     const double kMaxMoveTimer = 0.5;
     const double kMinMoveTimer = 0.1;
 
