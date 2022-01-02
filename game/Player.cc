@@ -74,9 +74,7 @@ bool Player::PlaceBomb(int x, int y) {
   if (GetOwnedBombs() < GetMaxBombCount()) {
       //scale explosion timer after the players speed, so you can actually
       //run away from your own bombs
-      double explosion_timer = GetCurrentMovementTimer() * 4;
-      if (explosion_timer < 1.5) explosion_timer = 1.5;
-    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), explosion_timer);
+    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), 1.5);
 
     if (bomb != nullptr) {
       owned_bombs_++;
