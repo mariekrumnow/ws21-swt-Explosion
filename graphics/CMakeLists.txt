@@ -4,6 +4,7 @@ add_library(graphics
         Keys.cc Keys.h
         Tile.cc Tile.h
         TileSet.cc TileSet.h
+        Font.cc Font.h
         )
 
 
