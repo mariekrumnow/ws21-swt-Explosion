@@ -3,12 +3,10 @@
 #include "Music.h"
 
 #include <iostream>
-#include <filesystem>
 #include <fstream>
 
+#include <windows.h>
 #include <SDL_mixer.h>
-
-namespace fs = std::filesystem;
 
 namespace sound {
 
@@ -63,12 +61,31 @@ bool LoadMusic(std::string theme) {
 	}
 	battle_music.clear();
 
-	for (auto entry : fs::directory_iterator("./assets/"+theme+"/music/battle")) {
-		Music* music = Music::LoadMusicFile(entry.path().u8string());
-		if (music) {
-			battle_music.push_back(music);
-		}
+	//load all battle music files via Windows API
+	WIN32_FIND_DATA find_file_data;
+	HANDLE file;
+
+	//Get handle to first file
+	file = FindFirstFile(("./assets/"+theme+"/music/battle/*").c_str(), &find_file_data);
+
+	if (file != INVALID_HANDLE_VALUE) {
+		//iterate through all other handles in the directory
+		do {
+
+			//if the handle is to a file, not a directory
+			if (!(find_file_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+				//load it as a music file
+				std::string path =
+					"./assets/"+theme+"/music/battle/" + find_file_data.cFileName;
+				Music* music = Music::LoadMusicFile(path);
+				if (music) {
+					battle_music.push_back(music);
+				}
+			}
+		} while (FindNextFile(file, &find_file_data));
 	}
+
+	FindClose(file);
 
 	if (battle_music.size() == 0) {
 		std::cout << "Couldn't load battle music for theme "+theme << std::endl;

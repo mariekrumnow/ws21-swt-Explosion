@@ -30,6 +30,7 @@ public:
     void Update(double delta_time);
     bool OnExplosion(GameObject& source);
     bool OnCollision(GameObject& source);
+    double GetCurrentMovementTimer();
     int GetSpeed() const;
     int GetExplosionRadius() const;
     int GetMaxBombCount() const;
@@ -51,7 +52,7 @@ private:
 
     int explosion_radius_ = 1;
     int max_bomb_count_ = 1;
-    int speed_ = 7;
+    int speed_ = 0;
     int owned_bombs_ = 0;
     const int kMaxExplosionRadius = 10;
     const int kMaxMaxBombCount = 10;
@@ -61,8 +62,8 @@ private:
 
     int id_;
 
-    double move_timer_;  ///< timer till player can move again
-    const double kMaxMoveTimer = 1.0;
+    double move_timer_ = 0;  ///< timer till player can move again
+    const double kMaxMoveTimer = 0.5;
     const double kMinMoveTimer = 0.1;
 
     graphics::PlayerKeys keys_; ///< controls

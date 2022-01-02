@@ -6,7 +6,9 @@
 
 #include "../core/AppManager.h"
 #include "../game/GameFactory.h"
+#include "../sound/Music.h"
 #include "MainWindow.h"
+
 
 
 namespace menu{
@@ -24,6 +26,8 @@ GameOverWindow::GameOverWindow(game::Player *winner)
 
     MenuItem main = MenuItem("Zum Hauptmenü", kToMain, 350, 650);
     MenuWindow::AddMenuItem(main);
+
+    core::AppManager::GetAppManager().GetSound().PlayMusic(sound::victory_music);
 }
 
 void GameOverWindow::Draw(){
@@ -60,6 +64,7 @@ void GameOverWindow::OnMenuItemSelect(int selected_option){
             break;
     }
     if (switch_to_main) {
+        core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
           MainWindow * mainW = new MainWindow();
           core::AppManager::GetAppManager().SetActiveWindow(*mainW);
     }

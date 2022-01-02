@@ -34,19 +34,15 @@ void MainWindow::Draw(){
     switch (theme_) {
         case kClassic:
             theme_text = "Bomberman";
-            core::AppManager::GetAppManager().LoadTheme("default");
             break;
         case kHalloween:
             theme_text = "Ghostman";
-            core::AppManager::GetAppManager().LoadTheme("halloween");
             break;
         case kChicken:
             theme_text = "Birdman";
-            core::AppManager::GetAppManager().LoadTheme("farm");
             break;
         case kCorona:
             theme_text = "Coronaman";
-            core::AppManager::GetAppManager().LoadTheme("corona");
             break;
         default:
             break;
@@ -73,6 +69,23 @@ void MainWindow::OnMenuItemSelect(int selected_option){
             break;
         case kChangeTheme:
             theme_ = (theme_+1)%4;
+            switch (theme_) {
+                case kClassic:
+                    core::AppManager::GetAppManager().LoadTheme("default");
+                    break;
+                case kHalloween:
+                    core::AppManager::GetAppManager().LoadTheme("halloween");
+                    break;
+                case kChicken:
+                    core::AppManager::GetAppManager().LoadTheme("farm");
+                    break;
+                case kCorona:
+                    core::AppManager::GetAppManager().LoadTheme("corona");
+                    break;
+                default:
+                    break;
+            }
+            core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
             break;
         case kExit1:
             core::AppManager::GetAppManager().Quit();
