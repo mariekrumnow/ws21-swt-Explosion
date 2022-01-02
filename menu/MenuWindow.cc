@@ -41,15 +41,15 @@ void MenuWindow::Draw(){
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
     for (auto it = menu_items_.begin(); it!=menu_items_.end(); it++) {
-            graphics::Color buttonColor = graphics::Color(255, 255, 255, 255);
+            graphics::Color button_color = graphics::Color(255, 255, 255, 255);
 
             if (it->GetOptionNum() == selected_option_){
                   // Currently chosen button is highlighted by different color and a sign
-                  buttonColor = graphics::Color(255, 140, 0, 255);
-                  graphics.WriteText(">", buttonColor, graphics::FontSize::kLarge, true, it->GetX()-35, it->GetY());
+                  button_color = graphics::Color(255, 140, 0, 255);
+                  graphics.WriteText(">", button_color, graphics::FontSize::kLarge, true, it->GetX()-35, it->GetY());
             }
 
-            graphics.WriteText(it->GetText(), buttonColor, graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
+            graphics.WriteText(it->GetText(), button_color, graphics::FontSize::kLarge, true, it->GetX(), it->GetY());
 	  }
 }
 

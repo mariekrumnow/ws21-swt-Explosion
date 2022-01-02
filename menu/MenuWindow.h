@@ -14,8 +14,6 @@
 
 namespace menu{
 
-enum Theme {kClassic=0, kHalloween=1, kChicken=2, kCorona=3};
-
 class MenuWindow : public core::Window {
 public:
     /// Simple constructor

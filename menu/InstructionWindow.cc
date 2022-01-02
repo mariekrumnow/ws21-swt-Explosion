@@ -11,6 +11,8 @@
 
 namespace menu{
 
+enum InstructionButton {kStart=0, kBack=1};
+
 InstructionWindow::InstructionWindow()
 : MenuWindow(kStart)
 {
@@ -25,6 +27,11 @@ void InstructionWindow::Draw(){
     MenuWindow::Draw();
 
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
+
+    // Button instruction
+    graphics.WriteText("F12: Musik im Spiel ändern", graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
+                                                                                    false, 815, 10);
+
     // Instructions on how to play the game
     std::string instruction_text[] = {"So geht's:",
                                      "Bei Bomberman müsst ihr eure Mitspieler mittels Bomben ausschalten",
