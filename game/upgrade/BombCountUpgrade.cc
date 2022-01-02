@@ -7,7 +7,7 @@
 #include "../GameManager.h"
 #include "../GameObject.h"
 #include "../Player.h"
-// #include "../../sound/SoundEffect.h"
+#include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{

@@ -71,7 +71,9 @@ void Player::IncreaseSpeed(int value) {
 bool Player::PlaceBomb(int x, int y) {
   GameManager& game = GameManager::GetCurrentGame();
   if (GetOwnedBombs() < GetMaxBombCount()) {
-    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), 1.5);
+      double explosion_timer = GetCurrentMovementTimer() * 4;
+      if (explosion_timer < 1.5) explosion_timer = 1.5;
+    bomb::Bomb* bomb = bomb::Bomb::CreateBomb(x, y, this,GetExplosionRadius(), explosion_timer);
 
     if (bomb != nullptr) {
       owned_bombs_++;
@@ -81,12 +83,21 @@ bool Player::PlaceBomb(int x, int y) {
   return false;
 }
 
+double Player::GetCurrentMovementTimer() {
+    return kMinMoveTimer +
+        (kMaxMoveTimer - kMinMoveTimer) * (1 - (static_cast<double>(speed_)) / kMaxSpeed);
+}
+
 void Player::Update(double delta_time) {
     core::AppManager& app = core::AppManager::GetAppManager();
   graphics::GraphicsManager& graphics = app.GetGraphics();
 
   if (move_timer_ > 0) {
     move_timer_ -= delta_time;
+  }
+
+  if (graphics.IsKeyHeld(keys_.bomb)) {
+      PlaceBomb(GetX(), GetY());
   }
 
   if (move_timer_ <= 0) {
@@ -106,14 +117,9 @@ void Player::Update(double delta_time) {
         orientation_=3;
     }
 
-    if (graphics.IsKeyHeld(keys_.bomb)) {
-        PlaceBomb(GetX(), GetY());
-    }
-
     if (player_moved) {
-        // app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
-        move_timer_ = kMinMoveTimer +
-            (kMaxMoveTimer - kMinMoveTimer) * (1 - ((double)speed_) / kMaxSpeed);
+        app.GetSound().PlaySoundEffect(sound::effect_walk, 0);
+        move_timer_ = GetCurrentMovementTimer();
     }
   }
 }

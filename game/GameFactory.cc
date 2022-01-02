@@ -106,7 +106,7 @@ void StartClassicGame() {
     GameWindow * game_window = new GameWindow();
     app.SetActiveWindow(*game_window);
 
-    // app.GetSound().PlayRandomBattleMusic();
+    app.GetSound().PlayRandomBattleMusic();
 }
 
 } // namespace game
