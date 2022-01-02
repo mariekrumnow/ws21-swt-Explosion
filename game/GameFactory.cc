@@ -101,7 +101,7 @@ void StartClassicGame() {
 
     core::AppManager& app = core::AppManager::GetAppManager();
 
-    app.ChangeBackgroundColor(graphics::Color(133,124,118,0));
+    app.ChangeBackgroundColor(graphics::Color(113,104,98,0));
 
     GameWindow * game_window = new GameWindow();
     app.SetActiveWindow(*game_window);
