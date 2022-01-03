@@ -45,4 +45,9 @@ target_include_directories(bomberman PRIVATE menu)
 target_link_directories(bomberman PRIVATE menu)
 target_link_libraries(bomberman menu)
 
+add_subdirectory(sound)
+target_include_directories(bomberman PRIVATE sound)
+target_link_directories(bomberman PRIVATE sound)
+target_link_libraries(bomberman sound)
+
 #add_subdirectory(tests)
