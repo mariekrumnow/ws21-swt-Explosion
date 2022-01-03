@@ -41,7 +41,7 @@ Music* menu_music = nullptr;
 Music* victory_music = nullptr;
 
 Music* LoadMusicFile(std::string theme, std::string filename) {
-	Music* music = Music::LoadMusicFile("assets\\"+theme+"\\music\\"+filename);
+	Music* music = Music::LoadMusicFile("assets/"+theme+"/music/"+filename);
 	if (!music) {
 		if (theme == "default") {
 			std::cout << "Couldn't load music "+filename+" - ";
