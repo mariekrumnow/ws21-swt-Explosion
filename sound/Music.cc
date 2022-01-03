@@ -5,7 +5,10 @@
 #include <iostream>
 #include <fstream>
 
+#ifdef _WIN32
 #include <windows.h>
+#endif
+
 #include <SDL_mixer.h>
 
 namespace sound {
@@ -61,7 +64,9 @@ bool LoadMusic(std::string theme) {
 	}
 	battle_music.clear();
 
+
 	//load all battle music files via Windows API
+#	ifdef _WIN32
 	WIN32_FIND_DATA find_file_data;
 	HANDLE file;
 
@@ -90,6 +95,7 @@ bool LoadMusic(std::string theme) {
 	if (battle_music.size() == 0) {
 		std::cout << "Couldn't load battle music for theme "+theme << std::endl;
 	}
+#	endif
 
 	menu_music = LoadMusicFile(theme, "Menu.wav");
 	victory_music = LoadMusicFile(theme, "Victory.wav");
