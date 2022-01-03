@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 
-#undef _WIN32
 #ifdef _WIN32
 #include <windows.h>
 #else
