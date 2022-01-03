@@ -97,6 +97,9 @@ void SoundManager::PlayNextBattleMusic() {
 	if (fake_)
 		return;
 
+	if (battle_music.size() == 0)
+		return;
+
 	PlayMusic( battle_music[current_battle_music_] );
 
 	current_battle_music_ += 1;
