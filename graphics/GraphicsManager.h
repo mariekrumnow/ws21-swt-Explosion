@@ -58,6 +58,9 @@ namespace graphics {
         SDL_Renderer* renderer_;
         Color background_color_;
 
+        int x_draw_offset_=0;
+        int y_draw_offset_=0;
+
         Font* font_small_;
         Font* font_medium_;
         Font* font_large_;
