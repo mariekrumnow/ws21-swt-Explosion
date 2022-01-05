@@ -13,6 +13,8 @@
 
 namespace menu{
 
+enum GameOverButton {kExit2=0, kNewRound=1, kToMain=2};
+
 GameOverWindow::GameOverWindow(game::Player *winner)
 : MenuWindow(kExit2) , winner_(winner)
 {

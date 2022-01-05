@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 
     core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
 
-    menu::MainWindow * mainW = new menu::MainWindow();
-    app.SetActiveWindow(*mainW);
+    menu::MainWindow * main_window = new menu::MainWindow();
+    app.SetActiveWindow(*main_window);
 
     app.Run();
 

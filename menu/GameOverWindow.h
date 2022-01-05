@@ -14,8 +14,6 @@
 
 namespace menu{
 
-enum GameOverButton {kExit2=0, kNewRound=1, kToMain=2};
-
 /// Shown after a game has ended, shows the outcome and an exit Item
 class GameOverWindow : public MenuWindow {
 public:

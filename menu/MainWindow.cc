@@ -10,6 +10,9 @@
 
 namespace menu{
 
+enum MainButton {kInstructions=0, kChangeTheme=1, kExit1=2};
+enum Theme {kClassic=0, kHalloween=1, kChicken=2, kCorona=3};
+
 MainWindow::MainWindow()
 : MenuWindow(kInstructions)
 {
@@ -30,6 +33,18 @@ void MainWindow::Draw(){
 
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
 
+    // Button instructions
+    int counter = 0;
+    std::string button_text[] = {"F7/F8: Lautstärke leiser/lauter",
+                                "F11: Vollbild-/Fenstermodus",
+                                "ESC: Fenster schließen"};
+    for (std::string tmp: button_text) {
+        graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium,
+                                                                  false, 785, 10+counter*30);
+        counter++;
+    }
+
+    // Theme
     std::string theme_text;
     switch (theme_) {
         case kClassic:
@@ -47,13 +62,14 @@ void MainWindow::Draw(){
         default:
             break;
     }
-    graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 370, 100);
-    graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kLarge, false, 450, 115);
+    graphics.DrawTile(graphics::kPlayer1Tiles.right, graphics::Color(255,255,255,0), 370, 110);
+    graphics.WriteText(theme_text, graphics::Color(255, 140, 0, 255), graphics::FontSize::kLarge, false, 450, 125);
 
+    // Credits
     std::string credit_text[] = {"Credits:",
                                 "Peter Dechering, Carla Eckelt, Marie Krumnow, Marlene Mendler,",
                                 "Patrick Möbius, Dennis Neuhaus, Tobias Oehme, Nina Willms"};
-    int counter = 0;
+    counter = 0;
     for (std::string tmp: credit_text) {
         graphics.WriteText(tmp, graphics::Color(255, 140, 0, 255), graphics::FontSize::kMedium,
                                                                         false, 20, 800+counter*30);
@@ -63,28 +79,32 @@ void MainWindow::Draw(){
 
 void MainWindow::OnMenuItemSelect(int selected_option){
     bool open_instructions = false;
+    std::string theme_code;
     switch (selected_option) {
         case kInstructions:
             open_instructions = true;
             break;
         case kChangeTheme:
             theme_ = (theme_+1)%4;
+
             switch (theme_) {
                 case kClassic:
-                    core::AppManager::GetAppManager().LoadTheme("default");
+                    theme_code = "default";
                     break;
                 case kHalloween:
-                    core::AppManager::GetAppManager().LoadTheme("halloween");
+                    theme_code = "halloween";
                     break;
                 case kChicken:
-                    core::AppManager::GetAppManager().LoadTheme("farm");
+                    theme_code = "farm";
                     break;
                 case kCorona:
-                    core::AppManager::GetAppManager().LoadTheme("corona");
+                    theme_code = "corona";
                     break;
                 default:
                     break;
             }
+            core::AppManager::GetAppManager().LoadTheme(theme_code);
+
             core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
             break;
         case kExit1:
