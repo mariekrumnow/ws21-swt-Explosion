@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "GameManager.h"
 #include "GameWindow.h"
+#include "SinglePlayerGameWindow.h"
 
 namespace game {
 
@@ -110,14 +111,16 @@ void StartClassicGame() {
 }
 
 void StartSinglePlayerGame() {
-    GameFactory factory = GameFactory(15, 13, new win_condition::SinglePlayerWinCondition());
+    SinglePlayerGameWindow * game_window = new SinglePlayerGameWindow();
+
+    GameFactory factory = GameFactory(15, 13, new win_condition::SinglePlayerWinCondition(game_window));
     factory.GenerateGame(1, 85);
 
     core::AppManager& app = core::AppManager::GetAppManager();
 
     app.ChangeBackgroundColor(graphics::Color(113,104,98,0));
 
-    GameWindow * game_window = new GameWindow();
+
     app.SetActiveWindow(*game_window);
 
     app.GetSound().PlayRandomBattleMusic();
