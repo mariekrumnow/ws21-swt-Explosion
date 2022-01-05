@@ -5,6 +5,7 @@
 #include "MainWindow.h"
 
 #include "../core/AppManager.h"
+#include "../sound/SoundEffect.h"
 #include "InstructionWindow.h"
 
 
@@ -18,8 +19,7 @@ MainWindow::MainWindow()
 {
     theme_ = kClassic;
     core::AppManager::GetAppManager().LoadTheme("default");
-    
-    core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
+    core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
 
     MenuItem start = MenuItem("Spiel starten", kInstructions, 400, 300);
     MenuWindow::AddMenuItem(start);
@@ -88,6 +88,7 @@ void MainWindow::OnMenuItemSelect(int selected_option){
             open_instructions = true;
             break;
         case kChangeTheme:
+
             theme_ = (theme_+1)%4;
 
             switch (theme_) {
@@ -107,8 +108,7 @@ void MainWindow::OnMenuItemSelect(int selected_option){
                     break;
             }
             core::AppManager::GetAppManager().LoadTheme(theme_code);
-
-            core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
+            core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
             break;
         case kExit1:
             core::AppManager::GetAppManager().Quit();
