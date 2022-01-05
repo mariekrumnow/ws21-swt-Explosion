@@ -18,6 +18,8 @@ MainWindow::MainWindow()
 {
     theme_ = kClassic;
     core::AppManager::GetAppManager().LoadTheme("default");
+    
+    core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
 
     MenuItem start = MenuItem("Spiel starten", kInstructions, 400, 300);
     MenuWindow::AddMenuItem(start);

@@ -66,7 +66,6 @@ void GameOverWindow::OnMenuItemSelect(int selected_option){
             break;
     }
     if (switch_to_main) {
-        core::AppManager::GetAppManager().GetSound().PlayMusic(sound::menu_music);
           MainWindow * mainW = new MainWindow();
           core::AppManager::GetAppManager().SetActiveWindow(*mainW);
     }
