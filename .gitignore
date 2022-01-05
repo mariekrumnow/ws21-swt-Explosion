@@ -1,0 +1,18 @@
+# Atom Editor Files (Tobias)
+*.bat
+*.exe
+*.obj
+*.gch
+*.zip
+*.cmd
+
+/build
+/temp
+
+# Jetbrains
+/idea/
+/.idea/
+
+#
+cmake-build-debug
+
