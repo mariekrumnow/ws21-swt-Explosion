@@ -34,10 +34,10 @@ bool DestructibleBlock::OnExplosion(GameObject& source) {
     this->Destroy();
 
     if (rand()%100 < 35) {
-        int rand_num = rand()%23;
-        if (rand_num < 11) {
+        int rand_num = rand()%3;
+        if (rand_num < 1) {
             upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(GetX(), GetY());
-        } else if (rand_num < 18) {
+        } else if (rand_num < 2) {
             upgrade::BombCountUpgrade::CreateBombCountUpgrade(GetX(), GetY());
         } else {
             upgrade::SpeedUpgrade::CreateSpeedUpgrade(GetX(), GetY());
