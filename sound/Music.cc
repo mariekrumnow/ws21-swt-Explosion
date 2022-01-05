@@ -7,6 +7,8 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#else
+#include <filesystem>
 #endif
 
 #include <SDL_mixer.h>
@@ -41,7 +43,7 @@ Music* menu_music = nullptr;
 Music* victory_music = nullptr;
 
 Music* LoadMusicFile(std::string theme, std::string filename) {
-	Music* music = Music::LoadMusicFile("assets\\"+theme+"\\music\\"+filename);
+	Music* music = Music::LoadMusicFile("assets/"+theme+"/music/"+filename);
 	if (!music) {
 		if (theme == "default") {
 			std::cout << "Couldn't load music "+filename+" - ";
@@ -92,10 +94,21 @@ bool LoadMusic(std::string theme) {
 
 	FindClose(file);
 
+	//on Unix, use C++17 interface instead (only on Unix, Windows GCC doesn't support it)
+#	else
+	const std::filesystem::path music_path{"./assets/"+theme+"/music/battle"};
+	for (auto entry : std::filesystem::directory_iterator(music_path)) {
+		Music* music = Music::LoadMusicFile(entry.path().u8string());
+		if (music) {
+			battle_music.push_back(music);
+		}
+	}
+#	endif
+
+
 	if (battle_music.size() == 0) {
 		std::cout << "Couldn't load battle music for theme "+theme << std::endl;
 	}
-#	endif
 
 	menu_music = LoadMusicFile(theme, "Menu.wav");
 	victory_music = LoadMusicFile(theme, "Victory.wav");
