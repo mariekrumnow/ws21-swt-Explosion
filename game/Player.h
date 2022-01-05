@@ -58,7 +58,7 @@ private:
     const int kMaxMaxBombCount = 10;
     const int kMaxSpeed = 7;
 
-    int orientation_ = 0;
+    int orientation_ = 1;
 
     int id_;
 
