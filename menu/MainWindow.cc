@@ -17,6 +17,7 @@ MainWindow::MainWindow()
 : MenuWindow(kInstructions)
 {
     theme_ = kClassic;
+    core::AppManager::GetAppManager().LoadTheme("default");
 
     MenuItem start = MenuItem("Spiel starten", kInstructions, 400, 300);
     MenuWindow::AddMenuItem(start);

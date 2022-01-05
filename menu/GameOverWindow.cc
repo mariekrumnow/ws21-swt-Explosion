@@ -39,7 +39,7 @@ void GameOverWindow::Draw(){
 
     std::string tmp;
     if (winner_ != nullptr) {
-        graphics.DrawTile(winner_->GetTile(), winner_->GetColor(), 320, 250);
+        graphics.DrawTile(winner_->GetTileset().right, winner_->GetColor(), 320, 250);
         tmp = "Du gewinnst!!!";
     } else {
         tmp = "-Unentschieden-";
