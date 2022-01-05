@@ -47,10 +47,10 @@ void SinglePlayerInstructionWindow::Draw(){
     }
 
     // Key-Assignement for players
-    std::string player_text[3][2] = {{"Bewegen", "Bombe legen"},
+    std::string player_text[2][2] = {{"Bewegen", "Bombe legen"},
                                     {"WASD", "Linkes Shift"}};
     for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 2; j++) {
             graphics.WriteText(player_text[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
                                                                                     false, 200+i*110, 350+j*70);
             if (i==0 && j!=0) {
