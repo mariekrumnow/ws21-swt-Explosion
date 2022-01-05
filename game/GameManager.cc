@@ -24,6 +24,7 @@ GameManager::GameManager(const int width, const int height, win_condition::BaseW
 		height_ = height;
 
 		// enforce singleton
+        delete GameManager::current_game_;
 		GameManager::current_game_ = this;
 
 		// create the object arrays
@@ -34,12 +35,6 @@ GameManager::GameManager(const int width, const int height, win_condition::BaseW
 }
 
 GameManager::~GameManager(){
-    std::cout << "Anfang Destruktor GameManager" << std::endl;
-	if (GameManager::current_game_ == this) {
-		GameManager::current_game_ = nullptr;
-	}
-
-
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Destroy();
 	}
@@ -54,7 +49,9 @@ GameManager::~GameManager(){
 
 	delete [] objects_by_pos_;
 
-    std::cout << "Ende Destruktor GameManager" << std::endl;
+    if (GameManager::current_game_ == this) {
+		GameManager::current_game_ = nullptr;
+	}
 }
 
 void GameManager::Update(double delta_time) {
@@ -62,7 +59,7 @@ void GameManager::Update(double delta_time) {
 		obj->Update(delta_time);
 	}
 
-    if (this->win_condition_->checkWin()) {
+    if (this->win_condition_ != nullptr && this->win_condition_->checkWin()) {
         menu::GameOverWindow *over_w = new menu::GameOverWindow(players_.front());
         core::AppManager::GetAppManager().SetActiveWindow(*over_w);
     }

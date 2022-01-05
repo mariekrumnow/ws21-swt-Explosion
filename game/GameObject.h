@@ -30,6 +30,7 @@ public:
   virtual int GetY();
   virtual bool SetPosition(int x, int y);
   virtual void Destroy();
+  bool GetDestroyed();
 
 private:
   int x_ = 0;

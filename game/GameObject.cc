@@ -4,17 +4,21 @@
 
 #include "GameManager.h"
 
+#include <iostream>
+
 namespace game {
 
 GameObject::GameObject() {}
 
 void GameObject::Destroy() {
-    GameManager::GetCurrentGame().DestroyGameObject(*this);
-    destroyed_ = true;
+    if (!destroyed_) {
+        GameManager::GetCurrentGame().DestroyGameObject(*this);
+        destroyed_ = true;
+    }
 }
 
 GameObject::~GameObject() {
-    GameManager::GetCurrentGame().DestroyGameObject(*this);
+    Destroy();
 }
 
 bool GameObject::SetPosition(int x, int y) {
@@ -55,6 +59,10 @@ int GameObject::GetX() {
 
 int GameObject::GetY() {
     return y_;
+}
+
+bool GameObject::GetDestroyed() {
+    return destroyed_;
 }
 
 } // namespace game

@@ -44,11 +44,11 @@ public:
     graphics::Tile GetTile();
     graphics::Color GetColor();
 
-private:
     bool PlaceBomb(int x,int y);
 
     /// überprüft auch via OnPlayerCollision ob Position frei is
     bool SetPosition(int x, int y);
+private:
 
     int explosion_radius_ = 1;
     int max_bomb_count_ = 1;

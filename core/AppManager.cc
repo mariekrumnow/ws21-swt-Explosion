@@ -45,7 +45,7 @@ AppManager::AppManager(std::string title, bool init_hardware) :
         AppManager::manager_ = this;
         active_window_ = nullptr;
 
-        LoadTheme("default");
+        if (init_hardware) LoadTheme("default");
 }
 
 AppManager::~AppManager() {
