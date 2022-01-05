@@ -26,6 +26,7 @@ DestructibleBlock* DestructibleBlock::CreateDestructibleBlock(int x, int y) {
             temp->Destroy();
             return nullptr;
         }
+        GameManager::GetCurrentGame().AddDestructibleBlock();
     }
     return temp;
 }
@@ -52,6 +53,11 @@ graphics::Tile DestructibleBlock::GetTile() {
 
 graphics::Color DestructibleBlock::GetColor() {
     return graphics::Color(255,255,255,255);
+}
+
+void DestructibleBlock::Destroy() {
+    GameManager::GetCurrentGame().RemoveDestructibleBlock();
+    this->GameObject::Destroy();
 }
 
 } // namespace obstacles

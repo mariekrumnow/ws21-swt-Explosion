@@ -7,14 +7,14 @@
 #include "block/IndestructibleBlock.h"
 #include "block/DestructibleBlock.h"
 #include "win_condition/StandardWinCondition.h"
+#include "win_condition/SinglePlayerWinCondition.h"
 #include "Player.h"
 #include "GameManager.h"
 #include "GameWindow.h"
 
 namespace game {
 
-GameFactory::GameFactory(int width, int height): width_(width), height_(height) {
-    win_condition::BaseWinCondition* winCondition = new win_condition::StandardWinCondition();
+GameFactory::GameFactory(int width, int height, win_condition::BaseWinCondition* winCondition): width_(width), height_(height) {
     new GameManager(15, 13, winCondition);
 }
 
@@ -96,8 +96,22 @@ void GameFactory::GeneratePlayers(int player_count, graphics::PlayerKeys* player
 }
 
 void StartClassicGame() {
-    GameFactory factory = GameFactory(15, 13);
+    GameFactory factory = GameFactory(15, 13, new win_condition::StandardWinCondition());
     factory.GenerateGame(2, 85);
+
+    core::AppManager& app = core::AppManager::GetAppManager();
+
+    app.ChangeBackgroundColor(graphics::Color(113,104,98,0));
+
+    GameWindow * game_window = new GameWindow();
+    app.SetActiveWindow(*game_window);
+
+    app.GetSound().PlayRandomBattleMusic();
+}
+
+void StartSinglePlayerGame() {
+    GameFactory factory = GameFactory(15, 13, new win_condition::SinglePlayerWinCondition());
+    factory.GenerateGame(1, 85);
 
     core::AppManager& app = core::AppManager::GetAppManager();
 

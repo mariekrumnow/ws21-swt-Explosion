@@ -44,7 +44,12 @@ public:
 
     void RemovePlayer(Player &player);
     void AddPlayer(Player* player);
-    int GetPlayerCount();
+    std::vector<Player*> GetPlayers();
+
+    void AddDestructibleBlock();
+    void RemoveDestructibleBlock();
+    int GetDestructibleBlockCount();
+
 
 private:
     std::vector<GameObject*>** objects_by_pos_;
@@ -54,6 +59,7 @@ private:
     win_condition::BaseWinCondition* win_condition_;
 
     std::vector<Player*> players_;
+    int destructible_block_count_ = 0;
 
     int width_;
     int height_;

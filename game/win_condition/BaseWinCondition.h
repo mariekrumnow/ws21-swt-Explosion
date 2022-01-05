@@ -10,7 +10,7 @@ namespace win_condition {
 
 class BaseWinCondition {
 public:
-    virtual bool checkWin() = 0;
+    virtual void checkWin() = 0;
 };
 
 } // namespace win_condition
