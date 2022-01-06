@@ -59,7 +59,7 @@ void SinglePlayerWinCondition::checkWin() {
     high_score << std::setw(2) <<  (high_score_%60000)/1000 << std::setw(0) << ".";
     high_score << std::setw(3) <<  (high_score_%1000);
 
-    window_->SetTimers(timer.str(), high_score.str());
+    window_->SetTimers(timer.str(), "Highscore: "+high_score.str());
 
     //if the game is over, switch to the high score screen
     if (game_over) {

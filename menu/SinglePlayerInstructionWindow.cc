@@ -1,5 +1,5 @@
 //
-// Autor: Marlene, Marie, Patrick
+// Autor: Tobias
 //
 
 #include "SinglePlayerInstructionWindow.h"
@@ -36,7 +36,7 @@ void SinglePlayerInstructionWindow::Draw(){
     std::string instruction_text[] = {"So geht's:",
                                      "Bei Bomberman Singleplayer musst du alle zerstörbaren Blöcke",
                                      "zerstören. Unter diesen Blöcken können sich manchmal",
-                                     "auch Upgrades befinden, die ihr einsammeln könnt. Deine Zeit wird gemessen,",
+                                     "auch Upgrades befinden, die du einsammeln kannst. Deine Zeit wird gemessen,",
                                      "und deine kürzeste Zeit gespeichert.",
                                      "Versuche deinen eigenen Highscore zu schlagen!",};
     int counter = 1;
