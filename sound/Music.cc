@@ -59,7 +59,6 @@ Music* LoadMusicFile(std::string theme, std::string filename) {
 
 //return false on failure, true on success (only call while playback is halted)
 bool LoadMusic(std::string theme) {
-	delete menu_music;
 	delete victory_music;
 	for (auto music_pointer : battle_music) {
 		delete music_pointer;
@@ -110,7 +109,8 @@ bool LoadMusic(std::string theme) {
 		std::cout << "Couldn't load battle music for theme "+theme << std::endl;
 	}
 
-	menu_music = LoadMusicFile(theme, "Menu.wav");
+	if (menu_music == nullptr) //only load menu music once
+		menu_music = LoadMusicFile(theme, "Menu.wav");
 	victory_music = LoadMusicFile(theme, "Victory.wav");
 
 	if (battle_music.size() == 0 || !menu_music || !victory_music) {
