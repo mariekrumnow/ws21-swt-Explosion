@@ -16,7 +16,7 @@ namespace upgrade {
 /// Upgrade to increase the bomb count of the player
 class BombCountUpgrade : public Upgrade {
     public:
-    /// Basically calls the constructor of GameObject
+    /// Calls the constructor of GameObject
     BombCountUpgrade();
 
     /// Creates a BombCountUpgrade on the map

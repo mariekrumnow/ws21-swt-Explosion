@@ -24,9 +24,15 @@ public:
     graphics::GraphicsManager& GetGraphics();
     sound::SoundManager& GetSound();
 
-    //init_graphics can be set to false to disable graphical function for testing
-    explicit AppManager(std::string title, bool init_graphics);
+    /// Creates the GraphicsManager and the SoundManager
+    ///
+    /// init_graphics can be set to false to disable graphical function for testing
+    ///
+    /// \param title Name of the window
+    /// \param init_hardware If the graphic and sound hardware interfaces are started in normal-mode or Unit-Testmode
+    explicit AppManager(std::string title, bool init_hardware);
 
+    /// Deconstructor of AppManager
     ~AppManager();
 
     /// sets the active window and deletes the current window.
@@ -36,15 +42,19 @@ public:
     /// Run game for ever
     [[noreturn]] void Run();
 
-    //ends the game after the current frame has completed
+    ///ends the game after the current frame has completed
     void Quit();
 
-    //loads all assets for a theme
+    /// Loads all assets for a theme
+    ///
+    /// \param theme Graphic theme to load
+    /// \return bool if the loading succeeded or not
     bool LoadTheme(std::string theme);
     void ChangeBackgroundColor(graphics::Color background_color);
 
 private:
-    Window* active_window_;
+
+    Window* active_window_; ///< The current Window which is managed by the AppManager
 
     graphics::GraphicsManager graphics_;
     sound::SoundManager sound_;

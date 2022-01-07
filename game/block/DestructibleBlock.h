@@ -12,14 +12,14 @@
 namespace game {
 namespace obstacles{
 
-///  Block that can be shown on the map and be destroyed by an explosion
+/// Block that can be shown on the map and be destroyed by an explosion
 class DestructibleBlock : public Block{
 public:
 
-    ///  Basically calls the constructor of GameObject
+    /// Calls the constructor of GameObject
     DestructibleBlock();
 
-    ///  Creates a DestructibleBlock on the map
+    /// Creates a DestructibleBlock on the map
     ///
     /// \param x the x-coordinate of the new block
     /// \param y the y-coordinate of the new block
@@ -32,9 +32,12 @@ public:
     ///  Returns the shape of the block
     graphics::Tile GetTile();
 
-    ///  Returns color of the block
+    /// Returns color of the block
+    ///
+    /// \return Color of the Entity
     graphics::Color GetColor();
 
+    /// Removes the GameObject from the current Game
     void Destroy(); //so the GameManagers block count can be reduced
 };
 

@@ -14,7 +14,10 @@ public:
     /// Calls the constructor of GameObject
     Upgrade();
 
-    /// Sends signal that there's no collision with upgrades
+    /// Virtual method for the method OnCollision()
+    ///
+    /// \param source The entity that is colliding with the Upgrade
+    /// \return false
     virtual bool OnCollision(GameObject& source);
 
     virtual bool OnExplosion(GameObject& source);

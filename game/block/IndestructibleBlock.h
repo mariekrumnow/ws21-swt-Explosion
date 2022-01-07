@@ -14,7 +14,7 @@ namespace game {
 namespace obstacles{
 
 
-///  Block that can be shown on the map and NOT be destroyed by an explosion
+/// Block that can be shown on the map and NOT be destroyed by an explosion
 class IndestructibleBlock : public Block{
 public:
 
@@ -30,10 +30,14 @@ public:
     ///  Sends signal that the explosion was ended by a block
     bool OnExplosion(GameObject& source);
 
-    ///  Returns the shape of the block
+    /// Returns the shape of the block
+    ///
+    /// \return Graphics of the IndestructibleBlock
     graphics::Tile GetTile();
 
-    ///  Returns color of the block
+    /// Returns color of the block
+    ///
+    /// \return Color of the Entity
     graphics::Color GetColor();
 };
 

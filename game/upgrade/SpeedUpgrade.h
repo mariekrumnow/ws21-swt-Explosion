@@ -16,7 +16,7 @@ namespace upgrade {
 /// Upgrade to increase the speed of the player
 class SpeedUpgrade : public Upgrade {
 public:
-    /// Basically calls the constructor of GameObject
+    /// Calls the constructor of GameObject
     SpeedUpgrade();
 
     /// Creates a SpeedUpgrade on the map

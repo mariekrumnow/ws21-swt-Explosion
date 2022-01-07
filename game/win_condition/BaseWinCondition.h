@@ -8,6 +8,8 @@
 namespace game {
 namespace win_condition {
 
+/// Abstract Class for the win conditions
+
 class BaseWinCondition {
 public:
     virtual void checkWin() = 0;
