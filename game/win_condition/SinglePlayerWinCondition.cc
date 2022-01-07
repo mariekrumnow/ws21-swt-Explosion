@@ -20,7 +20,7 @@ const std::string kHighScoreFile = "highscore.txt";
 SinglePlayerWinCondition::SinglePlayerWinCondition(SinglePlayerGameWindow* window)
  	: window_(window){
 	start_time_ = chr::system_clock::now();
-    high_score_ = 99*60000 + 59999;
+    high_score_ = -1;
 
     std::ifstream high_score_file;
     high_score_file.open(kHighScoreFile);
@@ -54,10 +54,14 @@ void SinglePlayerWinCondition::checkWin() {
     timer << std::setw(3) <<  (milliseconds%1000);
 
     std::stringstream high_score;
-    high_score << std::setfill('0');
-    high_score << std::setw(2) << high_score_/60000 << std::setw(0) << ":";
-    high_score << std::setw(2) <<  (high_score_%60000)/1000 << std::setw(0) << ".";
-    high_score << std::setw(3) <<  (high_score_%1000);
+    if (high_score_ != -1) {
+        high_score << std::setfill('0');
+        high_score << std::setw(2) << high_score_/60000 << std::setw(0) << ":";
+        high_score << std::setw(2) <<  (high_score_%60000)/1000 << std::setw(0) << ".";
+        high_score << std::setw(3) <<  (high_score_%1000);
+    } else {
+        high_score << "--:--.---";
+    }
 
     window_->SetTimers(timer.str(), "Highscore: "+high_score.str());
 
@@ -65,10 +69,9 @@ void SinglePlayerWinCondition::checkWin() {
     if (game_over) {
         //if the player won, he can set a highscore
         if (win) {
-            bool is_high_score = (milliseconds/1000) <= high_score_;
 
             //has the player set a new highscore?
-            if (is_high_score) {
+            if (high_score_ != -1 && (milliseconds) <= high_score_) {
                 //save new highscore
                 std::ofstream high_score_file;
                 high_score_file.open(kHighScoreFile);

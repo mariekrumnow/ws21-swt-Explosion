@@ -34,7 +34,7 @@ void InstructionWindow::Draw(){
 
     // Instructions on how to play the game
     std::string instruction_text[] = {"So geht's:",
-                                     "Bei Bomberman müsst ihr eure Mitspieler mittels Bomben ausschalten",
+                                     "Im Mehrspieler Modus müsst ihr eure Mitspieler mittels Bomben ausschalten",
                                      "und als letzter überleben. Um zu euren Mitspielern zu gelangen",
                                      "müsst ihr dafür erst die bröckeligen Blöcke durch Explosionen zerstören.",
                                      "Unter diesen Blöcken können sich manchmal auch Upgrades befinden,",

@@ -34,7 +34,7 @@ void SinglePlayerInstructionWindow::Draw(){
 
     // Instructions on how to play the game
     std::string instruction_text[] = {"So geht's:",
-                                     "Bei Bomberman Singleplayer musst du alle zerstörbaren Blöcke",
+                                     "Im Einzelspieler Modus musst du alle bröckeligen Blöcke",
                                      "zerstören. Unter diesen Blöcken können sich manchmal",
                                      "auch Upgrades befinden, die du einsammeln kannst. Deine Zeit wird gemessen,",
                                      "und deine kürzeste Zeit gespeichert.",
