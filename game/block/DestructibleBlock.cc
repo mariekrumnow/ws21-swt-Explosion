@@ -26,6 +26,7 @@ DestructibleBlock* DestructibleBlock::CreateDestructibleBlock(int x, int y) {
             temp->Destroy();
             return nullptr;
         }
+        GameManager::GetCurrentGame().AddDestructibleBlock();
     }
     return temp;
 }
@@ -34,10 +35,10 @@ bool DestructibleBlock::OnExplosion(GameObject& source) {
     this->Destroy();
 
     if (rand()%100 < 35) {
-        int rand_num = rand()%23;
-        if (rand_num < 11) {
+        int rand_num = rand()%3;
+        if (rand_num < 1) {
             upgrade::ExplosionRadiusUpgrade::CreateExplosionRadiusUpgrade(GetX(), GetY());
-        } else if (rand_num < 18) {
+        } else if (rand_num < 2) {
             upgrade::BombCountUpgrade::CreateBombCountUpgrade(GetX(), GetY());
         } else {
             upgrade::SpeedUpgrade::CreateSpeedUpgrade(GetX(), GetY());
@@ -52,6 +53,11 @@ graphics::Tile DestructibleBlock::GetTile() {
 
 graphics::Color DestructibleBlock::GetColor() {
     return graphics::Color(255,255,255,255);
+}
+
+void DestructibleBlock::Destroy() {
+    GameManager::GetCurrentGame().RemoveDestructibleBlock();
+    this->GameObject::Destroy();
 }
 
 } // namespace obstacles

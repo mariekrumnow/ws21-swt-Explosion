@@ -24,6 +24,8 @@ public:
 
     void Update(double delta_time);
 
+    virtual bool OnCollision(GameObject& source);
+
     const double kExplosionDuration = 0.5;
 
     int GetOrientation();

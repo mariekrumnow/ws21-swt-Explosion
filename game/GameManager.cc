@@ -62,10 +62,8 @@ void GameManager::Update(double delta_time) {
 		obj->Update(delta_time);
 	}
 
-    if (this->win_condition_->checkWin()) {
-        menu::GameOverWindow *over_w = new menu::GameOverWindow(players_.front());
-        core::AppManager::GetAppManager().SetActiveWindow(*over_w);
-    }
+    if (this->win_condition_)
+        this->win_condition_->checkWin();
 }
 
 GameManager& GameManager::GetCurrentGame() {
@@ -158,8 +156,21 @@ void GameManager::AddPlayer(Player* player) {
     players_.push_back(player);
 }
 
-int GameManager::GetPlayerCount() {
-    return (int)players_.size();
+std::vector<Player*> GameManager::GetPlayers() {
+    return players_;
 }
+
+void GameManager::AddDestructibleBlock() {
+    ++destructible_block_count_;
+}
+
+void GameManager::RemoveDestructibleBlock() {
+    --destructible_block_count_;
+}
+
+int GameManager::GetDestructibleBlockCount() {
+    return destructible_block_count_;
+}
+
 
 } // namespace game

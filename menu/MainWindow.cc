@@ -6,25 +6,29 @@
 
 #include "../core/AppManager.h"
 #include "InstructionWindow.h"
+#include "SinglePlayerInstructionWindow.h"
 
 
 namespace menu{
 
-enum MainButton {kInstructions=0, kChangeTheme=1, kExit1=2};
+enum MainButton {kMultiPlayer=0, kSinglePlayer=1, kChangeTheme=2, kExit1=3};
 enum Theme {kClassic=0, kHalloween=1, kChicken=2, kCorona=3};
 
 MainWindow::MainWindow()
-: MenuWindow(kInstructions)
+: MenuWindow(kMultiPlayer)
 {
     theme_ = kClassic;
 
-    MenuItem start = MenuItem("Spiel starten", kInstructions, 400, 300);
+    MenuItem start = MenuItem("Multiplayer starten", kMultiPlayer, 400, 300);
     MenuWindow::AddMenuItem(start);
 
-    MenuItem change_theme = MenuItem("Thema wechseln", kChangeTheme, 400, 400);
+    MenuItem start2 = MenuItem("Singleplayer starten", kSinglePlayer, 400, 400);
+    MenuWindow::AddMenuItem(start2);
+
+    MenuItem change_theme = MenuItem("Thema wechseln", kChangeTheme, 400, 500);
     MenuWindow::AddMenuItem(change_theme);
 
-    MenuItem exit = MenuItem("Spiel beenden", kExit1, 400, 500);
+    MenuItem exit = MenuItem("Spiel beenden", kExit1, 400, 600);
     MenuWindow::AddMenuItem(exit);
 }
 
@@ -78,11 +82,15 @@ void MainWindow::Draw(){
 }
 
 void MainWindow::OnMenuItemSelect(int selected_option){
-    bool open_instructions = false;
+    bool open_multiplayer_instructions = false;
+    bool open_singleplayer_instructions = false;
     std::string theme_code;
     switch (selected_option) {
-        case kInstructions:
-            open_instructions = true;
+        case kMultiPlayer:
+            open_multiplayer_instructions = true;
+            break;
+        case kSinglePlayer:
+            open_singleplayer_instructions = true;
             break;
         case kChangeTheme:
             theme_ = (theme_+1)%4;
@@ -114,9 +122,13 @@ void MainWindow::OnMenuItemSelect(int selected_option){
             //Error, a button should always be selected
             break;
     }
-    if (open_instructions) {
+    if (open_multiplayer_instructions) {
           InstructionWindow *instruction = new InstructionWindow();
           core::AppManager::GetAppManager().SetActiveWindow(*instruction);
+    }
+    if (open_singleplayer_instructions) {
+        SinglePlayerInstructionWindow *instruction = new SinglePlayerInstructionWindow();
+        core::AppManager::GetAppManager().SetActiveWindow(*instruction);
     }
 }
 

@@ -1,8 +1,8 @@
 //
-// Autor: Marlene, Marie, Patrick
+// Autor: Tobias
 //
 
-#include "InstructionWindow.h"
+#include "SinglePlayerInstructionWindow.h"
 
 #include "../core/AppManager.h"
 #include "../game/GameFactory.h"
@@ -11,9 +11,9 @@
 
 namespace menu{
 
-enum InstructionButton {kStart=0, kBack=1};
+enum SinglePlayerInstructionWindowButton {kStart=0, kBack=1};
 
-InstructionWindow::InstructionWindow()
+SinglePlayerInstructionWindow::SinglePlayerInstructionWindow()
 : MenuWindow(kStart)
 {
     MenuItem start = MenuItem("Los geht's!", kStart, 400, 700);
@@ -23,7 +23,7 @@ InstructionWindow::InstructionWindow()
     MenuWindow::AddMenuItem(back);
 }
 
-void InstructionWindow::Draw(){
+void SinglePlayerInstructionWindow::Draw(){
     MenuWindow::Draw();
 
     graphics::GraphicsManager& graphics = core::AppManager::GetAppManager().GetGraphics();
@@ -34,11 +34,11 @@ void InstructionWindow::Draw(){
 
     // Instructions on how to play the game
     std::string instruction_text[] = {"So geht's:",
-                                     "Im Mehrspieler Modus müsst ihr eure Mitspieler mittels Bomben ausschalten",
-                                     "und als letzter überleben. Um zu euren Mitspielern zu gelangen",
-                                     "müsst ihr dafür erst die bröckeligen Blöcke durch Explosionen zerstören.",
-                                     "Unter diesen Blöcken können sich manchmal auch Upgrades befinden,",
-                                     "die ihr einsammeln könnt."};
+                                     "Im Einzelspieler Modus musst du alle bröckeligen Blöcke",
+                                     "zerstören. Unter diesen Blöcken können sich manchmal",
+                                     "auch Upgrades befinden, die du einsammeln kannst. Deine Zeit wird gemessen,",
+                                     "und deine kürzeste Zeit gespeichert.",
+                                     "Versuche deinen eigenen Highscore zu schlagen!",};
     int counter = 1;
     for (std::string tmp: instruction_text) {
         graphics.WriteText(tmp, graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
@@ -47,18 +47,14 @@ void InstructionWindow::Draw(){
     }
 
     // Key-Assignement for players
-    std::string player_text[3][2] = {{"Bewegen", "Bombe legen"},
-                                    {"WASD", "Linkes Shift"},
-                                    {"I J K L", "Rechtes Shift"}};
+    std::string player_text[2][2] = {{"Bewegen", "Bombe legen"},
+                                    {"WASD", "Linkes Shift"}};
     for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 2; j++) {
             graphics.WriteText(player_text[j][i], graphics::Color(0, 0, 255, 255), graphics::FontSize::kMedium,
                                                                                     false, 200+i*110, 350+j*70);
             if (i==0 && j!=0) {
                   graphics::Tile player_tile = graphics::kPlayer1Tiles.right;
-                  if (j==2) {
-                        player_tile = graphics::kPlayer2Tiles.right;
-                  }
                   graphics.DrawTile(player_tile, graphics::Color(255,255,255,0), 125, 330+j*70);
             }
         }
@@ -81,11 +77,11 @@ void InstructionWindow::Draw(){
     }
 }
 
-void InstructionWindow::OnMenuItemSelect(int selected_option){
+void SinglePlayerInstructionWindow::OnMenuItemSelect(int selected_option){
     bool go_back = false;
     switch (selected_option) {
         case kStart:
-            game::StartClassicGame();
+            game::StartSinglePlayerGame();
             break;
         case kBack:
             go_back = true;

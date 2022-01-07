@@ -89,5 +89,9 @@ void Explosion::Update(double delta_time) {
     }
 }
 
+bool Explosion::OnCollision(GameObject& source) {
+    return true;
+}
+
 } // namespace bomb
 } // namespace game
