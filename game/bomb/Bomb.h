@@ -12,8 +12,6 @@
 #include "../Player.h"
 #include "Explosion.h"
 
-
-
 namespace game {
 namespace bomb {
 
@@ -77,12 +75,20 @@ public:
 	void Update(double delta_time);
 
 private:
+    /// Spawns an Explosion on the tile of the bomb and the tiles next to it
     void Explode();
+
+    /// Calls CreateExplosion and checks if it failed
+    ///
+    /// \param x The X-coordinate of the new Explosion-Tile
+    /// \param y The Y-coordinate of the new Explosion-Tile
+    /// \param oriented The way the Explosion is steered
+    /// \return true if no error has occured
     bool SpawnExplosion(int x, int y, int oriented);
 
-	Player* owner_;
-	int power_;
-	double explosion_timer_;
+	Player* owner_; ///< The Player that placed the Bomb
+	int power_; ///< The explosion radius of the Player that placed the Bomb
+	double explosion_timer_; ///< The time left till exploding
 	bool exploding_; ///< so the bomb can't explode multiple times
 };
 

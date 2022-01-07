@@ -3,12 +3,12 @@
 #ifndef BOMBERMAN_GAME_UPGRADE_EXPLOSIONRADIUSUPGRADE_H
 #define BOMBERMAN_GAME_UPGRADE_EXPLOSIONRADIUSUPGRADE_H
 
-#include "Upgrade.h"
 
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
 #include "../GameObject.h"
 #include "../Player.h"
+#include "Upgrade.h"
 
 namespace game {
 namespace upgrade {

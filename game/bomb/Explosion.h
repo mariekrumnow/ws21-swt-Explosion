@@ -58,6 +58,8 @@ public:
     /// \return The orientation of the Explosion
     int GetOrientation();
 
+    const double kExplosionDuration = 0.5; ///< The duration of the Explosion
+
 private:
     double timer_;  ///< The time left till teh Explosion is over
     int orientation_;   ///< The way the Explosion is steered

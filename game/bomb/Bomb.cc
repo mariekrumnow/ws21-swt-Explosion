@@ -2,12 +2,11 @@
 
 #include "Bomb.h"
 
-#include "../core/AppManager.h"
-#include "../sound/SoundEffect.h"
-
 #include <cmath>
 #include <iostream>
 
+#include "../core/AppManager.h"
+#include "../sound/SoundEffect.h"
 #include "Explosion.h"
 
 

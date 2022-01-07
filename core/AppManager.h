@@ -3,13 +3,12 @@
 #ifndef BOMBERMAN_CORE_APPMANAGER_H_
 #define BOMBERMAN_CORE_APPMANAGER_H_
 
-#include "Window.h"
-
 #include <chrono>
 
 #include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
 #include "../sound/SoundManager.h"
+#include "Window.h"
 
 namespace core {
 
@@ -19,9 +18,19 @@ namespace core {
 class AppManager {
 
 public:
+    /// A Getter to return the active GameManager
+    ///
+    /// \return A reference to the current AppManager
     static AppManager& GetAppManager();
 
+    /// A Getter to return the current graphics
+    ///
+    /// \return
     graphics::GraphicsManager& GetGraphics();
+
+    /// A Getter to return the current sounds
+    ///
+    /// \return
     sound::SoundManager& GetSound();
 
     /// Creates the GraphicsManager and the SoundManager
@@ -35,10 +44,21 @@ public:
     /// Deconstructor of AppManager
     ~AppManager();
 
-    /// sets the active window and deletes the current window.
+    /// Sets the active window and deletes the current window.
+    ///
+    /// \param window The new Window
     void SetActiveWindow(Window& window);
+
+    /// A Getter for the current active Window
+    ///
+    /// \return A reference to the current Window
     Window& GetActiveWindow();
+
+    /// Updates and draws the current active Window
+    ///
+    /// \param deltaTime Time that passed since last call
     void RunFrame(double deltaTime);
+
     /// Run game for ever
     [[noreturn]] void Run();
 
@@ -50,17 +70,20 @@ public:
     /// \param theme Graphic theme to load
     /// \return bool if the loading succeeded or not
     bool LoadTheme(std::string theme);
+
+    /// Changes the background color
+    ///
+    /// \param background_color New background_color
     void ChangeBackgroundColor(graphics::Color background_color);
 
 private:
 
     Window* active_window_; ///< The current Window which is managed by the AppManager
 
-    graphics::GraphicsManager graphics_;
-    sound::SoundManager sound_;
+    graphics::GraphicsManager graphics_; ///< The current GraphicsManager which is used
+    sound::SoundManager sound_; ///< The current SoundManager which is used
 
-    bool is_running_;
-
+    bool is_running_;   ///< A bool to see if the active Window is still running
 
     static AppManager* manager_; ///< The static reference to the current AppManager
 };

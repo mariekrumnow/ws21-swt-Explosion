@@ -11,8 +11,12 @@ namespace game {
 
 namespace win_condition {
 
+/// StandardWinCondition to check for the normal winning method in multiplayer games
+
 class StandardWinCondition : public BaseWinCondition {
 public:
+
+    /// Checks if the playercount is <=1 and then calls the needed GameOverWindow
     void checkWin() override;
 
 };

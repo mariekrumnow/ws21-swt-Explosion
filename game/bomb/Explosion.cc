@@ -21,7 +21,7 @@ int Explosion::GetOrientation(){
     return orientation_;
 }
 
-/// \brief If a nullptr is returned, an error occured or the object couldn't be placed
+// If a nullptr is returned, an error occured or the object couldn't be placed
 Explosion* Explosion::CreateExplosion(int x, int y, int oriented) {
     Explosion* temp = new Explosion();
     if (temp!=nullptr) {
@@ -38,7 +38,7 @@ Explosion* Explosion::CreateExplosion(int x, int y, int oriented) {
 
 Explosion::~Explosion() {}
 
-/// defines witch Tile of an Explosion is correct to be drawn
+// defines which Tile of an Explosion is correct to be drawn
 graphics::Tile Explosion::GetTile() {
     switch(orientation_) {
         case 0 :

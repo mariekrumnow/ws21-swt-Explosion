@@ -4,10 +4,10 @@
 #ifndef BOMBERMAN_GAME_BLOCK_INDESTRUCTIBLE_H
 #define BOMBERMAN_GAME_BLOCK_INDESTRUCTIBLE_H
 
-#include "Block.h"
 
-#include "../../graphics/Tile.h"
 #include "../../graphics/Color.h"
+#include "../../graphics/Tile.h"
+#include "Block.h"
 #include "GameObject.h"
 
 namespace game {
@@ -18,16 +18,20 @@ namespace obstacles{
 class IndestructibleBlock : public Block{
 public:
 
-    ///  Basically calls the constructor of GameObject
+    /// Calls the constructor of GameObject
     IndestructibleBlock();
 
-    ///  Creates a IndestructibleBlock on the map
+    /// Creates a IndestructibleBlock on the map
+    ///
     /// \param x the x-coordinate of the new block
     /// \param y the y-coordinate of the new block
     /// \return A Pointer on the newly created block or nullptr if an error occurred
     static IndestructibleBlock* CreateIndestructibleBlock(int x, int y);
 
-    ///  Sends signal that the explosion was ended by a block
+    /// Sends signal that the explosion was ended by a block
+    ///
+    /// \param source Color of the Entity
+    /// \return true
     bool OnExplosion(GameObject& source);
 
     /// Returns the shape of the block

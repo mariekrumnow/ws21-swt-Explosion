@@ -12,6 +12,7 @@ namespace win_condition {
 
 class BaseWinCondition {
 public:
+    /// Pure virtual method for the method checkWin()
     virtual void checkWin() = 0;
 };
 

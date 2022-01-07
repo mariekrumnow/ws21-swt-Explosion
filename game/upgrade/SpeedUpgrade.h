@@ -3,12 +3,11 @@
 #ifndef BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
 #define BOMBERMAN_GAME_UPGRADE_SPEEDUPGRADE_H
 
-#include "Upgrade.h"
-
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
 #include "../GameObject.h"
 #include "../Player.h"
+#include "Upgrade.h"
 
 namespace game {
 namespace upgrade {
@@ -26,16 +25,26 @@ public:
     /// \return A Pointer on the newly created upgrade or nullptr if an error occurred
     static SpeedUpgrade* CreateSpeedUpgrade(int x, int y);
 
-    /// Increases the speed of the player, if possible, and removes the upgrade
+    /// Increases the speed of the Player, if possible, and removes the upgrade
+    ///
+    /// \param player The Player that collides with the Upgrade
+    /// \return true
     bool OnPlayerCollision(Player& player);
 
-    /// Removes the upgrade from the map
+    /// Removes the Upgrade from the map
+    ///
+    /// \param source The origin of the Explosion
+    /// \return false
     bool OnExplosion(GameObject& source);
 
-    /// Returns the color of the upgrade
+    /// Returns the color of the Upgrade
+    ///
+    /// \return Graphics of the Upgrade
     virtual graphics::Color GetColor();
 
-    /// Returns the shape of the upgrade
+    /// Returns the shape of the Upgrade
+    ///
+    /// \return Color of the Entity
     virtual graphics::Tile GetTile();
 };
 

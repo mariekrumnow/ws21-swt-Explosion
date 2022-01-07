@@ -24,11 +24,13 @@ public:
     /// Sends signal that something collided with a block
     ///
     /// \param source The object that collided with this block
+    /// \return true
     bool OnCollision(GameObject& source);
 
     /// Sends signal that the player that was passed over collided with a block
     ///
     /// \param Player The player_object that collided with this block
+    /// \return true
     bool OnPlayerCollision(Player& Player);
 
 };

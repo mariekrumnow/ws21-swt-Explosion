@@ -4,10 +4,10 @@
 #ifndef BOMBERMAN_SINGLEPLAYERWINCONDITION_H
 #define BOMBERMAN_SINGLEPLAYERWINCONDITION_H
 
-#include "BaseWinCondition.h"
-#include "../SinglePlayerGameWindow.h"
-
 #include <chrono>
+
+#include "../SinglePlayerGameWindow.h"
+#include "BaseWinCondition.h"
 
 namespace game {
 

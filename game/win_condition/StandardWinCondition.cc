@@ -2,8 +2,10 @@
 
 #include "StandardWinCondition.h"
 
-#include "../GameManager.h"
+
 #include "../../menu/GameOverWindow.h"
+#include "../GameManager.h"
+
 
 namespace game {
 namespace win_condition{

@@ -4,10 +4,10 @@
 
 #include "../core/AppManager.h"
 #include "../graphics/Keys.h"
-#include "block/IndestructibleBlock.h"
 #include "block/DestructibleBlock.h"
-#include "win_condition/StandardWinCondition.h"
+#include "block/IndestructibleBlock.h"
 #include "win_condition/SinglePlayerWinCondition.h"
+#include "win_condition/StandardWinCondition.h"
 #include "Player.h"
 #include "GameManager.h"
 #include "GameWindow.h"
@@ -49,7 +49,6 @@ void GameFactory::GenerateMap(int indest_prop) const {
             }
         }
     }
-
 
     // Indestructible blocks in the middle
     for (int i = 2; i <= (width_ - 3); i += 2) {
@@ -119,7 +118,6 @@ void StartSinglePlayerGame() {
     core::AppManager& app = core::AppManager::GetAppManager();
 
     app.ChangeBackgroundColor(graphics::Color(113,104,98,0));
-
 
     app.SetActiveWindow(*game_window);
 

@@ -4,10 +4,9 @@
 #ifndef BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
 #define BOMBERMAN_GAME_BLOCK_DESTRUCTIBLE_H
 
-#include "Block.h"
-
-#include "../../graphics/Tile.h"
 #include "../../graphics/Color.h"
+#include "../../graphics/Tile.h"
+#include "Block.h"
 
 namespace game {
 namespace obstacles{
@@ -26,10 +25,15 @@ public:
     /// \return A Pointer on the newly created block or nullptr if an error occurred
     static DestructibleBlock* CreateDestructibleBlock(int x, int y);
 
-    ///  Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
+    /// Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
+    ///
+    /// \param source The origin of the Explosion
+    /// \return true
     bool OnExplosion(GameObject& source);
 
-    ///  Returns the shape of the block
+    /// Returns the shape of the block
+    ///
+    /// \return Graphics of the DestructibleBlock
     graphics::Tile GetTile();
 
     /// Returns color of the block
