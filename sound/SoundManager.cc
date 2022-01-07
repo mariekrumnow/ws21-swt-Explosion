@@ -137,17 +137,22 @@ void SoundManager::OnChannelFinished(int channel) {
 		if ((*it)->GetCurrentChannel() == channel) {
 			(*it)->SetCurrentChannel(-1);
 			playing_alone_.erase(it);
-			break;
 		}
 	}
 }
 
-void SoundManager::StopAllPlayback() {
+void SoundManager::StopPlayback() {
 	if (fake_)
 		return;
 	Mix_HaltChannel(-1);
-	Mix_HaltMusic();
+	playing_alone_.clear();
 	current_battle_music_ = 0;
+}
+
+void SoundManager::StopMusicPlayback() {
+	if (fake_)
+		return;
+	Mix_HaltMusic();
 }
 
 } //namespace sound

@@ -142,6 +142,10 @@ graphics::Color Player::GetColor() {
     return graphics::Color(255,255,255,0);
 }
 
+graphics::PlayerTile Player::GetTileset(){
+      return tiles_;
+}
+
 void Player::OnBombDestroyed(bomb::Bomb& bomb) {
   owned_bombs_--;
 }

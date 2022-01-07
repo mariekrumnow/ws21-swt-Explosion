@@ -43,6 +43,7 @@ public:
 
     graphics::Tile GetTile();
     graphics::Color GetColor();
+    graphics::PlayerTile GetTileset();
 
 private:
     bool PlaceBomb(int x,int y);

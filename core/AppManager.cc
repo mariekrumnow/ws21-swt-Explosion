@@ -70,6 +70,7 @@ bool AppManager::LoadTheme(std::string theme) {
     success &= graphics_.LoadTileset(theme);
     success &= graphics_.LoadFonts(theme);
 
+    sound_.StopPlayback();
      success &= sound::LoadSoundEffects(theme);
      success &= sound::LoadMusic(theme);
 

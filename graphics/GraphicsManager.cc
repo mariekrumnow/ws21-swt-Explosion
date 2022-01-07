@@ -126,7 +126,8 @@ void GraphicsManager::BeginFrame() {
 
 void GraphicsManager::DrawTile(Tile tile, Color color, int x, int y) {
     if (window_ == nullptr) return;
-    game_tileset_->DrawTile(renderer_, tile, color, x, y);
+    game_tileset_->DrawTile(renderer_, tile, color,
+        x + x_draw_offset_, y + y_draw_offset_);
 }
 
 void GraphicsManager::WriteText(std::string text,Color color,
@@ -147,7 +148,8 @@ void GraphicsManager::WriteText(std::string text,Color color,
 
     if (!font) return;
 
-    font->WriteText(renderer_, text, color, background_color_, bold, x, y);
+    font->WriteText(renderer_, text, color, background_color_, bold,
+        x + x_draw_offset_, y + y_draw_offset_);
 }
 
 void GraphicsManager::EndFrame() {
@@ -172,12 +174,17 @@ void GraphicsManager::SetFullscreen(bool fullscreen) {
             scale_factor = static_cast<float>(screen_height) / kWindowHeight;
         }
 
+        x_draw_offset_ = ((screen_width/2)/scale_factor - kWindowWidth/2);
+        y_draw_offset_ = ((screen_height/2)/scale_factor - kWindowHeight/2);
+
         SDL_RenderSetScale(renderer_, scale_factor, scale_factor);
 
     } else {
         //switch to windowed and reset renderer scale
         SDL_SetWindowFullscreen(window_, 0);
         SDL_RenderSetScale(renderer_, 1, 1);
+        x_draw_offset_ = 0;
+        y_draw_offset_ = 0;
     }
 }
 
