@@ -71,7 +71,7 @@ void SinglePlayerWinCondition::checkWin() {
         if (win) {
 
             //has the player set a new highscore?
-            if (high_score_ != -1 && (milliseconds) <= high_score_) {
+            if (high_score_ == -1 || (milliseconds) <= high_score_) {
                 //save new highscore
                 std::ofstream high_score_file;
                 high_score_file.open(kHighScoreFile);
