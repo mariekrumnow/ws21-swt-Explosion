@@ -11,9 +11,15 @@ namespace win_condition{
 void StandardWinCondition::checkWin() {
 
     if (GameManager::GetCurrentGame().GetPlayers().size() <= 1) {
-        menu::GameOverWindow *over_w = new menu::GameOverWindow(
-            GameManager::GetCurrentGame().GetPlayers().front());
-        core::AppManager::GetAppManager().SetActiveWindow(*over_w);
+        if (GameManager::GetCurrentGame().GetPlayers().size() == 1) {
+            menu::GameOverWindow *over_w = new menu::GameOverWindow(
+                GameManager::GetCurrentGame().GetPlayers().front());
+            core::AppManager::GetAppManager().SetActiveWindow(*over_w);
+        } else {
+            menu::GameOverWindow *over_w = new menu::GameOverWindow(
+                nullptr);
+            core::AppManager::GetAppManager().SetActiveWindow(*over_w);
+        }
     }
 }
 
