@@ -4,6 +4,8 @@ add_library(menu
         InstructionWindow.cc InstructionWindow.h
         GameOverWindow.cc GameOverWindow.h
         MainWindow.cc MainWindow.h
+        SinglePlayerInstructionWindow.cc SinglePlayerInstructionWindow.h
+        HighScoreWindow.cc HighScoreWindow.h
         )
 
 
