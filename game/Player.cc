@@ -2,17 +2,16 @@
 
 #include "Player.h"
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #include <vector>
 
-#include "GameManager.h"
-#include "GameObject.h"
-#include "../game/bomb/Bomb.h"
 #include "../core/AppManager.h"
+#include "../game/bomb/Bomb.h"
 #include "../graphics/Color.h"
 #include "../graphics/Keys.h"
 #include "../graphics/Tile.h"
+#include "../sound/SoundEffect.h"
 #include "win_condition/BaseWinCondition.h"
 #include "GameManager.h"
 #include "GameObject.h"
@@ -22,7 +21,7 @@ namespace game {
 Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles, int id)
                 : keys_(keys), tiles_(tiles), id_(id) {}
 
-/// If a nullptr is returned, an error occured or the object couldn't be placed
+// If a nullptr is returned, an error occured or the object couldn't be placed
 Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys,
                              graphics::PlayerTile tiles, int id)                {
     Player* temp = new Player(keys, tiles, id);

@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 {
     srand(time(0)); //seed the rng with the current unix time
 
-    /// Initialize the app manager
+    // Initialize the app manager
     core::AppManager app = core::AppManager("Bombermaaaaaaaan", true);
 
     sound::SoundManager& sound = app.GetSound();

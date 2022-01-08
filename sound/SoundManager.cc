@@ -3,12 +3,10 @@
 #include "SoundManager.h"
 
 #include <cstdlib>
-
-#include <list>
-#include <string>
 #include <iostream>
-
+#include <list>
 #include <SDL_mixer.h>
+#include <string>
 
 #include "../core/AppManager.h"
 
