@@ -44,7 +44,7 @@ public:
 
     /// Updates the time left until the Explosion is over
     ///
-    /// \param delta_time Color of the Explosion
+    /// \param delta_time
     void Update(double delta_time);
 
     ///

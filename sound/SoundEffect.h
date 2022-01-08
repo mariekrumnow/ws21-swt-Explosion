@@ -9,9 +9,14 @@
 
 namespace sound {
 
+/// The sound-effects of the game
+
 class SoundEffect {
 public:
-	///volume takes a value between 0.0 and 1.0 inclusive
+	/// Sets the sample, the channel and the volume
+	///
+	/// \param sample The music part that should play
+	/// \param volume value between 0.0 and 1.0 inclusive
 	SoundEffect(Mix_Chunk* sample, double volume);
 	~SoundEffect();
 	Mix_Chunk* GetSample();
@@ -22,13 +27,10 @@ private:
 	int current_channel_; //only set if the sound effects plays in "alone" mode
 };
 
-
-extern SoundEffect* effect_bomb_explode;
-extern SoundEffect* effect_bomb_tick;
-extern SoundEffect* effect_menu_click;
-extern SoundEffect* effect_upgrade_collect;
-extern SoundEffect* effect_walk;
-
+/// Loads the SoundEffects of the current Theme
+///
+/// \param theme The theme that is chosen
+/// \return true if no error occurred
 bool LoadSoundEffects(std::string theme);
 
 } //namespace sound

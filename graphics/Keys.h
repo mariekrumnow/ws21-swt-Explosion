@@ -21,22 +21,22 @@ extern SDL_Scancode key_a;
 extern SDL_Scancode key_d;
 extern SDL_Scancode key_l_shift;
 
-extern SDL_Scancode key_i;
-extern SDL_Scancode key_j;
-extern SDL_Scancode key_k;
-extern SDL_Scancode key_l;
-extern SDL_Scancode key_r_shift;
+extern SDL_Scancode key_i; ///< re-assigned scancode of the button: i
+extern SDL_Scancode key_j; ///< re-assigned scancode of the button: j
+extern SDL_Scancode key_k; ///< re-assigned scancode of the button: k
+extern SDL_Scancode key_l; ///< re-assigned scancode of the button: l
+extern SDL_Scancode key_r_shift; ///< re-assigned scancode of the button: rShift
 
-extern SDL_Scancode key_switch_music;
-extern SDL_Scancode key_volume_louder;
-extern SDL_Scancode key_volume_quieter;
+extern SDL_Scancode key_switch_music; ///< re-assigned scancode of the button: F12
+extern SDL_Scancode key_volume_louder; ///< re-assigned scancode of the button: F8
+extern SDL_Scancode key_volume_quieter; ///< re-assigned scancode of the button: F7
 
 struct PlayerKeys {
-    SDL_Scancode up;
-    SDL_Scancode down;
-    SDL_Scancode left;
-    SDL_Scancode right;
-    SDL_Scancode bomb;
+    SDL_Scancode up; ///< key for up
+    SDL_Scancode down; ///< key for down
+    SDL_Scancode left; ///< key for left
+    SDL_Scancode right; ///< key for right
+    SDL_Scancode bomb; ///< Key for placing bomb
 };
 
 } // namespace graphics

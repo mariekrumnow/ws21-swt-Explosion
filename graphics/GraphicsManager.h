@@ -12,11 +12,13 @@
 
 namespace graphics {
 
-    enum class FontSize {
-      kSmall,
-      kMedium,
-      kLarge
-    };
+/// enum-class
+/// for Font-Sizes
+enum class FontSize {
+    kSmall,     ///< Enum value 0
+    kMedium,    ///< Enum value 1
+    kLarge      ///< Enum value 2
+};
 
 /// Manages all the graphics
     class GraphicsManager {

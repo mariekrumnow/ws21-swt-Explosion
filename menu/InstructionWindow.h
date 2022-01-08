@@ -21,10 +21,12 @@ public:
     void Draw();
 
     /// Activates the effect of the respective MenuItem
+    ///
+    /// \param selected_option The number of the selected option in the menu
     void OnMenuItemSelect(int selected_option);
 
 private:
-    int theme_;
+    int theme_; ///< The theme that is chosen
 
 };
 

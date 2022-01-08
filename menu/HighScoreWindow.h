@@ -15,6 +15,13 @@ namespace menu{
 /// Shown after a game has ended, shows the outcome and an exit Item
 class HighScoreWindow : public MenuWindow {
 public:
+
+    /// Initialises the high score and the buttons for the next options
+    ///
+    /// \param win has the player won or lost
+    /// \param player_time The time the Player needed this round
+    /// \param high_score The current high score
+    /// \param is_high_score new high score?
     HighScoreWindow(bool win, std::string player_time,
         std::string high_score, bool is_high_score);
 
@@ -22,6 +29,8 @@ public:
     void Draw();
 
     /// Activates the effect of the respective MenuItem
+    ///
+    /// \param selected_option The number of the selected option in the menu
     void OnMenuItemSelect(int selected_option);
 
 private:
