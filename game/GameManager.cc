@@ -5,11 +5,11 @@
 #include <iostream>
 #include <vector>
 
-#include "GameObject.h"
-#include "Player.h"
 #include "../core/AppManager.h"
 #include "../graphics/Keys.h"
 #include "../menu/GameOverWindow.h"
+#include "GameObject.h"
+#include "Player.h"
 
 namespace game {
 

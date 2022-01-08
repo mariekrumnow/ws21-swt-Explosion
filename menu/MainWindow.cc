@@ -2,12 +2,12 @@
 // Autor: Marlene, Marie, Patrick
 //
 
-#include "MainWindow.h"
-
 #include "../core/AppManager.h"
 #include "../sound/SoundEffect.h"
 #include "InstructionWindow.h"
+#include "MainWindow.h"
 #include "SinglePlayerInstructionWindow.h"
+
 
 
 namespace menu{

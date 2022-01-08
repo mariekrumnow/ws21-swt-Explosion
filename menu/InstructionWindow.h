@@ -8,10 +8,10 @@
 #include "../graphics/Keys.h"
 #include "MenuWindow.h"
 
-
 namespace menu{
 
 /// Shows instruction text and MenuItem to start the game
+
 class InstructionWindow : public MenuWindow {
 public:
     /// Initialises the instructions and the button to start the game

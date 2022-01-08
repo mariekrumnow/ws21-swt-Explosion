@@ -11,10 +11,10 @@
 #include "../graphics/Color.h"
 #include "MenuWindow.h"
 
-
 namespace menu{
 
 /// Shown after a game has ended, shows the outcome and an exit Item
+
 class GameOverWindow : public MenuWindow {
 public:
     /// Initialises the game outcome text based on the winning player
@@ -31,7 +31,7 @@ public:
     void OnMenuItemSelect(int selected_option);
 
 private:
-    game::Player *winner_;
+    game::Player *winner_; ///< The Player that won
 
 };
 

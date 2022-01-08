@@ -7,19 +7,20 @@
 
 namespace graphics {
 
-/// declarations of re-assignable scancodes for each In-Game function
-extern SDL_Scancode key_return;
-extern SDL_Scancode key_escape;
-extern SDL_Scancode key_fullscreen;
-extern SDL_Scancode key_menu_up[2];
-extern SDL_Scancode key_menu_down[2];
+// declarations of re-assignable scancodes for each In-Game function
+
+extern SDL_Scancode key_return; ///< re-assigned scancode of the button: Return
+extern SDL_Scancode key_escape; ///< re-assigned scancode of the button: Escape
+extern SDL_Scancode key_fullscreen; ///< re-assigned scancode of the button: F11
+extern SDL_Scancode key_menu_up[2]; ///< re-assigned scancode of the button: W and UP
+extern SDL_Scancode key_menu_down[2]; ///< re-assigned scancode of the button: s and DOWN
 
 
-extern SDL_Scancode key_w;
-extern SDL_Scancode key_s;
-extern SDL_Scancode key_a;
-extern SDL_Scancode key_d;
-extern SDL_Scancode key_l_shift;
+extern SDL_Scancode key_w; ///< re-assigned scancode of the button: W
+extern SDL_Scancode key_s; ///< re-assigned scancode of the button: S
+extern SDL_Scancode key_a; ///< re-assigned scancode of the button: A
+extern SDL_Scancode key_d; ///< re-assigned scancode of the button: D
+extern SDL_Scancode key_l_shift; ///< re-assigned scancode of the button: lShift
 
 extern SDL_Scancode key_i; ///< re-assigned scancode of the button: i
 extern SDL_Scancode key_j; ///< re-assigned scancode of the button: j

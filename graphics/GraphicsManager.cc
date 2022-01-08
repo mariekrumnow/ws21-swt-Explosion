@@ -2,10 +2,10 @@
 
 #include "GraphicsManager.h"
 
-#include "Font.h"
-
-#include <SDL_ttf.h>
 #include <iostream>
+#include <SDL_ttf.h>
+
+#include "Font.h"
 
 namespace graphics {
 

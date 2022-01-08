@@ -2,10 +2,8 @@
 
 #include "TileSet.h"
 
-#include <SDL.h>
-
 #include <iostream>
-
+#include <SDL.h>
 
 namespace graphics {
 

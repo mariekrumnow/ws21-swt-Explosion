@@ -1,6 +1,4 @@
-//
 // Autor: Tobias
-//
 
 #ifndef BOMBERMAN_MENU_HIGHSCOREWINDOW_H
 #define BOMBERMAN_MENU_HIGHSCOREWINDOW_H
@@ -13,6 +11,7 @@
 namespace menu{
 
 /// Shown after a game has ended, shows the outcome and an exit Item
+
 class HighScoreWindow : public MenuWindow {
 public:
 
@@ -34,10 +33,10 @@ public:
     void OnMenuItemSelect(int selected_option);
 
 private:
-    bool win_; //has the player won or lost?
-    std::string player_time_;
-    std::string high_score_;
-    bool is_high_score_;
+    bool win_; ///< has the player won or lost?
+    std::string player_time_; ///< The time the Player needed this round
+    std::string high_score_; ///< The current highs core
+    bool is_high_score_; ///< new high score?
 };
 
 }   // namespace menu

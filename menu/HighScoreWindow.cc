@@ -1,6 +1,5 @@
-//
 // Autor: Tobias
-//
+
 
 #include "HighScoreWindow.h"
 
@@ -9,8 +8,6 @@
 #include "../graphics/Tile.h"
 #include "../sound/Music.h"
 #include "MainWindow.h"
-
-
 
 namespace menu{
 
@@ -45,17 +42,20 @@ void HighScoreWindow::Draw(){
     auto time_color = graphics::Color(0, 255, 0, 255);
 
     if (win_) {
-        graphics.WriteText("Gewonnen!", graphics::Color(0, 255, 0, 255), graphics::FontSize::kLarge, false, 390, 265);
+        graphics.WriteText("Gewonnen!", graphics::Color(0, 255, 0, 255),
+                           graphics::FontSize::kLarge, false, 390, 265);
     } else {
         time_color = graphics::Color(255, 0, 0, 255);
-        graphics.WriteText("Verloren!", graphics::Color(255, 0, 0, 255), graphics::FontSize::kLarge, false, 390, 265);
+        graphics.WriteText("Verloren!", graphics::Color(255, 0, 0, 255),
+                           graphics::FontSize::kLarge, false, 390, 265);
     }
 
     graphics.WriteText("Deine Zeit: "+player_time_, time_color, graphics::FontSize::kLarge, false, 310, 365);
     graphics.WriteText("Highscore: "+high_score_, graphics::Color(0, 255, 0, 255), graphics::FontSize::kLarge, false, 310, 415);
 
     if (is_high_score_) {
-        graphics.WriteText("Neuer Highscore!", graphics::Color(0, 255, 0, 255), graphics::FontSize::kLarge, false, 310, 465);
+        graphics.WriteText("Neuer Highscore!", graphics::Color(0, 255, 0, 255),
+                           graphics::FontSize::kLarge, false, 310, 465);
     }
 }
 

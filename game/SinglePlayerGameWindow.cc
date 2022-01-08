@@ -5,8 +5,8 @@
 #include <iostream>
 
 #include "../core/AppManager.h"
-#include "../graphics/Tile.h"
 #include "../graphics/Color.h"
+#include "../graphics/Tile.h"
 #include "../graphics/GraphicsManager.h"
 
 

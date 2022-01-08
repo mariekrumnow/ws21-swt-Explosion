@@ -14,7 +14,7 @@ public:
     ///
     /// \param width width of the map
     /// \param height height of the map
-    /// \param winCondition How the game is supposed to check for the end
+    /// \param winCondition The condition for the game to end
     GameFactory(int width, int height, win_condition::BaseWinCondition* winCondition);
 
     /// Assigns player keys and generates Map with Player(s)

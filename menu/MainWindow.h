@@ -11,6 +11,7 @@
 namespace menu{
 
 /// Shows the credits and buttons to start and close the game or change the theme
+
 class MainWindow: public MenuWindow{
 public:
     /// Initialises the buttons for starting and closing the game and for changing the theme

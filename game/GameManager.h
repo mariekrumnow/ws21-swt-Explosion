@@ -3,16 +3,16 @@
 #ifndef BOMBERMAN_GAME_GAMEMANAGER_H
 #define BOMBERMAN_GAME_GAMEMANAGER_H
 
-#include <list>
-#include <vector>
-
 namespace game {
     class Player;
 }
 
-#include "GameObject.h"
+#include <list>
+#include <vector>
+
 #include "../core/AppManager.h"
 #include "win_condition/BaseWinCondition.h"
+#include "GameObject.h"
 
 namespace game {
 
@@ -20,13 +20,25 @@ namespace game {
 
 class GameManager {
 public:
+    /// Creates Vector and fills it with GameObjects
+    ///
+    /// \param width width of the map
+    /// \param height height of the map
+    /// \param winCondition The condition for the game to end
     GameManager(const int width, const int height, win_condition::BaseWinCondition* winCondition);
+
+    /// Destructor of GameManager
+    /// Deletes GameObjects
     ~GameManager();
 
     /// Updates all GameObjects and checks if the Win condition is fulfilled
     ///
     /// \param delta_time The amount of time that has passed since last update
     void Update(double delta_time);
+
+    /// A Getter for the current Game
+    ///
+    /// \return A reference to the current game
     static GameManager& GetCurrentGame();
 
     /// removes an object from the map
@@ -67,14 +79,36 @@ public:
     ///
     /// \return The width of the map
     int GetWidth() const;
+
+    /// A Getter for the height of the Game map
+    ///
+    /// \return The height of the map
     int GetHeight() const;
 
+    /// Removes a player from the current Game
+    ///
+    /// \param player The Player that needs to be removed
     void RemovePlayer(Player &player);
+
+    /// Adds a player in the current game
+    ///
+    /// \param player The Player that needs to be added
     void AddPlayer(Player* player);
+
+    /// A Getter for all Players
+    ///
+    /// \return A vector of all Players on the map
     std::vector<Player*> GetPlayers();
 
+    /// Adds a DestructibleBlock to the destructible_block_count_
     void AddDestructibleBlock();
+
+    /// Removes a DestructibleBlock to the destructible_block_count
     void RemoveDestructibleBlock();
+
+    /// A Getter for the destructible_block_count_
+    ///
+    /// \return The amount of DestructibleBlocks on the map
     int GetDestructibleBlockCount();
 
 
@@ -88,8 +122,8 @@ private:
     std::vector<Player*> players_;  ///< A vector with references to all Players on the map
     int destructible_block_count_ = 0;  ///< The amount of DestructibleBlocks on the map
 
-    int width_;
-    int height_;
+    int width_;  ///< The width of the map
+    int height_; ///< The hight of the map
 };
 
 } // namespace game

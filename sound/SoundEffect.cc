@@ -3,9 +3,9 @@
 #include "SoundEffect.h"
 
 #include <iostream>
+#include <SDL_mixer.h>
 #include <string>
 
-#include <SDL_mixer.h>
 
 namespace sound {
 
