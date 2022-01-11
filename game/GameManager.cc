@@ -16,9 +16,9 @@ namespace game {
 GameManager* GameManager::current_game_;
 
 GameManager::GameManager(const int width, const int height, win_condition::BaseWinCondition *winCondition) :
+            win_condition_(winCondition),
             width_(width),
-            height_(height),
-            win_condition_(winCondition)
+            height_(height)
             {
 		width_ = width;
 		height_ = height;

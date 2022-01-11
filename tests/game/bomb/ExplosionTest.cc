@@ -30,6 +30,7 @@ BOOST_AUTO_TEST_SUITE(ExplosionTest)
 		delete manager;
 		delete window;
 		delete app;
+
 	}
 
 BOOST_AUTO_TEST_SUITE_END()

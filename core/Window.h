@@ -9,6 +9,7 @@ namespace core {
 /// like the main game, or menus.
 class Window {
 public:
+    virtual ~Window() {}
     virtual void Update(double delta_time) = 0;
     virtual void Draw() = 0;
 };

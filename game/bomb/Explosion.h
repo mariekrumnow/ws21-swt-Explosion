@@ -18,11 +18,11 @@ public:
     static Explosion* CreateExplosion(int x, int y,int oriented);
     ~Explosion();
 
-    graphics::Tile GetTile();
+    graphics::Tile GetTile() override;
 
-    graphics::Color GetColor();
+    graphics::Color GetColor() override;
 
-    void Update(double delta_time);
+    void Update(double delta_time) override;
 
     const double kExplosionDuration = 0.5;
 
