@@ -50,4 +50,4 @@ target_include_directories(bomberman PRIVATE sound)
 target_link_directories(bomberman PRIVATE sound)
 target_link_libraries(bomberman sound)
 
-#add_subdirectory(tests)
+add_subdirectory(tests)

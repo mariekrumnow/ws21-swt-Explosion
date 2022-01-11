@@ -9,7 +9,7 @@ if(Boost_FOUND)
 endif()
 include_directories(${Boost_INCLUDE_DIRS})
 
-add_executable(tests AppManagerTest.cc)
+add_executable(tests test_main.cc game/GameManagerTest.cc game/GameFactoryTest.cc game/GameObjectTest.cc core/AppManagerTest.cc game/GameWindowTest.cc menu/GameOverWindowTest.cc menu/InstructionWindowTest.cc game/win_condition/StandardWinConditionTest.cc game/block/DestructibleBlockTest.cc game/block/IndestructibleBlockTest.cc game/block/BlockTest.cc)
 
 target_link_libraries(tests ${Boost_LIBRARIES})
 target_link_libraries(tests core)
