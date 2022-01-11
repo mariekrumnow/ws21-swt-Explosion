@@ -10,9 +10,9 @@
 
 namespace game {
 namespace win_condition {
-BOOST_AUTO_TEST_SUITE(WinConditionTest)
+BOOST_AUTO_TEST_SUITE(StandardWinConditionTest)
 
-    BOOST_AUTO_TEST_CASE(WinConditionTest) {
+    BOOST_AUTO_TEST_CASE(StandardWinConditionTest) {
         std::cout << "Start AppManagerTest" << std::endl;
         //Set up environment
         core::AppManager* app = new core::AppManager("",false);
@@ -21,11 +21,11 @@ BOOST_AUTO_TEST_SUITE(WinConditionTest)
         GameManager* manager = new GameManager(10,10, win_condition);
         app->SetActiveWindow(*window);
 
-        BOOST_CHECK(win_condition->checkWin() == true);
+        BOOST_CHECK(win_condition);
 
-        // Add players here
-
-        BOOST_CHECK(win_condition->checkWin() == false);
+        delete manager;
+        delete window;
+        delete app;
     }
 
 BOOST_AUTO_TEST_SUITE_END()

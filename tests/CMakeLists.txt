@@ -10,7 +10,7 @@ endif()
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(tests test_main.cc
-        game/bomb/BombTest.cc
+        # game/bomb/BombTest.cc
         game/bomb/ExplosionTest.cc
         game/upgrade/BombCountUpgradeTest.cc
         game/upgrade/ExplosionRadiusUpgradeTest.cc
@@ -24,9 +24,9 @@ add_executable(tests test_main.cc
         menu/GameOverWindowTest.cc
         menu/InstructionWindowTest.cc
         menu/MenuWindowTest.cc
-        #game/win_condition/StandardWinConditionTest.cc
-        #game/block/DestructibleBlockTest.cc
-        #game/block/IndestructibleBlockTest.cc
+        game/win_condition/StandardWinConditionTest.cc
+        game/block/DestructibleBlockTest.cc
+        game/block/IndestructibleBlockTest.cc
         game/block/BlockTest.cc
         )
 
