@@ -6,12 +6,14 @@
 #include "../../core/AppManager.h"
 #include "../../menu/MenuWindow.h"
 #include "../../menu/InstructionWindow.h"
+#include <iostream>
 
 namespace menu {
 
     BOOST_AUTO_TEST_SUITE(InstructionWindowTest)
 
         BOOST_AUTO_TEST_CASE(InstructionWindowTest) {
+            std::cout << "Start InstructionWindowTest" << std::endl;
             //Set up environment
             core::AppManager* app = new core::AppManager("",false);
 

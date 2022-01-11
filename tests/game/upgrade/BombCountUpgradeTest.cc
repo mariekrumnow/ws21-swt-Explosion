@@ -13,6 +13,7 @@ namespace upgrade {
 
 BOOST_AUTO_TEST_SUITE(BombCountUpgradeTest)
 	BOOST_AUTO_TEST_CASE(BombCountUpgradeTest) {
+        std::cout << "Start BombCountUpgradeTest" << std::endl;
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 		GameWindow* window = new GameWindow();

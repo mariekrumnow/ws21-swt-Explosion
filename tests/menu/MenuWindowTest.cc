@@ -13,6 +13,7 @@ namespace menu {
 BOOST_AUTO_TEST_SUITE(MenuWindowTest)
 
 	BOOST_AUTO_TEST_CASE(MenuWindowTest) {
+        std::cout << "Start MenuWindowTest" << std::endl;
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 

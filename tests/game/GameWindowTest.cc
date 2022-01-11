@@ -5,11 +5,13 @@
 #include <boost/test/unit_test.hpp>
 #include <GameWindow.h>
 #include "../../core/AppManager.h"
+#include <iostream>
 
 namespace game {
 BOOST_AUTO_TEST_SUITE(GameWindowTest)
 
     BOOST_AUTO_TEST_CASE(GameWindowTest) {
+        std::cout << "Start GameWindowTest" << std::endl;
         //Set up environment
         core::AppManager* app = new core::AppManager("",false);
 

@@ -14,6 +14,7 @@ namespace game {
 BOOST_AUTO_TEST_SUITE(PlayerTests)
 
 	BOOST_AUTO_TEST_CASE(PlayerTest) {
+        std::cout << "Start PlayerTest" << std::endl;
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 		GameWindow* window = new GameWindow();

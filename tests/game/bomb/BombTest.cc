@@ -12,11 +12,15 @@ namespace bomb {
 
 BOOST_AUTO_TEST_SUITE(BombTest)
 	BOOST_AUTO_TEST_CASE(BombTest) {
+        std::cout << "Start BombTest" << std::endl;
+
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 		GameWindow* window = new GameWindow();
 		GameManager* manager = new GameManager(10,10, nullptr);
 		app->SetActiveWindow(*window);
+
+
 
 		//Create Bomb with explosion power 2, 1 second explosion delay
 		Bomb* bomb1 = Bomb::CreateBomb(5,5, nullptr, 2, 1);

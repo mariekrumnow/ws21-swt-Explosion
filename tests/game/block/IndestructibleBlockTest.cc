@@ -5,20 +5,23 @@
 #include <boost/test/unit_test.hpp>
 #include <block/IndestructibleBlock.h>
 #include <GameWindow.h>
+#include <iostream>
 
 namespace game {
     namespace obstacles {
 
-        BOOST_AUTO_TEST_SUITE(DestructibleBlockTests)
+        BOOST_AUTO_TEST_SUITE(IndestructibleBlockTest)
 
-            BOOST_AUTO_TEST_CASE(DestructibleBlockTests) {
+            BOOST_AUTO_TEST_CASE(IndestructibleBlockTest) {
+                std::cout << "Start IndestructibleBlockTest" << std::endl;
+
                 //Set up environment
                 auto* app = new core::AppManager("",false);
                 auto* window = new GameWindow();
                 auto* manager = new GameManager(10,10, nullptr);
                 app->SetActiveWindow(*window);
 
-                IndestructibleBlock* block = IndestructibleBlock().CreateIndestructibleBlock(0,0);
+                IndestructibleBlock* block = IndestructibleBlock::CreateIndestructibleBlock(0,0);
 
                 BOOST_CHECK(block);
 

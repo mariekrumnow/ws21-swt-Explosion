@@ -13,6 +13,7 @@ namespace upgrade {
 
 BOOST_AUTO_TEST_SUITE(ExplosionRadiusUpgradeTest)
 	BOOST_AUTO_TEST_CASE(ExplosionRadiusUpgradeTest) {
+        std::cout << "Start ExplosionRadiusUpgradeTest" << std::endl;
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 		GameWindow* window = new GameWindow();

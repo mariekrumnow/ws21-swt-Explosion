@@ -6,14 +6,16 @@
 #include "../../core/AppManager.h"
 #include "../../menu/MenuWindow.h"
 #include "../../menu/GameOverWindow.h"
+#include <iostream>
 
 namespace menu {
 
 BOOST_AUTO_TEST_SUITE(GameOverWindowTest)
 
     BOOST_AUTO_TEST_CASE(GameOverWindowTest) {
+        std::cout << "Start GameOverWindowTest" << std::endl;
         //Set up environment
-        core::AppManager* app = new core::AppManager("",false);
+        auto* app = new core::AppManager("",false);
 
         graphics::PlayerKeys player_keys{};
 

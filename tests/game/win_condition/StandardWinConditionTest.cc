@@ -6,12 +6,14 @@
 #include <GameWindow.h>
 #include <GameManager.h>
 #include <win_condition/StandardWinCondition.h>
+#include <iostream>
 
 namespace game {
 namespace win_condition {
 BOOST_AUTO_TEST_SUITE(WinConditionTest)
 
     BOOST_AUTO_TEST_CASE(WinConditionTest) {
+        std::cout << "Start AppManagerTest" << std::endl;
         //Set up environment
         core::AppManager* app = new core::AppManager("",false);
         GameWindow* window = new GameWindow();

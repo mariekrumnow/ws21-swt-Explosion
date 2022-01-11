@@ -12,7 +12,8 @@ namespace game {
 namespace upgrade {
 
 BOOST_AUTO_TEST_SUITE(SpeedUpgradeTest)
-	BOOST_AUTO_TEST_CASE(SpeedUpgradeTest) {
+    BOOST_AUTO_TEST_CASE(SpeedUpgradeTest) {
+        std::cout << "Start SpeedUpgradeTest" << std::endl;
 		//Set up environment
 		core::AppManager* app = new core::AppManager("",false);
 		GameWindow* window = new GameWindow();
