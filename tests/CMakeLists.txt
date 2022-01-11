@@ -11,17 +11,17 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(tests test_main.cc
         game/bomb/BombTest.cc
-        #game/bomb/ExplosionTest.cc
-        #game/upgrade/BombCountUpgradeTest.cc
-        #game/upgrade/ExplosionRadiusUpgradeTest.cc
-        # game/upgrade/SpeedUpgradeTest.cc
-        # menu/MenuWindowTest.cc
-        #game/GameManagerTest.cc
-        #game/GameFactoryTest.cc
-        #game/GameObjectTest.cc
-        # core/AppManagerTest.cc
+        game/bomb/ExplosionTest.cc
+        game/upgrade/BombCountUpgradeTest.cc
+        game/upgrade/ExplosionRadiusUpgradeTest.cc
+        game/upgrade/SpeedUpgradeTest.cc
+        menu/MenuWindowTest.cc
+        game/GameManagerTest.cc
+        game/GameFactoryTest.cc
+        game/GameObjectTest.cc
+        core/AppManagerTest.cc
         game/GameWindowTest.cc
-        # menu/GameOverWindowTest.cc
+        menu/GameOverWindowTest.cc
         menu/InstructionWindowTest.cc
         menu/MenuWindowTest.cc
         #game/win_condition/StandardWinConditionTest.cc

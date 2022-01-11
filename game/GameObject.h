@@ -18,7 +18,7 @@ class Player;
 class GameObject {
 public:
   GameObject();
-  ~GameObject();
+  virtual ~GameObject();
 
   virtual bool OnExplosion(GameObject& source);
   virtual bool OnPlayerCollision(Player& player);

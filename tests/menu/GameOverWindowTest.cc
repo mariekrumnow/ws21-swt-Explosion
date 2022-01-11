@@ -16,6 +16,8 @@ BOOST_AUTO_TEST_SUITE(GameOverWindowTest)
         std::cout << "Start GameOverWindowTest" << std::endl;
         //Set up environment
         auto* app = new core::AppManager("",false);
+        auto* manager = new game::GameManager(10,10, nullptr);
+
 
         graphics::PlayerKeys player_keys{};
 
@@ -38,7 +40,7 @@ BOOST_AUTO_TEST_SUITE(GameOverWindowTest)
         BOOST_CHECK(window);
 
         delete window;
-        delete player;
+        delete manager;
         delete app;
     }
 

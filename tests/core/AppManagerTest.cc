@@ -14,14 +14,6 @@ namespace core {
 
             BOOST_CHECK(app);
 
-            BOOST_CHECK(app->LoadTheme("default"));
-
-            BOOST_CHECK(app->LoadTheme("halloween"));
-
-            BOOST_CHECK(app->LoadTheme("farm"));
-
-            BOOST_CHECK(app->LoadTheme("corona"));
-
             delete app;
         }
 
