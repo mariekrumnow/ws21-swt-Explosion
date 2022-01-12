@@ -10,7 +10,7 @@ namespace game {
 
 class GameFactory {
 public:
-    GameFactory(int width, int height);
+    GameFactory(int width, int height, win_condition::BaseWinCondition* winCondition);
 
     void GenerateGame(int player_count, int indest_prop);
 
@@ -23,6 +23,8 @@ private:
 
 //initializes a new classic mode game
 void StartClassicGame();
+//initializes a singleplayer game
+void StartSinglePlayerGame();
 
 } // namespace game
 

@@ -43,6 +43,7 @@ public:
 
     graphics::Tile GetTile();
     graphics::Color GetColor();
+    graphics::PlayerTile GetTileset();
 
     bool PlaceBomb(int x,int y);
 
@@ -63,7 +64,7 @@ private:
     int id_;
 
     double move_timer_ = 0;  ///< timer till player can move again
-    const double kMaxMoveTimer = 0.5;
+    const double kMaxMoveTimer = 0.4;
     const double kMinMoveTimer = 0.1;
 
     graphics::PlayerKeys keys_; ///< controls

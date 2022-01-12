@@ -13,7 +13,7 @@ namespace win_condition {
 
 class StandardWinCondition : public BaseWinCondition {
 public:
-    bool checkWin() override;
+    void checkWin() override;
 
 };
 
