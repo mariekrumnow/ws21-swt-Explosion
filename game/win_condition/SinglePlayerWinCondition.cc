@@ -31,7 +31,7 @@ SinglePlayerWinCondition::SinglePlayerWinCondition(SinglePlayerGameWindow* windo
     high_score_file.close();
 }
 
-void SinglePlayerWinCondition::checkWin() {
+void SinglePlayerWinCondition::CheckWin() {
 
     bool game_over = false;
     bool win = false;

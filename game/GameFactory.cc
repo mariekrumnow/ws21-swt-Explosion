@@ -15,8 +15,8 @@
 
 namespace game {
 
-GameFactory::GameFactory(int width, int height, win_condition::BaseWinCondition* winCondition): width_(width), height_(height) {
-    new GameManager(15, 13, winCondition);
+GameFactory::GameFactory(int width, int height, win_condition::BaseWinCondition* win_condition): width_(width), height_(height) {
+    new GameManager(15, 13, win_condition);
 }
 
 void GameFactory::GenerateGame(int player_count, int indest_prop) {

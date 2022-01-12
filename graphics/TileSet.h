@@ -11,21 +11,21 @@
 
 namespace graphics {
 
-/// manages drawing of the tiles from a texture atlas
+/// manages drawing of tiles from a tile atlas
 
 class TileSet {
 public:
-    /// Creates a tileset and puts the bmp-file on top of the tile_atlas_
+    /// Creates a tileset
     ///
     /// \param renderer The renderer of the window
-    /// \param file The file where the Tileset is in
-    /// \param tile_size_x The X-size of the file
-    /// \param tile_size_y The Y-size of the file
-    /// \return A pointer to the Tileset
+    /// \param file The bmp file to be used as tile atlas
+    /// \param tile_size_x The horizontal size of a tile
+    /// \param tile_size_y The vertical size of a tile
+    /// \return A pointer to the Tileset, or nullptr on error
     static TileSet* CreateTileset(SDL_Renderer* renderer, std::string file,
                                   int tile_size_x, int tile_size_y);
 
-    /// Sets Variables tile_atlas_, tile_size_x_ and tile_size_y
+    /// Initializes the tile set
     ///
     /// \param renderer The renderer of the window
     /// \param tile_atlas The assets-grid
@@ -47,9 +47,9 @@ public:
     void DrawTile(SDL_Renderer* renderer, Tile tile, Color color, int x, int y);
 
 private:
-    SDL_Texture* tile_atlas_; ///< The assets-grid
-    int tile_size_x_; ///< The X-size of the Tiles
-    int tile_size_y_; ///< The Y-size of the Tiles
+    SDL_Texture* tile_atlas_; ///< The tile atlas
+    int tile_size_x_; ///< The horizontal size of a tile
+    int tile_size_y_; ///< The vertical size of a Tiles
 };
 
 } // namespace graphics

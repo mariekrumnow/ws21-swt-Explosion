@@ -16,60 +16,61 @@ namespace game {
 
 namespace bomb { class Bomb;}
 
-/// Class of the Player
+/// The Player object
 
 class Player : public GameObject {
 public:
 
-    /// Sets the PlayerKeys, the shape of the Player and its Id
+    /// Sets the PlayerKeys, the shape of the Player and its id
     ///
     /// \param id The number of the Player
     Player(graphics::PlayerKeys, graphics::PlayerTile, int id);
 
     /// Creates a new Player
     ///
-    /// \param x The X-coordinate where the Player needs to spawn
-    /// \param y The Y-coordinate where the Player needs to spawn
+    /// \param x The X-coordinate where the Player should spawn
+    /// \param y The Y-coordinate where the Player should spawn
     /// \param keys The controls of the Player
     /// \param tiles The graphics of the Player
-    /// \param id  The number of the Player
-    /// \return A pointer to the new Player
+    /// \param id  The id of the Player
+    /// \return A pointer to the new Player, or nullptr on error
     static Player* CreatePlayer(int x, int y, graphics::PlayerKeys keys,
                                 graphics::PlayerTile tiles, int id);
 
     /// Destructor of Player
     ~Player();
 
-    /// Increases the Players speed_
+    /// Increases the Players speed
     ///
-    /// \param value How much the speed has to grow
+    /// \param value How much the speed should increase
     void IncreaseSpeed(int value);
 
-    /// Increases the players explosion_radius_
+    /// Increases the players explosion radius
     ///
-    /// \param value How much the explosion radius has to grow
+    /// \param value How much the explosion radius should increase
     void IncreaseExplosionRadius(int value);
 
-    /// Increases the players max_bomb_count_
+    /// Increases the players max bomb count
     ///
-    /// \param value How much the max bomb count has to grow
+    /// \param value How much the max bomb count should increase
     void IncreaseMaxBombCount(int value);
 
-    /// Reduces the amount of owned_bombs_
+    /// Reduces the amount of owned bombs
     ///
     /// \param bomb The Bomb that has been destroyed
     void OnBombDestroyed(bomb::Bomb& bomb);
 
-    /// Updates move_timer_ and checks if a key is pressed at the moment
-    /// If a Key is pressed it moves the Player in the matching direction
+    /// Called once per frame
+    /// Handles player movement
     ///
-    /// \param delta_time The X-coordinate where the Player needs to spawn
+    /// \param delta_time The time since the last frame
     void Update(double delta_time);
 
-    /// Removes the Player from the Current Game
+    /// Called when the player interacts with an explosion
+    /// Destroys the player
     ///
     /// \param source The source of the explosion
-    /// \return false
+    /// \return Whether the explosion has been blocked
     bool OnExplosion(GameObject& source);
 
     /// Returns, that an Object can pass the Player
@@ -78,7 +79,7 @@ public:
     /// \return false
     bool OnCollision(GameObject& source);
 
-    /// A Getter for the current time, the player needs, to be able to move again
+    /// A Getter for the current time the player waits after moving till moving again
     ///
     /// \return The current move timer
     double GetCurrentMovementTimer();
@@ -88,7 +89,7 @@ public:
     /// \return The current speed of the Player
     int GetSpeed() const;
 
-    /// A Getter for the current explosion radius of the Bombs placed by this Player
+    /// A Getter for the current explosion radius for the Bombs placed by this Player
     ///
     /// \return The current explosion radius of the Player
     int GetExplosionRadius() const;
@@ -98,7 +99,7 @@ public:
     /// \return The current max bomb count of the Player
     int GetMaxBombCount() const;
 
-    /// A Getter for the amount of existing Bombs placed by the Player
+    /// A Getter for the amount of existing Bombs by the Player
     ///
     /// \return The current amount of placed bombs from the Player
     int GetOwnedBombs() const;
@@ -118,14 +119,14 @@ public:
     /// \return The max speed
     int GetKMaxSpeed() const;
 
-    /// A Getter for the number of the Player
+    /// A Getter for the id of the Player
     ///
-    /// \return The number of the Player
+    /// \return The id of the Player
     int GetId() const;
 
     /// A Getter for the matching Tile of the players orientation
     ///
-    /// \return Graphics of the Player
+    /// \return Tile of the Player
     graphics::Tile GetTile();
 
     /// A Getter for the color of the Player
@@ -133,21 +134,21 @@ public:
     /// \return Color of the Player
     graphics::Color GetColor();
 
-    /// A Getter for the Graphic-set of the Player
+    /// A Getter for all Tiles of the Player
     ///
-    /// \return Graphic-set of the Player
+    /// \return Tileset of the Player
     graphics::PlayerTile GetTileset();
 
 private:
-    /// The Player places a Bomb at its current position
+    /// Places a Bomb
     ///
     /// \param x The X-coordinate of the new bomb
     /// \param y The Y-coordinate of the new bomb
-    /// \return true if no error occurred
+    /// \return Whether an error occurred
     bool PlaceBomb(int x,int y);
 
     /// Changes the position of the Player
-    /// Verifies via OnPlayerCollision if the Position is free
+    /// Verifies via OnPlayerCollision if any object blocks the movement
     ///
     /// \param x The new X-coordinate of the GameObject
     /// \param y The new Y-coordinate of the GameObject
@@ -163,14 +164,14 @@ private:
     const int kMaxSpeed = 7; ///< The max. value of speed
 
     int orientation_ = 1; ///< The way the Player faces
-    int id_; ///< The number of the Player
+    int id_; ///< The id of the Player
 
     double move_timer_ = 0;  ///< timer till player can move again
     const double kMaxMoveTimer = 0.4; ///< The max. value of move timer
     const double kMinMoveTimer = 0.1; ///< The min. value of move timer
 
-    graphics::PlayerKeys keys_; ///< controls of the Player
-    graphics::PlayerTile tiles_; ///< graphics of the Player
+    graphics::PlayerKeys keys_; ///< keys used to control the Player
+    graphics::PlayerTile tiles_; ///< tiles of the Player
 
 };
 

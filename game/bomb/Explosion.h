@@ -25,16 +25,16 @@ public:
     ///
     /// \param x The X-coordinate of the new Explosion
     /// \param y The Y-coordinate of the new Explosion
-    /// \param oriented The way the Explosion is steered
-    /// \return A reference to the new Explosion
+    /// \param oriented The Explosions tile (0-10)
+    /// \return A reference to the new Explosion, or nullptr on error
     static Explosion* CreateExplosion(int x, int y,int oriented);
 
-    /// Deconstructor of Explosion
+    /// Destructor of Explosion
     ~Explosion();
 
-    /// Returns Graphics of the Explosion
+    /// Returns Tile of the Explosion
     ///
-    /// \return Graphics of the Explosion
+    /// \return Tile of the Explosion
     graphics::Tile GetTile();
 
     /// Returns Color of the Explosion
@@ -42,15 +42,16 @@ public:
     /// \return Color of the Explosion
     graphics::Color GetColor();
 
+    /// Called once per frame
     /// Updates the time left until the Explosion is over
     ///
     /// \param delta_time
     void Update(double delta_time);
 
-    ///
+    /// Called when an object collides with the explosion
     ///
     /// \param source The origin of the Explosion
-    /// \return true
+    /// \return Whether the explosion stops the object (true)
     virtual bool OnCollision(GameObject& source);
 
     /// A Getter for the orientation variable
@@ -61,8 +62,8 @@ public:
     const double kExplosionDuration = 0.5; ///< The duration of the Explosion
 
 private:
-    double timer_;  ///< The time left till teh Explosion is over
-    int orientation_;   ///< The way the Explosion is steered
+    double timer_;  ///< The time left till the Explosion is over
+    int orientation_;   ///< Which directional tile the explosion should be displayed with
 };
 
 }  // namespace bomb

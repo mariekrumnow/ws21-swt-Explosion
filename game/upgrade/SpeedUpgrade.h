@@ -25,16 +25,18 @@ public:
     /// \return A Pointer on the newly created upgrade or nullptr if an error occurred
     static SpeedUpgrade* CreateSpeedUpgrade(int x, int y);
 
+    /// Called when a Player collides with the upgrade
     /// Increases the speed of the Player, if possible, and removes the upgrade
     ///
     /// \param player The Player that collides with the Upgrade
-    /// \return true
+    /// \return Whether the movement is blocked (false)
     bool OnPlayerCollision(Player& player);
 
+    /// Called when an Explosion interacts with the upgrade
     /// Removes the Upgrade from the map
     ///
     /// \param source The origin of the Explosion
-    /// \return false
+    /// \return Whther the explosion is stopped (false)
     bool OnExplosion(GameObject& source);
 
     /// Returns the color of the Upgrade
@@ -42,7 +44,7 @@ public:
     /// \return Graphics of the Upgrade
     virtual graphics::Color GetColor();
 
-    /// Returns the shape of the Upgrade
+    /// Returns the tile of the Upgrade
     ///
     /// \return Color of the Entity
     virtual graphics::Tile GetTile();

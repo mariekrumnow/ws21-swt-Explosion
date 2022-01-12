@@ -63,7 +63,7 @@ void GameManager::Update(double delta_time) {
 	}
 
     if (this->win_condition_)
-        this->win_condition_->checkWin();
+        this->win_condition_->CheckWin();
 }
 
 GameManager& GameManager::GetCurrentGame() {

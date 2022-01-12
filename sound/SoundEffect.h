@@ -8,17 +8,16 @@
 
 namespace sound {
 
-/// The sound-effects of the game
-
+/// A sound effect
 class SoundEffect {
 public:
-	/// Sets the sample, the channel and the volume
+	/// Initialize the object
 	///
-	/// \param sample The music part that should play
+	/// \param sample The sample that should play
 	/// \param volume value between 0.0 and 1.0 inclusive
 	SoundEffect(Mix_Chunk* sample, double volume);
 
-    /// Halts the SoundEffect
+    /// Deletes the SoundEffect
 	~SoundEffect();
 
     /// A Getter for sample_
@@ -26,7 +25,7 @@ public:
     /// \return The current music part
 	Mix_Chunk* GetSample();
 
-    /// Changes the current Channel
+    /// Sets the channel the effect currently plays on (in alone mode)
     ///
     /// \param current_channel The current channel
 	void SetCurrentChannel(int current_channel);

@@ -13,10 +13,9 @@
 namespace sound {
 
 /// Manages the SoundEffects and the Music
-
 class SoundManager {
 public:
-    /// Assigns the attributes
+    /// Initializes the object
     ///
     /// \param init_sound If the sound hardware interfaces are started in normal-mode or Unit-Testmode
 	SoundManager(bool init_sound);
@@ -24,7 +23,7 @@ public:
     /// Ends the Sounds and Music
 	~SoundManager();
 
-    /// Sets the Volume of Music and SoundEffects
+    /// Sets the master volume
     ///
     /// \param volume The value the master volume should have
 	void SetMasterVolume(double volume);
@@ -39,17 +38,17 @@ public:
     /// \param volume The value the effect volume should have
 	void SetSoundEffectVolume(double volume);
 
-    /// A Getter for master_volume_
+    /// A Getter for master volume
     ///
     /// \return The current master volume
 	double GetMasterVolume();
 
-    /// A Getter for music_volume_
+    /// A Getter for music volume
     ///
     /// \return The current music volume
 	double GetMusicVolume();
 
-    /// A Getter for effect_volume_
+    /// A Getter for the sound effect volume
     ///
     /// \return The current effect volume
 	double GetSoundEffectVolume();
@@ -65,25 +64,25 @@ public:
     /// Plays a random battle-music
 	void PlayRandomBattleMusic();
 
-    /// Plays the the appropriate SoundEffect
+    /// Plays the appropriate SoundEffect
     ///
     /// \param effect The effect that should be played
-    /// \param loops The amount of times the effect should repeat
+    /// \param loops The amount of times the effect should repeat (0 = effect played once)
 	void PlaySoundEffect(SoundEffect* effect, int loops); //loops=1 => 2 playbacks
 
-	/// Will only allow the sound effect to be played again once it's stopped playing
+	/// Play the SoundEffect only if it isn't already playing
 	///
 	/// \param effect The effect that should be played
 	/// \param loops The amount of times the effect should repeat
 	void PlaySoundEffectAlone(SoundEffect* effect, int loops);
 
     /// Halts the SoundEffects
-	void StopPlayback(); //call this before any music assets are deleted!
+	void StopPlayback(); //call this before any sound assets are deleted!
 
     /// Halts the music
 	void StopMusicPlayback();
 
-	///	Tells the sound effect that it has finished playing
+	///	Relays the callback that the sound effect has finished playing
 	///
 	/// \param channel The channel on which the music is playing
 	void OnChannelFinished(int channel);
@@ -91,7 +90,7 @@ private:
 	std::list<SoundEffect*> playing_alone_; ///< A list of sound effects for single player
 	int current_battle_music_; ///< The battle music
 
-	double master_volume_; ///< The total volume
+	double master_volume_; ///< The master volume
 	double music_volume_; ///< The volume of the music
 	double effect_volume_; ///< The volume of effects
 	bool fake_; ///< Set to true if the AppManager is in Test Mode, so no hardware is initialized

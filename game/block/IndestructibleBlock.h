@@ -21,20 +21,21 @@ public:
     /// Calls the constructor of GameObject
     IndestructibleBlock();
 
-    /// Creates a IndestructibleBlock on the map
+    /// Creates an IndestructibleBlock on the map
     ///
     /// \param x the x-coordinate of the new block
     /// \param y the y-coordinate of the new block
     /// \return A Pointer on the newly created block or nullptr if an error occurred
     static IndestructibleBlock* CreateIndestructibleBlock(int x, int y);
 
-    /// Sends signal that the explosion was ended by a block
+    /// Gets called when an Explosion interacts with the block
+    /// Returns true
     ///
-    /// \param source Color of the Entity
-    /// \return true
+    /// \param source The source object of the explosion
+    /// \return Whether the explosion is stopped by the block
     bool OnExplosion(GameObject& source);
 
-    /// Returns the shape of the block
+    /// Returns the tile of the block
     ///
     /// \return Graphics of the IndestructibleBlock
     graphics::Tile GetTile();

@@ -9,33 +9,33 @@
 
 namespace sound {
 
-/// the music of the game
+/// A object managing a music track
 
 class Music {
 public:
     /// Loads the .wav-file with the matching filename from assets
     ///
     /// \param filename The filename that needs to be loaded
-    /// \return A pointer to the loaded music
+    /// \return A pointer to the loaded music, or nullptr on error
 	static Music* LoadMusicFile(std::string filename);
 
-    /// Sets the current music
+    /// Initialize the object
     ///
-    /// \param music The music that should play
+    /// \param music The music object
 	Music(Mix_Music* music);
 
-    /// Halts the music
+    /// Deletes the music
 	~Music();
 
-    /// A Getter for music_
+    /// A Getter for the internal music object
     ///
-    /// \return The current music
+    /// \return The music object
 	Mix_Music* GetMusic();
 private:
-	Mix_Music* music_; ///< The current music
+	Mix_Music* music_; ///< The music object
 };
 
-/// Plays the corresponding music of the theme/menu
+/// Load the music files of a theme
 ///
 /// \param theme The theme that is chosen
 /// \return true, if no error occurred

@@ -19,9 +19,10 @@ class MenuWindow : public core::Window {
 public:
     /// Simple constructor
     ///
-    /// \param selected_option The MenuItem the user is currently hovering over
+    /// \param selected_option The MenuItem index that's selected at the start
     MenuWindow(int selected_option);
 
+    /// Called once per frame
     /// Changes the selected MenuItem or sends a signal if keys are pressed
     ///
     /// \param delta_time The amount of time that has passed since last update
@@ -30,11 +31,12 @@ public:
     /// Shows all MenuItems on screen
     void Draw();
 
-    /// Adds a MenuItem to the current MenuWindow and shows it
+    /// Adds a MenuItem to the current MenuWindow
     ///
-    /// \param menu_item All Buttons and texts on screen
+    /// \param menu_item The MenuItem to add
     void AddMenuItem(MenuItem menu_item);
 
+    /// Called when a MenuItem is selected
     ///
     /// \param selected_option The MenuItem the user is currently hovering over
     virtual void OnMenuItemSelect(int selected_option);

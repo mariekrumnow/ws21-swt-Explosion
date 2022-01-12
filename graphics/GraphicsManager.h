@@ -12,7 +12,7 @@
 
 namespace graphics {
 
-/// enum-class
+/// enum
 /// for Font-Sizes
 enum class FontSize {
     kSmall,     ///< Enum value 0
@@ -20,26 +20,24 @@ enum class FontSize {
     kLarge      ///< Enum value 2
 };
 
-/// Manages all the graphics
+/// The object handling rendering and keyboard inputs
 class GraphicsManager {
 public:
 
     /// Initializes everything related to SDL-Graphics
-    /// window_, renderer_, game_tileset_  font_small_, font_medium_, font_large_, Window-title and TTF
     ///
     /// \param title The title of the window
     /// \param init_graphics If the graphic interface is started in normal-mode or Unit-Testmode
     GraphicsManager(std::string title, bool init_graphics);
 
     /// Deletes and ends everything related to SDL-Graphics
-    /// Deletes: game_tileset_  font_small_, font_medium_, font_large_
-    /// Ends: TTF and SDL
     ~GraphicsManager();
 
-    /// Call at the start of every frame
+    /// Called at the start of every frame
+    /// Clears the screen and processes incoming keyboard and window events
     void BeginFrame();
 
-    /// Draws a given tile on a specific Position
+    /// Draws a given tile at a specific Position
     ///
     /// \param tile The tile that needs to be drawn
     /// \param color The color of the tile
@@ -48,22 +46,22 @@ public:
     void DrawTile(Tile tile, Color color, int x, int y);
 
     /// Writes Text in the matching Font-style
-    /// sizes 14, 20, and 30 are supported
     ///
     /// \param text The text that needs to be written
     /// \param color The color of the text
     /// \param size The size of the text
-    /// \param bold Tells if the text is bold or not
+    /// \param bold If the text is bold or not
     /// \param x The X-coordinate of the text
     /// \param y The Y-coordinate of the text
     void WriteText(std::string text, Color color, FontSize size, bool bold, int x, int y);
 
-    /// Call at the end of every frame
+    /// Called at the end of every frame
+    /// Updates the screen contents
     void EndFrame();
 
-    /// Switches form window-mode to fullscreen and the other way around
+    /// Switches fromrm window-mode to fullscreen and vice versa
     ///
-    /// \param fullscreen Tells if the window is already in fullscreen
+    /// \param fullscreen True: Switch to fullscreen, False: Switch to windowed
     void SetFullscreen(bool fullscreen);
 
     /// Change the background-color of the window
@@ -78,7 +76,7 @@ public:
     /// \return true on the first frame the key is pressed
     bool IsKeyPressed(int scancode);
 
-    /// Checks if the Key is pressed for a longer amount of time
+    /// Checks if the Key is held
     /// returns true as long as the key is pressed
     ///
     /// \param scancode The key that is being pressed
@@ -88,9 +86,9 @@ public:
     /// closes the Game
     [[noreturn]] void Quit();
 
-    /// Delays the Graphics
+    /// Delays the game
     ///
-    /// \param millis The time, in milliseconds, the software should do nothing
+    /// \param millis The time, in milliseconds, to wait
     void Sleep(int millis);
 
     /// Loads the graphics assets of a theme
@@ -99,7 +97,7 @@ public:
     /// \return true if no error occurred
     bool LoadTileset(std::string theme);
 
-    /// Creates the Font-sizes: font_small_, font_medium_, font_large_
+    /// Creates the font of the theme
     ///
     /// \param theme The theme that is chosen
     /// \return true if no error occurred
@@ -114,14 +112,14 @@ private:
     TileSet* game_tileset_; ///< The current tileset for the game
     SDL_Window* window_; ///< The window of the game
     SDL_Renderer* renderer_; ///< The renderer of the window
-    Color background_color_; ///< The backgroundcolor of the window
+    Color background_color_; ///< The background color of the window
 
     int x_draw_offset_=0; ///< X-offset for drawing
     int y_draw_offset_=0; ///< Y-offset for drawing
 
-    Font* font_small_; ///< The small text size
-    Font* font_medium_; ///< The medium text size
-    Font* font_large_; ///< The large text size
+    Font* font_small_; ///< The small font
+    Font* font_medium_; ///< The medium font
+    Font* font_large_; ///< The large font
 };
 
 } // namespace graphics

@@ -10,16 +10,16 @@
 
 namespace graphics {
 
-/// Creates the Text font
+/// Handles text drawing for a specific font and text size
 
 class Font {
 public:
 
     /// Creates a Font
     ///
-    /// \param file The file where the font is in
+    /// \param file The font file name
     /// \param size The size of the text
-    /// \return
+    /// \return A pointer to the font, or nullptr on error
 	static Font* CreateFont(std::string file, int size);
 
     /// Constructor of Font
@@ -30,13 +30,13 @@ public:
     /// Destructor of Font
 	~Font();
 
-    /// Writes Text in the matching Font-style
+    /// Writes Text in the window
     ///
     /// \param renderer The renderer of the window in which the text needs to be written
     /// \param text The text that needs to be written
     /// \param color The color of the text
-    /// \param background_color The background_color of the text
-    /// \param bold Tells if the text is bold or not
+    /// \param background_color The background color of the text
+    /// \param bold If the text should be bold or not
     /// \param x The X-position of the text
     /// \param y The Y-position of the text
 	void WriteText(SDL_Renderer* renderer, std::string text, Color color, Color background_color,

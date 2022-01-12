@@ -12,8 +12,8 @@ namespace win_condition {
 
 class BaseWinCondition {
 public:
-    /// Pure virtual method for the method checkWin()
-    virtual void checkWin() = 0;
+    /// Called once per frame, so the win condition can check whether the game ends
+    virtual void CheckWin() = 0;
 };
 
 } // namespace win_condition

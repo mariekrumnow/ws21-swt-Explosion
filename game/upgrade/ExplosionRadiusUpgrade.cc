@@ -34,7 +34,7 @@ bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
         player.IncreaseExplosionRadius(1);
     }
 
-    return true;
+    return false;
 }
 
 bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source) {

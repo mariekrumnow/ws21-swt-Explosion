@@ -15,33 +15,34 @@ namespace obstacles{
 class DestructibleBlock : public Block{
 public:
 
-    /// Calls the constructor of GameObject
+    /// Calls the constructor of Block
     DestructibleBlock();
 
     /// Creates a DestructibleBlock on the map
     ///
     /// \param x the x-coordinate of the new block
     /// \param y the y-coordinate of the new block
-    /// \return A Pointer on the newly created block or nullptr if an error occurred
+    /// \return A Pointer to the newly created block or nullptr if an error occurred
     static DestructibleBlock* CreateDestructibleBlock(int x, int y);
 
-    /// Removes block from the map, spawns an upgrade with a 35% chance and ends the explosion
+    /// Called when an Explosion interacts with the Block
+    /// Destroys the block and potentially spawns an item
     ///
     /// \param source The origin of the Explosion
-    /// \return true
+    /// \return Whether the block stops the explosion (true)
     bool OnExplosion(GameObject& source);
 
-    /// Returns the shape of the block
+    /// Returns the Tile of the block
     ///
     /// \return Graphics of the DestructibleBlock
     graphics::Tile GetTile();
 
-    /// Returns color of the block
+    /// Returns the Color of the block
     ///
-    /// \return Color of the Entity
+    /// \return Color of the DestructibleBlock
     graphics::Color GetColor();
 
-    /// Removes the GameObject from the current Game
+    /// Removes the GameObject from the current Game and notifies the GameManager
     void Destroy(); //so the GameManagers block count can be reduced
 };
 

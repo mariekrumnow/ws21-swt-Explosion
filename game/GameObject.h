@@ -13,7 +13,7 @@ namespace game {
 
 namespace game {
 
-/// abstract class of all Objects which are needed on the game map
+/// An object on the game map
 
 class Player;
 
@@ -26,35 +26,35 @@ public:
     /// Destructor of GameObject
     ~GameObject();
 
-    /// virtual method for the method OnExplosion
+    /// Called when the object interacts with an explosion
     ///
     /// \param source The source of the Explosion
-    /// \return false
+    /// \return Whether this object blocks the explosion
     virtual bool OnExplosion(GameObject& source);
 
-    /// virtual method for the method OnPlayerCollision
+    /// Called when a player collides with this object
     ///
-    /// \param player The Player that collides with the GameObject
-    /// \return false
+    /// \param player The Player that collides with this GameObject
+    /// \return Whether this object blocks the movement
     virtual bool OnPlayerCollision(Player& player);
 
-    /// virtual method for the method OnCollision
+    /// Called when an object collides with this object
     ///
-    /// \param source The GameObject that is colliding with the GameObject
-    /// \return false
+    /// \param source The GameObject that is colliding with this GameObject
+    /// \return Whether this object blocks the movement
     virtual bool OnCollision(GameObject& source);
 
-    /// Pure virtual method for the method GetTile
+    /// Returns the objects graphic tile
     ///
     /// \return Graphics of the Explosion
     virtual graphics::Tile GetTile()=0;
 
-    /// Pure virtual method for the method GetColor
+    /// Returns the objects color
     ///
     /// \return Color of the Explosion
     virtual graphics::Color GetColor()=0;
 
-    /// Pure virtual method for the method Update
+    /// Called once a frame
     ///
     /// \param delta_time The amount of time that has passed since last update
     virtual void Update(double delta_time)=0;
@@ -64,7 +64,7 @@ public:
     /// \return The X-coordinate of the GameObject
     virtual int GetX();
 
-    /// AW Getter for the Y-coordinate of the GameObject
+    /// A Getter for the Y-coordinate of the GameObject
     ///
     /// \return The Y-coordinate of the GameObject
     virtual int GetY();
@@ -76,12 +76,12 @@ public:
     /// \return true if no collision occurred
     virtual bool SetPosition(int x, int y);
 
-    /// virtual method that calls the DestroyGameObject method of GameManager
+    /// Calls the DestroyGameObject method of GameManager
     virtual void Destroy();
 
 private:
-    int x_ = 0; ///< Default X-coordinate of a new GameObject
-    int y_ = 0; ///< Default Y-coordinate of a new GameObject
+    int x_ = 0; ///< X-coordinate of the GameObject
+    int y_ = 0; ///< Y-coordinate of the GameObject
     bool destroyed_ = false; ///< Tells if the GameObject is destroyed or not
 };
 

@@ -7,21 +7,21 @@
 
 namespace game {
 
-/// The Window where the Game is played
+/// The window that handles rendering the game
 
 class GameWindow : public core::Window {
 public:
 
-    /// Creates a GameWindow
+    /// Constructor of the GameWindow
     GameWindow();
 
     /// Destructor of GameWindow
     ~GameWindow();
 
-    /// Draws a Window with 120x76 pixel
+    /// Draws the objects of the GameManager on the screen
     void Draw();
 
-    /// Updates the current game
+    /// Updates the current game manager
     ///
     /// \param delta_time The amount of time that has passed since last update
     void Update(double delta_time);

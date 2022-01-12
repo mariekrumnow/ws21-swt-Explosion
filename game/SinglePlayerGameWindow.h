@@ -9,7 +9,7 @@
 
 namespace game {
 
-/// The Interface for the SinglePlayerMode
+/// The Rendering class for the single player game mode
 
 class SinglePlayerGameWindow : public GameWindow {
 public:
@@ -20,18 +20,19 @@ public:
     /// Destructor of SinglePlayerGameWindow
     ~SinglePlayerGameWindow();
 
-    /// Draws the Interface for the SinglePlayerGameMode
+    /// Draws the Interface for the Single Player game mode,
+    /// and calls GameWindow::Draw
     void Draw();
 
-    /// Allocates the attributes timer_ and high_score_
+    /// Sets the timer and high score attributes to be rendered in the HUD
     ///
-    /// \param timer The time that was needed in this run
-    /// \param high_score The current lowest time that was needed
+    /// \param timer The time since the start of the run
+    /// \param high_score The current high score time
     void SetTimers(std::string timer, std::string high_score);
 
 private:
-    std::string timer_; ///< The time that was needed in this run
-    std::string high_score_; ///< The current lowest time that was needed
+    std::string timer_; ///< The time since the start of the run
+    std::string high_score_; ///< The current high score time
 };
 
 } // namespace game

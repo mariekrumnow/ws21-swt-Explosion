@@ -33,7 +33,7 @@ bool BombCountUpgrade::OnPlayerCollision(Player& player) {
     if (player.GetMaxBombCount() <= player.GetKMaxBombCount()) {
         player.IncreaseMaxBombCount(1);
     }
-    return true;
+    return false;
 }
 
 bool BombCountUpgrade::OnExplosion(GameObject& source){

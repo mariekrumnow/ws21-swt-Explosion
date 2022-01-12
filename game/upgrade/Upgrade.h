@@ -14,19 +14,20 @@ public:
     /// Calls the constructor of GameObject
     Upgrade();
 
-    /// Virtual method for the method OnCollision()
+    /// Called when an object collides with the upgrade
     ///
-    /// \param source The entity that is colliding with the Upgrade
-    /// \return false
+    /// \param source The object that is colliding with the Upgrade
+    /// \return Whether the movement is blocked (false)
     virtual bool OnCollision(GameObject& source);
 
-    /// Virtual method for the method OnExplosion()
+    /// Called when an object interacts with an explosion
     ///
     /// \param source The origin of the Explosion
-    /// \return false
+    /// \return Whether the explosion is blocked (false)
     virtual bool OnExplosion(GameObject& source);
 
-    /// Overwrites virtual function of GameObject
+    /// Implementation of virtual function of GameObject
+    /// Called once per frame, does nothing
     ///
     /// \param delta_time The amount of time that has passed since last update
     virtual void Update(double delta_time);

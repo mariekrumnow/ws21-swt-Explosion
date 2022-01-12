@@ -33,7 +33,7 @@ bool SpeedUpgrade::OnPlayerCollision(Player& player) {
     if (player.GetSpeed() < player.GetKMaxSpeed()) {
         player.IncreaseSpeed(1);
     }
-    return true;
+    return false;
 }
 
 bool SpeedUpgrade::OnExplosion(GameObject& source){

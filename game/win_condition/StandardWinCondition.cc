@@ -10,7 +10,7 @@
 namespace game {
 namespace win_condition{
 
-void StandardWinCondition::checkWin() {
+void StandardWinCondition::CheckWin() {
 
     if (GameManager::GetCurrentGame().GetPlayers().size() <= 1) {
         if (GameManager::GetCurrentGame().GetPlayers().size() == 1) {

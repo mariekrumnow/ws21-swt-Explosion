@@ -26,16 +26,18 @@ public:
     /// \return A Pointer on the newly created upgrade or nullptr if an error occurred
     static ExplosionRadiusUpgrade* CreateExplosionRadiusUpgrade(int x, int y);
 
-    /// Increases the explosion radius of the Player, if possible, and removes the upgrade
+    /// Called when a Player collides with the upgrade
+    /// Increases the explosion radius of the Player if possible, and removes the upgrade
     ///
     /// \param player The Player that collides with the Upgrade
-    /// \return true
+    /// \return Whether the movement is blocked (false)
     bool OnPlayerCollision(Player& player);
 
+    /// Called when an Explosion interacts with the upgrade
     /// Removes the Upgrade from the map
     ///
     /// \param source The origin of the Explosion
-    /// \return false
+    /// \return Whther the explosion is stopped (false)
     bool OnExplosion(GameObject& source);
 
     /// Returns the Color of the Upgrade
@@ -43,7 +45,7 @@ public:
     /// \return Color of the Entity
     virtual graphics::Color GetColor();
 
-    /// Returns the shape of the Upgrade
+    /// Returns the tile of the Upgrade
     ///
     /// \return Graphics of the Upgrade
     virtual graphics::Tile GetTile();

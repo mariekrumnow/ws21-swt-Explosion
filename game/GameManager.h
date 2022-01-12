@@ -20,7 +20,8 @@ namespace game {
 
 class GameManager {
 public:
-    /// Creates Vector and fills it with GameObjects
+    /// Initializes the map vectors used for object storage
+    /// Deletes previous GameManager
     ///
     /// \param width width of the map
     /// \param height height of the map
@@ -28,7 +29,7 @@ public:
     GameManager(const int width, const int height, win_condition::BaseWinCondition* winCondition);
 
     /// Destructor of GameManager
-    /// Deletes GameObjects
+    /// Deletes all remainig GameObjects
     ~GameManager();
 
     /// Updates all GameObjects and checks if the Win condition is fulfilled
@@ -36,38 +37,39 @@ public:
     /// \param delta_time The amount of time that has passed since last update
     void Update(double delta_time);
 
-    /// A Getter for the current Game
+    /// A Getter for the current GameManager
     ///
-    /// \return A reference to the current game
+    /// \return A reference to the current game manager
     static GameManager& GetCurrentGame();
 
-    /// removes an object from the map
+    /// Removes an object from the map
     ///
     /// \param game_object The GameObject that should be removed from the game
     void RemoveGameObject(GameObject& game_object);
 
-    /// removes an object from the map and adds it to the destroyed objects
+    /// Removes an object from the map and adds it to the destroyed objects
     ///
     /// \param game_object The Gameobject that should be removed and deleted
     void DestroyGameObject(GameObject& game_object);
 
+    /// Adds a new GameObject to the map
     ///
     /// \param game_object The new GameObject that needs to be added
     void AddGameObject(GameObject& game_object);
 
-    /// returns false if position isn't valid
+    /// Repositions a GameObject
     ///
-    /// \param game_object The GameObject that changes his position
+    /// \param game_object The GameObject that changes its position
     /// \param x The new X-coordinate
     /// \param y The new Y-coordinate
-    /// \return true if no error occured
+    /// \return Whether the repositioning was successful
     bool ChangeObjectPosition(GameObject& game_object, int x, int y);
 
     /// A Getter for all GameObjects at a specific position
     ///
     /// \param x The X-coordinate of the searched GameObject
     /// \param y The Y-coordinate of the searched GameObject
-    /// \return A reference to the GameObject that is at the coordinates (x,y)
+    /// \return A reference to a vector of GameObjects that is at the coordinates (x,y)
     std::vector<GameObject*>& GetObjectsAtPos(int x, int y);
 
     /// A Getter for all GameObjects
@@ -85,39 +87,39 @@ public:
     /// \return The height of the map
     int GetHeight() const;
 
-    /// Removes a player from the current Game
+    /// Removes a player from the player list
     ///
     /// \param player The Player that needs to be removed
     void RemovePlayer(Player &player);
 
-    /// Adds a player in the current game
+    /// Adds a player to the player list
     ///
     /// \param player The Player that needs to be added
     void AddPlayer(Player* player);
 
-    /// A Getter for all Players
+    /// Get the player list
     ///
     /// \return A vector of all Players on the map
     std::vector<Player*> GetPlayers();
 
-    /// Adds a DestructibleBlock to the destructible_block_count_
+    /// Adds a DestructibleBlock to the destructible block count
     void AddDestructibleBlock();
 
-    /// Removes a DestructibleBlock to the destructible_block_count
+    /// Removes a DestructibleBlock to the destructible block count
     void RemoveDestructibleBlock();
 
-    /// A Getter for the destructible_block_count_
+    /// A Getter for the destructible block count
     ///
     /// \return The amount of DestructibleBlocks on the map
     int GetDestructibleBlockCount();
 
 
 private:
-    std::vector<GameObject*>** objects_by_pos_; ///< A vector with every GameObject sorted by position on the map
-    std::vector<GameObject*> empty_object_vector_; ///< As a default for oob positions
+    std::vector<GameObject*>** objects_by_pos_; ///< A 2D array of vectors with every GameObject sorted by position on the map
+    std::vector<GameObject*> empty_object_vector_; ///< The default object vector for oob positions
     std::list<GameObject*> destroyed_game_objects_; ///< A list of all GameObject that have been destroyed
-    static GameManager* current_game_;  ///< A pointer to the current game
-    win_condition::BaseWinCondition* win_condition_;    ///< The condition on which the game ends
+    static GameManager* current_game_;  ///< A pointer to the current game manager
+    win_condition::BaseWinCondition* win_condition_;    ///< The win condition on which manages the end of the game 
 
     std::vector<Player*> players_;  ///< A vector with references to all Players on the map
     int destructible_block_count_ = 0;  ///< The amount of DestructibleBlocks on the map

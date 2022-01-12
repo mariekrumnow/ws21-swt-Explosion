@@ -14,7 +14,7 @@ namespace menu{
 
 class InstructionWindow : public MenuWindow {
 public:
-    /// Initialises the instructions and the button to start the game
+    /// Initialises the instructions and the buttons
     InstructionWindow();
 
     /// Shows all MenuItems on screen and draws instruction text

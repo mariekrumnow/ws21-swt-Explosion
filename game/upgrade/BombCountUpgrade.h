@@ -25,16 +25,18 @@ class BombCountUpgrade : public Upgrade {
     /// \return A Pointer on the newly created upgrade or nullptr if an error occurred
     static BombCountUpgrade* CreateBombCountUpgrade(int x, int y);
 
-    /// Increases the bomb_count of the Player, if possible, and removes the upgrade
+    /// Called when a player collides with the upgrade
+    /// Increases the max bomb count of the Player, if possible, and removes the upgrade
     ///
     /// \param player The Player that collides with the Upgrade
-    /// \return true
+    /// \return Whether the upgrade blocks the movement (false)
     bool OnPlayerCollision(Player& player);
 
+    /// Called when an explosion interacts with the upgrade
     /// Removes the Upgrade from the map
     ///
     /// \param source The origin of the Explosion
-    /// \return false
+    /// \return Whether the explosion is stopped (false)
     bool OnExplosion(GameObject& source);
 
     /// Returns the color of the Upgrade

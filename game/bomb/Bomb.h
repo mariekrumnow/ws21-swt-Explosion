@@ -16,7 +16,7 @@ namespace game {
 namespace bomb {
 
 
-/// A Bomb that can be placed by a Player and can explode
+/// A Bomb that can be placed by a Player and explodes after a determined time
 class Bomb : public GameObject{
 
 public:
@@ -28,17 +28,16 @@ public:
 	Bomb(Player* owner, int power, double explosion_delay);
 
     /// Creates a Bomb and plays the matching Sound
-    /// If a nullptr is returned, an error occurred or the object couldn't be placed
     ///
     /// \param x The X-coordinate of the Bomb
     /// \param y The Y-coordinate of the Bomb
-    /// \param owner The Player that placed the bomb
-    /// \param power The explosion radius of the owner
+    /// \param owner The Player that placed the bomb (can be nullptr)
+    /// \param power The explosion radius of the bomb
     /// \param explosion_delay Time that has to pass till it explodes
-    /// \return A reference to the new Bomb
+    /// \return A reference to the new Bomb, or nullptr if the placement failed
 	static Bomb* CreateBomb(int x, int y, Player* owner, int power, double explosion_delay);
 
-    /// Deconstructor of Bomb
+    /// Destructor of Bomb
 	~Bomb();
 
     /// Detects the owner of the Bomb
@@ -46,17 +45,18 @@ public:
     /// \return A reference of the Player that placed the Bomb
 	Player* GetOwner();
 
-    /// Virtual method for the method OnExplosion
-    /// Calls the method Explode()
+    /// Called when an Explosion interacts with the bomb
+    /// Calls the method Explode() if the bomb isn't exploding
     ///
-    /// \param source The origin of the Explosion
-    /// \return true
+    /// \param source The source of the Explosion
+    /// \return Whether the bomb stops the propagation of the explosion
 	virtual bool OnExplosion(GameObject& source);
 
-    /// Virtual method for the method OnCollision
+    /// Called when an object collides with the bomb
+	/// Returns true if the bomb isn't exploding
     ///
     /// \param source The other Entity that is Colliding with this one
-    /// \return true if the Bomb isn't exploding yet, else false
+    /// \return Whether the bomb stops the object
 	virtual bool OnCollision(GameObject& source);
 
     /// Returns color of the Bomb

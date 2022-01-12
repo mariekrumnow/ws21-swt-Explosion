@@ -13,32 +13,32 @@
 namespace core {
 
 /// AppManager: The main class of the program, containing a static reference to
-/// itself and the main loop of the game
+/// itself, the active window instance and the main loop of the game
 
 class AppManager {
 
 public:
-    /// A Getter to return the active GameManager
+    /// A Getter to return the active AppManager
     ///
     /// \return A reference to the current AppManager
     static AppManager& GetAppManager();
 
-    /// A Getter to return the current graphics
+    /// A Getter to return the current GraphicsManager
     ///
     /// \return
     graphics::GraphicsManager& GetGraphics();
 
-    /// A Getter to return the current sounds
+    /// A Getter to return the current SoundManager
     ///
     /// \return
     sound::SoundManager& GetSound();
 
     /// Creates the GraphicsManager and the SoundManager
     ///
-    /// init_graphics can be set to false to disable graphical function for testing
+    /// init_hardware can be set to false to disable graphical function for testing
     ///
     /// \param title Name of the window
-    /// \param init_hardware If the graphic and sound hardware interfaces are started in normal-mode or Unit-Testmode
+    /// \param init_hardware If the graphic and sound hardware interfaces are started normally or disabled for unit testing
     explicit AppManager(std::string title, bool init_hardware);
 
     /// Deconstructor of AppManager
@@ -59,7 +59,7 @@ public:
     /// \param deltaTime Time that passed since last call
     void RunFrame(double deltaTime);
 
-    /// Run game for ever
+    /// Run game forever
     [[noreturn]] void Run();
 
     ///ends the game after the current frame has completed
@@ -67,7 +67,7 @@ public:
 
     /// Loads all assets for a theme
     ///
-    /// \param theme Graphic theme to load
+    /// \param theme The theme to load
     /// \return bool if the loading succeeded or not
     bool LoadTheme(std::string theme);
 
@@ -78,12 +78,12 @@ public:
 
 private:
 
-    Window* active_window_; ///< The current Window which is managed by the AppManager
+    Window* active_window_; ///< The current Window
 
-    graphics::GraphicsManager graphics_; ///< The current GraphicsManager which is used
-    sound::SoundManager sound_; ///< The current SoundManager which is used
+    graphics::GraphicsManager graphics_; ///< The current GraphicsManager
+    sound::SoundManager sound_; ///< The current SoundManager
 
-    bool is_running_;   ///< A bool to see if the active Window is still running
+    bool is_running_;   ///< A bool that determins whether the main loop should be terminated
 
     static AppManager* manager_; ///< The static reference to the current AppManager
 };
