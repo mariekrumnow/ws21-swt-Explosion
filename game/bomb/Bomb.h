@@ -53,7 +53,7 @@ public:
 	virtual bool OnExplosion(GameObject& source);
 
     /// Called when an object collides with the bomb
-	/// Returns true if the bomb isn't exploding
+    /// Returns true if the bomb isn't exploding
     ///
     /// \param source The other Entity that is Colliding with this one
     /// \return Whether the bomb stops the object
