@@ -36,7 +36,7 @@ public:
     /// Removes the Upgrade from the map
     ///
     /// \param source The origin of the Explosion
-    /// \return Whther the explosion is stopped (false)
+    /// \return Whether the explosion is stopped (false)
     bool OnExplosion(GameObject& source);
 
     /// Returns the color of the Upgrade
