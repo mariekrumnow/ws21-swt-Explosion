@@ -3,75 +3,124 @@
 #ifndef BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_
 #define BOMBERMAN_GRAPHICS_GRAPHICSMANAGER_H_
 
-#include "TileSet.h"
-#include "Font.h"
-
+#include <cstdlib>
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include <cstdlib>
+
+#include "Font.h"
+#include "TileSet.h"
 
 namespace graphics {
 
-    enum class FontSize {
-      kSmall,
-      kMedium,
-      kLarge
-    };
+/// enum
+/// for Font-Sizes
+enum class FontSize {
+    kSmall,     ///< Enum value 0
+    kMedium,    ///< Enum value 1
+    kLarge      ///< Enum value 2
+};
 
-/// Manages all the graphics
-    class GraphicsManager {
-    public:
-        const int kWindowHeight = 900;
-        const int kWindowWidth = 1100;
+/// The object handling rendering and keyboard inputs
+class GraphicsManager {
+public:
 
-        GraphicsManager(std::string title, bool init_graphics);
-        ~GraphicsManager();
+    /// Initializes everything related to SDL-Graphics
+    ///
+    /// \param title The title of the window
+    /// \param init_graphics If the graphic interface is started in normal-mode or Unit-Testmode
+    GraphicsManager(std::string title, bool init_graphics);
 
-        /// call at the start of every frame
-        void BeginFrame();
-        void DrawTile(Tile tile, Color color, int x, int y);
-        /// sizes 14, 20, and 30 are supported
-        void WriteText(std::string text, Color color, FontSize size, bool bold, int x, int y);
-        /// call at the end of every frame
-        void EndFrame();
+    /// Deletes and ends everything related to SDL-Graphics
+    ~GraphicsManager();
 
-        void SetFullscreen(bool fullscreen);
+    /// Called at the start of every frame
+    /// Clears the screen and processes incoming keyboard and window events
+    void BeginFrame();
 
-        void SetBackgroundColor(Color background_color);
+    /// Draws a given tile at a specific Position
+    ///
+    /// \param tile The tile that needs to be drawn
+    /// \param color The color of the tile
+    /// \param x The X-coordinate of the new tile
+    /// \param y The Y-coordinate of the new tile
+    void DrawTile(Tile tile, Color color, int x, int y);
 
-        /// only returns true on the first frame the key is pressed
-        bool IsKeyPressed(int scancode);
-        /// returns true as long as the key is pressed
-        bool IsKeyHeld(int scancode);
+    /// Writes Text in the matching Font-style
+    ///
+    /// \param text The text that needs to be written
+    /// \param color The color of the text
+    /// \param size The size of the text
+    /// \param bold If the text is bold or not
+    /// \param x The X-coordinate of the text
+    /// \param y The Y-coordinate of the text
+    void WriteText(std::string text, Color color, FontSize size, bool bold, int x, int y);
 
-        [[noreturn]] void Quit();
+    /// Called at the end of every frame
+    /// Updates the screen contents
+    void EndFrame();
 
-        void Sleep(int millis);
+    /// Switches fromrm window-mode to fullscreen and vice versa
+    ///
+    /// \param fullscreen True: Switch to fullscreen, False: Switch to windowed
+    void SetFullscreen(bool fullscreen);
 
-        //loads the graphics assets of a theme
-        bool LoadTileset(std::string theme);
-        bool LoadFonts(std::string theme);
+    /// Change the background-color of the window
+    ///
+    /// \param background_color The background-color of the window
+    void SetBackgroundColor(Color background_color);
 
-    private:
-        TileSet* game_tileset_;
-        SDL_Window* window_;
-        SDL_Renderer* renderer_;
-        Color background_color_;
+    /// Checks if the Key is pressed
+    /// Only returns true on the first frame the key is pressed
+    ///
+    /// \param scancode The key that is being pressed
+    /// \return true on the first frame the key is pressed
+    bool IsKeyPressed(int scancode);
 
-        int x_draw_offset_=0;
-        int y_draw_offset_=0;
+    /// Checks if the Key is held
+    /// returns true as long as the key is pressed
+    ///
+    /// \param scancode The key that is being pressed
+    /// \return true as long as the key is being pressed
+    bool IsKeyHeld(int scancode);
 
-        Font* font_small_;
-        Font* font_medium_;
-        Font* font_large_;
+    /// closes the Game
+    [[noreturn]] void Quit();
 
-        /// stores all keys that were already held on the last frame
-        bool key_not_pressed_[SDL_NUM_SCANCODES];
-        /// stores all keys that are held on this frame
-        bool key_held_[SDL_NUM_SCANCODES];
-        /// a key gets set to just held on the first frame,
-        /// and then to "not pressed" and held on the second
-    };
+    /// Delays the game
+    ///
+    /// \param millis The time, in milliseconds, to wait
+    void Sleep(int millis);
+
+    /// Loads the graphics assets of a theme
+    ///
+    /// \param theme The theme that is chosen
+    /// \return true if no error occurred
+    bool LoadTileset(std::string theme);
+
+    /// Creates the font of the theme
+    ///
+    /// \param theme The theme that is chosen
+    /// \return true if no error occurred
+    bool LoadFonts(std::string theme);
+
+    const int kWindowHeight = 900; ///< The height of the window
+    const int kWindowWidth = 1100; ///< The width of the window
+
+private:
+    bool key_not_pressed_[SDL_NUM_SCANCODES]; ///< stores all keys that were already held on the last frame
+    bool key_held_[SDL_NUM_SCANCODES]; ///< stores all keys that are held on this frame
+    TileSet* game_tileset_; ///< The current tileset for the game
+    SDL_Window* window_; ///< The window of the game
+    SDL_Renderer* renderer_; ///< The renderer of the window
+    Color background_color_; ///< The background color of the window
+
+    int x_draw_offset_=0; ///< X-offset for drawing
+    int y_draw_offset_=0; ///< Y-offset for drawing
+
+    Font* font_small_; ///< The small font
+    Font* font_medium_; ///< The medium font
+    Font* font_large_; ///< The large font
+};
 
 } // namespace graphics
 

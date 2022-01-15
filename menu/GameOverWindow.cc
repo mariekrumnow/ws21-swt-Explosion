@@ -9,8 +9,6 @@
 #include "../sound/Music.h"
 #include "MainWindow.h"
 
-
-
 namespace menu{
 
 enum GameOverButton {kExit2=0, kNewRound=1, kToMain=2};

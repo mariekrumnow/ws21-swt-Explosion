@@ -2,10 +2,10 @@
 
 #include "GraphicsManager.h"
 
-#include "Font.h"
-
-#include <SDL_ttf.h>
 #include <iostream>
+#include <SDL_ttf.h>
+
+#include "Font.h"
 
 namespace graphics {
 
@@ -87,20 +87,20 @@ GraphicsManager::~GraphicsManager() {
 void GraphicsManager::BeginFrame() {
     if (window_ == nullptr)
         return;
-    ///fill the screen black
+    //fill the screen black
     SDL_SetRenderDrawColor(renderer_, background_color_.red_, background_color_.green_, background_color_.blue_, 255);
     SDL_RenderClear(renderer_);
 
-    ///All keys held on the previous frame are now not pressed anymore
+    //All keys held on the previous frame are now not pressed anymore
     for (int i=0; i<SDL_NUM_SCANCODES; i++) {
         key_not_pressed_[i] = key_held_[i];
     }
 
-    ///handle all new events
+    //handle all new events
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
         switch (event.type) {
-            ///events sent by the window manager
+            //events sent by the window manager
             case SDL_WINDOWEVENT:
                 switch (event.window.event) {
                     case SDL_WINDOWEVENT_CLOSE:
@@ -108,11 +108,11 @@ void GraphicsManager::BeginFrame() {
                         break;
                 }
                 break;
-            ///quit event
+            //quit event
             case SDL_QUIT:
                 Quit();
                 break;
-            ///events sent by the keyboard
+            //events sent by the keyboard
             case SDL_KEYDOWN:
                 key_held_[event.key.keysym.scancode] = true;
                 break;
@@ -142,7 +142,7 @@ void GraphicsManager::WriteText(std::string text,Color color,
         case FontSize::kMedium:
             font = font_medium_;
             break;
-            case FontSize::kLarge:
+        case FontSize::kLarge:
             font = font_large_;
     }
 

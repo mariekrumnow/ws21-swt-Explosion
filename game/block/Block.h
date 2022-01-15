@@ -9,25 +9,28 @@
 namespace game {
 namespace obstacles{
 
-///  Abstract class to represent destructible and indestructible blocks
+/// Abstract class to represent destructible and indestructible blocks
 class Block : public GameObject{
 public:
 
-    ///  Calls the constructor of GameObject
+    /// Calls the constructor of GameObject
     Block();
 
-    ///   Overwrites virtual function of GameObject
+    /// An empty Update function
+    ///
     /// \param delta_time The amount of time that has passed since last update
     void Update(double delta_time);
 
-    ///  Sends signal that something collided with a block
+    /// Called when an object collides with the block, returns true
     ///
     /// \param source The object that collided with this block
+    /// \return Whether this object hinders movement
     bool OnCollision(GameObject& source);
 
-    /// Sends signal that the player that was passed over collided with a block
+    /// Called when a player collides with the block, returns true
     ///
-    /// \param Player The player_object that collided with this block
+    /// \param Player The player that collided with this block
+    /// \return Whether this object hinders movement
     bool OnPlayerCollision(Player& Player);
 
 };

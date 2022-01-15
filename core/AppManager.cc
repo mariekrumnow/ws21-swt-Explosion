@@ -5,12 +5,12 @@
 #include <chrono>
 #include <iostream>
 
-#include "../graphics/Keys.h"
 #include "../graphics/GraphicsManager.h"
-#include "Window.h"
-#include "../sound/SoundEffect.h"
+#include "../graphics/Keys.h"
 #include "../sound/Music.h"
+#include "../sound/SoundEffect.h"
 #include "../sound/SoundManager.h"
+#include "Window.h"
 
 namespace core {
 
@@ -37,14 +37,11 @@ AppManager::AppManager(std::string title, bool init_hardware) :
         is_running_(true) {
         //ensure the reference to the AppManager stays active, and there is only one.
 
-
         if(AppManager::manager_ != nullptr) {
             delete AppManager::manager_;
         }
-
         AppManager::manager_ = this;
         active_window_ = nullptr;
-
         LoadTheme("default");
 }
 

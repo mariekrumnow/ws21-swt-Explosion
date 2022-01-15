@@ -4,10 +4,10 @@
 
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
+#include "../../sound/SoundEffect.h"
 #include "../GameManager.h"
 #include "../GameObject.h"
 #include "../Player.h"
-#include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{
@@ -33,7 +33,7 @@ bool SpeedUpgrade::OnPlayerCollision(Player& player) {
     if (player.GetSpeed() < player.GetKMaxSpeed()) {
         player.IncreaseSpeed(1);
     }
-    return true;
+    return false;
 }
 
 bool SpeedUpgrade::OnExplosion(GameObject& source){

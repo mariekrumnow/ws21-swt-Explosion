@@ -11,23 +11,27 @@
 #include "../graphics/Color.h"
 #include "MenuWindow.h"
 
-
 namespace menu{
 
-/// Shown after a game has ended, shows the outcome and an exit Item
+/// Shown after a game has ended, shows the outcome anf offers options to restart of exit
+
 class GameOverWindow : public MenuWindow {
 public:
     /// Initialises the game outcome text based on the winning player
+    ///
+    /// \param winner The winner of the round
     GameOverWindow(game::Player *winner);
 
-    /// Shows all MenuItems on screen and draws instruction text
+    /// Shows all MenuItems on screen and draws game over text
     void Draw();
 
-    /// Activates the effect of the respective MenuItem
+    /// Activates the effect of the selected MenuItem
+    ///
+    /// \param selected_option The number of the selected option in the menu
     void OnMenuItemSelect(int selected_option);
 
 private:
-    game::Player *winner_;
+    game::Player *winner_; ///< The Player that won
 
 };
 

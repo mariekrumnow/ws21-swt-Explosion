@@ -4,10 +4,10 @@
 
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"
+#include "../../sound/SoundEffect.h"
 #include "../GameManager.h"
 #include "../GameObject.h"
 #include "../Player.h"
-#include "../../sound/SoundEffect.h"
 
 namespace game{
 namespace upgrade{
@@ -34,7 +34,7 @@ bool ExplosionRadiusUpgrade::OnPlayerCollision(Player& player) {
         player.IncreaseExplosionRadius(1);
     }
 
-    return true;
+    return false;
 }
 
 bool ExplosionRadiusUpgrade::OnExplosion(GameObject& source) {

@@ -4,14 +4,13 @@
 
 #include <iostream>
 #include <fstream>
+#include <SDL_mixer.h>
 
 #ifdef _WIN32
 #include <windows.h>
 #else
 #include <filesystem>
 #endif
-
-#include <SDL_mixer.h>
 
 namespace sound {
 

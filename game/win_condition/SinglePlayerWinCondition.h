@@ -4,25 +4,32 @@
 #ifndef BOMBERMAN_SINGLEPLAYERWINCONDITION_H
 #define BOMBERMAN_SINGLEPLAYERWINCONDITION_H
 
-#include "BaseWinCondition.h"
-#include "../SinglePlayerGameWindow.h"
-
 #include <chrono>
+
+#include "../SinglePlayerGameWindow.h"
+#include "BaseWinCondition.h"
 
 namespace game {
 
 namespace win_condition {
 
+/// Win condition for single player games
+
 class SinglePlayerWinCondition : public BaseWinCondition {
 public:
+    /// Initializes the timer
+    ///
+    /// \param window window for the single player mode
     SinglePlayerWinCondition(SinglePlayerGameWindow* window);
-    void checkWin() override;
+
+    /// checks if all destructible blocks are destroyed or the Player died
+    /// If so, displays the High Score screen and saves the high score appropriately
+    void CheckWin() override;
 
 private:
-    SinglePlayerGameWindow* window_;
-
-    std::chrono::system_clock::time_point start_time_ ;
-    int high_score_; //highscore in seconds
+    SinglePlayerGameWindow* window_;    ///< The active game window of single player mode
+    std::chrono::system_clock::time_point start_time_ ; ///< The time the game started
+    int high_score_;    ///< high score in milliseconds
 };
 
 } // namespace win_condition

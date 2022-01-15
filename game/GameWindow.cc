@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-#include "../graphics/Tile.h"
 #include "../graphics/Color.h"
+#include "../graphics/Tile.h"
 #include "GameManager.h"
 
 

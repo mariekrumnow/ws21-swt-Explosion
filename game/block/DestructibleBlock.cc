@@ -1,10 +1,9 @@
 // Autor: Nina, Marie
 
-
-#include <time.h>
-#include <iostream>
-
 #include "DestructibleBlock.h"
+
+#include <iostream>
+#include <time.h>
 
 #include "../../graphics/Color.h"
 #include "../../graphics/Tile.h"

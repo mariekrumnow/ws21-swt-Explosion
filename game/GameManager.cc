@@ -5,11 +5,11 @@
 #include <iostream>
 #include <vector>
 
-#include "GameObject.h"
-#include "Player.h"
 #include "../core/AppManager.h"
 #include "../graphics/Keys.h"
 #include "../menu/GameOverWindow.h"
+#include "GameObject.h"
+#include "Player.h"
 
 namespace game {
 
@@ -63,7 +63,7 @@ void GameManager::Update(double delta_time) {
 	}
 
     if (this->win_condition_)
-        this->win_condition_->checkWin();
+        this->win_condition_->CheckWin();
 }
 
 GameManager& GameManager::GetCurrentGame() {

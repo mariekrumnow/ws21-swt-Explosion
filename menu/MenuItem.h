@@ -13,7 +13,7 @@ namespace menu{
 /// Clickable Text on Menus
 class MenuItem {
 public:
-    /// Creates an Item and puts it in the window
+    /// Creates an Item
     MenuItem(std::string text, int option_num, int x, int y);
     void SetText(std::string text);
 
@@ -25,12 +25,12 @@ public:
 private:
     /// What's written on the Item
     std::string text_;
-    /// The higher the number the lower the Item, 0 = top
+    /// The position in the item list the item has, 0 = top
     int option_num_;
     /// Position of the Item
     int x_;
     int y_;
-    
+
 };
 
 }   // namespace menu

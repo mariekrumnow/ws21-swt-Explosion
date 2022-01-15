@@ -2,12 +2,11 @@
 
 #include "Bomb.h"
 
-#include "../core/AppManager.h"
-#include "../sound/SoundEffect.h"
-
 #include <cmath>
 #include <iostream>
 
+#include "../core/AppManager.h"
+#include "../sound/SoundEffect.h"
 #include "Explosion.h"
 
 
@@ -21,7 +20,7 @@ Bomb::Bomb(Player* owner, int power, double explosion_delay) {
 	exploding_ = false;
 }
 
-/// If a nullptr is returned, an error occured or the object couldn't be placed
+// If a nullptr is returned, an error occured or the object couldn't be placed
 Bomb* Bomb::CreateBomb(int x, int y, Player* owner, int power, double explosion_delay){
 	Bomb* temp = new Bomb(owner,power,explosion_delay);
 	if (temp!=nullptr) {
@@ -56,7 +55,7 @@ bool Bomb::OnExplosion(GameObject& source) {
 }
 
 bool Bomb::OnCollision(GameObject& source) {
-	return !exploding_; ///exploding bombs aren't solid
+	return !exploding_; //exploding bombs aren't solid
 }
 
 graphics::Tile Bomb::GetTile() {
@@ -93,7 +92,7 @@ void Bomb::Explode() {
 	core::AppManager::GetAppManager().GetSound()
 		.PlaySoundEffect(sound::effect_bomb_explode, 0);
 
-	exploding_ = true; ///so the bomb isn't solid anymore
+	exploding_ = true; //so the bomb isn't solid anymore
 
 	if (owner_) {
 		owner_->OnBombDestroyed(*this);
@@ -106,24 +105,24 @@ void Bomb::Explode() {
 	int current_x = GetX();
 	int current_y = GetY();
 
-	///always spawn explosion where bomb is
+	//always spawn explosion where bomb is
 	SpawnExplosion(current_x, current_y,10);
 
-	///for each of the four directions
+	//for each of the four directions
 	for (int turn=0; turn<4; turn++) {
-		///explode for the given distance
+		//explode for the given distance
 		for (int d=1; d<=power_; d++) {
-			///get rotated position
+			//get rotated position
 			int x = current_x + x_turn[turn]*d;
 			int y = current_y + y_turn[turn]*d;
 
-			///check for obstacles
+			//check for obstacles
 			bool stopped = false;
 			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
 				stopped |= go->OnExplosion(*this);
 			}
             int oriented=turn;
-            ///differetiation between middle- and end- explosions
+            //differetiation between middle- and end- explosions
             if (d==power_) {
                 switch(turn){
                     case 0 :
@@ -140,7 +139,7 @@ void Bomb::Explode() {
                         break;
                 }
             }
-			///if none there, spawn explosion
+			//if none there, spawn explosion
 			if (stopped) {
 				//if the tile that stopped you is now empty, place end piece
 				if (game.GetObjectsAtPos(x,y).size() == 0) {

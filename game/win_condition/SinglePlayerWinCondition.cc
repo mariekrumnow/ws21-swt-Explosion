@@ -1,18 +1,19 @@
 //Autor: Tobias
 
 #include "SinglePlayerWinCondition.h"
-#include "../GameManager.h"
-#include "../../menu/HighScoreWindow.h"
 
 #include <chrono>
-#include <sstream>
-#include <iomanip>
 #include <fstream>
+#include <iomanip>
+#include <sstream>
+
+#include "../../menu/HighScoreWindow.h"
+#include "../GameManager.h"
+
 
 namespace chr = std::chrono;
 
 namespace game {
-
 namespace win_condition {
 
 const std::string kHighScoreFile = "highscore.txt";
@@ -30,7 +31,7 @@ SinglePlayerWinCondition::SinglePlayerWinCondition(SinglePlayerGameWindow* windo
     high_score_file.close();
 }
 
-void SinglePlayerWinCondition::checkWin() {
+void SinglePlayerWinCondition::CheckWin() {
 
     bool game_over = false;
     bool win = false;

@@ -8,9 +8,12 @@
 namespace game {
 namespace win_condition {
 
+/// Abstract Class for the win conditions
+
 class BaseWinCondition {
 public:
-    virtual void checkWin() = 0;
+    /// Called once per frame, so the win condition can check whether the game ends
+    virtual void CheckWin() = 0;
 };
 
 } // namespace win_condition

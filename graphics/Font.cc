@@ -2,11 +2,11 @@
 
 #include "Font.h"
 
-#include "Color.h"
-
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <string>
+
+#include "Color.h"
 
 namespace graphics {
 
