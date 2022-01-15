@@ -16,7 +16,7 @@ namespace win_condition {
 class StandardWinCondition : public BaseWinCondition {
 public:
 
-    /// Checks if the playe rcount is <=1 and displays the GameOverWindow
+    /// Checks if the player count is <=1 and displays the GameOverWindow
     void CheckWin() override;
 
 };
