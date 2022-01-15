@@ -13,7 +13,7 @@ namespace game {
 
 namespace game {
 
-/// An object on the game map
+/// Abstract class of objects on the game map
 
 class Player;
 
