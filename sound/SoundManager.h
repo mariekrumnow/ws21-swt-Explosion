@@ -36,7 +36,8 @@ public:
 	//will only allow the sound effect to be played again once it's stopped playing.
 	void PlaySoundEffectAlone(SoundEffect* effect, int loops);
 
-	void StopAllPlayback(); //call this before any music assets are deleted!
+	void StopPlayback(); //call this before any music assets are deleted!
+	void StopMusicPlayback();
 
 	//only used as a global callback, do not call manually
 	void OnChannelFinished(int channel);

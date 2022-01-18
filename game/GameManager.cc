@@ -155,8 +155,21 @@ void GameManager::AddPlayer(Player* player) {
     players_.push_back(player);
 }
 
-int GameManager::GetPlayerCount() {
-    return (int)players_.size();
+std::vector<Player*> GameManager::GetPlayers() {
+    return players_;
 }
+
+void GameManager::AddDestructibleBlock() {
+    ++destructible_block_count_;
+}
+
+void GameManager::RemoveDestructibleBlock() {
+    --destructible_block_count_;
+}
+
+int GameManager::GetDestructibleBlockCount() {
+    return destructible_block_count_;
+}
+
 
 } // namespace game

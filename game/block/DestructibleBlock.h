@@ -34,6 +34,8 @@ public:
 
     ///  Returns color of the block
     graphics::Color GetColor();
+
+    void Destroy(); //so the GameManagers block count can be reduced
 };
 
 } // namespace obstacles

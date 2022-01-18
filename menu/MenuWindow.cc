@@ -21,18 +21,18 @@ void MenuWindow::Update(double delta_time){
 
       // Goes up or down in the selectable MenuItems
       if (graphics.IsKeyPressed(graphics::key_menu_up[0]) || graphics.IsKeyPressed(graphics::key_menu_up[1])) {
-          core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
+          core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
 
             selected_option_ = (selected_option_==0) ? menu_items_.size()-1 : selected_option_-1;
       } else if (graphics.IsKeyPressed(graphics::key_menu_down[0])
                     || graphics.IsKeyPressed(graphics::key_menu_down[1])) {
-            core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
+            core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
             selected_option_ = (selected_option_+1) %menu_items_.size();
       }
 
       // Sends signal that the MenuItem wants to be activated
       if (graphics.IsKeyPressed(graphics::key_return)) {
-          core::AppManager::GetAppManager().GetSound().PlaySoundEffect(sound::effect_menu_click, 0);
+          core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
             OnMenuItemSelect(selected_option_);
       }
 }
