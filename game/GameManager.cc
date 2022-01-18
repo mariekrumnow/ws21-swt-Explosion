@@ -59,9 +59,8 @@ void GameManager::Update(double delta_time) {
 		obj->Update(delta_time);
 	}
 
-    if (this->win_condition_ != nullptr && this->win_condition_->checkWin()) {
-        menu::GameOverWindow *over_w = new menu::GameOverWindow(players_.front());
-        core::AppManager::GetAppManager().SetActiveWindow(*over_w);
+    if (this->win_condition_ != nullptr) {
+        this->win_condition_->checkWin();
     }
 }
 

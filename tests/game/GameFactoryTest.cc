@@ -13,17 +13,15 @@ namespace game {
         BOOST_AUTO_TEST_CASE(GameFactoryTest) {
             std::cout << "Start GameFactoryTest" << std::endl;
 
-            auto* app = new core::AppManager("",false);
+            core::AppManager* app = new core::AppManager("",false);
 
             StartClassicGame();
 
-            auto& manager = GameManager::GetCurrentGame();
+            GameManager& manager = GameManager::GetCurrentGame();
 
-            BOOST_CHECK(manager.GetPlayerCount() == 2);
+            BOOST_CHECK(manager.GetPlayers().size() == 2);
 
-            // workaround to delete current game manager
-            auto* managerPtr = new GameManager(10,10, nullptr);
-            delete managerPtr;
+            delete &manager;
 
             delete app;
 

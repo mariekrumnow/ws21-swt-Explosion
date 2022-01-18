@@ -108,6 +108,11 @@ void SoundManager::PlayNextBattleMusic() {
 }
 
 void SoundManager::PlayRandomBattleMusic() {
+	if (fake_)
+		return;
+
+	if (battle_music.size() == 0)
+		return;
 	current_battle_music_ = rand() % battle_music.size();
 	PlayNextBattleMusic();
 }

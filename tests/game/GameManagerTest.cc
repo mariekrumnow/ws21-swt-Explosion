@@ -30,7 +30,7 @@ namespace game {
             manager->DestroyGameObject(*block);
             BOOST_CHECK(manager->GetAllObjects().empty());
 
-            BOOST_CHECK(manager->GetPlayerCount() == 0);
+            BOOST_CHECK(manager->GetPlayers().size() == 0);
 
             //Spawn player
             graphics::PlayerKeys player_keys{};
@@ -45,7 +45,7 @@ namespace game {
                                                   graphics::PlayerTile(graphics::kTileEmpty, graphics::kTileEmpty,
                                                                        graphics::kTileEmpty,graphics::kTileEmpty), 0);
 
-            BOOST_CHECK(manager->GetPlayerCount() == 1);
+            BOOST_CHECK(manager->GetPlayers().size() == 1);
 
             delete manager;
 

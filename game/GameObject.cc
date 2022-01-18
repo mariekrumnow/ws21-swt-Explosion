@@ -18,7 +18,6 @@ void GameObject::Destroy() {
 }
 
 GameObject::~GameObject() {
-    Destroy();
 }
 
 bool GameObject::SetPosition(int x, int y) {
