@@ -17,10 +17,6 @@ Explosion::Explosion() {
     timer_ = kExplosionDuration;
 }
 
-int Explosion::GetOrientation(){
-    return orientation_;
-}
-
 // If a nullptr is returned, an error occured or the object couldn't be placed
 Explosion* Explosion::CreateExplosion(int x, int y, int oriented) {
     Explosion* temp = new Explosion();
@@ -91,6 +87,10 @@ void Explosion::Update(double delta_time) {
 
 bool Explosion::OnCollision(GameObject& source) {
     return true;
+}
+
+int Explosion::GetOrientation(){
+    return orientation_;
 }
 
 } // namespace bomb

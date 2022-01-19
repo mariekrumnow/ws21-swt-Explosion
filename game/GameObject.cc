@@ -8,13 +8,28 @@ namespace game {
 
 GameObject::GameObject() {}
 
-void GameObject::Destroy() {
-    GameManager::GetCurrentGame().DestroyGameObject(*this);
-    destroyed_ = true;
-}
-
 GameObject::~GameObject() {
     GameManager::GetCurrentGame().DestroyGameObject(*this);
+}
+
+bool GameObject::OnExplosion(GameObject& source) {
+    return false;
+}
+
+bool GameObject::OnPlayerCollision(Player& player) {
+    return false;
+}
+
+bool GameObject::OnCollision(GameObject& source) {
+    return false;
+}
+
+int GameObject::GetX() {
+    return x_;
+}
+
+int GameObject::GetY() {
+    return y_;
 }
 
 bool GameObject::SetPosition(int x, int y) {
@@ -37,24 +52,9 @@ bool GameObject::SetPosition(int x, int y) {
     return false;
 }
 
-bool GameObject::OnExplosion(GameObject& source) {
-    return false;
-}
-
-bool GameObject::OnPlayerCollision(Player& player) {
-    return false;
-}
-
-bool GameObject::OnCollision(GameObject& source) {
-    return false;
-}
-
-int GameObject::GetX() {
-    return x_;
-}
-
-int GameObject::GetY() {
-    return y_;
+void GameObject::Destroy() {
+    GameManager::GetCurrentGame().DestroyGameObject(*this);
+    destroyed_ = true;
 }
 
 } // namespace game

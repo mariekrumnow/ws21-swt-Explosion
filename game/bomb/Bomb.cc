@@ -77,50 +77,41 @@ void Bomb::Update(double delta_time) {
 	}
 }
 
-bool Bomb::SpawnExplosion(int x, int y, int oriented) {
-	Explosion* explosion = Explosion::CreateExplosion(x,y,oriented);
-	if (explosion == nullptr) {
-		return false;
-	}
-
-	return true;
-}
-
 void Bomb::Explode() {
-	GameManager& game = GameManager::GetCurrentGame();
+    GameManager& game = GameManager::GetCurrentGame();
 
-	core::AppManager::GetAppManager().GetSound()
-		.PlaySoundEffect(sound::effect_bomb_explode, 0);
+    core::AppManager::GetAppManager().GetSound()
+            .PlaySoundEffect(sound::effect_bomb_explode, 0);
 
-	exploding_ = true; //so the bomb isn't solid anymore
+    exploding_ = true; //so the bomb isn't solid anymore
 
-	if (owner_) {
-		owner_->OnBombDestroyed(*this);
-	}
+    if (owner_) {
+        owner_->OnBombDestroyed(*this);
+    }
 
-	//The four explosion directions
-	int x_turn[4] = {0,1,0,-1};
-	int y_turn[4] = {1,0,-1,0};
+    //The four explosion directions
+    int x_turn[4] = {0,1,0,-1};
+    int y_turn[4] = {1,0,-1,0};
 
-	int current_x = GetX();
-	int current_y = GetY();
+    int current_x = GetX();
+    int current_y = GetY();
 
-	//always spawn explosion where bomb is
-	SpawnExplosion(current_x, current_y,10);
+    //always spawn explosion where bomb is
+    SpawnExplosion(current_x, current_y,10);
 
-	//for each of the four directions
-	for (int turn=0; turn<4; turn++) {
-		//explode for the given distance
-		for (int d=1; d<=power_; d++) {
-			//get rotated position
-			int x = current_x + x_turn[turn]*d;
-			int y = current_y + y_turn[turn]*d;
+    //for each of the four directions
+    for (int turn=0; turn<4; turn++) {
+        //explode for the given distance
+        for (int d=1; d<=power_; d++) {
+            //get rotated position
+            int x = current_x + x_turn[turn]*d;
+            int y = current_y + y_turn[turn]*d;
 
-			//check for obstacles
-			bool stopped = false;
-			for (GameObject* go : game.GetObjectsAtPos(x,y)) {
-				stopped |= go->OnExplosion(*this);
-			}
+            //check for obstacles
+            bool stopped = false;
+            for (GameObject* go : game.GetObjectsAtPos(x,y)) {
+                stopped |= go->OnExplosion(*this);
+            }
             int oriented=turn;
             //differetiation between middle- and end- explosions
             if (d==power_) {
@@ -139,20 +130,29 @@ void Bomb::Explode() {
                         break;
                 }
             }
-			//if none there, spawn explosion
-			if (stopped) {
-				//if the tile that stopped you is now empty, place end piece
-				if (game.GetObjectsAtPos(x,y).size() == 0) {
-					if (oriented <=3) oriented += 4; //turn it into an end piece
-					SpawnExplosion(x,y,oriented);
-				}
-				break;
-			} else if (!SpawnExplosion(x,y,oriented)) {
+            //if none there, spawn explosion
+            if (stopped) {
+                //if the tile that stopped you is now empty, place end piece
+                if (game.GetObjectsAtPos(x,y).size() == 0) {
+                    if (oriented <=3) oriented += 4; //turn it into an end piece
+                    SpawnExplosion(x,y,oriented);
+                }
                 break;
-			}
-		}
+            } else if (!SpawnExplosion(x,y,oriented)) {
+                break;
+            }
+        }
+    }
+    this->Destroy();
+}
+
+bool Bomb::SpawnExplosion(int x, int y, int oriented) {
+	Explosion* explosion = Explosion::CreateExplosion(x,y,oriented);
+	if (explosion == nullptr) {
+		return false;
 	}
-	this->Destroy();
+
+	return true;
 }
 
 } // namespace bomb

@@ -23,13 +23,10 @@ public:
     int GetY();
 
 private:
-    /// What's written on the Item
-    std::string text_;
-    /// The position in the item list the item has, 0 = top
-    int option_num_;
-    /// Position of the Item
-    int x_;
-    int y_;
+    std::string text_; ///< What's written on the Item
+    int option_num_; ///< The position in the item list the item has, 0 = top
+    int x_; ///< x-Position of the Item
+    int y_; ///< y-Position of the Item
 
 };
 
