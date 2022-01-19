@@ -124,7 +124,7 @@ void SoundManager::PlaySoundEffect(SoundEffect* effect, int loops) {
 }
 
 void SoundManager::PlaySoundEffectAlone(SoundEffect* effect, int loops) {
-    if (loops <= 0) {
+    if (loops < 0) {
         return;
     }
 
@@ -146,6 +146,7 @@ void SoundManager::OnChannelFinished(int channel) {
 		if ((*it)->GetCurrentChannel() == channel) {
 			(*it)->SetCurrentChannel(-1);
 			playing_alone_.erase(it);
+            break;
 		}
 	}
 }
