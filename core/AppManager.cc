@@ -58,36 +58,6 @@ Window& AppManager::GetActiveWindow() {
     return *active_window_;
 }
 
-void AppManager::Quit() {
-    is_running_ = false;
-}
-
-bool AppManager::LoadTheme(std::string theme) {
-    bool success = true;
-    success &= graphics_.LoadTileset(theme);
-    success &= graphics_.LoadFonts(theme);
-
-    sound_.StopPlayback();
-     success &= sound::LoadSoundEffects(theme);
-     success &= sound::LoadMusic(theme);
-
-    return success;
-}
-
-void AppManager::ChangeBackgroundColor(graphics::Color background_color){
-      graphics_.SetBackgroundColor(background_color);
-}
-
-void AppManager::RunFrame(double delta_time) {
-    if (active_window_ != nullptr) {
-        graphics_.BeginFrame();
-
-        active_window_->Update(delta_time);
-        active_window_->Draw();
-
-        graphics_.EndFrame();
-    }
-}
 
 void AppManager::Run() {
     double delta_time = 0.05;
@@ -130,6 +100,27 @@ void AppManager::Run() {
       std::cout << "Quitting..." << std::endl;
       graphics_.Quit();
 }
+
+void AppManager::Quit() {
+    is_running_ = false;
+}
+
+bool AppManager::LoadTheme(std::string theme) {
+    bool success = true;
+    success &= graphics_.LoadTileset(theme);
+    success &= graphics_.LoadFonts(theme);
+
+    sound_.StopPlayback();
+    success &= sound::LoadSoundEffects(theme);
+    success &= sound::LoadMusic(theme);
+
+    return success;
+}
+
+void AppManager::ChangeBackgroundColor(graphics::Color background_color){
+    graphics_.SetBackgroundColor(background_color);
+}
+
 
 
 } // namespace core

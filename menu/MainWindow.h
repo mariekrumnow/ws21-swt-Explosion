@@ -26,7 +26,7 @@ public:
     void OnMenuItemSelect(int selected_option);
 
 private:
-    int theme_;
+    int theme_; ///< The theme that is chosen
 
 };
 

@@ -38,43 +38,6 @@ GraphicsManager::GraphicsManager(std::string title, bool init_graphics)
     }
 }
 
-bool GraphicsManager::LoadTileset(std::string theme) {
-    delete game_tileset_;
-    game_tileset_ = TileSet::CreateTileset(renderer_, "assets/"+theme+"/tileset.bmp",
-                                60,60);
-    if (!game_tileset_) { //load default, if that doesn't work, print error
-        if (theme == "default") {
-            std::cout << "Couldn't load tileset: " << SDL_GetError() << std::endl;
-            return false;
-        } else {
-            return LoadTileset("default");
-        }
-    }
-
-    return true;
-}
-
-bool GraphicsManager::LoadFonts(std::string theme) {
-    delete font_small_;
-    delete font_medium_;
-    delete font_large_;
-    font_small_ = Font::CreateFont("assets/"+theme+"/font.ttf", 14);
-    font_medium_ = Font::CreateFont("assets/"+theme+"/font.ttf", 20);
-    font_large_ = Font::CreateFont("assets/"+theme+"/font.ttf", 30);
-
-    if (!font_small_ || !font_medium_ || !font_large_) {
-        //load default, if that doesn't work, print error
-        if (theme == "default") {
-            std::cout << "Couldn't load fonts: " << TTF_GetError() << std::endl;
-            return false;
-        } else {
-            return LoadFonts("default");
-        }
-    }
-
-    return true;
-}
-
 GraphicsManager::~GraphicsManager() {
     delete game_tileset_;
     delete font_small_;
@@ -108,11 +71,11 @@ void GraphicsManager::BeginFrame() {
                         break;
                 }
                 break;
-            //quit event
+                //quit event
             case SDL_QUIT:
                 Quit();
                 break;
-            //events sent by the keyboard
+                //events sent by the keyboard
             case SDL_KEYDOWN:
                 key_held_[event.key.keysym.scancode] = true;
                 break;
@@ -127,7 +90,7 @@ void GraphicsManager::BeginFrame() {
 void GraphicsManager::DrawTile(Tile tile, Color color, int x, int y) {
     if (window_ == nullptr) return;
     game_tileset_->DrawTile(renderer_, tile, color,
-        x + x_draw_offset_, y + y_draw_offset_);
+                            x + x_draw_offset_, y + y_draw_offset_);
 }
 
 void GraphicsManager::WriteText(std::string text,Color color,
@@ -210,6 +173,43 @@ void GraphicsManager::Quit() {
 
 void GraphicsManager::Sleep(int millis) {
     SDL_Delay(millis);
+}
+
+bool GraphicsManager::LoadTileset(std::string theme) {
+    delete game_tileset_;
+    game_tileset_ = TileSet::CreateTileset(renderer_, "assets/"+theme+"/tileset.bmp",
+                                           60,60);
+    if (!game_tileset_) { //load default, if that doesn't work, print error
+        if (theme == "default") {
+            std::cout << "Couldn't load tileset: " << SDL_GetError() << std::endl;
+            return false;
+        } else {
+            return LoadTileset("default");
+        }
+    }
+
+    return true;
+}
+
+bool GraphicsManager::LoadFonts(std::string theme) {
+    delete font_small_;
+    delete font_medium_;
+    delete font_large_;
+    font_small_ = Font::CreateFont("assets/"+theme+"/font.ttf", 14);
+    font_medium_ = Font::CreateFont("assets/"+theme+"/font.ttf", 20);
+    font_large_ = Font::CreateFont("assets/"+theme+"/font.ttf", 30);
+
+    if (!font_small_ || !font_medium_ || !font_large_) {
+        //load default, if that doesn't work, print error
+        if (theme == "default") {
+            std::cout << "Couldn't load fonts: " << TTF_GetError() << std::endl;
+            return false;
+        } else {
+            return LoadFonts("default");
+        }
+    }
+
+    return true;
 }
 
 } // namespace graphics

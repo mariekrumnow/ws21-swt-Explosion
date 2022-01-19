@@ -53,19 +53,18 @@ void MenuWindow::Draw(){
 	  }
 }
 
+void MenuWindow::AddMenuItem(MenuItem menu_item){
+      menu_items_.push_back(menu_item);
+}
 
 void MenuWindow::OnMenuItemSelect(int selected_option){}
 
 int MenuWindow::GetSelectedOption(){
-      return selected_option_;
+    return selected_option_;
 }
 
 std::list<MenuItem>& MenuWindow::GetMenuItems(){
-      return menu_items_;
-}
-
-void MenuWindow::AddMenuItem(MenuItem menu_item){
-      menu_items_.push_back(menu_item);
+    return menu_items_;
 }
 
 }   // namespace menu
