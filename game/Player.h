@@ -139,7 +139,6 @@ public:
     /// \return Tileset of the Player
     graphics::PlayerTile GetTileset();
 
-private:
     /// Places a Bomb
     ///
     /// \param x The X-coordinate of the new bomb
@@ -155,6 +154,7 @@ private:
     /// \return true if no collision occurred
     bool SetPosition(int x, int y);
 
+private:
     int explosion_radius_ = 1; ///< The current explosion radius of placed Bombs
     int max_bomb_count_ = 1; ///< The amount of Bombs a Player can place, at a time
     int speed_ = 0; ///< The speed of the Player

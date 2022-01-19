@@ -35,18 +35,18 @@ public:
     /// Returns Tile of the Explosion
     ///
     /// \return Tile of the Explosion
-    graphics::Tile GetTile();
+    graphics::Tile GetTile() override;
 
     /// Returns Color of the Explosion
     ///
     /// \return Color of the Explosion
-    graphics::Color GetColor();
+    graphics::Color GetColor() override;
 
     /// Called once per frame
     /// Updates the time left until the Explosion is over
     ///
     /// \param delta_time
-    void Update(double delta_time);
+    void Update(double delta_time) override;
 
     /// Called when an object collides with the explosion
     ///

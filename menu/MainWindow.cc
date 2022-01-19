@@ -19,8 +19,6 @@ MainWindow::MainWindow()
 : MenuWindow(kMultiPlayer)
 {
     theme_ = kClassic;
-    core::AppManager::GetAppManager().LoadTheme("default");
-    core::AppManager::GetAppManager().GetSound().PlaySoundEffectAlone(sound::effect_menu_click, 0);
 
     MenuItem start = MenuItem("Multiplayer starten", kMultiPlayer, 400, 300);
     MenuWindow::AddMenuItem(start);

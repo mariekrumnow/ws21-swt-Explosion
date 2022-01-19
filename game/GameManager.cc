@@ -16,14 +16,13 @@ namespace game {
 GameManager* GameManager::current_game_;
 
 GameManager::GameManager(const int width, const int height, win_condition::BaseWinCondition *winCondition) :
+            win_condition_(winCondition),
             width_(width),
-            height_(height),
-            win_condition_(winCondition)
+            height_(height)
             {
-		width_ = width;
-		height_ = height;
 
 		// enforce singleton
+        delete GameManager::current_game_;
 		GameManager::current_game_ = this;
 
 		// create the object arrays
@@ -34,12 +33,6 @@ GameManager::GameManager(const int width, const int height, win_condition::BaseW
 }
 
 GameManager::~GameManager(){
-    std::cout << "Anfang Destruktor GameManager" << std::endl;
-	if (GameManager::current_game_ == this) {
-		GameManager::current_game_ = nullptr;
-	}
-
-
 	for (GameObject* obj : GetAllObjects()) {
 		obj->Destroy();
 	}
@@ -54,7 +47,9 @@ GameManager::~GameManager(){
 
 	delete [] objects_by_pos_;
 
-    std::cout << "Ende Destruktor GameManager" << std::endl;
+    if (GameManager::current_game_ == this) {
+		GameManager::current_game_ = nullptr;
+	}
 }
 
 void GameManager::Update(double delta_time) {

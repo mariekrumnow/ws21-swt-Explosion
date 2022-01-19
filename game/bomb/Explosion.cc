@@ -81,7 +81,7 @@ void Explosion::Update(double delta_time) {
 
     timer_ -= delta_time;
     if (timer_ <= 0) {
-        delete this;
+        Destroy();
     }
 }
 

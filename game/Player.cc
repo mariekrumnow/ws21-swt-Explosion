@@ -19,7 +19,7 @@
 namespace game {
 
 Player::Player(graphics::PlayerKeys keys, graphics::PlayerTile tiles, int id)
-                : keys_(keys), tiles_(tiles), id_(id) {}
+                : id_(id), keys_(keys), tiles_(tiles) {}
 
 // If a nullptr is returned, an error occured or the object couldn't be placed
 Player* Player::CreatePlayer(int x, int y, graphics::PlayerKeys keys,

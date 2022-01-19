@@ -79,6 +79,9 @@ public:
     /// Calls the DestroyGameObject method of GameManager
     virtual void Destroy();
 
+    ///Returns whether the object has been destroyed
+    bool GetDestroyed();
+
 private:
     int x_ = 0; ///< X-coordinate of the GameObject
     int y_ = 0; ///< Y-coordinate of the GameObject

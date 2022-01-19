@@ -106,6 +106,11 @@ void SoundManager::PlayNextBattleMusic() {
 }
 
 void SoundManager::PlayRandomBattleMusic() {
+	if (fake_)
+		return;
+
+	if (battle_music.size() == 0)
+		return;
 	current_battle_music_ = rand() % battle_music.size();
 	PlayNextBattleMusic();
 }
@@ -117,6 +122,10 @@ void SoundManager::PlaySoundEffect(SoundEffect* effect, int loops) {
 }
 
 void SoundManager::PlaySoundEffectAlone(SoundEffect* effect, int loops) {
+    if (loops < 0) {
+        return;
+    }
+
 	if (fake_)
 		return;
 	if (effect->GetCurrentChannel() != -1) {
@@ -135,6 +144,7 @@ void SoundManager::OnChannelFinished(int channel) {
 		if ((*it)->GetCurrentChannel() == channel) {
 			(*it)->SetCurrentChannel(-1);
 			playing_alone_.erase(it);
+            break;
 		}
 	}
 }
