@@ -124,6 +124,10 @@ void SoundManager::PlaySoundEffect(SoundEffect* effect, int loops) {
 }
 
 void SoundManager::PlaySoundEffectAlone(SoundEffect* effect, int loops) {
+    if (loops <= 0) {
+        return;
+    }
+
 	if (fake_)
 		return;
 	if (effect->GetCurrentChannel() != -1) {
