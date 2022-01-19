@@ -18,7 +18,6 @@ BOOST_AUTO_TEST_SUITE(GameOverWindowTest)
         auto* app = new core::AppManager("",false);
         auto* manager = new game::GameManager(10,10, nullptr);
 
-
         graphics::PlayerKeys player_keys{};
 
         player_keys.up = graphics::key_w;
@@ -31,11 +30,9 @@ BOOST_AUTO_TEST_SUITE(GameOverWindowTest)
                                           graphics::PlayerTile(graphics::kTileEmpty,graphics::kTileEmpty
                                                   ,graphics::kTileEmpty,graphics::kTileEmpty), 0);
 
-
         auto* window = new GameOverWindow(player);
 
         app->SetActiveWindow(*window);
-
 
         BOOST_CHECK(window);
 

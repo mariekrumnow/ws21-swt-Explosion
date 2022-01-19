@@ -20,9 +20,17 @@ GraphicsManager::GraphicsManager(std::string title, bool init_graphics)
     font_large_ = nullptr;
 
     if (init_graphics) {
-        SDL_Init(SDL_INIT_EVERYTHING);
-        SDL_CreateWindowAndRenderer(kWindowWidth, kWindowHeight, 0,
-                                    &window_, &renderer_);
+        if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+            std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        }
+
+        if (SDL_CreateWindowAndRenderer(kWindowWidth, kWindowHeight, SDL_WINDOW_SHOWN,
+            &window_, &renderer_) < 0) {
+            std::cout << "SDL_CreateWindowAndRenderer Error: " << SDL_GetError() << std::endl;
+        }
+
+        //Start in windowed mode
+        SetFullscreen(false);
 
         SDL_SetWindowTitle(window_, title.c_str());
 
@@ -32,7 +40,7 @@ GraphicsManager::GraphicsManager(std::string title, bool init_graphics)
         }
 
         if (TTF_Init() < 0) {
-            std::cout << "TTF initialization error" << std::endl;
+            std::cout << "TTF initialization error: " << TTF_GetError() << std::endl;
         }
 
     }
@@ -145,7 +153,33 @@ void GraphicsManager::SetFullscreen(bool fullscreen) {
     } else {
         //switch to windowed and reset renderer scale
         SDL_SetWindowFullscreen(window_, 0);
-        SDL_RenderSetScale(renderer_, 1, 1);
+
+        //adjust the windows size to the screen size
+        SDL_DisplayMode mode;
+        SDL_GetCurrentDisplayMode(SDL_GetWindowDisplayIndex(window_), &mode);
+
+        //make sure there's a little space between the window and the screen border
+        mode.w -= mode.w/8;
+        mode.h -= mode.h/8;
+
+        //find the necessary scale factor to fit the window into the display
+        float scale_factor = 1;
+        if (mode.h < kWindowHeight) {
+            scale_factor = static_cast<float>(mode.h)/kWindowHeight;
+        }
+        if (mode.w < kWindowWidth) {
+            float width_scale = static_cast<float>(mode.w)/kWindowWidth;
+            if (width_scale < scale_factor) {
+                scale_factor = width_scale;
+            }
+        }
+
+        SDL_RenderSetScale(renderer_, scale_factor, scale_factor);
+
+        SDL_SetWindowSize(window_, static_cast<int>(kWindowWidth * scale_factor),
+            static_cast<int>(kWindowHeight * scale_factor));
+
+        SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
         x_draw_offset_ = 0;
         y_draw_offset_ = 0;
     }
