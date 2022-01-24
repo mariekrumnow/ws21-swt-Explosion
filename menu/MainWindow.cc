@@ -20,6 +20,8 @@ MainWindow::MainWindow()
 {
     theme_ = kClassic;
 
+    core::AppManager::GetAppManager().LoadTheme("default"); //so the displayed theme is actually loaded
+
     MenuItem start = MenuItem("Multiplayer starten", kMultiPlayer, 400, 300);
     MenuWindow::AddMenuItem(start);
 
