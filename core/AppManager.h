@@ -83,6 +83,8 @@ private:
     graphics::GraphicsManager graphics_; ///< The current GraphicsManager
     sound::SoundManager sound_; ///< The current SoundManager
 
+    bool init_hardware_; ///< Should the hardware be initialized?
+
     bool is_running_;   ///< A bool that determins whether the main loop should be terminated
 
     static AppManager* manager_; ///< The static reference to the current AppManager
