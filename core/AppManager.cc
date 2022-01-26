@@ -67,12 +67,15 @@ void AppManager::Quit() {
 
 bool AppManager::LoadTheme(std::string theme) {
     bool success = true;
-    success &= graphics_.LoadTileset(theme);
-    success &= graphics_.LoadFonts(theme);
 
-    sound_.StopPlayback();
-     success &= sound::LoadSoundEffects(theme);
-     success &= sound::LoadMusic(theme);
+    if (init_hardware_) {
+        success &= graphics_.LoadTileset(theme);
+        success &= graphics_.LoadFonts(theme);
+
+        sound_.StopPlayback();
+        success &= sound::LoadSoundEffects(theme);
+        success &= sound::LoadMusic(theme);
+     }
 
     return success;
 }
