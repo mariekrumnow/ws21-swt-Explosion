@@ -1,4 +1,4 @@
-Bombermaaaaaaaan
+# Bombermaaaaaaaan
 
 This is a small Bomberman project, written in  C++ as a student project.
 
